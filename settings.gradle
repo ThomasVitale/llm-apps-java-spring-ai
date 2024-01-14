@@ -2,3 +2,7 @@ rootProject.name = 'llm-apps-java-spring-ai'
 
 include '01-chat-models:chat-models-ollama'
 include '01-chat-models:chat-models-openai'
+
+include '02-prompts:prompts-basics'
+include '02-prompts:prompts-messages'
+include '02-prompts:prompts-templates'

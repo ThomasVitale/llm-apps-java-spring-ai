@@ -1,0 +1,10 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        model: mistral
+        options:
+          temperature: 0.7
+  threads:
+    virtual:
+      enabled: true
