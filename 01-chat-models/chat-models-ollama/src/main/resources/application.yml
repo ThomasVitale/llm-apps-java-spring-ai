@@ -3,7 +3,8 @@ spring:
     ollama:
       chat:
         model: mistral
-      base-url:
+        options:
+          temperature: 0.7
   threads:
     virtual:
       enabled: true
