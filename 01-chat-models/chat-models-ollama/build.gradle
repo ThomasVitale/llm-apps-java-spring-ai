@@ -20,11 +20,13 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    implementation "org.springframework.ai:spring-ai-openai-spring-boot-starter:${springAiVersion}"
+    implementation "org.springframework.ai:spring-ai-ollama-spring-boot-starter:${springAiVersion}"
 
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.testcontainers:junit-jupiter'
 }
 
 tasks.named('test') {
