@@ -9,3 +9,5 @@ include '02-prompts:prompts-messages-openai'
 include '02-prompts:prompts-templates-openai'
 
 include '03-output-parsers:output-parsers-openai'
+
+include '04-embedding-models:embedding-models-openai'
