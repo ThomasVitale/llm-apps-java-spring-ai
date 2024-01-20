@@ -15,7 +15,6 @@ public class TestChatModelsOllamaApplication {
                 .withExposedPorts(11434);
         properties.add("spring.ai.ollama.base-url",
                 () -> "http://%s:%s".formatted(ollama.getHost(), ollama.getMappedPort(11434)));
-        properties.add("spring.ai.ollama.chat.model", () -> "llama2");
         return ollama;
     }
 
