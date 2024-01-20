@@ -2,7 +2,7 @@ spring:
   ai:
     ollama:
       chat:
-        model: mistral
+        model: llama2
         options:
           temperature: 0.7
   threads:
