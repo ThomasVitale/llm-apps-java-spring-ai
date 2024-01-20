@@ -1,0 +1,8 @@
+spring:
+  ai:
+    ollama:
+      embedding:
+        model: llama2
+  threads:
+    virtual:
+      enabled: true
