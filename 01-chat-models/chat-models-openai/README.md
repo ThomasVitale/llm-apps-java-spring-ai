@@ -1,7 +1,7 @@
 # Chat Models: OpenAI
 
 ```shell
-./gradlew bootRun
+./gradlew bootTestRun
 ```
 
 ```shell

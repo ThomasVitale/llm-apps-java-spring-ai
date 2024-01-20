@@ -15,7 +15,7 @@ class ChatController {
     }
 
     @GetMapping("/ai/chat")
-    String chat(@RequestParam(defaultValue = "What does Gandalf say to the Balrog?") String message) {
+    String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatClient.generate(message);
     }
 

@@ -2,14 +2,17 @@ package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.prompt.Prompt;
+import org.springframework.ai.prompt.PromptTemplate;
+import org.springframework.ai.prompt.SystemPromptTemplate;
 import org.springframework.ai.prompt.messages.AssistantMessage;
-import org.springframework.ai.prompt.messages.SystemMessage;
 import org.springframework.ai.prompt.messages.UserMessage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 @Service
 class ChatService {
@@ -23,31 +26,50 @@ class ChatService {
         this.systemMessageResource = systemMessageResource;
     }
 
-    AssistantMessage chatWithSingleMessage(String message) {
-        var userMessage = new UserMessage(message);
+    AssistantMessage chatWithUserMessageTemplate(MusicQuestion question) {
+        var userPromptTemplate = new PromptTemplate("""
+                Tell me name and band of three musicians famous for playing in a {genre} band.
+                Consider only the musicians that play the {instrument} in that band.
+                """);
+        Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre());
+        var userMessage = userPromptTemplate.createMessage(model);
+
         var prompt = new Prompt(userMessage);
         var chatResponse = chatClient.generate(prompt);
         return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
     }
 
-    AssistantMessage chatWithMultipleMessages(String message) {
-        var systemMessage = new SystemMessage("""
-                You are a helpful and polite assistant.
-                Answer in one sentence using a very formal language
-                and starting the answer with a formal greeting.
+    AssistantMessage chatWithSystemMessageTemplate(String message) {
+        var systemPromptTemplate = new SystemPromptTemplate("""
+                You are a helpful assistant that always replies starting with {greeting}.
                 """);
+        Map<String,Object> model = Map.of("greeting", randomGreeting());
+        var systemMessage = systemPromptTemplate.createMessage(model);
+
         var userMessage = new UserMessage(message);
+
         var prompt = new Prompt(List.of(systemMessage, userMessage));
+
         var chatResponse = chatClient.generate(prompt);
         return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
     }
 
-    AssistantMessage chatWithExternalMessage(String message) {
-        var systemMessage = new SystemMessage(systemMessageResource);
+    AssistantMessage chatWithSystemMessageTemplateExternal(String message) {
+        var systemPromptTemplate = new SystemPromptTemplate(systemMessageResource);
+        Map<String,Object> model = Map.of("greeting", randomGreeting());
+        var systemMessage = systemPromptTemplate.createMessage(model);
+
         var userMessage = new UserMessage(message);
+
         var prompt = new Prompt(List.of(systemMessage, userMessage));
+
         var chatResponse = chatClient.generate(prompt);
         return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+    }
+
+    private String randomGreeting() {
+        var names = List.of("Howdy", "Ahoy", "Well, well, well");
+        return names.get(new Random().nextInt(names.size()));
     }
 
 }

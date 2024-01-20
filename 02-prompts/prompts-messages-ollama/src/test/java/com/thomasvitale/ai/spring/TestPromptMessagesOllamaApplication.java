@@ -9,7 +9,7 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.testcontainers.containers.GenericContainer;
 
 @TestConfiguration(proxyBeanMethods = false)
-public class TestChatModelsOllamaApplication {
+public class TestPromptMessagesOllamaApplication {
 
     @Bean
     @RestartScope
@@ -23,7 +23,7 @@ public class TestChatModelsOllamaApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.from(ChatModelsOllamaApplication::main).with(TestChatModelsOllamaApplication.class).run(args);
+        SpringApplication.from(PromptMessagesOllamaApplication::main).with(TestPromptMessagesOllamaApplication.class).run(args);
     }
 
 }
