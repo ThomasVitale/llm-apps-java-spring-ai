@@ -9,7 +9,7 @@ ollama run llama2
 ```
 
 ```shell
-./gradlew bootTestRun
+./gradlew bootRun
 ```
 
 ### When using Docker/Podman
