@@ -1,8 +1,24 @@
-# Embedding Models: Ollama
+# JSON Document Readers: Ollama
+
+## Running the application
+
+### When using Ollama
+
+```shell
+ollama run llama2
+```
 
 ```shell
 ./gradlew bootTestRun
 ```
+
+### When using Docker/Podman
+
+```shell
+./gradlew bootTestRun
+```
+
+## Calling the application
 
 ```shell
 http --raw "What bike is good for city commuting?" :8080/ai/doc/chat
