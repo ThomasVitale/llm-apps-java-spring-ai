@@ -1,10 +1,10 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.prompt.Prompt;
-import org.springframework.ai.prompt.PromptTemplate;
-import org.springframework.ai.prompt.messages.AssistantMessage;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.stereotype.Service;
@@ -39,15 +39,15 @@ class ChatService {
                 """);
 
         List<Document> similarDocuments = vectorStore.similaritySearch(SearchRequest.query(message).withTopK(2));
-        String documents = similarDocuments.stream().map(Document::getContent).collect(Collectors.joining("\n"));
+        String documents = similarDocuments.stream().map(Document::getContent).collect(Collectors.joining(System.lineSeparator()));
 
         Map<String,Object> model = Map.of("documents", documents, "question", message);
         var userMessage = promptTemplate.createMessage(model);
 
         var prompt = new Prompt(userMessage);
 
-        var chatResponse = chatClient.generate(prompt);
-        return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+        var chatResponse = chatClient.call(prompt);
+        return chatResponse.getResult().getOutput();
     }
 
 }

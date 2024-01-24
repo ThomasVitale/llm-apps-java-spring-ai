@@ -1,10 +1,10 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
-import org.springframework.ai.prompt.Prompt;
-import org.springframework.ai.prompt.messages.AssistantMessage;
-import org.springframework.ai.prompt.messages.SystemMessage;
-import org.springframework.ai.prompt.messages.UserMessage;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.SystemMessage;
+import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -26,8 +26,8 @@ class ChatService {
     AssistantMessage chatWithSingleMessage(String message) {
         var userMessage = new UserMessage(message);
         var prompt = new Prompt(userMessage);
-        var chatResponse = chatClient.generate(prompt);
-        return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+        var chatResponse = chatClient.call(prompt);
+        return chatResponse.getResult().getOutput();
     }
 
     AssistantMessage chatWithMultipleMessages(String message) {
@@ -38,16 +38,16 @@ class ChatService {
                 """);
         var userMessage = new UserMessage(message);
         var prompt = new Prompt(List.of(systemMessage, userMessage));
-        var chatResponse = chatClient.generate(prompt);
-        return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+        var chatResponse = chatClient.call(prompt);
+        return chatResponse.getResult().getOutput();
     }
 
     AssistantMessage chatWithExternalMessage(String message) {
         var systemMessage = new SystemMessage(systemMessageResource);
         var userMessage = new UserMessage(message);
         var prompt = new Prompt(List.of(systemMessage, userMessage));
-        var chatResponse = chatClient.generate(prompt);
-        return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+        var chatResponse = chatClient.call(prompt);
+        return chatResponse.getResult().getOutput();
     }
 
 }

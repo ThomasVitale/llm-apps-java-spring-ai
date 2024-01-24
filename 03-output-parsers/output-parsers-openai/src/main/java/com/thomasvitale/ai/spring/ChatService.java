@@ -1,10 +1,10 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.parser.BeanOutputParser;
 import org.springframework.ai.parser.ListOutputParser;
 import org.springframework.ai.parser.MapOutputParser;
-import org.springframework.ai.prompt.PromptTemplate;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +31,8 @@ class ChatService {
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputParser.getFormat());
         var prompt = userPromptTemplate.create(model);
 
-        var chatResponse = chatClient.generate(prompt);
-        return outputParser.parse(chatResponse.getGeneration().getContent());
+        var chatResponse = chatClient.call(prompt);
+        return outputParser.parse(chatResponse.getResult().getOutput().getContent());
     }
 
     Map<String,Object> chatWithMapOutput(MusicQuestion question) {
@@ -46,8 +46,8 @@ class ChatService {
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputParser.getFormat());
         var prompt = userPromptTemplate.create(model);
 
-        var chatResponse = chatClient.generate(prompt);
-        return outputParser.parse(chatResponse.getGeneration().getContent());
+        var chatResponse = chatClient.call(prompt);
+        return outputParser.parse(chatResponse.getResult().getOutput().getContent());
     }
 
     List<String> chatWithListOutput(MusicQuestion question) {
@@ -61,8 +61,8 @@ class ChatService {
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputParser.getFormat());
         var prompt = userPromptTemplate.create(model);
 
-        var chatResponse = chatClient.generate(prompt);
-        return outputParser.parse(chatResponse.getGeneration().getContent());
+        var chatResponse = chatClient.call(prompt);
+        return outputParser.parse(chatResponse.getResult().getOutput().getContent());
     }
 
 }

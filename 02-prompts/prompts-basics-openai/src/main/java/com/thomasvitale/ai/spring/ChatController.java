@@ -21,7 +21,7 @@ class ChatController {
 
     @PostMapping("/ai/chat/prompt")
     String chatWithPrompt(@RequestBody String input) {
-        return chatService.chatWithPrompt(input).getGeneration().getContent();
+        return chatService.chatWithPrompt(input).getResult().getOutput().getContent();
     }
 
     @PostMapping("/ai/chat/full")

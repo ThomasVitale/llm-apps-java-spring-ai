@@ -2,7 +2,7 @@ package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.chat.ChatResponse;
-import org.springframework.ai.prompt.Prompt;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,11 +15,11 @@ class ChatService {
     }
 
     String chatWithText(String message) {
-        return chatClient.generate(message);
+        return chatClient.call(message);
     }
 
     ChatResponse chatWithPrompt(String message) {
-        return chatClient.generate(new Prompt(message));
+        return chatClient.call(new Prompt(message));
     }
 
 }

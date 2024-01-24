@@ -1,11 +1,11 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
-import org.springframework.ai.prompt.Prompt;
-import org.springframework.ai.prompt.PromptTemplate;
-import org.springframework.ai.prompt.SystemPromptTemplate;
-import org.springframework.ai.prompt.messages.AssistantMessage;
-import org.springframework.ai.prompt.messages.UserMessage;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -35,8 +35,8 @@ class ChatService {
         var userMessage = userPromptTemplate.createMessage(model);
 
         var prompt = new Prompt(userMessage);
-        var chatResponse = chatClient.generate(prompt);
-        return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+        var chatResponse = chatClient.call(prompt);
+        return chatResponse.getResult().getOutput();
     }
 
     AssistantMessage chatWithSystemMessageTemplate(String message) {
@@ -50,8 +50,8 @@ class ChatService {
 
         var prompt = new Prompt(List.of(systemMessage, userMessage));
 
-        var chatResponse = chatClient.generate(prompt);
-        return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+        var chatResponse = chatClient.call(prompt);
+        return chatResponse.getResult().getOutput();
     }
 
     AssistantMessage chatWithSystemMessageTemplateExternal(String message) {
@@ -63,8 +63,8 @@ class ChatService {
 
         var prompt = new Prompt(List.of(systemMessage, userMessage));
 
-        var chatResponse = chatClient.generate(prompt);
-        return new AssistantMessage(chatResponse.getGeneration().getContent(), chatResponse.getGeneration().getProperties());
+        var chatResponse = chatClient.call(prompt);
+        return chatResponse.getResult().getOutput();
     }
 
     private String randomGreeting() {
