@@ -13,10 +13,10 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 
 ### 1. Chat Models
 
-| Project                                                                                                                   | Description   |
-|---------------------------------------------------------------------------------------------------------------------------|---------------|
-| [chat-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-ollama) | _Coming soon_ |
-| [chat-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-openai) | _Coming soon_ |
+| Project                                                                                                                   | Description                           |
+|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+| [chat-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-ollama) | Text generation with LLMs via Ollama. |
+| [chat-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-openai) | Text generation with LLMs via OpenAI. |
 
 ### 2. Prompts
 
