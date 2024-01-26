@@ -20,35 +20,35 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 
 ### 2. Prompts
 
-| Project                                                                                                                            | Description   |
-|------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| [prompts-basics-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-basics-ollama)        | _Coming soon_ |
-| [prompts-basics-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-basics-openai)        | _Coming soon_ |
-| [prompts-messages-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-messages-ollama)    | _Coming soon_ |
-| [prompts-messages-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-messages-openai)    | _Coming soon_ |
-| [prompts-templates-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-templates-ollama)  | _Coming soon_ |
-| [prompts-templates-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-templates-openai)  | _Coming soon_ |
+| Project                                                                                                                            | Description                                                         |
+|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| [prompts-basics-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-basics-ollama)        | Prompting using simple text with LLMs via Ollama.                   |
+| [prompts-basics-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-basics-openai)        | Prompting using simple text with LLMs via OpenAI.                   |
+| [prompts-messages-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-messages-ollama)    | Prompting using structured messages and roles with LLMs via Ollama. |
+| [prompts-messages-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-messages-openai)    | Prompting using structured messages and roles with LLMs via OpenAI. |
+| [prompts-templates-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-templates-ollama)  | Prompting using templates with LLMs via Ollama.                     |
+| [prompts-templates-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-templates-openai)  | Prompting using templates with LLMs via OpenAI.                     |
 
 ### 3. Output Parsers
 
-| Project                                                                                                                            | Description   |
-|------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| [output-parsers-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-parsers/output-parsers-ollama) | _Coming soon_ |
-| [output-parsers-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-parsers/output-parsers-openai) | _Coming soon_ |
+| Project                                                                                                                            | Description                                                                  |
+|------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| [output-parsers-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-parsers/output-parsers-ollama) | Parsing the LLM output as structured objects (Beans, Map, List) via Ollama.  |
+| [output-parsers-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-parsers/output-parsers-openai) | Parsing the LLM output as structured objects (Beans, Map, List) via Open AI. |
 
 ### 4. Embedding Models
 
-| Project                                                                                                                                  | Description   |
-|------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| [embedding-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/04-embedding-models/embedding-models-ollama) | _Coming soon_ |
-| [embedding-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/04-embedding-models/embedding-models-openai) | _Coming soon_ |
+| Project                                                                                                                                  | Description                                              |
+|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| [embedding-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/04-embedding-models/embedding-models-ollama) | Vector transformation (embeddings) with LLMs via Ollama. |
+| [embedding-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/04-embedding-models/embedding-models-openai) | Vector transformation (embeddings) with LLMs via OpenAI. |
 
 ### 5. Document Readers
 
-| Project                                                                                                                                            | Description   |
-|----------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| [document-readers-json-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-json-ollama) | _Coming soon_ |
-| [document-readers-text-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-text-ollama) | _Coming soon_ |
+| Project                                                                                                                                            | Description                                                  |
+|----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| [document-readers-json-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-json-ollama) | Reading and vectorizing JSON documents with LLMs via Ollama. |
+| [document-readers-text-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-text-ollama) | Reading and vectorizing text documents with LLMs via Ollama. |
 
 ### 6. Document Transformers
 

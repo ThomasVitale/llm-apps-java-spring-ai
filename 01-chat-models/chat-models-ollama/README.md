@@ -55,6 +55,7 @@ The application relies on the native Testcontainers support in Spring Boot to sp
 ## Calling the application
 
 You can now call the application that will use Ollama and llama2 to generate text based on a default prompt.
+This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
 http :8080/ai/chat
