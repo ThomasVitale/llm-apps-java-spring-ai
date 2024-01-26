@@ -28,10 +28,9 @@ class ChatService {
     AssistantMessage chatWithDocument(String message) {
         var systemPromptTemplate = new SystemPromptTemplate("""
                 You're assisting with questions about products in a bicycle catalog.
-                Use the information from the DOCUMENTS section to provide accurate answers.
-                If the answer involves referring to the price or the dimension of the bicycle,
-                include the bicycle name in the response.
-                If unsure, simply state that you don't know.
+                Use the information from the DOCUMENTS section and no prior knowledge.
+                If unsure or if the answer isn't found in the DOCUMENTS section, simply state
+                that you don't know the answer.
                                 
                 DOCUMENTS:
                 {documents}

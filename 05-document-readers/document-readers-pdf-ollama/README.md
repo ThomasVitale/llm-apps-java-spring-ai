@@ -1,6 +1,6 @@
-# Text Document Readers: Ollama
+# PDF Document Readers: Ollama
 
-Reading and vectorizing text documents with LLMs via Ollama.
+Reading and vectorizing PDF documents with LLMs via Ollama.
 
 # Running the application
 
@@ -31,7 +31,7 @@ The application relies on the native Testcontainers support in Spring Boot to sp
 
 ## Calling the application
 
-You can now call the application that will use Ollama and llama2 to load text documents as embeddings and generate an answer to your questions based on those documents (RAG pattern).
+You can now call the application that will use Ollama and llama2 to load PDF documents as embeddings and generate an answer to your questions based on those documents (RAG pattern).
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell

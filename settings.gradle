@@ -17,4 +17,5 @@ include '04-embedding-models:embedding-models-ollama'
 include '04-embedding-models:embedding-models-openai'
 
 include '05-document-readers:document-readers-json-ollama'
+include '05-document-readers:document-readers-pdf-ollama'
 include '05-document-readers:document-readers-text-ollama'

@@ -48,6 +48,7 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 | Project                                                                                                                                            | Description                                                  |
 |----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | [document-readers-json-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-json-ollama) | Reading and vectorizing JSON documents with LLMs via Ollama. |
+| [document-readers-pdf-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-text-ollama)  | Reading and vectorizing PDF documents with LLMs via Ollama.  |
 | [document-readers-text-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-text-ollama) | Reading and vectorizing text documents with LLMs via Ollama. |
 
 ### 6. Document Transformers
