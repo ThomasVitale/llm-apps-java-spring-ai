@@ -28,10 +28,9 @@ class ChatService {
     AssistantMessage chatWithDocument(String message) {
         var systemPromptTemplate = new SystemPromptTemplate("""
                 You're assisting with questions about products in a bicycle catalog.
-                Use the information from the DOCUMENTS section and no prior knowledge.
-                If unsure or if the answer isn't found in the DOCUMENTS section, simply state
-                that you don't know the answer.
-                                
+                Answer questions given the context information below (DOCUMENTS section) and no prior knowledge,
+                but act as if you knew this information innately. If the answer is not found in the DOCUMENTS section,
+                simply state that you don't know the answer.
                 DOCUMENTS:
                 {documents}
                 """);

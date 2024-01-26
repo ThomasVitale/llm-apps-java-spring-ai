@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,7 @@ import java.util.Map;
 public class DocumentInitializer {
 
     private static final Logger log = LoggerFactory.getLogger(DocumentInitializer.class);
-    private final SimpleVectorStore simpleVectorStore;
+    private final SimpleVectorStore vectorStore;
 
     @Value("classpath:documents/bikes-1.json")
     Resource jsonFile1;
@@ -30,12 +31,19 @@ public class DocumentInitializer {
     @Value("classpath:documents/bikes-3.json")
     Resource jsonFile3;
 
-    public DocumentInitializer(SimpleVectorStore simpleVectorStore) {
-        this.simpleVectorStore = simpleVectorStore;
+    public DocumentInitializer(SimpleVectorStore vectorStore) {
+        this.vectorStore = vectorStore;
     }
 
     @PostConstruct
     public void run() {
+        File embeddingsStorage = new File("src/main/resources/vector-store/embeddings.json");
+        if (embeddingsStorage.exists()) {
+            log.info("Loading Embeddings from file into vector store");
+            vectorStore.load(embeddingsStorage);
+            return;
+        }
+
         List<Document> documents = new ArrayList<>();
 
         log.info("Loading JSON as Documents");
@@ -56,7 +64,10 @@ public class DocumentInitializer {
         documents.addAll(jsonReader3.get());
 
         log.info("Creating and storing Embeddings from Documents");
-        simpleVectorStore.add(documents);
+        vectorStore.add(documents);
+
+        log.info("Persisting Embeddings to local storage file");
+        vectorStore.save(embeddingsStorage);
     }
 
     static class BikeJsonMetadataGenerator implements JsonMetadataGenerator {

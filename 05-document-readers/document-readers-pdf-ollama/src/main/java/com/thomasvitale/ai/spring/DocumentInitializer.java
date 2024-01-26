@@ -19,7 +19,7 @@ import java.util.List;
 public class DocumentInitializer {
 
     private static final Logger log = LoggerFactory.getLogger(DocumentInitializer.class);
-    private final SimpleVectorStore simpleVectorStore;
+    private final SimpleVectorStore vectorStore;
 
     @Value("classpath:documents/story1.pdf")
     Resource pdfFile1;
@@ -27,8 +27,8 @@ public class DocumentInitializer {
     @Value("classpath:documents/story2.pdf")
     Resource pdfFile2;
 
-    public DocumentInitializer(SimpleVectorStore simpleVectorStore) {
-        this.simpleVectorStore = simpleVectorStore;
+    public DocumentInitializer(SimpleVectorStore vectorStore) {
+        this.vectorStore = vectorStore;
     }
 
     @PostConstruct
@@ -51,7 +51,7 @@ public class DocumentInitializer {
         documents.addAll(pdfReader2.get());
 
         log.info("Creating and storing Embeddings from Documents");
-        simpleVectorStore.add(documents);
+        vectorStore.add(documents);
     }
 
 }

@@ -27,9 +27,10 @@ class ChatService {
 
     AssistantMessage chatWithDocument(String message) {
         var systemPromptTemplate = new SystemPromptTemplate("""
-                Answer questions given the context information below (DOCUMENTS section) and no prior knowledge.
-                If the answer is not found in the DOCUMENTS section, simply state that you don't know the answer.
-                In the answer, include the source file name from which the context information is extracted from.
+                Answer questions given the context information below (DOCUMENTS section) and no prior knowledge,
+                but act as if you knew this information innately. If the answer is not found in the DOCUMENTS section,
+                simply state that you don't know the answer. In the answer, include the source file name from which
+                the context information is extracted from.
                                 
                 DOCUMENTS:
                 {documents}
