@@ -6,7 +6,7 @@ Prompting using templates with LLMs via Ollama.
 
 The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop (macOS or Linux), or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
 
-### When using Ollama
+### Ollama as a native application
 
 First, make sure you have [Ollama](https://ollama.ai) installed on your laptop (macOS or Linux).
 Then, use Ollama to run the _llama2_ large language model.
@@ -21,7 +21,7 @@ Finally, run the Spring Boot application.
 ./gradlew bootRun
 ```
 
-### When using Docker/Podman
+### Ollama as a dev service with Testcontainers
 
 The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service with a _llama2_ model at startup time.
 
