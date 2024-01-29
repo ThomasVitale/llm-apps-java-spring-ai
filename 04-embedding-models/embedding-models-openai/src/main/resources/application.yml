@@ -3,7 +3,8 @@ spring:
     openai:
       api-key: ${OPENAI_API_KEY}
       embedding:
-        model: text-embedding-ada-002
+        options:
+          model: text-embedding-ada-002
   threads:
     virtual:
       enabled: true
