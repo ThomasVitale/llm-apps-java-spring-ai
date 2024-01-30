@@ -2,7 +2,7 @@
 
 Parsing the LLM output as structured objects (Beans, Map, List) via Ollama.
 
-# Running the application
+## Running the application
 
 The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop (macOS or Linux), or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
 
