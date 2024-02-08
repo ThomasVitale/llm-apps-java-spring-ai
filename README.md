@@ -53,7 +53,10 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 
 ### 6. Document Transformers
 
-_Coming soon_
+| Project                                                                                                                                                                     | Description                                                                             |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| [document-transformers-metadata-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/06-document-transformers/document-transformers-metadata-ollama)   | Enrich documents with keywords and summary metadata for enhanced retrieval via Ollama.  |
+| [document-transformers-splitters-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/06-document-transformers/document-transformers-splitters-ollama) | Divide documents into chunks to fit the LLM context window via Ollama.                  |
 
 ### 7. Document Writers
 
