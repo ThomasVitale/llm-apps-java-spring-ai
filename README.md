@@ -11,6 +11,10 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 
 ## Content
 
+### 0. Use Cases
+
+_Coming soon_
+
 ### 1. Chat Models
 
 | Project                                                                                                                   | Description                           |
@@ -63,6 +67,14 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 _Coming soon_
 
 ### 8. Vector Stores
+
+_Coming soon_
+
+### 9. Tools
+
+_Coming soon_
+
+### 10. Image Models
 
 _Coming soon_
 
