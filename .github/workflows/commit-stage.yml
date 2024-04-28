@@ -21,7 +21,8 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 21
-          distribution: oracle
+          distribution: temurin
+          cache: gradle
 
       - name: Compile and test
-        run: ./gradlew build
+        run: ./gradlew clean build --no-daemon

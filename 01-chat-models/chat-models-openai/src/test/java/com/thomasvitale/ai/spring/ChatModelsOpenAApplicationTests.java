@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "60s")
 @EnabledIfEnvironmentVariable(named = "SPRING_AI_OPENAI_API_KEY", matches = ".*")
-class ChatModelsOpenAiApplicationTests {
+class ChatModelsOpenAApplicationTests {
 
     @Autowired
     WebTestClient webTestClient;
