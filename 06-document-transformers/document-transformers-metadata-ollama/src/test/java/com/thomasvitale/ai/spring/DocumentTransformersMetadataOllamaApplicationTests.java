@@ -6,8 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 @SpringBootTest
-@Import(TestDocumentTransformersMetadataOllamaApplication.class)
-@Disabled // Only run locally for now
+@Disabled
 class DocumentTransformersMetadataOllamaApplicationTests {
 
     @Test
