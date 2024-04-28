@@ -7,7 +7,6 @@ Text generation with LLMs via Ollama.
 Spring AI provides a `ChatClient` abstraction for integrating with LLMs via several providers, including Ollama.
 
 When using the _Spring AI Ollama Spring Boot Starter_, a `ChatClient` object is autoconfigured for you to use Ollama.
-By default, the _llama2_ model is used.
 
 ```java
 @RestController
@@ -18,7 +17,7 @@ class ChatController {
         this.chatClient = chatClient;
     }
 
-    @GetMapping("/ai/chat")
+    @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatClient.call(message);
     }
@@ -27,15 +26,15 @@ class ChatController {
 
 ## Running the application
 
-The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop (macOS or Linux), or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
+The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop, or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
 
 ### Ollama as a native application
 
-First, make sure you have [Ollama](https://ollama.ai) installed on your laptop (macOS or Linux).
-Then, use Ollama to run the _llama2_ large language model.
+First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
+Then, use Ollama to run the _llama3_ large language model. That's what we'll use in this example.
 
 ```shell
-ollama run llama2
+ollama run llama3
 ```
 
 Finally, run the Spring Boot application.
@@ -46,7 +45,7 @@ Finally, run the Spring Boot application.
 
 ### Ollama as a dev service with Testcontainers
 
-The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service with a _llama2_ model at startup time.
+The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service with a _llama3_ model at startup time.
 
 ```shell
 ./gradlew bootTestRun
@@ -54,15 +53,27 @@ The application relies on the native Testcontainers support in Spring Boot to sp
 
 ## Calling the application
 
-You can now call the application that will use Ollama and llama2 to generate text based on a default prompt.
+You can now call the application that will use Ollama and _llama3_ to generate text based on a default prompt.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/ai/chat
+http :8080/chat
 ```
 
 Try passing your custom prompt and check the result.
 
 ```shell
 http :8080/ai/chat message=="What is the capital of Italy?"
+```
+
+The next request is configured with a custom temperature value to obtain a more creative, yet less precise answer.
+
+```shell
+http :8080/chat/generic-options message=="Why is a raven like a writing desk? Give a short answer."
+```
+
+The next request is configured with Ollama-specific customizations.
+
+```shell
+http :8080/chat/ollama-options message=="What can you see beyond what you can see? Give a short answer."
 ```

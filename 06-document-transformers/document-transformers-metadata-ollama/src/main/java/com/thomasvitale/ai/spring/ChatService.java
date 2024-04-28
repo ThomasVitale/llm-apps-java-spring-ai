@@ -31,7 +31,7 @@ class ChatService {
                 but act as if you knew this information innately. If the answer is not found in the DOCUMENTS section,
                 simply state that you don't know the answer. In the answer, include the source file name from which
                 the context information is extracted from.
-                                
+                
                 DOCUMENTS:
                 {documents}
                 """);

@@ -4,15 +4,15 @@ Prompting using templates with LLMs via Ollama.
 
 ## Running the application
 
-The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop (macOS or Linux), or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
+The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop, or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
 
 ### Ollama as a native application
 
-First, make sure you have [Ollama](https://ollama.ai) installed on your laptop (macOS or Linux).
-Then, use Ollama to run the _llama2_ large language model.
+First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
+Then, use Ollama to run the _llama3_ large language model.
 
 ```shell
-ollama run llama2
+ollama run llama3
 ```
 
 Finally, run the Spring Boot application.
@@ -23,7 +23,7 @@ Finally, run the Spring Boot application.
 
 ### Ollama as a dev service with Testcontainers
 
-The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service with a _llama2_ model at startup time.
+The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service with a _llama3_ model at startup time.
 
 ```shell
 ./gradlew bootTestRun
@@ -31,17 +31,17 @@ The application relies on the native Testcontainers support in Spring Boot to sp
 
 ## Calling the application
 
-You can now call the application that will use Ollama and llama2 to generate an answer to your questions.
+You can now call the application that will use Ollama and _llama3_ to generate an answer to your questions.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/ai/chat/user genre="rock" instrument="piano"
+http :8080/chat/user genre="rock" instrument="piano"
 ```
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/ai/chat/system
+http --raw "What is the capital of Italy?" :8080/chat/system
 ```
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/ai/chat/external
+http --raw "What is the capital of Italy?" :8080/chat/external
 ```

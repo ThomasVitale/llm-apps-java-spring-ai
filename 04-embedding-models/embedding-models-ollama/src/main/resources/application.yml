@@ -2,7 +2,8 @@ spring:
   ai:
     ollama:
       embedding:
-        model: llama2
+        options:
+          model: llama3
   threads:
     virtual:
       enabled: true

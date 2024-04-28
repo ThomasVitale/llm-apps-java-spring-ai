@@ -27,13 +27,13 @@ You can now call the application that will use OpenAI and _gpt-3.5-turbo_ to gen
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/ai/chat/simple
+http --raw "What is the capital of Italy?" :8080/chat/simple
 ```
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/ai/chat/prompt
+http --raw "What is the capital of Italy?" :8080/chat/prompt
 ```
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/ai/chat/full
+http --raw "What is the capital of Italy?" :8080/chat/full
 ```

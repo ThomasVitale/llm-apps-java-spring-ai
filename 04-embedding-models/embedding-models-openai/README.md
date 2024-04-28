@@ -7,7 +7,6 @@ Vector transformation (embeddings) with LLMs via OpenAI.
 Spring AI provides an `EmbeddingClient` abstraction for integrating with LLMs via several providers, including OpenAI.
 
 When using the _Spring AI OpenAI Spring Boot Starter_, an `EmbeddingClient` object is autoconfigured for you to use OpenAI.
-By default, the _text-embedding-ada-002_ model is used.
 
 ```java
 @RestController
@@ -18,7 +17,7 @@ class EmbeddingController {
         this.embeddingClient = embeddingClient;
     }
 
-    @GetMapping("/ai/embed")
+    @GetMapping("/embed")
     String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
         var embeddings = embeddingClient.embed(message);
         return "Size of the embedding vector: " + embeddings.size();
@@ -51,11 +50,17 @@ You can now call the application that will use OpenAI and _text-embedding-ada-00
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/ai/embed
+http :8080/embed
 ```
 
 Try passing your custom prompt and check the result.
 
 ```shell
-http :8080/ai/embed message=="The capital of Italy is Rome"
+http :8080/embed message=="The capital of Italy is Rome"
+```
+
+The next request is configured with OpenAI-specific customizations.
+
+```shell
+http :8080/embed/openai-options message=="The capital of Italy is Rome"
 ```

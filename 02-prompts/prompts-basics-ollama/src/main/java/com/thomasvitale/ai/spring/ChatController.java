@@ -14,17 +14,17 @@ class ChatController {
         this.chatService = chatService;
     }
 
-    @PostMapping("/ai/chat/simple")
+    @PostMapping("/chat/simple")
     String chatWithText(@RequestBody String input) {
         return chatService.chatWithText(input);
     }
 
-    @PostMapping("/ai/chat/prompt")
+    @PostMapping("/chat/prompt")
     String chatWithPrompt(@RequestBody String input) {
         return chatService.chatWithPrompt(input).getResult().getOutput().getContent();
     }
 
-    @PostMapping("/ai/chat/full")
+    @PostMapping("/chat/full")
     ChatResponse chatWithPromptAndFullResponse(@RequestBody String message) {
         return chatService.chatWithPrompt(message);
     }

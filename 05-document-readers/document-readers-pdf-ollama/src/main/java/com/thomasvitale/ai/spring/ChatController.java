@@ -13,7 +13,7 @@ class ChatController {
         this.chatService = chatService;
     }
 
-    @PostMapping("/ai/doc/chat")
+    @PostMapping("/chat/doc")
     String chatWithDocument(@RequestBody String input) {
         return chatService.chatWithDocument(input).getContent();
     }

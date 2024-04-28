@@ -1,0 +1,10 @@
+spring:
+  ai:
+    mistralai:
+      api-key: ${MISTRALAI_API_KEY}
+      embedding:
+        options:
+          model: mistral-embed
+  threads:
+    virtual:
+      enabled: true

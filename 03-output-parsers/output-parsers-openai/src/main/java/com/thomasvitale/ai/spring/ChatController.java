@@ -16,17 +16,17 @@ class ChatController {
         this.chatService = chatService;
     }
 
-    @PostMapping("/ai/chat/bean")
+    @PostMapping("/chat/bean")
     ArtistInfo chatWithBeanOutput(@RequestBody MusicQuestion question) {
         return chatService.chatWithBeanOutput(question);
     }
 
-    @PostMapping("/ai/chat/map")
+    @PostMapping("/chat/map")
     Map<String,Object> chatWithMapOutput(@RequestBody MusicQuestion question) {
         return chatService.chatWithMapOutput(question);
     }
 
-    @PostMapping("/ai/chat/list")
+    @PostMapping("/chat/list")
     List<String> chatWithListOutput(@RequestBody MusicQuestion question) {
         return chatService.chatWithListOutput(question);
     }

@@ -1,7 +1,9 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.parser.BeanOutputParser;
 import org.springframework.ai.parser.ListOutputParser;
 import org.springframework.ai.parser.MapOutputParser;
@@ -29,9 +31,10 @@ class ChatService {
                 {format}
                 """);
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputParser.getFormat());
-        var prompt = userPromptTemplate.create(model);
+        var userMessage = userPromptTemplate.createMessage(model);
 
-        var chatResponse = chatClient.call(prompt);
+        var chatResponse = chatClient.call(new Prompt(userMessage, OllamaOptions.create()
+                        .withFormat("json")));
         return outputParser.parse(chatResponse.getResult().getOutput().getContent());
     }
 
@@ -44,9 +47,10 @@ class ChatService {
                 {format}
                 """);
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputParser.getFormat());
-        var prompt = userPromptTemplate.create(model);
+        var userMessage = userPromptTemplate.createMessage(model);
 
-        var chatResponse = chatClient.call(prompt);
+        var chatResponse = chatClient.call(new Prompt(userMessage, OllamaOptions.create()
+                .withFormat("json")));
         return outputParser.parse(chatResponse.getResult().getOutput().getContent());
     }
 
@@ -54,15 +58,15 @@ class ChatService {
         var outputParser = new ListOutputParser(new DefaultConversionService());
 
         var userPromptTemplate = new PromptTemplate("""
-                Tell me names of three musicians famous for playing in a {genre} band.
+                Tell me the names of three musicians famous for playing in a {genre} band.
                 Consider only the musicians that play the {instrument} in that band.
                 {format}
                 """);
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputParser.getFormat());
-        var prompt = userPromptTemplate.create(model);
+        var userMessage = userPromptTemplate.createMessage(model);
 
-        var chatResponse = chatClient.call(prompt);
-        return outputParser.parse(chatResponse.getResult().getOutput().getContent());
+        var result = chatClient.call(userMessage);
+        return outputParser.parse(result);
     }
 
 }

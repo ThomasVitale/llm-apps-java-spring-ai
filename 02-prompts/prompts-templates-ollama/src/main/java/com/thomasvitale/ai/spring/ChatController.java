@@ -13,19 +13,19 @@ class ChatController {
         this.chatService = chatService;
     }
 
-    @PostMapping("/ai/chat/user")
+    @PostMapping("/chat/user")
     String chatWithUserMessageTemplate(@RequestBody MusicQuestion question) {
-        return chatService.chatWithUserMessageTemplate(question).getContent();
+        return chatService.chatWithUserMessageTemplate(question);
     }
 
-    @PostMapping("/ai/chat/system")
+    @PostMapping("/chat/system")
     String chatWithSystemMessageTemplate(@RequestBody String question) {
-        return chatService.chatWithSystemMessageTemplate(question).getContent();
+        return chatService.chatWithSystemMessageTemplate(question);
     }
 
-    @PostMapping("/ai/chat/external")
+    @PostMapping("/chat/external")
     String chatWithSystemMessageTemplateExternal(@RequestBody String question) {
-        return chatService.chatWithSystemMessageTemplateExternal(question).getContent();
+        return chatService.chatWithSystemMessageTemplateExternal(question);
     }
 
 }

@@ -2,9 +2,11 @@ spring:
   ai:
     ollama:
       chat:
-        model: llama2
+        options:
+          model: llama3
       embedding:
-        model: llama2
+        options:
+          model: llama3
   threads:
     virtual:
       enabled: true

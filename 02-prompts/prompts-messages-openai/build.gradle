@@ -20,9 +20,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
 
-    implementation "org.springframework.ai:spring-ai-openai-spring-boot-starter:${springAiVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
 
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
 

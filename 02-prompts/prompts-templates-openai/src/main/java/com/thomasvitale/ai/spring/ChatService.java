@@ -1,9 +1,7 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
-import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +24,7 @@ class ChatService {
         this.systemMessageResource = systemMessageResource;
     }
 
-    AssistantMessage chatWithUserMessageTemplate(MusicQuestion question) {
+    String chatWithUserMessageTemplate(MusicQuestion question) {
         var userPromptTemplate = new PromptTemplate("""
                 Tell me name and band of three musicians famous for playing in a {genre} band.
                 Consider only the musicians that play the {instrument} in that band.
@@ -34,12 +32,10 @@ class ChatService {
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre());
         var userMessage = userPromptTemplate.createMessage(model);
 
-        var prompt = new Prompt(userMessage);
-        var chatResponse = chatClient.call(prompt);
-        return chatResponse.getResult().getOutput();
+        return chatClient.call(userMessage);
     }
 
-    AssistantMessage chatWithSystemMessageTemplate(String message) {
+    String chatWithSystemMessageTemplate(String message) {
         var systemPromptTemplate = new SystemPromptTemplate("""
                 You are a helpful assistant that always replies starting with {greeting}.
                 """);
@@ -48,23 +44,17 @@ class ChatService {
 
         var userMessage = new UserMessage(message);
 
-        var prompt = new Prompt(List.of(systemMessage, userMessage));
-
-        var chatResponse = chatClient.call(prompt);
-        return chatResponse.getResult().getOutput();
+        return chatClient.call(systemMessage, userMessage);
     }
 
-    AssistantMessage chatWithSystemMessageTemplateExternal(String message) {
+    String chatWithSystemMessageTemplateExternal(String message) {
         var systemPromptTemplate = new SystemPromptTemplate(systemMessageResource);
         Map<String,Object> model = Map.of("greeting", randomGreeting());
         var systemMessage = systemPromptTemplate.createMessage(model);
 
         var userMessage = new UserMessage(message);
 
-        var prompt = new Prompt(List.of(systemMessage, userMessage));
-
-        var chatResponse = chatClient.call(prompt);
-        return chatResponse.getResult().getOutput();
+        return chatClient.call(systemMessage, userMessage);
     }
 
     private String randomGreeting() {

@@ -1,6 +1,6 @@
 # Output Parsers: OpenAI
 
-Parsing the LLM output as structured objects (Beans, Map, List) via Open AI.
+Parsing the LLM output as structured objects (Beans, Map, List) via OpenAI.
 
 ## Running the application
 
@@ -27,13 +27,13 @@ You can now call the application that will use OpenAI and _gpt-3.5-turbo_ to gen
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/ai/chat/bean genre="rock" instrument="piano"
+http :8080/chat/bean genre="rock" instrument="piano"
 ```
 
 ```shell
-http :8080/ai/chat/map genre="rock" instrument="piano"
+http :8080/chat/map genre="rock" instrument="piano"
 ```
 
 ```shell
-http :8080/ai/chat/list genre="rock" instrument="piano"
+http :8080/chat/list genre="rock" instrument="piano"
 ```

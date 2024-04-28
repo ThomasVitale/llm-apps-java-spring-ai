@@ -1,0 +1,10 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        options:
+          model: llava
+          temperature: 0.7
+  threads:
+    virtual:
+      enabled: true
