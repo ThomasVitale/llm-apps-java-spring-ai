@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 21
-          distribution: temurin
+          distribution: oracle
 
       - name: Compile and test
         run: ./gradlew build
