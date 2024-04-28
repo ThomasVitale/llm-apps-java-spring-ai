@@ -103,6 +103,6 @@ _Coming soon_
 * [Airline Customer Support (Marcus Hellberg)](https://github.com/marcushellberg/java-ai-playground/tree/spring-ai)
 * [Spring AI Chat (VMware Tanzu)](https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/spring-ai-chat)
 
-## Workshops
+### Workshops
 
 * [Spring AI with Azure OpenAI (Azure)](https://github.com/Azure-Samples/spring-ai-azure-workshop)
