@@ -4,6 +4,8 @@ plugins {
 
 rootProject.name = 'llm-apps-java-spring-ai'
 
+include '00-use-cases:question-answering-with-documents'
+
 include '01-chat-models:chat-models-mistral-ai'
 include '01-chat-models:chat-models-ollama'
 include '01-chat-models:chat-models-openai'
@@ -25,12 +27,11 @@ include '04-embedding-models:embedding-models-ollama'
 include '04-embedding-models:embedding-models-openai'
 include '04-embedding-models:embedding-models-transformers'
 
-include '05-document-readers:document-readers-json-ollama'
-include '05-document-readers:document-readers-pdf-ollama'
-include '05-document-readers:document-readers-text-ollama'
+include '05-etl-pipeline:document-readers-json-ollama'
+include '05-etl-pipeline:document-readers-pdf-ollama'
+include '05-etl-pipeline:document-readers-text-ollama'
+include '05-etl-pipeline:document-transformers-metadata-ollama'
+include '05-etl-pipeline:document-transformers-splitters-ollama'
 
-include '06-document-transformers:document-transformers-metadata-ollama'
-include '06-document-transformers:document-transformers-splitters-ollama'
-
-include '09-function-calling:function-calling-mistral-ai'
-include '09-function-calling:function-calling-openai'
+include '07-function-calling:function-calling-mistral-ai'
+include '07-function-calling:function-calling-openai'

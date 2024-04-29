@@ -1,0 +1,12 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        options:
+          model: llama3
+      embedding:
+        options:
+          model: llama3
+  threads:
+    virtual:
+      enabled: true

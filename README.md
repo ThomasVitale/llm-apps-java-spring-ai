@@ -14,7 +14,9 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 
 ### 0. Use Cases
 
-_Coming soon_
+| Project                                                                                                              | Description                                              |
+|----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| [question-answering-with-documents](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/question-answering-with-documents) | Question answering with documents using LLMs via Ollama. |
 
 ### 1. Chat Completion Models
 
@@ -24,7 +26,7 @@ _Coming soon_
 | [chat-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-ollama)            | Text generation with LLMs via Ollama.            |
 | [chat-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-openai)            | Text generation with LLMs via OpenAI.            |
 
-### 2. Prompts
+### 2. Prompts, Templates and Multimodality
 
 | Project                                                                                                                                     | Description                                                              |
 |---------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
@@ -53,37 +55,32 @@ _Coming soon_
 | [embedding-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/04-embedding-models/embedding-models-openai)         | Vector transformation (embeddings) with LLMs via OpenAI.                                        |
 | [embedding-models-transformers](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/04-embedding-models/embedding-models-transformers)   | Vector transformation (embeddings) with LLMs via ONNX Sentence Transformers. |
 
-### 5. Document Readers
+### 5. Document ETL Pipeline
 
-| Project                                                                                                                                            | Description                                                  |
-|----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| [document-readers-json-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-json-ollama) | Reading and vectorizing JSON documents with LLMs via Ollama. |
-| [document-readers-pdf-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-text-ollama)  | Reading and vectorizing PDF documents with LLMs via Ollama.  |
-| [document-readers-text-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-document-readers/document-readers-text-ollama) | Reading and vectorizing text documents with LLMs via Ollama. |
+| Project                                                                                                                                                                     | Description                                                  |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| [document-readers-json-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-etl-pipeline/document-readers-json-ollama)                              | Reading and vectorizing JSON documents with LLMs via Ollama. |
+| [document-readers-pdf-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-etl-pipeline/document-readers-text-ollama)                           | Reading and vectorizing PDF documents with LLMs via Ollama.  |
+| [document-readers-text-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-etl-pipeline/document-readers-text-ollama)                          | Reading and vectorizing text documents with LLMs via Ollama. |
+| [document-transformers-metadata-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-etl-pipeline/document-transformers-metadata-ollama)   | Enrich documents with keywords and summary metadata for enhanced retrieval via Ollama.  |
+| [document-transformers-splitters-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/05-etl-pipeline/document-transformers-splitters-ollama) | Divide documents into chunks to fit the LLM context window via Ollama.                  |
 
-### 6. Document Transformers
-
-| Project                                                                                                                                                                      | Description                                                                             |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
-| [document-transformers-metadata-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/06-document-transformers/document-transformers-metadata-ollama)    | Enrich documents with keywords and summary metadata for enhanced retrieval via Ollama.  |
-| [document-transformers-splitters-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/06-document-transformers/document-transformers-splitters-ollama)  | Divide documents into chunks to fit the LLM context window via Ollama.                  |
-
-### 7. Document Writers
+### 6. Vector Stores
 
 _Coming soon_
 
-### 8. Vector Stores
+### 7. Function Calling
+
+| Project                                                                                                                                          | Description                                |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| [function-calling-mistral-ai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-function-calling/function-calling-mistral-ai) | Function calling with LLMs via Mistral AI. |
+| [function-calling-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-function-calling/function-calling-openai)         | Function calling with LLMs via OpenAI.     |
+
+### 8. Image Models
 
 _Coming soon_
 
-### 9. Function Calling
-
-| Project                                                                                                                                     | Description                                |
-|---------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
-| [function-calling-mistral-ai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-function-calling/function-calling-mistral-ai) | Function calling with LLMs via Mistral AI. |
-| [function-calling-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-function-calling/function-calling-openai)         | Function calling with LLMs via OpenAI.     |
-
-### 10. Image Models
+### 9. Audio Models
 
 _Coming soon_
 
