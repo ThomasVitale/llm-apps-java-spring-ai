@@ -1,0 +1,10 @@
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      image:
+        options:
+          model: dall-e-2
+  threads:
+    virtual:
+      enabled: true

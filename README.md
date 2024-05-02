@@ -78,7 +78,9 @@ _Coming soon_
 
 ### 8. Image Models
 
-_Coming soon_
+| Project                                                                                                                | Description                            |
+|------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| [image-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/08-image-models/image-models-openai) | Image generation with LLMs via OpenAI. |
 
 ### 9. Audio Models
 
