@@ -23,7 +23,7 @@ class ImageController {
     }
 
     @GetMapping("/image/openai-options")
-    String chatWithOllamaOptions(@RequestParam(defaultValue = "Here comes the sun") String message) {
+    String imageWithOpenAiOptions(@RequestParam(defaultValue = "Here comes the sun") String message) {
         var imageResponse = imageClient.call(new ImagePrompt(message, OpenAiImageOptions.builder()
                 .withQuality("standard")
                 .withN(1)

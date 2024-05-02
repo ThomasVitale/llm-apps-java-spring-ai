@@ -31,7 +31,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/openai-options")
-    String chatWithOllamaOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
+    String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatClient.call(new Prompt(message, OpenAiChatOptions.builder()
                         .withModel("gpt-4-turbo")
                         .withUser("jon.snow")

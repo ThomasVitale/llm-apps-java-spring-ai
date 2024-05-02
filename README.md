@@ -84,7 +84,10 @@ _Coming soon_
 
 ### 9. Audio Models
 
-_Coming soon_
+| Project                                                                                                                                           | Description                                |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| [audio-models-speech-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-audio-models/audio-models-speech-openai)        | Speech generation with LLMs via OpenAI.    |
+| [audio-models-transcription-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-audio-models/audio-models-transcription-openai) | Speech transcription with LLMs via OpenAI. |
 
 ## References and Additional Resources
 

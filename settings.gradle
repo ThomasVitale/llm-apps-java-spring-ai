@@ -37,3 +37,6 @@ include '07-function-calling:function-calling-mistral-ai'
 include '07-function-calling:function-calling-openai'
 
 include '08-image-models:image-models-openai'
+
+include '09-audio-models:audio-models-speech-openai'
+include '09-audio-models:audio-models-transcription-openai'
