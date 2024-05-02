@@ -95,6 +95,7 @@ _Coming soon_
 * [Building Intelligent Applications With Spring AI by Dan Vega (JetBrains Live Stream)](https://www.youtube.com/watch?v=x6KmUyPWy2Q)
 * [Making your @Beans Intelligent by Mark Pollack (Devoxx Belgium 2023)](https://www.youtube.com/watch?v=7OY9fKVxAFQ)
 * [Spring AI Series by Dan Vega](https://www.youtube.com/playlist?list=PLZV0a2jwt22uoDm3LNDFvN6i2cAVU_HTH)
+* [Spring AI Series by Craig Walls](https://www.youtube.com/playlist?list=PLH5OU4wXVJc9aECkMUVPCi8g3pzs8pZ3E)
 * [Spring Tips: Spring AI by Josh Long](https://www.youtube.com/watch?v=aNKDoiOUo9M)
 
 ### Demos
