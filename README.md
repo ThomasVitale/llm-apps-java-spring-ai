@@ -39,12 +39,12 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 | [prompts-templates-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-templates-ollama)           | Prompting using templates with LLMs via Ollama.                          |
 | [prompts-templates-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/02-prompts/prompts-templates-openai)           | Prompting using templates with LLMs via OpenAI.                          |
 
-### 3. Output Parsers
+### 3. Output Converters
 
-| Project                                                                                                                            | Description                                                                  |
-|------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| [output-parsers-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-parsers/output-parsers-ollama) | Parsing the LLM output as structured objects (Beans, Map, List) via Ollama.  |
-| [output-parsers-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-parsers/output-parsers-openai) | Parsing the LLM output as structured objects (Beans, Map, List) via Open AI. |
+| Project                                                                                                                               | Description                                                                     |
+|---------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| [output-converters-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-converters/output-converters-ollama) | Converting the LLM output to structured objects (Beans, Map, List) via Ollama.  |
+| [output-converters-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/03-output-converters/output-converters-openai)    | Converting the LLM output to structured objects (Beans, Map, List) via Open AI. |
 
 ### 4. Embedding Models
 

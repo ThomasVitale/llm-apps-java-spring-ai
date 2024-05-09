@@ -1,6 +1,6 @@
-# Output Parsers: Ollama
+# Output Converters: Ollama
 
-Parsing the LLM output as structured objects (Beans, Map, List) via Ollama.
+Converting the LLM output to structured objects (Beans, Map, List) via Ollama.
 
 ## Running the application
 

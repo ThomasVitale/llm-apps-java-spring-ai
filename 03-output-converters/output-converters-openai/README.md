@@ -1,6 +1,6 @@
-# Output Parsers: OpenAI
+# Output Converters: OpenAI
 
-Parsing the LLM output as structured objects (Beans, Map, List) via OpenAI.
+Converting the LLM output to structured objects (Beans, Map, List) via OpenAI.
 
 ## Running the application
 
