@@ -18,12 +18,9 @@ class ChatService {
 
     private final Resource image;
 
-    private final Resource audio;
-
-    ChatService(ChatClient chatClient, @Value("classpath:tabby-cat.png") Resource image, @Value("classpath:speech.mp3") Resource audio) {
+    ChatService(ChatClient chatClient, @Value("classpath:tabby-cat.png") Resource image) {
         this.chatClient = chatClient;
         this.image = image;
-        this.audio = audio;
     }
 
     String chatFromImageFile(String message) throws IOException {
@@ -37,13 +34,6 @@ class ChatService {
         var imageUrl = "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png";
         var userMessage = new UserMessage(message,
                 List.of(new Media(MimeTypeUtils.IMAGE_PNG, imageUrl)));
-        return chatClient.call(userMessage);
-    }
-
-    String chatFromAudioFile(String message) throws IOException {
-        var audioData = audio.getContentAsByteArray();
-        var userMessage = new UserMessage(message,
-                List.of(new Media(MimeTypeUtils.parseMimeType("audio/mpeg"), audioData)));
         return chatClient.call(userMessage);
     }
 

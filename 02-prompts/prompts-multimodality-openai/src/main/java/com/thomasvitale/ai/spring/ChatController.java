@@ -25,9 +25,4 @@ class ChatController {
         return chatService.chatFromImageUrl(message);
     }
 
-    @GetMapping("/chat/audio/file")
-    String chatFromAudioFile(@RequestParam(defaultValue = "Who's the artist who sang this song? Give a short answer") String message) throws IOException {
-        return chatService.chatFromAudioFile(message);
-    }
-
 }
