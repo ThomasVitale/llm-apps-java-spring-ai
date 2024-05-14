@@ -23,7 +23,7 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI and _gpt-3.5-turbo_ to call functions in order to answer questions.
+You can now call the application that will use OpenAI and _gpt-4o_ to call functions in order to answer questions.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell

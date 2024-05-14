@@ -23,7 +23,7 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI and _gpt-4-turbo_ to generate text based on a default image.
+You can now call the application that will use OpenAI and _gpt-4o_ to generate text based on a default image.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
