@@ -4,22 +4,22 @@ Vector transformation (embeddings) with LLMs via OpenAI.
 
 ## Description
 
-Spring AI provides an `EmbeddingClient` abstraction for integrating with LLMs via several providers, including OpenAI.
+Spring AI provides an `EmbeddingModel` abstraction for integrating with LLMs via several providers, including OpenAI.
 
-When using the _Spring AI OpenAI Spring Boot Starter_, an `EmbeddingClient` object is autoconfigured for you to use OpenAI.
+When using the _Spring AI OpenAI Spring Boot Starter_, an `EmbeddingModel` object is autoconfigured for you to use OpenAI.
 
 ```java
 @RestController
 class EmbeddingController {
-    private final EmbeddingClient embeddingClient;
+    private final EmbeddingModel embeddingModel;
 
-    EmbeddingController(EmbeddingClient embeddingClient) {
-        this.embeddingClient = embeddingClient;
+    EmbeddingController(EmbeddingModel embeddingModel) {
+        this.embeddingModel = embeddingModel;
     }
 
     @GetMapping("/embed")
     String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
-        var embeddings = embeddingClient.embed(message);
+        var embeddings = embeddingModel.embed(message);
         return "Size of the embedding vector: " + embeddings.size();
     }
 }

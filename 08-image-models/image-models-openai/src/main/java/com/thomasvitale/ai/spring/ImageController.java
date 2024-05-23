@@ -1,6 +1,6 @@
 package com.thomasvitale.ai.spring;
 
-import org.springframework.ai.image.ImageClient;
+import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.ai.openai.OpenAiImageOptions;
 import org.springframework.ai.openai.api.OpenAiImageApi;
@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class ImageController {
 
-    private final ImageClient imageClient;
+    private final ImageModel imageModel;
 
-    ImageController(ImageClient imageClient) {
-        this.imageClient = imageClient;
+    ImageController(ImageModel imageModel) {
+        this.imageModel = imageModel;
     }
 
     @GetMapping("/image")
     String image(@RequestParam(defaultValue = "Here comes the sun") String message) {
-        return imageClient.call(new ImagePrompt(message)).getResult().getOutput().getUrl();
+        return imageModel.call(new ImagePrompt(message)).getResult().getOutput().getUrl();
     }
 
     @GetMapping("/image/openai-options")
     String imageWithOpenAiOptions(@RequestParam(defaultValue = "Here comes the sun") String message) {
-        var imageResponse = imageClient.call(new ImagePrompt(message, OpenAiImageOptions.builder()
+        var imageResponse = imageModel.call(new ImagePrompt(message, OpenAiImageOptions.builder()
                 .withQuality("standard")
                 .withN(1)
                 .withHeight(1024)

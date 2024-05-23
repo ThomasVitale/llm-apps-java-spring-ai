@@ -4,22 +4,22 @@ Speech generation with LLMs via OpenAI.
 
 ## Description
 
-Spring AI provides an `SpeechClient` abstraction for integrating with LLMs via several providers, including OpenAI.
+Spring AI provides an `SpeechModel` abstraction for integrating with LLMs via several providers, including OpenAI.
 
-When using the _Spring AI OpenAI Spring Boot Starter_, an `SpeechClient` object is autoconfigured for you to use OpenAI.
+When using the _Spring AI OpenAI Spring Boot Starter_, an `SpeechModel` object is autoconfigured for you to use OpenAI.
 
 ```java
 @RestController
 class SpeechController {
-    private final SpeechClient speechClient;
+    private final SpeechModel speechModel;
 
-    SpeechController(SpeechClient speechClient) {
-        this.speechClient = speechClient;
+    SpeechController(SpeechModel speechModel) {
+        this.speechModel = speechModel;
     }
 
     @GetMapping("/speech")
     byte[] speech(@RequestParam(defaultValue = "They're taking the Hobbits to Isengard! To Isengard! To Isengard") String message) {
-        return speechClient.call(new SpeechPrompt(message)).getResult().getOutput();
+        return speechModel.call(new SpeechPrompt(message)).getResult().getOutput();
     }
 }
 ```

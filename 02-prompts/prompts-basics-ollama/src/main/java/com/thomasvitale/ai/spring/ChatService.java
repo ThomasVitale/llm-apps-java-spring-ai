@@ -15,11 +15,11 @@ class ChatService {
     }
 
     String chatWithText(String message) {
-        return chatClient.call(message);
+        return chatClient.prompt().user(message).call().content();
     }
 
     ChatResponse chatWithPrompt(String message) {
-        return chatClient.call(new Prompt(message));
+        return chatClient.prompt(new Prompt(message)).call().chatResponse();
     }
 
 }

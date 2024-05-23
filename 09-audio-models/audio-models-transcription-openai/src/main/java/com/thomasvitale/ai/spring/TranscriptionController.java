@@ -1,6 +1,6 @@
 package com.thomasvitale.ai.spring;
 
-import org.springframework.ai.openai.OpenAiAudioTranscriptionClient;
+import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
 import org.springframework.ai.openai.OpenAiAudioTranscriptionOptions;
 import org.springframework.ai.openai.api.OpenAiAudioApi;
 import org.springframework.ai.openai.audio.transcription.AudioTranscriptionPrompt;
@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class TranscriptionController {
 
-    private final OpenAiAudioTranscriptionClient transcriptionClient;
+    private final OpenAiAudioTranscriptionModel transcriptionModel;
 
-    TranscriptionController(OpenAiAudioTranscriptionClient transcriptionClient) {
-        this.transcriptionClient = transcriptionClient;
+    TranscriptionController(OpenAiAudioTranscriptionModel transcriptionModel) {
+        this.transcriptionModel = transcriptionModel;
     }
 
     @GetMapping("/transcription")
     String speech(@Value("classpath:speech1.mp3") Resource audioFile) {
-        return transcriptionClient.call(new AudioTranscriptionPrompt(audioFile)).getResult().getOutput();
+        return transcriptionModel.call(new AudioTranscriptionPrompt(audioFile)).getResult().getOutput();
     }
 
     @GetMapping("/transcription/openai-options")
     String speechWithOpenAiOptions(@Value("classpath:speech2.mp3") Resource audioFile) {
-        var transcriptionResponse = transcriptionClient.call(new AudioTranscriptionPrompt(audioFile, OpenAiAudioTranscriptionOptions.builder()
+        var transcriptionResponse = transcriptionModel.call(new AudioTranscriptionPrompt(audioFile, OpenAiAudioTranscriptionOptions.builder()
                 .withLanguage("en")
                 .withPrompt("Ask not this, but ask that")
                 .withTemperature(0f)

@@ -1,9 +1,6 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.ChatClient;
-import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
 import org.springframework.ai.openai.OpenAiChatOptions;
@@ -24,51 +21,63 @@ class ChatService {
     }
 
     ArtistInfo chatWithBeanOutput(MusicQuestion question) {
-        var outputConverter = new BeanOutputConverter<>(ArtistInfo.class);
-
-        var userPromptTemplate = new PromptTemplate("""
+        var userPromptTemplate = """
                 Tell me name and band of one musician famous for playing in a {genre} band.
                 Consider only the musicians that play the {instrument} in that band.
-                {format}
-                """);
-        Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputConverter.getFormat());
-        var userMessage = userPromptTemplate.createMessage(model);
+                """;
 
-        var chatResponse = chatClient.call(new Prompt(userMessage, OpenAiChatOptions.builder()
-                .withResponseFormat(new OpenAiApi.ChatCompletionRequest.ResponseFormat("json_object"))
-                .build()));
-        return outputConverter.convert(chatResponse.getResult().getOutput().getContent());
+        return chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(userPromptTemplate)
+                        .param("genre", question.genre())
+                        .param("instrument", question.instrument())
+                )
+                .chatOptions(OpenAiChatOptions.builder()
+                        .withResponseFormat(new OpenAiApi.ChatCompletionRequest.ResponseFormat("json_object"))
+                        .build())
+                .call()
+                .entity(ArtistInfo.class);
     }
 
     Map<String,Object> chatWithMapOutput(MusicQuestion question) {
         var outputConverter = new MapOutputConverter();
 
-        var userPromptTemplate = new PromptTemplate("""
-                Tell me name and band of one musician famous for playing in a {genre} band.
+        var userPromptTemplate = """
+                Tell me the names of three musicians famous for playing in a {genre} band.
                 Consider only the musicians that play the {instrument} in that band.
                 {format}
-                """);
-        Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputConverter.getFormat());
-        var userMessage = userPromptTemplate.createMessage(model);
+                """;
 
-        var chatResponse = chatClient.call(new Prompt(userMessage, OpenAiChatOptions.builder()
-                .withResponseFormat(new OpenAiApi.ChatCompletionRequest.ResponseFormat("json_object"))
-                .build()));
-        return outputConverter.convert(chatResponse.getResult().getOutput().getContent());
+        var result = chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(userPromptTemplate)
+                        .param("genre", question.genre())
+                        .param("instrument", question.instrument())
+                        .param("format", outputConverter.getFormat())
+                )
+                .call()
+                .content();
+        return outputConverter.convert(result);
     }
 
     List<String> chatWithListOutput(MusicQuestion question) {
         var outputConverter = new ListOutputConverter(new DefaultConversionService());
 
-        var userPromptTemplate = new PromptTemplate("""
+        var userPromptTemplate = """
                 Tell me the names of three musicians famous for playing in a {genre} band.
                 Consider only the musicians that play the {instrument} in that band.
                 {format}
-                """);
-        Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre(), "format", outputConverter.getFormat());
-        var userMessage = userPromptTemplate.createMessage(model);
+                """;
 
-        var result = chatClient.call(userMessage);
+        var result = chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(userPromptTemplate)
+                        .param("genre", question.genre())
+                        .param("instrument", question.instrument())
+                        .param("format", outputConverter.getFormat())
+                )
+                .call()
+                .content();
         return outputConverter.convert(result);
     }
 

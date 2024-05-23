@@ -4,22 +4,22 @@ Image generation with LLMs via OpenAI.
 
 ## Description
 
-Spring AI provides an `ImageClient` abstraction for integrating with LLMs via several providers, including OpenAI.
+Spring AI provides an `ImageModel` abstraction for integrating with LLMs via several providers, including OpenAI.
 
-When using the _Spring AI OpenAI Spring Boot Starter_, an `ImageClient` object is autoconfigured for you to use OpenAI.
+When using the _Spring AI OpenAI Spring Boot Starter_, an `ImageModel` object is autoconfigured for you to use OpenAI.
 
 ```java
 @RestController
 class ImageController {
-    private final ImageClient imageClient;
+    private final ImageModel imageModel;
 
-    ImageController(ImageClient imageClient) {
-        this.imageClient = imageClient;
+    ImageController(ImageModel imageModel) {
+        this.imageModel = imageModel;
     }
 
     @GetMapping("/image")
     String image(@RequestParam(defaultValue = "Here comes the sun") String message) {
-        return imageClient.call(new ImagePrompt(message)).getResult().getOutput().getUrl();
+        return imageModel.call(new ImagePrompt(message)).getResult().getOutput().getUrl();
     }
 }
 ```

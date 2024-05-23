@@ -4,22 +4,22 @@ Text generation with LLMs via OpenAI.
 
 ## Description
 
-Spring AI provides a `ChatClient` abstraction for integrating with LLMs via several providers, including OpenAI.
+Spring AI provides a `ChatModel` abstraction for integrating with LLMs via several providers, including OpenAI.
 
-When using the _Spring AI OpenAI Spring Boot Starter_, a `ChatClient` object is autoconfigured for you to use OpenAI.
+When using the _Spring AI OpenAI Spring Boot Starter_, a `ChatModel` object is autoconfigured for you to use OpenAI.
 
 ```java
 @RestController
 class ChatController {
-    private final ChatClient chatClient;
+    private final ChatModel chatModel;
 
-    ChatController(ChatClient chatClient) {
+    ChatController(ChatModel chatModel) {
         this.chatClient = chatClient;
     }
 
     @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(message);
+        return chatModel.call(message);
     }
 }
 ```

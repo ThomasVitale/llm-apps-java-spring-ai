@@ -1,6 +1,6 @@
 package com.thomasvitale.ai.spring;
 
-import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class ChatController {
 
-    private final ChatClient chatClient;
+    private final ChatModel chatModel;
 
-    ChatController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    ChatController(ChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(message);
+        return chatModel.call(message);
     }
 
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(new Prompt(message, ChatOptionsBuilder.builder()
+        return chatModel.call(new Prompt(message, ChatOptionsBuilder.builder()
                         .withTemperature(0.9f)
                         .build()))
                 .getResult().getOutput().getContent();
@@ -32,7 +32,7 @@ class ChatController {
 
     @GetMapping("/chat/mistral-ai-options")
     String chatWithMistralAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(new Prompt(message, MistralAiChatOptions.builder()
+        return chatModel.call(new Prompt(message, MistralAiChatOptions.builder()
                         .withModel("open-mixtral-8x7b")
                         .withSafePrompt(true)
                         .build()))

@@ -20,24 +20,32 @@ class ChatService {
     }
 
     String chatWithSingleMessage(String message) {
-        var userMessage = new UserMessage(message);
-        return chatClient.call(userMessage);
+        return chatClient.prompt()
+                .user(message)
+                .call()
+                .content();
     }
 
     String chatWithMultipleMessages(String message) {
-        var systemMessage = new SystemMessage("""
+        var systemMessage = """
                 You are a helpful and polite assistant.
                 Answer in one sentence using a very formal language
                 and starting the answer with a formal greeting.
-                """);
-        var userMessage = new UserMessage(message);
-        return chatClient.call(systemMessage, userMessage);
+                """;
+        return chatClient.prompt()
+                .system(systemMessage)
+                .user(message)
+                .call()
+                .content();
     }
 
     String chatWithExternalMessage(String message) {
         var systemMessage = new SystemMessage(systemMessageResource);
         var userMessage = new UserMessage(message);
-        return chatClient.call(systemMessage, userMessage);
+        return chatClient.prompt()
+                .messages(systemMessage, userMessage)
+                .call()
+                .content();
     }
 
 }

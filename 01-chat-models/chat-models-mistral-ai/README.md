@@ -4,22 +4,22 @@ Text generation with LLMs via Mistral AI.
 
 ## Description
 
-Spring AI provides a `ChatClient` abstraction for integrating with LLMs via several providers, including Mistral AI.
+Spring AI provides a `ChatModel` abstraction for integrating with LLMs via several providers, including Mistral AI.
 
-When using the _Spring AI Mistral AI Spring Boot Starter_, a `ChatClient` object is autoconfigured for you to use Mistral AI.
+When using the _Spring AI Mistral AI Spring Boot Starter_, a `ChatModel` object is autoconfigured for you to use Mistral AI.
 
 ```java
 @RestController
 class ChatController {
-    private final ChatClient chatClient;
+    private final ChatModel chatModel;
 
-    ChatController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    ChatController(ChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(message);
+        return chatModel.call(message);
     }
 }
 ```

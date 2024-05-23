@@ -1,6 +1,6 @@
 package com.thomasvitale.ai.spring;
 
-import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatOptions;
@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class ChatController {
 
-    private final ChatClient chatClient;
+    private final ChatModel chatModel;
 
-    ChatController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    ChatController(ChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(message);
+        return chatModel.call(message);
     }
 
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(new Prompt(message, ChatOptionsBuilder.builder()
+        return chatModel.call(new Prompt(message, ChatOptionsBuilder.builder()
                         .withTemperature(1.3f)
                         .build()))
                 .getResult().getOutput().getContent();
@@ -32,7 +32,7 @@ class ChatController {
 
     @GetMapping("/chat/openai-options")
     String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return chatClient.call(new Prompt(message, OpenAiChatOptions.builder()
+        return chatModel.call(new Prompt(message, OpenAiChatOptions.builder()
                         .withModel("gpt-4-turbo")
                         .withUser("jon.snow")
                         .withFrequencyPenalty(1.3f)

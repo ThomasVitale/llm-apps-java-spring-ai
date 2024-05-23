@@ -24,17 +24,23 @@ class ChatService {
     }
 
     String chatFromImageFile(String message) throws IOException {
-        var imageData = image.getContentAsByteArray();
-        var userMessage = new UserMessage(message,
-                List.of(new Media(MimeTypeUtils.IMAGE_PNG, imageData)));
-        return chatClient.call(userMessage);
+        return chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(message)
+                        .media(MimeTypeUtils.IMAGE_PNG, image)
+                )
+                .call()
+                .content();
     }
 
     String chatFromImageUrl(String message) {
         var imageUrl = "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png";
         var userMessage = new UserMessage(message,
                 List.of(new Media(MimeTypeUtils.IMAGE_PNG, imageUrl)));
-        return chatClient.call(userMessage);
+        return chatClient.prompt()
+                .messages(userMessage)
+                .call()
+                .content();
     }
 
 }
