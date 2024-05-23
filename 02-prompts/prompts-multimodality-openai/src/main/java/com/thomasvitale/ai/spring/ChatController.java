@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 @RestController
 class ChatController {
@@ -21,7 +22,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/image/url")
-    String chatFromImageUrl(@RequestParam(defaultValue = "What do you see in this picture? Give a short answer") String message) {
+    String chatFromImageUrl(@RequestParam(defaultValue = "What do you see in this picture? Give a short answer") String message) throws MalformedURLException {
         return chatService.chatFromImageUrl(message);
     }
 
