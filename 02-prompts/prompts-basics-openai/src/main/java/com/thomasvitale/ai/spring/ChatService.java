@@ -10,8 +10,8 @@ class ChatService {
 
     private final ChatClient chatClient;
 
-    ChatService(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    ChatService(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
     }
 
     String chatWithText(String message) {

@@ -15,8 +15,8 @@ class ChatService {
 
     private final ChatClient chatClient;
 
-    ChatService(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    ChatService(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
     }
 
     ArtistInfo chatWithBeanOutput(MusicQuestion question) {
@@ -31,7 +31,7 @@ class ChatService {
                         .param("genre", question.genre())
                         .param("instrument", question.instrument())
                 )
-                .chatOptions(OllamaOptions.create().withFormat("json"))
+                .options(OllamaOptions.create().withFormat("json"))
                 .call()
                 .entity(ArtistInfo.class);
     }

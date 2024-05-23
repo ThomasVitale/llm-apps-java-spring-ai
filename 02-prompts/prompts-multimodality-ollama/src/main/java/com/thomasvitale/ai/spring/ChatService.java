@@ -15,8 +15,8 @@ class ChatService {
 
     private final Resource image;
 
-    ChatService(ChatClient chatClient, @Value("classpath:tabby-cat.png") Resource image) {
-        this.chatClient = chatClient;
+    ChatService(ChatClient.Builder chatClientBuilder, @Value("classpath:tabby-cat.png") Resource image) {
+        this.chatClient = chatClientBuilder.build();
         this.image = image;
     }
 

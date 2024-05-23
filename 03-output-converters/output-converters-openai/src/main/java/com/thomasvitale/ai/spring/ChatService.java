@@ -16,8 +16,8 @@ class ChatService {
 
     private final ChatClient chatClient;
 
-    ChatService(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    ChatService(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
     }
 
     ArtistInfo chatWithBeanOutput(MusicQuestion question) {
@@ -32,7 +32,7 @@ class ChatService {
                         .param("genre", question.genre())
                         .param("instrument", question.instrument())
                 )
-                .chatOptions(OpenAiChatOptions.builder()
+                .options(OpenAiChatOptions.builder()
                         .withResponseFormat(new OpenAiApi.ChatCompletionRequest.ResponseFormat("json_object"))
                         .build())
                 .call()

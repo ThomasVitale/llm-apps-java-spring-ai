@@ -18,8 +18,8 @@ class ChatService {
     private final ChatClient chatClient;
     private final VectorStore vectorStore;
 
-    ChatService(ChatClient chatClient, VectorStore vectorStore) {
-        this.chatClient = chatClient;
+    ChatService(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
+        this.chatClient = chatClientBuilder.build();
         this.vectorStore = vectorStore;
     }
 

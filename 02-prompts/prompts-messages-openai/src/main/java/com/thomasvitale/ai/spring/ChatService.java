@@ -14,8 +14,8 @@ class ChatService {
 
     private final Resource systemMessageResource;
 
-    ChatService(ChatClient chatClient, @Value("classpath:/prompts/system-message.st") Resource systemMessageResource) {
-        this.chatClient = chatClient;
+    ChatService(ChatClient.Builder chatClientBuilder, @Value("classpath:/prompts/system-message.st") Resource systemMessageResource) {
+        this.chatClient = chatClientBuilder.build();
         this.systemMessageResource = systemMessageResource;
     }
 
