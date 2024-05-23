@@ -4,6 +4,7 @@ plugins {
 
 rootProject.name = 'llm-apps-java-spring-ai'
 
+include '00-use-cases:chatbot'
 include '00-use-cases:question-answering-with-documents'
 
 include '01-chat-models:chat-models-mistral-ai'
