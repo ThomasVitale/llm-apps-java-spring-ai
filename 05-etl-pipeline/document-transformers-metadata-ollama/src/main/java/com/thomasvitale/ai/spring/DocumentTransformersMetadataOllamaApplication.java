@@ -1,6 +1,6 @@
 package com.thomasvitale.ai.spring;
 
-import org.springframework.ai.chat.ChatModel;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.document.DefaultContentFormatter;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.transformer.KeywordMetadataEnricher;

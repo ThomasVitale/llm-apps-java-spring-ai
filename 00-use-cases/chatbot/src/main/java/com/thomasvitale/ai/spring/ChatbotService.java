@@ -1,8 +1,8 @@
 package com.thomasvitale.ai.spring;
 
-import org.springframework.ai.chat.ChatModel;
 import org.springframework.ai.chat.memory.*;
 import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.transformer.ChatServiceContext;
 import org.springframework.ai.chat.service.ChatService;
