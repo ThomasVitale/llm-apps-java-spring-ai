@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.TextReader;
-import org.springframework.ai.vectorstore.SimpleVectorStore;
+import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -48,7 +48,7 @@ public class DocumentEtlPipeline {
         documents.addAll(textReader2.get());
 
         logger.info("Creating and storing Embeddings from Documents");
-        vectorStore.add(documents);
+        vectorStore.add(new TokenTextSplitter().split(documents));
     }
 
 }
