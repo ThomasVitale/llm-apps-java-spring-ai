@@ -8,6 +8,7 @@ include '00-use-cases:chatbot'
 include '00-use-cases:classification'
 include '00-use-cases:question-answering'
 include '00-use-cases:semantic-search'
+include '00-use-cases:structured-data-extraction'
 
 include '01-chat-models:chat-models-mistral-ai'
 include '01-chat-models:chat-models-ollama'
