@@ -14,12 +14,13 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 
 ### 0. Use Cases
 
-| Project                                                                                                                 | Description                                                    |
-|-------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| [classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/classification)         | Classification using LLMs via Ollama.                          |
-| [question-answering](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/question-answering) | Question answering with documents (RAG) using LLMs via Ollama. |
-| [semantic-search](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/semantic-search)       | Semantic search using LLMs via Ollama.                         |
-| [structured-data-extraction](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/structured-data-extraction)       | Structured data extraction using LLMs via Ollama.              |
+| Project                                                                                                                                 | Description                                                    |
+|-----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [chatbot](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/chatbot)                                       | Chatbot using LLMs via Ollama.                                 |
+| [classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/classification)                         | Classification using LLMs via Ollama.                          |
+| [question-answering](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/question-answering)                 | Question answering with documents (RAG) using LLMs via Ollama. |
+| [semantic-search](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/semantic-search)                       | Semantic search using LLMs via Ollama.                         |
+| [structured-data-extraction](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/00-use-cases/structured-data-extraction) | Structured data extraction using LLMs via Ollama.              |
 
 ### 1. Chat Completion Models
 
