@@ -1,0 +1,9 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        options:
+          model: mistral
+  threads:
+    virtual:
+      enabled: true

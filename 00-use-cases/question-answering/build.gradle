@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+}
+
+group = 'com.thomasvitale'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+    implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
+
+    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:ollama'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
