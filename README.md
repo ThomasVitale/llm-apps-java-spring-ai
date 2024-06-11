@@ -104,12 +104,15 @@ _Coming soon_
 * [Spring AI Series by Dan Vega](https://www.youtube.com/playlist?list=PLZV0a2jwt22uoDm3LNDFvN6i2cAVU_HTH)
 * [Spring AI Series by Craig Walls](https://www.youtube.com/playlist?list=PLH5OU4wXVJc9aECkMUVPCi8g3pzs8pZ3E)
 * [Spring Tips: Spring AI by Josh Long](https://www.youtube.com/watch?v=aNKDoiOUo9M)
+* [Spring Tips: Spring AI Redux by Josh Long](https://www.youtube.com/watch?v=Q65-Zade25w)
 
 ### Demos
 
 * [Airline Customer Support (Marcus Hellberg)](https://github.com/marcushellberg/java-ai-playground/tree/spring-ai)
+* [Flight Booking (Christian Tzolov)](https://github.com/tzolov/playground-flight-booking)
 * [Spring AI Chat (VMware Tanzu)](https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/spring-ai-chat)
 
 ### Workshops
 
 * [Spring AI with Azure OpenAI (Azure)](https://github.com/Azure-Samples/spring-ai-azure-workshop)
+* [Spring AI - Zero to Hero (Adib Saikali, Christian Tzolov)](https://github.com/asaikali/spring-ai-zero-to-hero/tree/main)
