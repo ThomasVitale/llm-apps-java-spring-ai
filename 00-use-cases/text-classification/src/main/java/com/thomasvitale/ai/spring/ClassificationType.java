@@ -1,5 +1,5 @@
 package com.thomasvitale.ai.spring;
 
 public enum ClassificationType {
-    BOOK, MUSIC, UNKNOWN;
+    BUSINESS, SPORT, TECHNOLOGY, OTHER;
 }
