@@ -9,9 +9,11 @@ repositories {
 ext {
     set("springBootVersion", '3.3.0')
     set("dependencyManagementVersion", '1.1.5')
+    set("graalvmVersion", '0.10.2')
 }
 
 dependencies {
     implementation "io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}"
     implementation "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    implementation "org.graalvm.buildtools:native-gradle-plugin:${graalvmVersion}"
 }

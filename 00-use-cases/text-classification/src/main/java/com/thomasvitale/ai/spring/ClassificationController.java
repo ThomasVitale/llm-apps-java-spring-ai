@@ -19,23 +19,28 @@ class ClassificationController {
     }
 
     @PostMapping("/classify/class-descriptions")
-    String classifyClassDescriptions(@RequestBody String input) {
-        return textClassifier.classifyClassDescriptions(input);
+    String classifyClassDescriptions(@RequestBody String text) {
+        return textClassifier.classifyClassDescriptions(text);
     }
 
     @PostMapping("/classify/few-shots-prompt")
-    String classifyFewShotsPrompt(@RequestBody String input) {
-        return textClassifier.classifyFewShotsPrompt(input);
+    String classifyFewShotsPrompt(@RequestBody String text) {
+        return textClassifier.classifyFewShotsPrompt(text);
     }
 
     @PostMapping("/classify/few-shots-history")
-    String classifyFewShotsHistory(@RequestBody String input) {
-        return textClassifier.classifyFewShotsHistory(input);
+    String classifyFewShotsHistory(@RequestBody String text) {
+        return textClassifier.classifyFewShotsHistory(text);
     }
 
     @PostMapping("/classify/structured-output")
-    ClassificationType classifyStructured(@RequestBody String input) {
-        return textClassifier.classifyStructured(input);
+    ClassificationType classifyStructured(@RequestBody String text) {
+        return textClassifier.classifyStructured(text);
+    }
+
+    @PostMapping("/classify")
+    ClassificationType classify(@RequestBody String text) {
+        return textClassifier.classifyStructured(text);
     }
 
 }

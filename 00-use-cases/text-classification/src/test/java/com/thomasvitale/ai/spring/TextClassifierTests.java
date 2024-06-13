@@ -28,4 +28,11 @@ public class TextClassifierTests {
         assertThat(classificationType).isEqualTo(ClassificationType.TECHNOLOGY);
     }
 
+    @Test
+    void classifyOtherNews() {
+        var classificationType = textClassifier.classifyStructured(
+                "They're taking the hobbits to Isengard! To Isengard! To Isengard!");
+        assertThat(classificationType).isEqualTo(ClassificationType.OTHER);
+    }
+
 }

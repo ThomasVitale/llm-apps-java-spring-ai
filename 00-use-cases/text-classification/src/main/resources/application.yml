@@ -4,6 +4,3 @@ spring:
       chat:
         options:
           model: mistral
-  threads:
-    virtual:
-      enabled: true

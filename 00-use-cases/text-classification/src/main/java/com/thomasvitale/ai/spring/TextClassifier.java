@@ -43,7 +43,7 @@ class TextClassifier {
                     
                     BUSINESS: Financial markets, economic trends, company acquisitions.
                     SPORT: Sport events, teams, players, tournaments, and statistics.
-                    TECHNOLOGY: Technological advancements, innovations, software product launches.
+                    TECHNOLOGY: Technological advancements, innovations, launches of new apps.
                     OTHER: Anything that doesn't fit into the other categories.
                     """)
                 .user(text)
@@ -64,7 +64,7 @@ class TextClassifier {
                     Text: The semifinals of the UEFA Euro 2024 will be played on Saturday.
                     Class: SPORT
         
-                    Text: Apple announced the new version of their operating system.
+                    Text: Football fan? You can now watch the UEFA Euro games on the brand-new app for Apple Vision Pro.
                     Class: TECHNOLOGY
         
                     Text: The Ravenclaw Quidditch team won the tournament!
@@ -101,7 +101,7 @@ class TextClassifier {
                 new AssistantMessage("BUSINESS"),
                 new UserMessage("The semifinals of the UEFA Euro 2024 will be played on Saturday."),
                 new AssistantMessage("SPORT"),
-                new UserMessage("Apple announced the new version of their operating system."),
+                new UserMessage("Football fan? You can now watch the UEFA Euro games on the brand-new app for Apple Vision Pro."),
                 new AssistantMessage("TECHNOLOGY"),
                 new UserMessage("The Ravenclaw Quidditch team won the tournament!"),
                 new AssistantMessage("OTHER"),
