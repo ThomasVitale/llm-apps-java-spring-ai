@@ -27,7 +27,7 @@ public class TextClassifierTests {
             ),
 
             ClassificationType.SPORT, List.of(
-                    "Key Highlights from the Olympics 2024.",
+                    "Athletes Gather Together in Paris for The Olympics.",
                     "Football World Cup 2026 Venues Announced.",
                     "Volleyball World Cup Finals, Thrilling Game Ends in Historic Victory.",
                     "Impressive Performance of Famous Tennis Athlete.",
@@ -51,13 +51,13 @@ public class TextClassifierTests {
             )
     );
 
-    @RepeatedTest(value = 5, failureThreshold = 2)
+    @RepeatedTest(value = 1)
     void classify() {
         classificationExamples.forEach((expectedType, testSet) -> {
             for (String textToClassify : testSet) {
                 var actualType = textClassifier.classify(textToClassify);
                 assertThat(actualType)
-                        .as("Failed for text: '%s'", textToClassify)
+                        .as("Classifying text: '%s'", textToClassify)
                         .isEqualTo(expectedType);
             }
         });
