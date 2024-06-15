@@ -41,9 +41,9 @@ class TextClassifier {
                 .system("""
                     Classify the provided text into one of these classes.
                     
-                    BUSINESS: Financial markets, economic trends, company acquisitions.
-                    SPORT: Sport events, teams, players, tournaments, and statistics.
-                    TECHNOLOGY: Technological advancements, innovations, launches of new apps.
+                    BUSINESS: Commerce, finance, markets, entrepreneurship, corporate developments.
+                    SPORT: Athletic events, tournament outcomes, performances of athletes and teams.
+                    TECHNOLOGY: innovations and trends in software, artificial intelligence, cybersecurity.
                     OTHER: Anything that doesn't fit into the other categories.
                     """)
                 .user(text)
@@ -55,19 +55,25 @@ class TextClassifier {
         return chatClient
                 .prompt()
                 .system("""
-                    Classify the provided text into one of these classes:
-                    BUSINESS, SPORT, TECHNOLOGY, OTHER.
+                    Classify the provided text into one of these classes.
                     
-                    Text: Tech companies are all competing in this new AI rush.
+                    BUSINESS: Commerce, finance, markets, entrepreneurship, corporate developments.
+                    SPORT: Athletic events, tournament outcomes, performances of athletes and teams.
+                    TECHNOLOGY: innovations and trends in software, artificial intelligence, cybersecurity.
+                    OTHER: Anything that doesn't fit into the other categories.
+                    
+                    ---
+                    
+                    Text: Clean Energy Startups Make Waves in 2024, Fueling a Sustainable Future.
                     Class: BUSINESS
                     
-                    Text: The semifinals of the UEFA Euro 2024 will be played on Saturday.
+                    Text: Basketball Phenom Signs Historic Rookie Contract with NBA Team.
                     Class: SPORT
         
-                    Text: Football fan? You can now watch the UEFA Euro games on the brand-new app for Apple Vision Pro.
+                    Text: Apple Vision Pro and the New UEFA Euro App Deliver an Innovative Entertainment Experience.
                     Class: TECHNOLOGY
         
-                    Text: The Ravenclaw Quidditch team won the tournament!
+                    Text: Culinary Travel, Best Destinations for Food Lovers This Year!
                     Class: OTHER
                     """)
                 .user(text)
@@ -78,7 +84,8 @@ class TextClassifier {
     String classifyFewShotsHistory(String text) {
         return chatClient
                 .prompt()
-                .messages(getPromptWithFewShotsHistory(text))
+                .messages(getPromptWithFewShotsHistory())
+                .user(text)
                 .call()
                 .content();
     }
@@ -86,26 +93,41 @@ class TextClassifier {
     ClassificationType classifyStructured(String text) {
         return chatClient
                 .prompt()
-                .messages(getPromptWithFewShotsHistory(text))
+                .messages(getPromptWithFewShotsHistory())
+                .user(text)
                 .call()
                 .entity(ClassificationType.class);
     }
 
-    private List<Message> getPromptWithFewShotsHistory(String text) {
+    ClassificationType classify(String text) {
+        return classifyStructured(text);
+    }
+
+    private List<Message> getPromptWithFewShotsHistory() {
         return List.of(
                 new SystemMessage("""
-                    Classify the provided text into one of these classes:
-                    BUSINESS, SPORT, TECHNOLOGY, OTHER.
+                    Classify the provided text into one of these classes.
+                    
+                    BUSINESS: Commerce, finance, markets, entrepreneurship, corporate developments.
+                    SPORT: Athletic events, tournament outcomes, performances of athletes and teams.
+                    TECHNOLOGY: innovations and trends in software, artificial intelligence, cybersecurity.
+                    OTHER: Anything that doesn't fit into the other categories.
                     """),
-                new UserMessage("Tech companies are all competing in this new AI rush."),
-                new AssistantMessage("BUSINESS"),
-                new UserMessage("The semifinals of the UEFA Euro 2024 will be played on Saturday."),
-                new AssistantMessage("SPORT"),
-                new UserMessage("Football fan? You can now watch the UEFA Euro games on the brand-new app for Apple Vision Pro."),
+
+                new UserMessage("Apple Vision Pro and the New UEFA Euro App Deliver an Innovative Entertainment Experience."),
                 new AssistantMessage("TECHNOLOGY"),
-                new UserMessage("The Ravenclaw Quidditch team won the tournament!"),
+                new UserMessage("Wall Street, Trading Volumes Reach All-Time Highs Amid Market Optimism."),
+                new AssistantMessage("BUSINESS"),
+                new UserMessage("Sony PlayStation 6 Launch, Next-Gen Gaming Experience Redefines Console Performance."),
+                new AssistantMessage("TECHNOLOGY"),
+                new UserMessage("Water Polo Star Secures Landmark Contract with Major League Team."),
+                new AssistantMessage("SPORT"),
+                new UserMessage("Culinary Travel, Best Destinations for Food Lovers This Year!"),
                 new AssistantMessage("OTHER"),
-                new UserMessage(text)
+                new UserMessage("UEFA Euro 2024, Memorable Matches and Record-Breaking Goals Define Tournament Highlights."),
+                new AssistantMessage("SPORT"),
+                new UserMessage("Rock Band Resurgence, Legendary Groups Return to the Stage with Iconic Performances."),
+                new AssistantMessage("OTHER")
         );
     }
 
