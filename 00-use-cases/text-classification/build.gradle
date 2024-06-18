@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
+    id 'org.graalvm.buildtools.native'
 }
 
 group = 'com.thomasvitale'
