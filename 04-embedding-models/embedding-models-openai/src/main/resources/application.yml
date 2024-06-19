@@ -5,6 +5,3 @@ spring:
       embedding:
         options:
           model: text-embedding-ada-002
-  threads:
-    virtual:
-      enabled: true

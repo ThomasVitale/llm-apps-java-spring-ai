@@ -6,6 +6,3 @@ spring:
         options:
           model: gpt-4o
           temperature: 0.7
-  threads:
-    virtual:
-      enabled: true

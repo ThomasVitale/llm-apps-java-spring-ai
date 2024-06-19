@@ -5,6 +5,3 @@ spring:
         options:
           model: llama3
           temperature: 0.7
-  threads:
-    virtual:
-      enabled: true

@@ -6,6 +6,3 @@ spring:
 #          model-uri: https://huggingface.co/intfloat/e5-small-v2/raw/main/model.onnx
 #        tokenizer:
 #          uri: https://huggingface.co/intfloat/e5-small-v2/raw/main/tokenizer.json
-  threads:
-    virtual:
-      enabled: true

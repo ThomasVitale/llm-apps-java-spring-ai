@@ -5,6 +5,3 @@ spring:
       embedding:
         options:
           model: mistral-embed
-  threads:
-    virtual:
-      enabled: true

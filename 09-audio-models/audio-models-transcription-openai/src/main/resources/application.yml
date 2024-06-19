@@ -6,6 +6,3 @@ spring:
         transcription:
           options:
             model: whisper-1
-  threads:
-    virtual:
-      enabled: true

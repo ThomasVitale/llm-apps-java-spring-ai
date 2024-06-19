@@ -6,6 +6,3 @@ spring:
         options:
           model: open-mistral-7b
           temperature: 0.7
-  threads:
-    virtual:
-      enabled: true

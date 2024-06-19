@@ -6,6 +6,3 @@ spring:
         speech:
           options:
             model: tts-1
-  threads:
-    virtual:
-      enabled: true

@@ -6,6 +6,3 @@ spring:
         options:
           model: mistral-small-latest
           temperature: 0.7
-  threads:
-    virtual:
-      enabled: true
