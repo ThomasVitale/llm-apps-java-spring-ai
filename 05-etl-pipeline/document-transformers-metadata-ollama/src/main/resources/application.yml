@@ -3,7 +3,7 @@ spring:
     ollama:
       chat:
         options:
-          model: llama3
+          model: mistral
       embedding:
         options:
-          model: llama3
+          model: mistral

@@ -15,7 +15,7 @@ public class TestOutputParsersOllamaApplication {
     @RestartScope
     @ServiceConnection
     OllamaContainer ollama() {
-        return new OllamaContainer(DockerImageName.parse("ghcr.io/thomasvitale/ollama-llama3")
+        return new OllamaContainer(DockerImageName.parse("ghcr.io/thomasvitale/ollama-mistral")
                 .asCompatibleSubstituteFor("ollama/ollama"));
     }
 

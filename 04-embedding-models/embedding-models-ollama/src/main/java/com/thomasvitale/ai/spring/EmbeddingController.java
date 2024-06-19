@@ -27,7 +27,7 @@ class EmbeddingController {
     @GetMapping("/embed/ollama-options")
     String embedWithOllamaOptions(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(message), OllamaOptions.create()
-                        .withModel("llama3")))
+                        .withModel("mistral")))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.size();
     }

@@ -3,4 +3,4 @@ spring:
     ollama:
       embedding:
         options:
-          model: llama3
+          model: mistral

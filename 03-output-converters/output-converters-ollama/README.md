@@ -9,10 +9,10 @@ The application relies on Ollama for providing LLMs. You can either run Ollama l
 ### Ollama as a native application
 
 First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-Then, use Ollama to run the _llama3_ large language model.
+Then, use Ollama to run the _mistral_ large language model.
 
 ```shell
-ollama run llama3
+ollama run mistral
 ```
 
 Finally, run the Spring Boot application.
@@ -23,7 +23,7 @@ Finally, run the Spring Boot application.
 
 ### Ollama as a dev service with Testcontainers
 
-The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service with a _llama3_ model at startup time.
+The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service with a _mistral_ model at startup time.
 
 ```shell
 ./gradlew bootTestRun
@@ -31,7 +31,7 @@ The application relies on the native Testcontainers support in Spring Boot to sp
 
 ## Calling the application
 
-You can now call the application that will use Ollama and _llama3_ to generate an answer to your questions.
+You can now call the application that will use Ollama and _mistral_ to generate an answer to your questions.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell

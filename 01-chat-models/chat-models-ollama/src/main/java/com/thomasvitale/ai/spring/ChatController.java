@@ -33,7 +33,7 @@ class ChatController {
     @GetMapping("/chat/ollama-options")
     String chatWithOllamaOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatModel.call(new Prompt(message, OllamaOptions.create()
-                        .withModel("llama3")
+                        .withModel("mistral")
                         .withRepeatPenalty(1.5f)))
                 .getResult().getOutput().getContent();
     }
