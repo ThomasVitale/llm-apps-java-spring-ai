@@ -109,6 +109,8 @@ _Coming soon_
 ### Demos
 
 * [Airline Customer Support (Marcus Hellberg)](https://github.com/marcushellberg/java-ai-playground/tree/spring-ai)
+* [Composer Assistant (Thomas Vitale)](https://github.com/ThomasVitale/concerto-for-java-and-ai)
+* [Document Assistant(Marcus Hellberg)](https://github.com/marcushellberg/docs-assistant)
 * [Flight Booking (Christian Tzolov)](https://github.com/tzolov/playground-flight-booking)
 * [Spring AI Chat (VMware Tanzu)](https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/spring-ai-chat)
 
