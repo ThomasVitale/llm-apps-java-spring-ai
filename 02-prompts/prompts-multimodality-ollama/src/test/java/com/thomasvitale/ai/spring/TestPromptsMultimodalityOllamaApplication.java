@@ -15,7 +15,7 @@ public class TestPromptsMultimodalityOllamaApplication {
     @RestartScope
     @ServiceConnection
     OllamaContainer ollama() {
-        return new OllamaContainer(DockerImageName.parse("ghcr.io/thomasvitale/ollama-llava")
+        return new OllamaContainer(DockerImageName.parse("ghcr.io/thomasvitale/ollama-llava-phi3")
                 .asCompatibleSubstituteFor("ollama/ollama"));
     }
 
