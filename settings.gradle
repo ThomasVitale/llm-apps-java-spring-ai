@@ -11,6 +11,7 @@ include '00-use-cases:structured-data-extraction'
 include '00-use-cases:text-classification'
 
 include '01-chat-models:chat-models-mistral-ai'
+include '01-chat-models:chat-models-multiple-providers'
 include '01-chat-models:chat-models-ollama'
 include '01-chat-models:chat-models-openai'
 

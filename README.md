@@ -24,11 +24,13 @@ Samples showing how to build Java applications powered by Generative AI and LLMs
 
 ### 1. Chat Completion Models
 
-| Project                                                                                                                                       | Description                                      |
-|-----------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| [chat-models-mistral-ai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-mistral-ai)    | Text generation with LLMs via Mistral AI.        |
-| [chat-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-ollama)            | Text generation with LLMs via Ollama.            |
-| [chat-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-openai)            | Text generation with LLMs via OpenAI.            |
+| Project                                                                                                                                           | Description                                       |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| [chat-models-mistral-ai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-mistral-ai)                 | Text generation with LLMs via Mistral AI.         |
+| [chat-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-ollama)                         | Text generation with LLMs via Ollama.             |
+| [chat-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-openai)                         | Text generation with LLMs via OpenAI.             |
+| [chat-models-multiple-providers](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-multiple-providers) | Text generation with LLMs via multiple providers. |
+
 
 ### 2. Prompts, Templates and Multimodality
 

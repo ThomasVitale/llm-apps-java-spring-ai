@@ -1,0 +1,14 @@
+spring:
+  ai:
+    mistralai:
+      api-key: ${MISTRALAI_API_KEY}
+      chat:
+        options:
+          model: open-mistral-7b
+          temperature: 0.7
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-3.5-turbo
+          temperature: 0.7
