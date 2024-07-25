@@ -39,6 +39,7 @@ include '05-etl-pipeline:document-transformers-metadata-ollama'
 include '05-etl-pipeline:document-transformers-splitters-ollama'
 
 include '07-function-calling:function-calling-mistral-ai'
+include '07-function-calling:function-calling-ollama'
 include '07-function-calling:function-calling-openai'
 
 include '08-image-models:image-models-openai'

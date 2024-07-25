@@ -1,0 +1,7 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        options:
+          model: mistral
+          temperature: 0.7

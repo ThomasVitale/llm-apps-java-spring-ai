@@ -80,6 +80,7 @@ _Coming soon_
 | Project                                                                                                                                          | Description                                |
 |--------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
 | [function-calling-mistral-ai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-function-calling/function-calling-mistral-ai) | Function calling with LLMs via Mistral AI. |
+| [function-calling-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-function-calling/function-calling-ollama)         | Function calling with LLMs via Ollama.     |
 | [function-calling-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-function-calling/function-calling-openai)         | Function calling with LLMs via OpenAI.     |
 
 ### 8. Image Models
