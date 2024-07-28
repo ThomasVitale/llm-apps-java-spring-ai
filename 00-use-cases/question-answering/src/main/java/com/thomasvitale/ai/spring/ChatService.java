@@ -2,7 +2,6 @@ package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
-import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ class ChatService {
 
     String chatWithDocument(String message) {
         return chatClient.prompt()
-                .advisors(new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults().withTopK(5)))
+                .advisors(new QuestionAnswerAdvisor(vectorStore))
                 .user(message)
                 .call()
                 .content();

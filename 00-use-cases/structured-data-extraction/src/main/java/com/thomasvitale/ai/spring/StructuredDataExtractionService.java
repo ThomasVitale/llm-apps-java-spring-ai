@@ -24,7 +24,6 @@ class StructuredDataExtractionService {
                     Extract structured data from the provided text.
                     If you do not know the value of a field asked to extract,
                     do not include any value for the field in the result.
-                    Finally, save the object in the database.
         
                     ---------------------
                     TEXT:

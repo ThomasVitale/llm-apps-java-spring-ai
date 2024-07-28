@@ -4,6 +4,12 @@ spring:
       chat:
         options:
           model: mistral
+          num-ctx: 4096
       embedding:
         options:
-          model: mistral
+          model: nomic-embed-text
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        dimensions: 768
+        index-type: hnsw

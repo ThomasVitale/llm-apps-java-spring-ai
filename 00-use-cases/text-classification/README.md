@@ -12,7 +12,7 @@ First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
 Then, use Ollama to pull the _mistral_ large language model.
 
 ```shell
-ollama pull mistral
+ollama pull mistral-nemo
 ```
 
 Finally, run the Spring Boot application.
