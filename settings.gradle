@@ -46,3 +46,5 @@ include '08-image-models:image-models-openai'
 
 include '09-audio-models:audio-models-speech-openai'
 include '09-audio-models:audio-models-transcription-openai'
+
+include '10-observability:observability-models-openai'

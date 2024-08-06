@@ -96,6 +96,12 @@ _Coming soon_
 | [audio-models-speech-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-audio-models/audio-models-speech-openai)        | Speech generation with LLMs via OpenAI.    |
 | [audio-models-transcription-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-audio-models/audio-models-transcription-openai) | Speech transcription with LLMs via OpenAI. |
 
+### 10. Observability
+
+| Project                                                                                                            | Description                   |
+|--------------------------------------------------------------------------------------------------------------------|-------------------------------|
+| [observability-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-models-openai) | LLM Observability for OpenAI. |
+
 ## References and Additional Resources
 
 * [Spring AI Reference Documentation](https://docs.spring.io/spring-ai/reference/index.html)
