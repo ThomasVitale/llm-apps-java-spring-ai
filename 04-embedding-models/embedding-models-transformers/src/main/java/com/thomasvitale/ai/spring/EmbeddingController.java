@@ -17,7 +17,7 @@ class EmbeddingController {
     @GetMapping("/embed")
     String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
         var embeddings = embeddingModel.embed(message);
-        return "Size of the embedding vector: " + embeddings.size();
+        return "Size of the embedding vector: " + embeddings.length;
     }
 
 }

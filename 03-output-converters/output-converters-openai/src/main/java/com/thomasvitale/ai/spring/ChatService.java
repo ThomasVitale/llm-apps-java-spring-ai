@@ -33,7 +33,7 @@ class ChatService {
                         .param("instrument", question.instrument())
                 )
                 .options(OpenAiChatOptions.builder()
-                        .withResponseFormat(new OpenAiApi.ChatCompletionRequest.ResponseFormat("json_object"))
+                        .withResponseFormat(new OpenAiApi.ChatCompletionRequest.ResponseFormat(OpenAiApi.ChatCompletionRequest.ResponseFormat.Type.JSON_OBJECT))
                         .build())
                 .call()
                 .entity(ArtistInfo.class);
