@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: observability-vector-stores-pgvector
+  ai:
+    chat:
+      client:
+        observations:
+          include-input: true
+      observations:
+        include-completion: true
+        include-prompt: true
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.7
+      embedding:
+        options:
+          model: text-embedding-3-small
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        dimensions: 1536
+        index-type: hnsw
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      service.name: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: ollama
+  ai:
+    openai:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: mistral
+          temperature: 0.7
+      embedding:
+        options:
+          model: nomic-embed-text
