@@ -98,9 +98,10 @@ _Coming soon_
 
 ### 10. Observability
 
-| Project                                                                                                                                                       | Description                              |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| [observability-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-models-openai)                 | LLM Observability for OpenAI.            |
+| Project                                                                                                                                                         | Description                              |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| [observability-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-models-ollama)                   | LLM Observability for Ollama.            |
+| [observability-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-models-openai)                   | LLM Observability for OpenAI.            |
 | [observability-vector-stores-pgvector](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-vector-stores-pgvector) | Vector Store Observability for PGVector. |
 
 ## References and Additional Resources
