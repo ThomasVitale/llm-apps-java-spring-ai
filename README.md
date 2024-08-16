@@ -100,6 +100,7 @@ _Coming soon_
 
 | Project                                                                                                                                                         | Description                              |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| [observability-models-mistral-ai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-models-mistral-ai)            | LLM Observability for Mistral AI.        |
 | [observability-models-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-models-ollama)                   | LLM Observability for Ollama.            |
 | [observability-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-models-openai)                   | LLM Observability for OpenAI.            |
 | [observability-vector-stores-pgvector](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/10-observability/observability-vector-stores-pgvector) | Vector Store Observability for PGVector. |

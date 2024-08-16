@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: observability-models-openai
+  ai:
+    chat:
+      observations:
+        include-completion: true
+        include-prompt: true
+    image:
+      observations:
+        include-prompt: true
+    mistralai:
+      api-key: ${MISTRALAI_API_KEY}
+      chat:
+        options:
+          model: mistral-small-latest
+          temperature: 0.7
+      embedding:
+        options:
+          model: mistral-embed
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      service.name: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
