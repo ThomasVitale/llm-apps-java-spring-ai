@@ -6,33 +6,38 @@ import org.springframework.ai.mistralai.MistralAiChatOptions;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Chat examples using the low-level ChatModel API.
+ */
 @RestController
-class ChatController {
+@RequestMapping("/model")
+class ChatModelController {
 
     private final MistralAiChatModel mistralAiChatModel;
     private final OpenAiChatModel openAiChatModel;
 
-    ChatController(MistralAiChatModel mistralAiChatModel, OpenAiChatModel openAiChatModel) {
+    ChatModelController(MistralAiChatModel mistralAiChatModel, OpenAiChatModel openAiChatModel) {
         this.mistralAiChatModel = mistralAiChatModel;
         this.openAiChatModel = openAiChatModel;
     }
 
-    @GetMapping("/chat/mistral")
-    String chatMistralAi(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return mistralAiChatModel.call(message);
+    @GetMapping("/chat/mistral-ai")
+    String chatMistralAi(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+        return mistralAiChatModel.call(question);
     }
 
     @GetMapping("/chat/openai")
-    String chatOpenAi(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return openAiChatModel.call(message);
+    String chatOpenAi(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+        return openAiChatModel.call(question);
     }
 
-    @GetMapping("/chat/mistral-options")
-    String chatWithMistralAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return mistralAiChatModel.call(new Prompt(message, MistralAiChatOptions.builder()
+    @GetMapping("/chat/mistral-ai-options")
+    String chatWithMistralAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+        return mistralAiChatModel.call(new Prompt(question, MistralAiChatOptions.builder()
                         .withModel("open-mixtral-8x7b")
                         .withTemperature(1.0f)
                         .build()))
@@ -40,8 +45,8 @@ class ChatController {
     }
 
     @GetMapping("/chat/openai-options")
-    String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
-        return openAiChatModel.call(new Prompt(message, OpenAiChatOptions.builder()
+    String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+        return openAiChatModel.call(new Prompt(question, OpenAiChatOptions.builder()
                         .withModel("gpt-4-turbo")
                         .withTemperature(1.0f)
                         .build()))

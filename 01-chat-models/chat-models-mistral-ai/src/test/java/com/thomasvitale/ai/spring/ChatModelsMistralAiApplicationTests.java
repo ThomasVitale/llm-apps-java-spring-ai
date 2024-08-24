@@ -1,7 +1,8 @@
 package com.thomasvitale.ai.spring;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,13 +18,14 @@ class ChatModelsMistralAiApplicationTests {
     @Autowired
     WebTestClient webTestClient;
 
-    @Test
-    void chat() {
+    @ParameterizedTest
+    @ValueSource(strings = {"/chat", "/model/chat", "/chat/stream", "/model/chat/stream"})
+    void chat(String path) {
         webTestClient
                 .get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/chat")
-                        .queryParam("message", "What is the capital of Italy?")
+                        .path(path)
+                        .queryParam("question", "What is the capital of Italy?")
                         .build())
                 .exchange()
                 .expectStatus().isOk()

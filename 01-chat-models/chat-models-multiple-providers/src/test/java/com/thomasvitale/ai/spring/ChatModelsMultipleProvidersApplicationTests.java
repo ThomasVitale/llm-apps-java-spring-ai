@@ -1,7 +1,8 @@
 package com.thomasvitale.ai.spring;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,14 +17,15 @@ class ChatModelsMultipleProvidersApplicationTests {
     @Autowired
     WebTestClient webTestClient;
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"/chat/mistral-ai", "/model/chat/mistral-ai"})
     @EnabledIfEnvironmentVariable(named = "SPRING_AI_MISTRALAI_API_KEY", matches = ".*")
-    void chatMistralAI() {
+    void chatMistralAi(String path) {
         webTestClient
                 .get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/chat/mistral")
-                        .queryParam("message", "What is the capital of Italy?")
+                        .path(path)
+                        .queryParam("question", "What is the capital of Italy?")
                         .build())
                 .exchange()
                 .expectStatus().isOk()
@@ -32,14 +34,15 @@ class ChatModelsMultipleProvidersApplicationTests {
                 });
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"/chat/openai", "/model/chat/openai"})
     @EnabledIfEnvironmentVariable(named = "SPRING_AI_OPENAI_API_KEY", matches = ".*")
-    void chatOpenAI() {
+    void chatOpenAI(String path) {
         webTestClient
                 .get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/chat/openai")
-                        .queryParam("message", "What is the capital of Italy?")
+                        .path(path)
+                        .queryParam("question", "What is the capital of Italy?")
                         .build())
                 .exchange()
                 .expectStatus().isOk()

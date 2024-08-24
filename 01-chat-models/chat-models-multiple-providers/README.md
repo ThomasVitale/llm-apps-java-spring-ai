@@ -4,7 +4,6 @@ Text generation with LLMs via multiple providers.
 
 ## Description
 
-Spring AI provides a `ChatModel` abstraction for integrating with LLMs via several providers.
 This example shows how to use both OpenAI and Mistral AI in the same application.
 
 ## Running the application
@@ -41,23 +40,23 @@ This example uses [httpie](https://httpie.io) to send HTTP requests.
 Using OpenAI:
 
 ```shell
-http :8080/chat/openai message=="What is the capital of Italy?"
+http :8080/chat/openai question=="What is the capital of Italy?"
 ```
 
 Using Mistral AI:
 
 ```shell
-http :8080/chat/mistral message=="What is the capital of Italy?"
+http :8080/chat/mistral-ai question=="What is the capital of Italy?"
 ```
 
 The next request is configured with OpenAI-specific customizations.
 
 ```shell
-http :8080/chat/openai-options message=="Why is a raven like a writing desk? Give a short answer."
+http :8080/chat/openai-options question=="Why is a raven like a writing desk? Give a short answer."
 ```
 
 The next request is configured with Mistral AI-specific customizations.
 
 ```shell
-http :8080/chat/mistral-options message=="Why is a raven like a writing desk? Give a short answer."
+http :8080/chat/mistral-ai-options question=="Why is a raven like a writing desk? Give a short answer."
 ```
