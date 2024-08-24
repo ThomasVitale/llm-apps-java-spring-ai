@@ -109,14 +109,20 @@ _Coming soon_
 
 * [Spring AI Reference Documentation](https://docs.spring.io/spring-ai/reference/index.html)
 
-### Videos
+### Conferences
 
 * [Building Intelligent Applications With Spring AI by Dan Vega (JetBrains Live Stream)](https://www.youtube.com/watch?v=x6KmUyPWy2Q)
-* [Making your @Beans Intelligent by Mark Pollack (Devoxx Belgium 2023)](https://www.youtube.com/watch?v=7OY9fKVxAFQ)
+* [Concerto for Java and AI - Building Production-Ready LLM Applications](https://www.youtube.com/watch?v=3zTf8NxF-6o)
+* [Introducing Spring AI by Christian Tzolov and Mark Pollack (Spring I/O 2024)](https://www.youtube.com/watch?v=umKbaXsiCOY)
+
+### Videos
+
 * [Spring AI Series by Dan Vega](https://www.youtube.com/playlist?list=PLZV0a2jwt22uoDm3LNDFvN6i2cAVU_HTH)
 * [Spring AI Series by Craig Walls](https://www.youtube.com/playlist?list=PLH5OU4wXVJc9aECkMUVPCi8g3pzs8pZ3E)
 * [Spring Tips: Spring AI by Josh Long](https://www.youtube.com/watch?v=aNKDoiOUo9M)
-* [Spring Tips: Spring AI Redux by Josh Long](https://www.youtube.com/watch?v=Q65-Zade25w)
+* [Spring Tips: Spring AI Observability](https://www.youtube.com/watch?v=afU8cK0pnpY)
+* [Spring Tips: Spring AI Redux by Josh Long and Christian Tzolov](https://www.youtube.com/watch?v=Q65-Zade25w)
+* [Spring Tips: Vector Databases with Spring AI by Josh Long](https://www.youtube.com/watch?v=yPu-WV_00Tk)
 
 ### Demos
 
