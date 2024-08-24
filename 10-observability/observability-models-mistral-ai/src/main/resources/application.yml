@@ -1,6 +1,6 @@
 spring:
   application:
-    name: observability-models-openai
+    name: observability-models-mistral-ai
   ai:
     chat:
       observations:

@@ -19,6 +19,8 @@ spring:
         options:
           model: text-embedding-3-small
     vectorstore:
+      observations:
+        include-query-response: true
       pgvector:
         initialize-schema: true
         dimensions: 1536
