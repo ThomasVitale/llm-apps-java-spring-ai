@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
+/**
+ * Chat examples using the high-level ChatClient API.
+ */
 @Service
 class ChatService {
 
@@ -19,14 +22,14 @@ class ChatService {
         this.systemMessageResource = systemMessageResource;
     }
 
-    String chatWithSingleMessage(String message) {
+    String chatWithSingleMessage(String question) {
         return chatClient.prompt()
-                .user(message)
+                .user(question)
                 .call()
                 .content();
     }
 
-    String chatWithMultipleMessages(String message) {
+    String chatWithMultipleMessages(String question) {
         var systemMessage = """
                 You are a helpful and polite assistant.
                 Answer in one sentence using a very formal language
@@ -34,14 +37,14 @@ class ChatService {
                 """;
         return chatClient.prompt()
                 .system(systemMessage)
-                .user(message)
+                .user(question)
                 .call()
                 .content();
     }
 
-    String chatWithExternalMessage(String message) {
+    String chatWithExternalMessage(String question) {
         var systemMessage = new SystemMessage(systemMessageResource);
-        var userMessage = new UserMessage(message);
+        var userMessage = new UserMessage(question);
         return chatClient.prompt()
                 .messages(systemMessage, userMessage)
                 .call()

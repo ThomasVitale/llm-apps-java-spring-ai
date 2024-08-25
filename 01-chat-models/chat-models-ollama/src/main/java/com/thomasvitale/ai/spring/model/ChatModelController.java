@@ -1,9 +1,9 @@
-package com.thomasvitale.ai.spring;
+package com.thomasvitale.ai.spring.model;
 
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.mistralai.MistralAiChatOptions;
+import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,10 +38,9 @@ class ChatModelController {
 
     @GetMapping("/chat/provider-options")
     String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatModel.call(new Prompt(question, MistralAiChatOptions.builder()
-                        .withModel("open-mixtral-8x7b")
-                        .withSafePrompt(true)
-                        .build()))
+        return chatModel.call(new Prompt(question, OllamaOptions.create()
+                        .withModel("mistral")
+                        .withRepeatPenalty(1.5f)))
                 .getResult().getOutput().getContent();
     }
 

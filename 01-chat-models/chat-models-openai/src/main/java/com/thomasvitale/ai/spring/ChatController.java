@@ -12,11 +12,11 @@ import reactor.core.publisher.Flux;
  * Chat examples using the high-level ChatClient API.
  */
 @RestController
-class ChatClientController {
+class ChatController {
 
     private final ChatClient chatClient;
 
-    ChatClientController(ChatClient.Builder chatClientBuilder) {
+    ChatController(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder.build();
     }
 

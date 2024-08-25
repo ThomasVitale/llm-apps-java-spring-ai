@@ -6,8 +6,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
 
-import java.io.IOException;
-
+/**
+ * Chat examples using the high-level ChatClient API.
+ */
 @Service
 class ChatService {
 
@@ -20,10 +21,10 @@ class ChatService {
         this.image = image;
     }
 
-    String chatFromImageFile(String message) throws IOException {
+    String chatFromImageFile(String question) {
         return chatClient.prompt()
                 .user(userSpec -> userSpec
-                        .text(message)
+                        .text(question)
                         .media(MimeTypeUtils.IMAGE_PNG, image)
                 )
                 .call()

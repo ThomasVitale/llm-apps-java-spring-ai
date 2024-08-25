@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "120s")
-@Import(TestPromptsMultimodalityOllamaApplication.class)
+@Import(TestcontainersConfiguration.class)
 @Disabled
 class PromptsMultimodalityOllamaApplicationTests {
 

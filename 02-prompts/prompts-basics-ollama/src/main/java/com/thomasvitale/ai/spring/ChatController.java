@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Chat examples using the high-level ChatClient API.
+ */
 @RestController
 class ChatController {
 
@@ -15,18 +18,18 @@ class ChatController {
     }
 
     @PostMapping("/chat/simple")
-    String chatWithText(@RequestBody String input) {
-        return chatService.chatWithText(input);
+    String chatWithText(@RequestBody String question) {
+        return chatService.chatWithText(question);
     }
 
     @PostMapping("/chat/prompt")
-    String chatWithPrompt(@RequestBody String input) {
-        return chatService.chatWithPrompt(input).getResult().getOutput().getContent();
+    String chatWithPrompt(@RequestBody String question) {
+        return chatService.chatWithPrompt(question).getResult().getOutput().getContent();
     }
 
     @PostMapping("/chat/full")
-    ChatResponse chatWithPromptAndFullResponse(@RequestBody String message) {
-        return chatService.chatWithPrompt(message);
+    ChatResponse chatWithPromptAndFullResponse(@RequestBody String question) {
+        return chatService.chatWithPrompt(question);
     }
 
 }

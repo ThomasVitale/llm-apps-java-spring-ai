@@ -4,8 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-
+/**
+ * Chat examples using the high-level ChatClient API.
+ */
 @RestController
 class ChatController {
 
@@ -16,8 +17,8 @@ class ChatController {
     }
 
     @GetMapping("/chat/image/file")
-    String chatFromImageFile(@RequestParam(defaultValue = "What do you see in this picture? Give a short answer") String message) throws IOException {
-        return chatService.chatFromImageFile(message);
+    String chatFromImageFile(@RequestParam(defaultValue = "What do you see in this picture? Give a short answer") String question) {
+        return chatService.chatFromImageFile(question);
     }
 
 }

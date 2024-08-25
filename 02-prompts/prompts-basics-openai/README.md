@@ -23,17 +23,17 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI and _gpt-4o_ to generate an answer to your questions.
+You can now call the application that will use OpenAI to generate an answer to your questions.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/chat/simple
+http --raw "What is the capital of Italy?" :8080/chat/simple -b --pretty none
 ```
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/chat/prompt
+http --raw "What is the capital of Italy?" :8080/chat/prompt -b --pretty none
 ```
 
 ```shell
-http --raw "What is the capital of Italy?" :8080/chat/full
+http --raw "What is the capital of Italy?" :8080/chat/full -b
 ```

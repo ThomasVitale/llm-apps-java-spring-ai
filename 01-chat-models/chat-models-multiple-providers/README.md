@@ -40,23 +40,23 @@ This example uses [httpie](https://httpie.io) to send HTTP requests.
 Using OpenAI:
 
 ```shell
-http :8080/chat/openai question=="What is the capital of Italy?"
+http :8080/chat/openai question=="What is the capital of Italy?" -b
 ```
 
 Using Mistral AI:
 
 ```shell
-http :8080/chat/mistral-ai question=="What is the capital of Italy?"
+http :8080/chat/mistral-ai question=="What is the capital of Italy?" -b
 ```
 
 The next request is configured with OpenAI-specific customizations.
 
 ```shell
-http :8080/chat/openai-options question=="Why is a raven like a writing desk? Give a short answer."
+http :8080/chat/openai-options question=="Why is a raven like a writing desk? Give a short answer." -b
 ```
 
 The next request is configured with Mistral AI-specific customizations.
 
 ```shell
-http :8080/chat/mistral-ai-options question=="Why is a raven like a writing desk? Give a short answer."
+http :8080/chat/mistral-ai-options question=="Why is a raven like a writing desk? Give a short answer." -b
 ```

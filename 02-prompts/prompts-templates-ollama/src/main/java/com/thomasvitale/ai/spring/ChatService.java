@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Chat examples using the high-level ChatClient API.
+ */
 @Service
 class ChatService {
 

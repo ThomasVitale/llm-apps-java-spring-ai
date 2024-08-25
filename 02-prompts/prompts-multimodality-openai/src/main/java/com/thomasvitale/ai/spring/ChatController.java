@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+/**
+ * Chat examples using the high-level ChatClient API.
+ */
 @RestController
 class ChatController {
 

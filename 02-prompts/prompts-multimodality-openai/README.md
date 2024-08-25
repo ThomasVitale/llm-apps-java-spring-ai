@@ -23,21 +23,21 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI and _gpt-4o_ to generate text based on a default image.
+You can now call the application that will use OpenAI to generate text based on a default image.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/chat/image/file
+http :8080/chat/image/file -b
 ```
 
 Try passing your custom prompt and check the result.
 
 ```shell
-http :8080/chat/image/file message=="Is there an animal in the picture?"
+http :8080/chat/image/file message=="Is there an animal in the picture?" -b
 ```
 
 The image can also be fetched from a URL.
 
 ```shell
-http :8080/chat/image/url message=="What's in the picture? Answer in one sentence"
+http :8080/chat/image/url message=="What's in the picture? Answer in one sentence" -b
 ```

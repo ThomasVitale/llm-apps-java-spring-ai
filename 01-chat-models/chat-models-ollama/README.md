@@ -53,10 +53,10 @@ The application relies on Ollama for providing LLMs. You can either run Ollama l
 ### Ollama as a native application
 
 First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-Then, use Ollama to run the _mistral_ large language model. That's what we'll use in this example.
+Then, use Ollama to pull the _mistral_ large language model.
 
 ```shell
-ollama run mistral
+ollama pull mistral
 ```
 
 Finally, run the Spring Boot application.
@@ -79,29 +79,29 @@ You can now call the application that will use Ollama to generate text based on 
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/chat
+http :8080/chat -b
 ```
 
 Try passing your custom prompt and check the result.
 
 ```shell
-http :8080/chat question=="What is the capital of Italy?"
+http :8080/chat question=="What is the capital of Italy?" -b
 ```
 
 The next request is configured with a custom temperature value to obtain a more creative, yet less precise answer.
 
 ```shell
-http :8080/chat/generic-options question=="Why is a raven like a writing desk? Give a short answer."
+http :8080/chat/generic-options question=="Why is a raven like a writing desk? Give a short answer." -b
 ```
 
 The next request is configured with Ollama-specific customizations.
 
 ```shell
-http :8080/chat/provider-options question=="What can you see beyond what you can see? Give a short answer."
+http :8080/chat/provider-options question=="What can you see beyond what you can see? Give a short answer." -b
 ```
 
 The final request returns the model's answer as a stream.
 
 ```shell
-http --stream :8080/chat/stream question=="Why is a raven like a writing desk? Answer in 3 paragraphs."
+http --stream :8080/chat/stream question=="Why is a raven like a writing desk? Answer in 3 paragraphs." -b
 ```

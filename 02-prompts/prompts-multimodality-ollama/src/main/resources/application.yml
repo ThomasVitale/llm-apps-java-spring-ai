@@ -3,5 +3,5 @@ spring:
     ollama:
       chat:
         options:
-          model: llava-phi3
+          model: llava
           temperature: 0.7

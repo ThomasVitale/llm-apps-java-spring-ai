@@ -1,4 +1,4 @@
-package com.thomasvitale.ai.spring;
+package com.thomasvitale.ai.spring.model;
 
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
