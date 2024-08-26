@@ -31,7 +31,6 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 | [chat-models-openai](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-openai)                         | Text generation with LLMs via OpenAI.             |
 | [chat-models-multiple-providers](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/01-chat-models/chat-models-multiple-providers) | Text generation with LLMs via multiple providers. |
 
-
 ### 2. Prompts, Messages, and Templates and Multimodality
 
 | Project                                                                                                                                     | Description                                                              |
@@ -152,7 +151,6 @@ _Coming soon_
 * [Composer Assistant (Thomas Vitale)](https://github.com/ThomasVitale/concerto-for-java-and-ai)
 * [Document Assistant (Marcus Hellberg)](https://github.com/marcushellberg/docs-assistant)
 * [Flight Booking (Christian Tzolov)](https://github.com/tzolov/playground-flight-booking)
-* [Spring AI Chat (VMware Tanzu)](https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/spring-ai-chat)
 
 ### Workshops
 
