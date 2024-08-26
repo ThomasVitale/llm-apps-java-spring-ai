@@ -1,4 +1,4 @@
-# Prompts with Multimodality: OpenAi
+# Multimodality: OpenAi
 
 Multimodality with LLMs via OpenAI.
 

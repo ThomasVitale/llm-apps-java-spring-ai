@@ -1,4 +1,4 @@
-# Prompts with Multimodality: Ollama
+# Multimodality: Ollama
 
 Multimodality with LLMs via Ollama.
 
