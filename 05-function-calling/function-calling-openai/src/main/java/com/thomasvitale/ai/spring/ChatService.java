@@ -3,6 +3,9 @@ package com.thomasvitale.ai.spring;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
+/**
+ * Chat examples using the high-level ChatClient API.
+ */
 @Service
 class ChatService {
 

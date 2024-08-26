@@ -1,18 +1,20 @@
-package com.thomasvitale.ai.spring;
+package com.thomasvitale.ai.spring.model;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Chat examples using the high-level ChatClient API.
+ * Chat examples using the low-level ChatModel API.
  */
 @RestController
-class ChatController {
+@RequestMapping("/model")
+class ChatModelController {
 
-    private final ChatService chatService;
+    private final ChatModelService chatService;
 
-    ChatController(ChatService chatService) {
+    ChatModelController(ChatModelService chatService) {
         this.chatService = chatService;
     }
 

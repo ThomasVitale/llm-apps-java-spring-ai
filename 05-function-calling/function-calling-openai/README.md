@@ -23,15 +23,15 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI and _gpt-4o_ to call functions in order to answer questions.
+You can now call the application that will use OpenAI to call functions in order to answer questions.
 This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/chat/function
+http :8080/chat/function -b
 ```
 
 Try passing your custom prompt and check the result.
 
 ```shell
-http :8080/chat/function authorName=="Philip Pullman"
+http :8080/chat/function authorName=="Philip Pullman" -b
 ```

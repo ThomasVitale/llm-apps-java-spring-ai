@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
+    id 'org.graalvm.buildtools.native'
 }
 
 group = 'com.thomasvitale'
@@ -28,9 +29,7 @@ dependencies {
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
-    testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:ollama'
 }
 
