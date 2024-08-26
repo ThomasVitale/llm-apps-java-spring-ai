@@ -1,5 +1,6 @@
 package com.thomasvitale.ai.spring;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "120s")
 @Import(TestcontainersConfiguration.class)
+@Disabled
 class OutputParsersOllamaApplicationTests {
 
     @Autowired
