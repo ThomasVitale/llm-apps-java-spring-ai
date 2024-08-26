@@ -24,8 +24,8 @@ include '02-prompts:prompts-templates-openai'
 include '02-prompts:prompts-multimodality-ollama'
 include '02-prompts:prompts-multimodality-openai'
 
-include '03-output-converters:output-converters-ollama'
-include '03-output-converters:output-converters-openai'
+include '03-structured-output:structured-output-ollama'
+include '03-structured-output:structured-output-openai'
 
 include '04-embedding-models:embedding-models-mistral-ai'
 include '04-embedding-models:embedding-models-ollama'
