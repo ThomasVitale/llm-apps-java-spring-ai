@@ -21,4 +21,9 @@ class ChatController {
         return chatService.getAvailableBooksBy(authorName);
     }
 
+    @GetMapping("/chat/function/explicit")
+    String chatVariant(@RequestParam(defaultValue = "J.R.R. Tolkien") String authorName) {
+        return chatService.getAvailableBooksByWithExplicitFunction(authorName);
+    }
+
 }

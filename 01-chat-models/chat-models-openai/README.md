@@ -50,8 +50,6 @@ class ChatController {
 
 The application relies on an OpenAI API for providing LLMs.
 
-### When using OpenAI
-
 First, make sure you have an [OpenAI account](https://platform.openai.com/signup).
 Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
 
@@ -86,7 +84,7 @@ The next request is configured with a custom temperature value to obtain a more 
 http :8080/chat/generic-options question=="Why is a raven like a writing desk? Give a short answer." -b
 ```
 
-The next request is configured with Open AI-specific customizations.
+The next request is configured with OpenAI-specific customizations.
 
 ```shell
 http :8080/chat/provider-options question=="What can you see beyond what you can see? Give a short answer." -b

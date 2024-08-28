@@ -10,8 +10,6 @@ This example shows how to use both OpenAI and Mistral AI in the same application
 
 The application relies on OpenAI API and Mistral AI API for providing LLMs.
 
-### When using OpenAI and Mistral AI
-
 First, make sure you have an [OpenAI account](https://platform.openai.com/signup).
 Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
 

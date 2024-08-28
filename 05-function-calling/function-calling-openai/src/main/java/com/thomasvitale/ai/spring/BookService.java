@@ -19,7 +19,7 @@ public class BookService {
         books.put(5, new Book("The Silmarillion", "J.R.R. Tolkien"));
     }
 
-    List<Book> getBooksByAuthor(Author author) {
+    public List<Book> getBooksByAuthor(Author author) {
         return books.values().stream()
                 .filter(book -> author.name().equals(book.author()))
                 .toList();

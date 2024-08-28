@@ -6,8 +6,6 @@ Function calling via OpenAI.
 
 The application relies on an OpenAI API for providing LLMs.
 
-### When using OpenAI
-
 First, make sure you have an OpenAI account.
 Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
 
@@ -34,4 +32,10 @@ Try passing your custom prompt and check the result.
 
 ```shell
 http :8080/chat/function authorName=="Philip Pullman" -b
+```
+
+Try again. This time, the function calling strategy is configured in the call at runtime.
+
+```shell
+http :8080/chat/function/explicit authorName=="Philip Pullman" -b
 ```

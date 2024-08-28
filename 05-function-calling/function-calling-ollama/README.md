@@ -43,3 +43,9 @@ Try passing your custom prompt and check the result.
 ```shell
 http :8080/chat/function authorName=="Philip Pullman" -b
 ```
+
+Try again. This time, the function calling strategy is configured in the call at runtime.
+
+```shell
+http :8080/chat/function/explicit authorName=="Philip Pullman" -b
+```

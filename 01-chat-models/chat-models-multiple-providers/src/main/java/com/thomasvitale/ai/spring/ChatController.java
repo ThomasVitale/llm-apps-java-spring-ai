@@ -56,7 +56,7 @@ class ChatController {
         return openAichatClient.prompt()
                 .user(question)
                 .options(OpenAiChatOptions.builder()
-                        .withModel("gpt-4-turbo")
+                        .withModel("gpt-4o-mini")
                         .withTemperature(1.0f)
                         .build())
                 .call()

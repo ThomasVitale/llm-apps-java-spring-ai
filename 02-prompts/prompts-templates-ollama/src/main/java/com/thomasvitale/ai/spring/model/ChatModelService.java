@@ -35,9 +35,9 @@ class ChatModelService {
                 Consider only the musicians that play the {instrument} in that band.
                 """);
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre());
-        var userMessage = userPromptTemplate.createMessage(model);
 
-        var prompt = new Prompt(userMessage);
+        var prompt = userPromptTemplate.create(model);
+
         var chatResponse = chatModel.call(prompt);
         return chatResponse.getResult().getOutput().getContent();
     }

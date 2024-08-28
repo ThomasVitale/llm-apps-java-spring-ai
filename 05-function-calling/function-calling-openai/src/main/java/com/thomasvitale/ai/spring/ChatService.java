@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 class ChatService {
 
+    private final BookService bookService;
     private final ChatClient chatClient;
 
-    ChatService(ChatClient.Builder chatClientBuilder) {
+    ChatService(BookService bookService, ChatClient.Builder chatClientBuilder) {
+        this.bookService = bookService;
         this.chatClient = chatClientBuilder.build();
     }
 
@@ -23,6 +25,23 @@ class ChatService {
                         .param("author", authorName)
                 )
                 .functions("booksByAuthor")
+                .call()
+                .content();
+    }
+
+    String getAvailableBooksByWithExplicitFunction(String authorName) {
+        var userPromptTemplate = "What books written by {author} are available to read?";
+        return chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(userPromptTemplate)
+                        .param("author", authorName)
+                )
+                .function(
+                        "BooksByAuthor",
+                        "Get the list of available books written by the given author",
+                        BookService.Author.class,
+                        bookService::getBooksByAuthor
+                )
                 .call()
                 .content();
     }

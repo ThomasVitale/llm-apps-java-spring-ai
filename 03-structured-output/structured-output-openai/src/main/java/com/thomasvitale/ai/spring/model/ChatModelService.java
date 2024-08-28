@@ -80,6 +80,7 @@ class ChatModelService {
                 """);
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre());
         var prompt = userPromptTemplate.create(model, OpenAiChatOptions.builder()
+                .withModel("gpt-4o-2024-08-06")
                 .withResponseFormat(new OpenAiApi.ChatCompletionRequest.ResponseFormat(OpenAiApi.ChatCompletionRequest.ResponseFormat.Type.JSON_SCHEMA, outputConverter.getJsonSchema()))
                 .build());
 

@@ -2,6 +2,7 @@ package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.converter.ListOutputConverter;
+import org.springframework.ai.converter.MapOutputConverter;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.support.DefaultConversionService;
@@ -54,7 +55,7 @@ class ChatService {
                         .param("instrument", question.instrument())
                 )
                 .call()
-                .entity(new ParameterizedTypeReference<>() {});
+                .entity(new MapOutputConverter());
     }
 
     List<String> chatWithListOutput(MusicQuestion question) {

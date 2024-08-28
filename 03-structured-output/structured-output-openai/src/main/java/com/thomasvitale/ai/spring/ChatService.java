@@ -2,9 +2,9 @@ package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.converter.ListOutputConverter;
+import org.springframework.ai.converter.MapOutputConverter;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +55,7 @@ class ChatService {
                         .param("instrument", question.instrument())
                 )
                 .call()
-                .entity(new ParameterizedTypeReference<>() {});
+                .entity(new MapOutputConverter());
     }
 
     List<String> chatWithListOutput(MusicQuestion question) {

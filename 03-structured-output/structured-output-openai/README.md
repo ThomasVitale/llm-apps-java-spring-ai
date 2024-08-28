@@ -6,8 +6,6 @@ Converting the LLM output to structured Java objects via OpenAI.
 
 The application relies on an OpenAI API for providing LLMs.
 
-### When using OpenAI
-
 First, make sure you have an OpenAI account.
 Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
 

@@ -39,9 +39,9 @@ class ChatModelController {
     @GetMapping("/chat/provider-options")
     String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return chatModel.call(new Prompt(question, OpenAiChatOptions.builder()
-                        .withModel("gpt-4-turbo")
+                        .withModel("gpt-4o-mini")
+                        .withTemperature(0.9f)
                         .withUser("jon.snow")
-                        .withFrequencyPenalty(1.3f)
                         .build()))
                 .getResult().getOutput().getContent();
     }
