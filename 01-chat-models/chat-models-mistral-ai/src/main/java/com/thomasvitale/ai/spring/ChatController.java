@@ -33,7 +33,7 @@ class ChatController {
         return chatClient.prompt()
                 .user(question)
                 .options(ChatOptionsBuilder.builder()
-                        .withTemperature(0.9f)
+                        .withTemperature(0.9)
                         .build())
                 .call()
                 .content();

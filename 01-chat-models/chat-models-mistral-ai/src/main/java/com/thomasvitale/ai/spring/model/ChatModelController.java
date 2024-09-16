@@ -31,7 +31,7 @@ class ChatModelController {
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
-                        .withTemperature(0.9f)
+                        .withTemperature(0.9)
                         .build()))
                 .getResult().getOutput().getContent();
     }

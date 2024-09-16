@@ -39,7 +39,7 @@ class ChatModelController {
     String chatWithMistralAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return mistralAiChatModel.call(new Prompt(question, MistralAiChatOptions.builder()
                         .withModel("open-mixtral-8x7b")
-                        .withTemperature(1.0f)
+                        .withTemperature(1.0)
                         .build()))
                 .getResult().getOutput().getContent();
     }
@@ -48,7 +48,7 @@ class ChatModelController {
     String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return openAiChatModel.call(new Prompt(question, OpenAiChatOptions.builder()
                         .withModel("gpt-4o-mini")
-                        .withTemperature(1.0f)
+                        .withTemperature(1.0)
                         .build()))
                 .getResult().getOutput().getContent();
     }

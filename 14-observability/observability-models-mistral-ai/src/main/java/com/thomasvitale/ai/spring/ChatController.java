@@ -33,7 +33,7 @@ class ChatController {
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatModel.call(new Prompt(message, ChatOptionsBuilder.builder()
-                        .withTemperature(1.3f)
+                        .withTemperature(1.3)
                         .build()))
                 .getResult().getOutput().getContent();
     }
@@ -43,8 +43,8 @@ class ChatController {
         return chatModel.call(new Prompt(message, MistralAiChatOptions.builder()
                         .withMaxTokens(1500)
                         .withStop(List.of("this-is-the-end", "addio"))
-                        .withTemperature(0.7f)
-                        .withTopP(0.1f)
+                        .withTemperature(0.7)
+                        .withTopP(0.1)
                         .build()))
                 .getResult().getOutput().getContent();
     }
@@ -53,7 +53,7 @@ class ChatController {
     String chatWithFunctions(@RequestParam(defaultValue = "Philip Pullman") String author) {
         return chatModel.call(new Prompt("What books written by %s are available to read and what is their bestseller?".formatted(author),
                         MistralAiChatOptions.builder()
-                        .withTemperature(0.3f)
+                        .withTemperature(0.3)
                         .withFunctions(Set.of("booksByAuthor", "bestsellerBookByAuthor"))
                         .build()))
                 .getResult().getOutput().getContent();

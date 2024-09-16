@@ -31,7 +31,7 @@ class ChatModelController {
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
-                        .withTemperature(0.9f)
+                        .withTemperature(0.9)
                         .build()))
                 .getResult().getOutput().getContent();
     }
@@ -40,7 +40,7 @@ class ChatModelController {
     String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return chatModel.call(new Prompt(question, OllamaOptions.create()
                         .withModel("mistral")
-                        .withRepeatPenalty(1.5f)))
+                        .withRepeatPenalty(1.5)))
                 .getResult().getOutput().getContent();
     }
 

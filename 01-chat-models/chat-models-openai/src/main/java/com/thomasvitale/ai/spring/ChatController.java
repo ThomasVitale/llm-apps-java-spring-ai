@@ -33,7 +33,7 @@ class ChatController {
         return chatClient.prompt()
                 .user(question)
                 .options(ChatOptionsBuilder.builder()
-                        .withTemperature(0.9f)
+                        .withTemperature(0.9)
                         .build())
                 .call()
                 .content();
@@ -45,7 +45,7 @@ class ChatController {
                 .user(question)
                 .options(OpenAiChatOptions.builder()
                         .withModel("gpt-4o-mini")
-                        .withTemperature(0.9f)
+                        .withTemperature(0.9)
                         .withUser("jon.snow")
                         .build())
                 .call()

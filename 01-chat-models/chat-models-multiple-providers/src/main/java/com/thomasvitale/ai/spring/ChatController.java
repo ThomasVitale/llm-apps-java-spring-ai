@@ -45,7 +45,7 @@ class ChatController {
                 .user(question)
                 .options(MistralAiChatOptions.builder()
                         .withModel("open-mixtral-8x7b")
-                        .withTemperature(1.0f)
+                        .withTemperature(1.0)
                         .build())
                 .call()
                 .content();
@@ -57,7 +57,7 @@ class ChatController {
                 .user(question)
                 .options(OpenAiChatOptions.builder()
                         .withModel("gpt-4o-mini")
-                        .withTemperature(1.0f)
+                        .withTemperature(1.0)
                         .build())
                 .call()
                 .content();

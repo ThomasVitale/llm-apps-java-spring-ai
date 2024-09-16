@@ -33,7 +33,7 @@ class ChatController {
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatModel.call(new Prompt(message, ChatOptionsBuilder.builder()
-                        .withTemperature(1.3f)
+                        .withTemperature(1.3)
                         .build()))
                 .getResult().getOutput().getContent();
     }
@@ -41,13 +41,13 @@ class ChatController {
     @GetMapping("/chat/ollama-options")
     String chatWithOllamaOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatModel.call(new Prompt(message, OllamaOptions.builder()
-                        .withFrequencyPenalty(1.3f)
+                        .withFrequencyPenalty(1.3)
                         .withNumPredict(1500)
-                        .withPresencePenalty(1.0f)
+                        .withPresencePenalty(1.0)
                         .withStop(List.of("this-is-the-end", "addio"))
-                        .withTemperature(0.7f)
+                        .withTemperature(0.7)
                         .withTopK(1)
-                        .withTopP(0f)
+                        .withTopP(0.0)
                         .build()))
                 .getResult().getOutput().getContent();
     }
@@ -56,7 +56,7 @@ class ChatController {
     String chatWithFunctions(@RequestParam(defaultValue = "Philip Pullman") String author) {
         return chatModel.call(new Prompt("What books written by %s are available to read and what is their bestseller?".formatted(author),
                         OllamaOptions.builder()
-                        .withTemperature(0.3f)
+                        .withTemperature(0.3)
                         .withFunctions(Set.of("booksByAuthor", "bestsellerBookByAuthor"))
                         .build()))
                 .getResult().getOutput().getContent();

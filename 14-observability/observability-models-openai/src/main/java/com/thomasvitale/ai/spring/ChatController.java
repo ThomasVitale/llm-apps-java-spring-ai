@@ -33,7 +33,7 @@ class ChatController {
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatModel.call(new Prompt(message, ChatOptionsBuilder.builder()
-                        .withTemperature(1.3f)
+                        .withTemperature(1.3)
                         .build()))
                 .getResult().getOutput().getContent();
     }
@@ -41,12 +41,12 @@ class ChatController {
     @GetMapping("/chat/openai-options")
     String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String message) {
         return chatModel.call(new Prompt(message, OpenAiChatOptions.builder()
-                        .withFrequencyPenalty(1.3f)
+                        .withFrequencyPenalty(1.3)
                         .withMaxTokens(1500)
-                        .withPresencePenalty(1.0f)
+                        .withPresencePenalty(1.0)
                         .withStop(List.of("this-is-the-end", "addio"))
-                        .withTemperature(0.7f)
-                        .withTopP(0f)
+                        .withTemperature(0.7)
+                        .withTopP(0.0)
                         .withUser("jon.snow")
                         .build()))
                 .getResult().getOutput().getContent();
@@ -56,7 +56,7 @@ class ChatController {
     String chatWithFunctions(@RequestParam(defaultValue = "Philip Pullman") String author) {
         return chatModel.call(new Prompt("What books written by %s are available to read and what is their bestseller?".formatted(author),
                         OpenAiChatOptions.builder()
-                        .withTemperature(0.3f)
+                        .withTemperature(0.3)
                         .withFunctions(Set.of("booksByAuthor", "bestsellerBookByAuthor"))
                         .build()))
                 .getResult().getOutput().getContent();
