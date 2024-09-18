@@ -4,7 +4,7 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 
 ## Pre-Requisites
 
-* Java 22
+* Java 23
 * Docker/Podman
 * [Mistral AI](https://console.mistral.ai) API Key (optional)
 * [OpenAI](https://platform.openai.com) API Key (optional)
