@@ -38,8 +38,8 @@ class ChatController {
 
     @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+        return chatClient
+                .prompt(question)
                 .call()
                 .content();
     }
