@@ -36,6 +36,7 @@ include '06-embedding-models:embedding-models-transformers'
 include '07-data-ingestion:document-readers-json-ollama'
 include '07-data-ingestion:document-readers-pdf-ollama'
 include '07-data-ingestion:document-readers-text-ollama'
+include '07-data-ingestion:document-readers-tika-ollama'
 include '07-data-ingestion:document-transformers-metadata-ollama'
 include '07-data-ingestion:document-transformers-splitters-ollama'
 
