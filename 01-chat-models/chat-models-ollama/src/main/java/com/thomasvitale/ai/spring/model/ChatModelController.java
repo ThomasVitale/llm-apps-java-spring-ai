@@ -39,8 +39,16 @@ class ChatModelController {
     @GetMapping("/chat/provider-options")
     String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return chatModel.call(new Prompt(question, OllamaOptions.create()
-                        .withModel("mistral")
+                        .withModel("llama3.2")
                         .withRepeatPenalty(1.5)))
+                .getResult().getOutput().getContent();
+    }
+
+    @GetMapping("/chat/huggingface")
+    String chatWithHuggingFace(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+        return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
+                        .withModel("hf.co/SanctumAI/Meta-Llama-3.1-8B-Instruct-GGUF")
+                        .build()))
                 .getResult().getOutput().getContent();
     }
 

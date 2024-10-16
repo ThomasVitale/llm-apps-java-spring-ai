@@ -14,7 +14,7 @@ class TestcontainersConfiguration {
     @RestartScope
     @ServiceConnection
     OllamaContainer ollama() {
-        return new OllamaContainer(DockerImageName.parse("ghcr.io/thomasvitale/ollama-mistral")
+        return new OllamaContainer(DockerImageName.parse("ghcr.io/thomasvitale/ollama-llama-3-2")
                 .asCompatibleSubstituteFor("ollama/ollama"));
     }
 

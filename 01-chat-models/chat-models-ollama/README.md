@@ -53,10 +53,10 @@ The application relies on Ollama for providing LLMs. You can either run Ollama l
 ### Ollama as a native application
 
 First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-Then, use Ollama to pull the _mistral_ large language model.
+Then, use Ollama to pull the _llama3.2_ large language model.
 
 ```shell
-ollama pull mistral
+ollama pull llama3.2
 ```
 
 Finally, run the Spring Boot application.
@@ -104,4 +104,18 @@ The final request returns the model's answer as a stream.
 
 ```shell
 http --stream :8080/chat/stream question=="Why is a raven like a writing desk? Answer in 3 paragraphs." -b
+```
+
+Ollama lets you run models directly from Hugging Face. Let's try that out.
+
+First, pull the `hf.co/SanctumAI/Meta-Llama-3.1-8B-Instruct-GGUF` model from Hugging Face.
+
+```shell
+ollama pull hf.co/SanctumAI/Meta-Llama-3.1-8B-Instruct-GGUF
+```
+
+Then, send a request.
+
+```shell
+http :8080/chat/hugging-face question=="Why is a raven like a writing desk? Give a short answer." -b
 ```

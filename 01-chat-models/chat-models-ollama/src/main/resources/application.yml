@@ -3,5 +3,5 @@ spring:
     ollama:
       chat:
         options:
-          model: mistral
+          model: llama3.2
           temperature: 0.7

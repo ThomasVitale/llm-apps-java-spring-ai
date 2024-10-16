@@ -22,16 +22,16 @@ class ChatController {
 
     @GetMapping("/chat")
     String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+        return chatClient
+                .prompt(question)
                 .call()
                 .content();
     }
 
     @GetMapping("/chat/generic-options")
     String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+        return chatClient
+                .prompt(question)
                 .options(ChatOptionsBuilder.builder()
                         .withTemperature(0.9)
                         .build())
@@ -41,19 +41,30 @@ class ChatController {
 
     @GetMapping("/chat/provider-options")
     String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+        return chatClient
+                .prompt(question)
                 .options(OllamaOptions.create()
-                        .withModel("mistral")
+                        .withModel("llama3.2")
                         .withRepeatPenalty(1.5))
+                .call()
+                .content();
+    }
+
+    @GetMapping("/chat/huggingface")
+    String chatWithHuggingFace(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+        return chatClient
+                .prompt(question)
+                .options(ChatOptionsBuilder.builder()
+                        .withModel("hf.co/SanctumAI/Meta-Llama-3.1-8B-Instruct-GGUF")
+                        .build())
                 .call()
                 .content();
     }
 
     @GetMapping("/chat/stream")
     Flux<String> chatStream(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+        return chatClient
+                .prompt(question)
                 .stream()
                 .content();
     }
