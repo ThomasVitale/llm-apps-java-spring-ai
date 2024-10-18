@@ -49,17 +49,13 @@ class ChatController {
 ## Running the application
 
 The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop, or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
+Either way, Spring AI will take care of pulling the needed Ollama models if not already available in your instance.
 
 ### Ollama as a native application
 
-First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-Then, use Ollama to pull the _llama3.2_ large language model.
+First, make sure you have [Ollama](https://ollama.ai) installed and running on your laptop.
 
-```shell
-ollama pull llama3.2
-```
-
-Finally, run the Spring Boot application.
+Then, start the Spring Boot application.
 
 ```shell
 ./gradlew bootRun
@@ -108,14 +104,6 @@ http --stream :8080/chat/stream question=="Why is a raven like a writing desk? A
 
 Ollama lets you run models directly from Hugging Face. Let's try that out.
 
-First, pull the `hf.co/SanctumAI/Meta-Llama-3.1-8B-Instruct-GGUF` model from Hugging Face.
-
 ```shell
-ollama pull hf.co/SanctumAI/Meta-Llama-3.1-8B-Instruct-GGUF
-```
-
-Then, send a request.
-
-```shell
-http :8080/chat/hugging-face question=="Why is a raven like a writing desk? Give a short answer." -b
+http :8080/chat/huggingface question=="Why is a raven like a writing desk? Give a short answer." -b
 ```

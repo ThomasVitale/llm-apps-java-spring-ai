@@ -5,7 +5,6 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.ollama.OllamaContainer;
-import org.testcontainers.utility.DockerImageName;
 
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
@@ -14,8 +13,7 @@ class TestcontainersConfiguration {
     @RestartScope
     @ServiceConnection
     OllamaContainer ollama() {
-        return new OllamaContainer(DockerImageName.parse("ghcr.io/thomasvitale/ollama-llama3-2")
-                .asCompatibleSubstituteFor("ollama/ollama"));
+        return new OllamaContainer("ollama/ollama");
     }
 
 }
