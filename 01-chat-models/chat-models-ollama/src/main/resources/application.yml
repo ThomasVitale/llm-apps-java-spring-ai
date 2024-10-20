@@ -3,10 +3,9 @@ spring:
     ollama:
       init:
         pull-model-strategy: when_missing
+        embedding:
+          include: false
       chat:
         options:
-          model: llama3.2
+          model: llama3.2:1b
           temperature: 0.7
-      embedding:
-        options:
-          model: nomic-embed-text

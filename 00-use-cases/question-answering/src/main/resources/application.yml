@@ -1,9 +1,11 @@
 spring:
   ai:
     ollama:
+      init:
+        pull-model-strategy: when_missing
       chat:
         options:
-          model: mistral
+          model: llama3.2
           num-ctx: 4096
       embedding:
         options:

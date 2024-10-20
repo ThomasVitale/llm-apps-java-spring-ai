@@ -10,9 +10,11 @@ spring:
       observations:
         include-prompt: true
     ollama:
+      init:
+        pull-model-strategy: when_missing
       chat:
         options:
-          model: mistral
+          model: qwen2.5:3b
           temperature: 0.7
       embedding:
         options:

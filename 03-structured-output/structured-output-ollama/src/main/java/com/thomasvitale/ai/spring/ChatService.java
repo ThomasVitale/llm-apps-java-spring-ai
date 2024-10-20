@@ -4,7 +4,6 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
 import org.springframework.ai.ollama.api.OllamaOptions;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +24,7 @@ class ChatService {
 
     ArtistInfo chatWithBeanOutput(MusicQuestion question) {
         var userPromptTemplate = """
-                Tell me name and band of one musician famous for playing in a {genre} band.
-                Consider only the musicians that play the {instrument} in that band.
+                Tell me the names of three musicians famous for playing the {instrument} in a {genre} band.
                 """;
 
         return chatClient.prompt()
@@ -42,26 +40,18 @@ class ChatService {
                 .entity(ArtistInfo.class);
     }
 
-    Map<String,Object> chatWithMapOutput(MusicQuestion question) {
-        var userPromptTemplate = """
-                Tell me the names of three musicians famous for playing in a {genre} band.
-                Consider only the musicians that play the {instrument} in that band.
-                """;
-
-        return chatClient.prompt()
-                .user(userSpec -> userSpec
-                        .text(userPromptTemplate)
-                        .param("genre", question.genre())
-                        .param("instrument", question.instrument())
-                )
+    Map<String,Object> chatWithMapOutput() {
+        return chatClient.prompt("""
+                    For each letter in the RGB color scheme, tell me what it stands for.
+                    Example: R -> Red.
+                    """)
                 .call()
                 .entity(new MapOutputConverter());
     }
 
     List<String> chatWithListOutput(MusicQuestion question) {
         var userPromptTemplate = """
-                Tell me the names of three musicians famous for playing in a {genre} band.
-                Consider only the musicians that play the {instrument} in that band.
+                Tell me the names of three musicians famous for playing the {instrument} in a {genre} band.
                 """;
 
         return chatClient.prompt()

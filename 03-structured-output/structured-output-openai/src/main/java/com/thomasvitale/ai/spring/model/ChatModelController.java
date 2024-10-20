@@ -30,8 +30,8 @@ class ChatModelController {
     }
 
     @PostMapping("/chat/map")
-    Map<String,Object> chatWithMapOutput(@RequestBody MusicQuestion question) {
-        return chatModelService.chatWithMapOutput(question);
+    Map<String,Object> chatWithMapOutput() {
+        return chatModelService.chatWithMapOutput();
     }
 
     @PostMapping("/chat/list")

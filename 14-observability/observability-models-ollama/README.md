@@ -4,20 +4,15 @@ LLM Observability for Ollama.
 
 ## Running the application
 
-The application relies on Ollama for providing LLMs. The application also relies on Testcontainers to provision automatically
-a Grafana LGTM observability stack.
+The application relies on Ollama for providing LLMs. Spring AI will take care of pulling the needed Ollama models if not already available in your instance.
+
+The application also relies on Testcontainers to provision automatically a Grafana LGTM observability stack.
 
 ### Ollama as a native application
 
 First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-Then, use Ollama to run the _mistral_ and _nomic-embed-text_ models. Those are the ones we'll use in this example.
 
-```shell
-ollama run mistral
-ollama run nomic-embed-text
-```
-
-Finally, run the Spring Boot application.
+Then, run the Spring Boot application.
 
 ```shell
 ./gradlew bootTestRun

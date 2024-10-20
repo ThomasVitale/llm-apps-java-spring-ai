@@ -5,17 +5,13 @@ Converting the LLM output to structured Java objects via Ollama.
 ## Running the application
 
 The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop, or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
+Either way, Spring AI will take care of pulling the needed Ollama models if not already available in your instance.
 
 ### Ollama as a native application
 
 First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-Then, use Ollama to pull the _mistral_ large language model.
 
-```shell
-ollama pull mistral
-```
-
-Finally, run the Spring Boot application.
+Then, run the Spring Boot application.
 
 ```shell
 ./gradlew bootRun
@@ -39,7 +35,7 @@ http :8080/chat/bean genre="rock" instrument="piano" -b
 ```
 
 ```shell
-http :8080/chat/map genre="rock" instrument="piano" -b
+http POST :8080/chat/map -b
 ```
 
 ```shell

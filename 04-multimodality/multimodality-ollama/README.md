@@ -5,17 +5,13 @@ Multimodality with LLMs via Ollama.
 ## Running the application
 
 The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop, or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
+Either way, Spring AI will take care of pulling the needed Ollama models if not already available in your instance.
 
 ### Ollama as a native application
 
 First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-Then, use Ollama to pull the _llava_ large language model. That's what we'll use in this example.
 
-```shell
-ollama pull llava
-```
-
-Finally, run the Spring Boot application.
+Then, run the Spring Boot application.
 
 ```shell
 ./gradlew bootRun

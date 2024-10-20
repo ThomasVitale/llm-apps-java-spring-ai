@@ -45,7 +45,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(OllamaOptions.create()
-                        .withModel("llama3.2")
+                        .withModel("llama3.2:1b")
                         .withRepeatPenalty(1.5))
                 .call()
                 .content();

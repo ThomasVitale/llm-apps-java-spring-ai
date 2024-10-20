@@ -29,7 +29,7 @@ http :8080/chat/bean genre="rock" instrument="piano" -b
 ```
 
 ```shell
-http :8080/chat/map genre="rock" instrument="piano" -b
+http POST :8080/chat/map -b
 ```
 
 ```shell
