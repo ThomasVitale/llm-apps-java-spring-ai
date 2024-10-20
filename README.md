@@ -87,7 +87,10 @@ _Coming soon_
 
 ### 9. Retrieval Augmented Generation (RAG)
 
-_Coming soon_
+| Project                                                                                                     | Description                                                                           |
+|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| [rag-basic](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-rag/rag-basic)             | Basic question answering with documents (RAG) using LLMs via Ollama and PGVector.     |
+| [rag-advanced](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-rag/rag-advanced) | Advanced question answering with documents (RAG) using LLMs via Ollama and PGVector.  |
 
 ### 10. Memory
 

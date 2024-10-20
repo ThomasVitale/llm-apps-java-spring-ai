@@ -1,0 +1,17 @@
+spring:
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+      chat:
+        options:
+          model: qwen2.5
+          num-ctx: 4096
+      embedding:
+        options:
+          model: nomic-embed-text
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        dimensions: 768
+        index-type: hnsw

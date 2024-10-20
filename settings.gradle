@@ -40,6 +40,9 @@ include '07-data-ingestion:document-readers-tika-ollama'
 include '07-data-ingestion:document-transformers-metadata-ollama'
 include '07-data-ingestion:document-transformers-splitters-ollama'
 
+include '09-rag:rag-basic'
+include '09-rag:rag-advanced'
+
 include '11-image-models:image-models-openai'
 
 include '12-audio-models:audio-models-speech-openai'
