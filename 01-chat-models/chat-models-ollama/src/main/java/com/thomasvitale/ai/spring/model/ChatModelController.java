@@ -4,7 +4,6 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.api.OllamaOptions;
-import org.springframework.ai.ollama.management.PullModelStrategy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,7 +48,6 @@ class ChatModelController {
     String chatWithHuggingFace(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
         return chatModel.call(new Prompt(question, OllamaOptions.builder()
                         .withModel("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
-                        .withPullModelStrategy(PullModelStrategy.WHEN_MISSING)
                         .build()))
                 .getResult().getOutput().getContent();
     }
