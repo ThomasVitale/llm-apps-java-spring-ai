@@ -1,4 +1,4 @@
-# Retrieval Augmented Generation (RAG): Basic
+# Retrieval Augmented Generation (RAG): Naive
 
 Ask questions about documents with LLMs via Ollama and PGVector.
 

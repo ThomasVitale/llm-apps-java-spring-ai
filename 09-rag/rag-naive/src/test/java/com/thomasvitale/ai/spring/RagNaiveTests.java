@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Disabled
-class RagBasicTests {
+class RagNaiveTests {
 
     @Test
     void contextLoads() {
