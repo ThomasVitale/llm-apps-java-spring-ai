@@ -25,7 +25,7 @@ class ChatService {
 
     ArtistInfo chatWithBeanOutput(MusicQuestion question) {
         var userPromptTemplate = """
-                Tell me the names of three musicians famous for playing the {instrument} in a {genre} band.
+                Tell me the names of one musician famous for playing the {instrument} in a {genre} band.
                 """;
 
         return chatClient.prompt()
