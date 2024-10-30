@@ -7,5 +7,5 @@ spring:
           include: false
       chat:
         options:
-          model: llama3.2
+          model: llama3.2:1b
           temperature: 0.7

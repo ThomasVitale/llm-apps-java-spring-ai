@@ -18,8 +18,8 @@ class ChatModelsMultipleProvidersApplicationTests {
     WebTestClient webTestClient;
 
     @ParameterizedTest
-    @ValueSource(strings = {"/chat/mistral-ai", "/model/chat/mistral-ai"})
-    @EnabledIfEnvironmentVariable(named = "SPRING_AI_MISTRALAI_API_KEY", matches = ".*")
+    @ValueSource(strings = {"/chat/mistral-ai", "/model/chat/mistral-ai", "/chat/mistral-ai-options", "/model/chat/mistral-ai-options"})
+    @EnabledIfEnvironmentVariable(named = "MISTRALAI_API_KEY", matches = ".*")
     void chatMistralAi(String path) {
         webTestClient
                 .get()
@@ -35,8 +35,8 @@ class ChatModelsMultipleProvidersApplicationTests {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"/chat/openai", "/model/chat/openai"})
-    @EnabledIfEnvironmentVariable(named = "SPRING_AI_OPENAI_API_KEY", matches = ".*")
+    @ValueSource(strings = {"/chat/openai", "/model/chat/openai", "/chat/openai-options", "/model/chat/openai-options"})
+    @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
     void chatOpenAI(String path) {
         webTestClient
                 .get()

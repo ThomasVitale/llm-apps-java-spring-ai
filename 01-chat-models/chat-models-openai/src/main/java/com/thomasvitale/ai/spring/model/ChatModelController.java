@@ -4,6 +4,7 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,30 +25,29 @@ class ChatModelController {
     }
 
     @GetMapping("/chat")
-    String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chat(@RequestParam String question) {
         return chatModel.call(question);
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithGenericOptions(@RequestParam String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
+                        .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
                         .withTemperature(0.9)
                         .build()))
                 .getResult().getOutput().getContent();
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithProviderOptions(@RequestParam String question) {
         return chatModel.call(new Prompt(question, OpenAiChatOptions.builder()
-                        .withModel("gpt-4o-mini")
-                        .withTemperature(0.9)
-                        .withUser("jon.snow")
+                        .withLogprobs(true)
                         .build()))
                 .getResult().getOutput().getContent();
     }
 
     @GetMapping("/chat/stream")
-    Flux<String> chatStream(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    Flux<String> chatStream(@RequestParam String question) {
         return chatModel.stream(question);
     }
 

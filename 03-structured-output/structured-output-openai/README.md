@@ -2,18 +2,27 @@
 
 Converting the LLM output to structured Java objects via OpenAI.
 
-## Running the application
+## OpenAI
 
-The application relies on an OpenAI API for providing LLMs.
+The application relies on the OpenAI API for providing LLMs.
 
-First, make sure you have an OpenAI account.
-Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
+### Create an OpenAI account
+
+Visit [https://platform.openai.com](platform.openai.com) and sign up for a new account.
+
+### Configure API Key
+
+In the OpenAI console, navigate to _Dashboard > API Keys_ and generate a new API key.
+Copy and securely store your API key on your machine as an environment variable.
+The application will use it to access the OpenAI API.
 
 ```shell
-export SPRING_AI_OPENAI_API_KEY=<INSERT KEY HERE>
+export OPENAI_API_KEY=<YOUR-API-KEY>
 ```
 
-Finally, run the Spring Boot application.
+## Running the application
+
+Run the application.
 
 ```shell
 ./gradlew bootRun
@@ -21,8 +30,10 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI to generate an answer to your questions.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use a chat model to answer your question.
 
 ```shell
 http :8080/chat/bean genre="rock" instrument="piano" -b

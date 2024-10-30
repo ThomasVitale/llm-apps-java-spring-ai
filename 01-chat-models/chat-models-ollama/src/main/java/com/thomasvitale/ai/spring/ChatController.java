@@ -21,7 +21,7 @@ class ChatController {
     }
 
     @GetMapping("/chat")
-    String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chat(@RequestParam String question) {
         return chatClient
                 .prompt(question)
                 .call()
@@ -29,10 +29,11 @@ class ChatController {
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithGenericOptions(@RequestParam String question) {
         return chatClient
                 .prompt(question)
                 .options(ChatOptionsBuilder.builder()
+                        .withModel("llama3.2:1b")
                         .withTemperature(0.9)
                         .build())
                 .call()
@@ -40,21 +41,21 @@ class ChatController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithProviderOptions(@RequestParam String question) {
         return chatClient
                 .prompt(question)
-                .options(OllamaOptions.create()
-                        .withModel("llama3.2:1b")
-                        .withRepeatPenalty(1.5))
+                .options(OllamaOptions.builder()
+                        .withRepeatPenalty(1.5)
+                        .build())
                 .call()
                 .content();
     }
 
     @GetMapping("/chat/huggingface")
-    String chatWithHuggingFace(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithHuggingFace(@RequestParam String question) {
         return chatClient
                 .prompt(question)
-                .options(OllamaOptions.create()
+                .options(ChatOptionsBuilder.builder()
                         .withModel("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
                         .build())
                 .call()
@@ -62,7 +63,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/stream")
-    Flux<String> chatStream(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    Flux<String> chatStream(@RequestParam String question) {
         return chatClient
                 .prompt(question)
                 .stream()

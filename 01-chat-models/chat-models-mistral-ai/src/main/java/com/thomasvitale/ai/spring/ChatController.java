@@ -3,6 +3,7 @@ package com.thomasvitale.ai.spring;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
+import org.springframework.ai.mistralai.api.MistralAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,18 +22,19 @@ class ChatController {
     }
 
     @GetMapping("/chat")
-    String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+    String chat(@RequestParam String question) {
+        return chatClient
+                .prompt(question)
                 .call()
                 .content();
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+    String chatWithGenericOptions(@RequestParam String question) {
+        return chatClient
+                .prompt(question)
                 .options(ChatOptionsBuilder.builder()
+                        .withModel(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getName())
                         .withTemperature(0.9)
                         .build())
                 .call()
@@ -40,11 +42,10 @@ class ChatController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+    String chatWithProviderOptions(@RequestParam String question) {
+        return chatClient
+                .prompt(question)
                 .options(MistralAiChatOptions.builder()
-                        .withModel("open-mixtral-8x7b")
                         .withSafePrompt(true)
                         .build())
                 .call()
@@ -52,9 +53,9 @@ class ChatController {
     }
 
     @GetMapping("/chat/stream")
-    Flux<String> chatStream(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatClient.prompt()
-                .user(question)
+    Flux<String> chatStream(@RequestParam String question) {
+        return chatClient
+                .prompt(question)
                 .stream()
                 .content();
     }

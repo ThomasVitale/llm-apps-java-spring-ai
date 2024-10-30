@@ -6,25 +6,46 @@ Text generation with LLMs via multiple providers.
 
 This example shows how to use both OpenAI and Mistral AI in the same application.
 
+## OpenAI
+
+The application relies on the OpenAI API for providing LLMs.
+
+### Create an OpenAI account
+
+Visit [https://platform.openai.com](platform.openai.com) and sign up for a new account.
+
+### Configure API Key
+
+In the OpenAI console, navigate to _Dashboard > API Keys_ and generate a new API key.
+Copy and securely store your API key on your machine as an environment variable.
+The application will use it to access the OpenAI API.
+
+```shell
+export OPENAI_API_KEY=<YOUR-API-KEY>
+```
+
+## Mistral AI
+
+The application relies on the Mistral AI API for providing LLMs.
+
+### Create a Mistral AI account
+
+Visit [https://console.mistral.ai](console.mistral.ai) and sign up for a new account.
+You can choose the "Experiment" plan, which gives you access to the Mistral APIs for free.
+
+### Configure API Key
+
+In the Mistral AI console, navigate to _API Keys_ and generate a new API key.
+Copy and securely store your API key on your machine as an environment variable.
+The application will use it to access the Mistral AI API.
+
+```shell
+export MISTRALAI_API_KEY=<YOUR-API-KEY>
+```
+
 ## Running the application
 
-The application relies on OpenAI API and Mistral AI API for providing LLMs.
-
-First, make sure you have an [OpenAI account](https://platform.openai.com/signup).
-Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
-
-```shell
-export SPRING_AI_OPENAI_API_KEY=<INSERT KEY HERE>
-```
-
-You also need a [Mistral AI account](https://console.mistral.ai).
-Then, define an environment variable with the Mistral AI API Key associated to your Mistral AI account as the value.
-
-```shell
-export SPRING_AI_MISTRALAI_API_KEY=<INSERT KEY HERE>
-```
-
-Finally, run the Spring Boot application.
+Run the application.
 
 ```shell
 ./gradlew bootRun
@@ -32,8 +53,10 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use either OpenAI or Mistral AI to generate text based on a default prompt.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use a chat model to answer your question.
 
 Using OpenAI:
 

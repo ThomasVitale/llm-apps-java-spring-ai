@@ -1,3 +1,9 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://repo.spring.io/milestone' }
+        gradlePluginPortal()
+    }
+}
 rootProject.name = 'llm-apps-java-spring-ai'
 
 include '00-use-cases:chatbot'

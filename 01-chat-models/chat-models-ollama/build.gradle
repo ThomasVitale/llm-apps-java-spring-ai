@@ -31,6 +31,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
     testImplementation 'org.testcontainers:ollama'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {

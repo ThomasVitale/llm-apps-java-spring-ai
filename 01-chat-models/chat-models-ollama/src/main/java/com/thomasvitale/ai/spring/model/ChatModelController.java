@@ -24,36 +24,37 @@ class ChatModelController {
     }
 
     @GetMapping("/chat")
-    String chat(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chat(@RequestParam String question) {
         return chatModel.call(question);
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithGenericOptions(@RequestParam String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
+                        .withModel("llama3.2:1b")
                         .withTemperature(0.9)
                         .build()))
                 .getResult().getOutput().getContent();
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatModel.call(new Prompt(question, OllamaOptions.create()
-                        .withModel("llama3.2:1b")
-                        .withRepeatPenalty(1.5)))
+    String chatWithProviderOptions(@RequestParam String question) {
+        return chatModel.call(new Prompt(question, OllamaOptions.builder()
+                        .withRepeatPenalty(1.5)
+                        .build()))
                 .getResult().getOutput().getContent();
     }
 
     @GetMapping("/chat/huggingface")
-    String chatWithHuggingFace(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
-        return chatModel.call(new Prompt(question, OllamaOptions.builder()
+    String chatWithHuggingFace(@RequestParam String question) {
+        return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
                         .withModel("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
                         .build()))
                 .getResult().getOutput().getContent();
     }
 
     @GetMapping("/chat/stream")
-    Flux<String> chatStream(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    Flux<String> chatStream(@RequestParam String question) {
         return chatModel.stream(question);
     }
 

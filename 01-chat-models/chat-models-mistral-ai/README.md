@@ -1,12 +1,12 @@
-# Chat Models: OpenAI
+# Chat Models: Mistral AI
 
-Text generation with LLMs via OpenAI.
+Text generation with LLMs via Mistral AI.
 
 ## Description
 
-Spring AI provides a `ChatModel` low-level abstraction for integrating with LLMs via several providers, including OpenAI.
+Spring AI provides a `ChatModel` low-level abstraction for integrating with LLMs via several providers, including Mistral AI.
 
-When using the _Spring AI OpenAI Spring Boot Starter_, a `ChatModel` object is autoconfigured for you to use OpenAI.
+When using the _Spring AI Mistral AI Spring Boot Starter_, a `ChatModel` object is autoconfigured for you to use Mistral AI.
 
 ```java
 @Bean
@@ -35,22 +35,23 @@ CommandLineRunner chat(ChatClient.Builder chatClientBuilder) {
 }
 ```
 
-## OpenAI
+## Mistral AI
 
-The application relies on the OpenAI API for providing LLMs.
+The application relies on the Mistral AI API for providing LLMs.
 
-### Create an OpenAI account
+### Create a Mistral AI account
 
-Visit [https://platform.openai.com](platform.openai.com) and sign up for a new account.
+Visit [https://console.mistral.ai](console.mistral.ai) and sign up for a new account.
+You can choose the "Experiment" plan, which gives you access to the Mistral APIs for free.
 
 ### Configure API Key
 
-In the OpenAI console, navigate to _Dashboard > API Keys_ and generate a new API key.
+In the Mistral AI console, navigate to _API Keys_ and generate a new API key.
 Copy and securely store your API key on your machine as an environment variable.
-The application will use it to access the OpenAI API.
+The application will use it to access the Mistral AI API.
 
 ```shell
-export OPENAI_API_KEY=<YOUR-API-KEY>
+export MISTRALAI_API_KEY=<YOUR-API-KEY>
 ```
 
 ## Running the application

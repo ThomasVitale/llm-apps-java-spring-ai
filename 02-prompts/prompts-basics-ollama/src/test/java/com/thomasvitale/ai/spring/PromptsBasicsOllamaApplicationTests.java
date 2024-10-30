@@ -19,7 +19,7 @@ class PromptsBasicsOllamaApplicationTests {
     WebTestClient webTestClient;
 
     @ParameterizedTest
-    @ValueSource(strings = {"/chat/simple", "/model/chat/simple", "/chat/prompt", "/model/chat/prompt"})
+    @ValueSource(strings = {"/chat/simple", "/model/chat/simple", "/chat/prompt", "/model/chat/prompt", "/chat/full", "/model/chat/full"})
     void chat(String path) {
         webTestClient
                 .post()

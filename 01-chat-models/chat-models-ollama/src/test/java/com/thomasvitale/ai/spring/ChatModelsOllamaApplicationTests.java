@@ -19,7 +19,7 @@ class ChatModelsOllamaApplicationTests {
     WebTestClient webTestClient;
 
     @ParameterizedTest
-    @ValueSource(strings = {"/chat", "/model/chat", "/chat/stream", "/model/chat/stream"})
+    @ValueSource(strings = {"/chat", "/model/chat", "/chat/generic-options", "/model/chat/generic-options", "/chat/provider-options", "/model/chat/provider-options", "/chat/stream", "/model/chat/stream"})
     void chat(String path) {
         webTestClient
                 .get()

@@ -1,6 +1,8 @@
 package com.thomasvitale.ai.spring.model;
 
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,25 +15,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/model")
 class ChatModelController {
 
-    private final ChatModelService chatModelService;
+    private final ChatModel chatModel;
 
-    ChatModelController(ChatModelService chatModelService) {
-        this.chatModelService = chatModelService;
+    ChatModelController(ChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @PostMapping("/chat/simple")
-    String chatWithText(@RequestBody String question) {
-        return chatModelService.chatWithText(question);
+    String chatText(@RequestBody String question) {
+        return chatModel.call(question);
     }
 
     @PostMapping("/chat/prompt")
-    String chatWithPrompt(@RequestBody String question) {
-        return chatModelService.chatWithPrompt(question).getResult().getOutput().getContent();
+    String chatPrompt(@RequestBody String question) {
+        return chatModel.call(new Prompt(question)).getResult().getOutput().getContent();
     }
 
     @PostMapping("/chat/full")
-    ChatResponse chatWithPromptAndFullResponse(@RequestBody String question) {
-        return chatModelService.chatWithPrompt(question);
+    ChatResponse chatFullResponse(@RequestBody String question) {
+        return chatModel.call(new Prompt(question));
     }
 
 }

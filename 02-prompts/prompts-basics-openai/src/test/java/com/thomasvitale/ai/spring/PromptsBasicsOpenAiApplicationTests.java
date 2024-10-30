@@ -12,14 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "60s")
-@EnabledIfEnvironmentVariable(named = "SPRING_AI_OPENAI_API_KEY", matches = ".*")
+@EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
 class PromptsBasicsOpenAiApplicationTests {
 
     @Autowired
     WebTestClient webTestClient;
 
     @ParameterizedTest
-    @ValueSource(strings = {"/chat/simple", "/model/chat/simple", "/chat/prompt", "/model/chat/prompt"})
+    @ValueSource(strings = {"/chat/simple", "/model/chat/simple", "/chat/prompt", "/model/chat/prompt", "/chat/full", "/model/chat/full"})
     void chat(String path) {
         webTestClient
                 .post()

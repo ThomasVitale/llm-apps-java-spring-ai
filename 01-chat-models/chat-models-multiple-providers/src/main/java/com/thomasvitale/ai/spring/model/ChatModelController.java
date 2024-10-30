@@ -3,8 +3,10 @@ package com.thomasvitale.ai.spring.model;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.mistralai.MistralAiChatModel;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
+import org.springframework.ai.mistralai.api.MistralAiApi;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,28 +28,28 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/mistral-ai")
-    String chatMistralAi(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatMistralAi(@RequestParam String question) {
         return mistralAiChatModel.call(question);
     }
 
     @GetMapping("/chat/openai")
-    String chatOpenAi(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatOpenAi(@RequestParam String question) {
         return openAiChatModel.call(question);
     }
 
     @GetMapping("/chat/mistral-ai-options")
-    String chatWithMistralAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithMistralAiOptions(@RequestParam String question) {
         return mistralAiChatModel.call(new Prompt(question, MistralAiChatOptions.builder()
-                        .withModel("open-mixtral-8x7b")
+                        .withModel(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getValue())
                         .withTemperature(1.0)
                         .build()))
                 .getResult().getOutput().getContent();
     }
 
     @GetMapping("/chat/openai-options")
-    String chatWithOpenAiOptions(@RequestParam(defaultValue = "What did Gandalf say to the Balrog?") String question) {
+    String chatWithOpenAiOptions(@RequestParam String question) {
         return openAiChatModel.call(new Prompt(question, OpenAiChatOptions.builder()
-                        .withModel("gpt-4o-mini")
+                        .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
                         .withTemperature(1.0)
                         .build()))
                 .getResult().getOutput().getContent();

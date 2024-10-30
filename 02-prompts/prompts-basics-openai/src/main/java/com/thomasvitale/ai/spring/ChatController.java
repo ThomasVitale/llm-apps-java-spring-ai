@@ -1,6 +1,10 @@
 package com.thomasvitale.ai.spring;
 
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
+import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,25 +15,38 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class ChatController {
 
-    private final ChatService chatService;
+    private final ChatClient chatClient;
 
-    ChatController(ChatService chatService) {
-        this.chatService = chatService;
+    ChatController(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
     }
 
     @PostMapping("/chat/simple")
-    String chatWithText(@RequestBody String question) {
-        return chatService.chatWithText(question);
+    String chatText(@RequestBody String question) {
+        return chatClient
+                .prompt(question)
+                .call()
+                .content();
     }
 
     @PostMapping("/chat/prompt")
-    String chatWithPrompt(@RequestBody String question) {
-        return chatService.chatWithPrompt(question).getResult().getOutput().getContent();
+    String chatPrompt(@RequestBody String question) {
+        var chatResponse = chatClient
+                .prompt(new Prompt(question))
+                .call()
+                .chatResponse();
+        return chatResponse.getResult().getOutput().getContent();
     }
 
     @PostMapping("/chat/full")
-    ChatResponse chatWithPromptAndFullResponse(@RequestBody String question) {
-        return chatService.chatWithPrompt(question);
+    ChatResponse chatFullResponse(@RequestBody String question) {
+        return chatClient
+                .prompt(question)
+                .options(ChatOptionsBuilder.builder()
+                        .withModel(OpenAiApi.ChatModel.O1_PREVIEW.getValue())
+                        .build())
+                .call()
+                .chatResponse();
     }
 
 }
