@@ -3,9 +3,9 @@
 Text generation with LLMs via link:https://mistral.ai/[Mistral AI].
 
 :model-provider: Mistral AI
-include::../../docs/models/chat/api-description.adoc[]
+include::/docs/models/chat/api-description.adoc[]
 
-include::../../docs/models/providers/mistral-ai.adoc[]
+include::/docs/models/providers/mistral-ai.adoc[]
 
 == Running the application
 
