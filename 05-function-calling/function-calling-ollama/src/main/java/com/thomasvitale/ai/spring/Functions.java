@@ -11,7 +11,7 @@ import java.util.function.Function;
 public class Functions {
 
     @Bean
-    @Description("Get the list of available books written by the given author")
+    @Description("Get the list of available books in the library written by the given author")
     public Function<BookService.Author, List<BookService.Book>> booksByAuthor(BookService bookService) {
         return bookService::getBooksByAuthor;
     }

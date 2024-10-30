@@ -1,0 +1,11 @@
+spring:
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+      chat:
+        options:
+          model: llama3.2
+      embedding:
+        options:
+          model: nomic-embed-text

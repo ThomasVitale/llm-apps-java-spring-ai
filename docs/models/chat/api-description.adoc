@@ -1,0 +1,34 @@
+== Description
+
+Spring AI provides a `ChatModel` low-level abstraction for integrating with LLMs via several providers, including {model-provider}.
+
+When using the _Spring AI {model-provider} Spring Boot Starter_, a `ChatModel` object is autoconfigured for you to use {model-provider}.
+
+[source,java]
+----
+@Bean
+CommandLineRunner chat(ChatModel chatModel) {
+    return _ -> {
+        var response = chatModel.call("What is the capital of Denmark?");
+        System.out.println(response);
+    };
+}
+----
+
+Spring AI also provides a higher-level abstraction for building more advanced LLM workflows: `ChatClient`.
+A `ChatClient.Builder` object is autoconfigured for you to build a `ChatClient` object. Under the hood, it relies on a `ChatModel`.
+
+[source,java]
+----
+@Bean
+CommandLineRunner chat(ChatClient.Builder chatClientBuilder) {
+    var chatClient = chatClientBuilder.build();
+    return _ -> {
+        var response = chatClient
+                .prompt("What is the capital of Denmark?")
+                .call()
+                .content();
+        System.out.println(response);
+    };
+}
+----
