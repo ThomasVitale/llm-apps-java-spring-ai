@@ -9,7 +9,6 @@ import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,17 +27,17 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/mistral-ai")
-    String chatMistralAi(@RequestParam String question) {
+    String chatMistralAi(String question) {
         return mistralAiChatModel.call(question);
     }
 
     @GetMapping("/chat/openai")
-    String chatOpenAi(@RequestParam String question) {
+    String chatOpenAi(String question) {
         return openAiChatModel.call(question);
     }
 
     @GetMapping("/chat/mistral-ai-options")
-    String chatWithMistralAiOptions(@RequestParam String question) {
+    String chatWithMistralAiOptions(String question) {
         return mistralAiChatModel.call(new Prompt(question, MistralAiChatOptions.builder()
                         .withModel(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getValue())
                         .withTemperature(1.0)
@@ -47,7 +46,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/openai-options")
-    String chatWithOpenAiOptions(@RequestParam String question) {
+    String chatWithOpenAiOptions(String question) {
         return openAiChatModel.call(new Prompt(question, OpenAiChatOptions.builder()
                         .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
                         .withTemperature(1.0)

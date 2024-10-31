@@ -1,11 +1,15 @@
 package com.thomasvitale.ai.spring.model;
 
+import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.model.Media;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
 
 /**
  * Chat examples using the low-level ChatModel API.
@@ -14,15 +18,21 @@ import java.io.IOException;
 @RequestMapping("/model")
 class ChatModelController {
 
-    private final ChatModelService chatService;
+    private final ChatModel chatModel;
 
-    ChatModelController(ChatModelService chatService) {
-        this.chatService = chatService;
+    @Value("classpath:tabby-cat.png")
+    private Resource image;
+
+    ChatModelController(ChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/chat/image/file")
-    String chatFromImageFile(@RequestParam(defaultValue = "What do you see in this picture? Give a short answer") String message) throws IOException {
-        return chatService.chatFromImageFile(message);
+    String chatFromImageFile(String question) {
+        var userMessage = new UserMessage(question, new Media(MimeTypeUtils.IMAGE_PNG, image));
+        var prompt = new Prompt(userMessage);
+        var chatResponse = chatModel.call(prompt);
+        return chatResponse.getResult().getOutput().getContent();
     }
 
 }

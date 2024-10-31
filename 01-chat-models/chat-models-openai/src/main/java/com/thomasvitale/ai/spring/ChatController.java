@@ -5,7 +5,6 @@ import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
@@ -22,7 +21,7 @@ class ChatController {
     }
 
     @GetMapping("/chat")
-    String chat(@RequestParam String question) {
+    String chat(String question) {
         return chatClient
                 .prompt(question)
                 .call()
@@ -30,7 +29,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam String question) {
+    String chatWithGenericOptions(String question) {
         return chatClient
                 .prompt(question)
                 .options(ChatOptionsBuilder.builder()
@@ -42,7 +41,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam String question) {
+    String chatWithProviderOptions(String question) {
         return chatClient
                 .prompt(question)
                 .options(OpenAiChatOptions.builder()
@@ -53,7 +52,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/stream")
-    Flux<String> chatStream(@RequestParam String question) {
+    Flux<String> chatStream(String question) {
         return chatClient
                 .prompt(question)
                 .stream()

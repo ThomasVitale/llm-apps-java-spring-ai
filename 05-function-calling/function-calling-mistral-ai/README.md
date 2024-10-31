@@ -2,18 +2,28 @@
 
 Function calling via Mistral AI.
 
-## Running the application
+## Mistral AI
 
 The application relies on the Mistral AI API for providing LLMs.
 
-First, make sure you have a [Mistral AI account](https://console.mistral.ai).
-Then, define an environment variable with the Mistral AI API Key associated to your Mistral AI account as the value.
+### Create a Mistral AI account
+
+Visit [https://console.mistral.ai](console.mistral.ai) and sign up for a new account.
+You can choose the "Experiment" plan, which gives you access to the Mistral APIs for free.
+
+### Configure API Key
+
+In the Mistral AI console, navigate to _API Keys_ and generate a new API key.
+Copy and securely store your API key on your machine as an environment variable.
+The application will use it to access the Mistral AI API.
 
 ```shell
-export SPRING_AI_MISTRALAI_API_KEY=<INSERT KEY HERE>
+export MISTRALAI_API_KEY=<YOUR-API-KEY>
 ```
 
-Finally, run the Spring Boot application.
+## Running the application
+
+Run the application.
 
 ```shell
 ./gradlew bootRun
@@ -21,17 +31,13 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use Mistral AI to call functions in order to answer questions.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use a chat model to answer your question.
 
 ```shell
-http :8080/chat/function -b
-```
-
-Try passing your custom prompt and check the result.
-
-```shell
-http :8080/chat/function authorName=="Philip Pullman" -b
+http :8080/chat/function authorName=="J.R.R. Tolkien" -b
 ```
 
 Try again. This time, the function calling strategy is configured in the call at runtime.

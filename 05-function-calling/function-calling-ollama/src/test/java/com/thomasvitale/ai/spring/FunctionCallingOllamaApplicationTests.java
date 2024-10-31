@@ -19,7 +19,7 @@ class FunctionCallingOllamaApplicationTests {
     WebTestClient webTestClient;
 
     @ParameterizedTest
-    @ValueSource(strings = {"/chat/function", "/model/chat/function"})
+    @ValueSource(strings = {"/chat/function", "/model/chat/function", "/chat/function/explicit", "/model/chat/function/explicit"})
     void chat(String path) {
         webTestClient
                 .get()

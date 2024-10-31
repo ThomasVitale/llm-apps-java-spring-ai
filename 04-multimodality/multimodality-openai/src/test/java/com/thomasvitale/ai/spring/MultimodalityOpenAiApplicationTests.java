@@ -1,7 +1,8 @@
 package com.thomasvitale.ai.spring;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,17 +12,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "60s")
-@EnabledIfEnvironmentVariable(named = "SPRING_AI_OPENAI_API_KEY", matches = ".*")
+@EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
 class MultimodalityOpenAiApplicationTests {
 
     @Autowired
     WebTestClient webTestClient;
 
-    @Test
-    void chatFromImageFile() {
+    @ParameterizedTest
+    @ValueSource(strings = {"/chat/image/file", "/model/chat/image/file"})
+    void chatFromImageFile(String path) {
         webTestClient
                 .get()
-                .uri("/chat/image/file")
+                .uri(uriBuilder -> uriBuilder
+                        .path(path)
+                        .queryParam("question", "What do you see in this picture? Give a short answer")
+                        .build())
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class).value(result -> {
@@ -29,11 +34,15 @@ class MultimodalityOpenAiApplicationTests {
                 });
     }
 
-    @Test
-    void chatFromImageUrl() {
+    @ParameterizedTest
+    @ValueSource(strings = {"/chat/image/url", "/model/chat/image/url"})
+    void chatFromImageUrl(String path) {
         webTestClient
                 .get()
-                .uri("/chat/image/url")
+                .uri(uriBuilder -> uriBuilder
+                        .path(path)
+                        .queryParam("question", "What do you see in this picture? Give a short answer")
+                        .build())
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class).value(result -> {

@@ -8,7 +8,6 @@ import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,7 +25,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/mistral-ai")
-    String chatMistralAi(@RequestParam String question) {
+    String chatMistralAi(String question) {
         return mistralAichatClient
                 .prompt(question)
                 .call()
@@ -34,7 +33,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/openai")
-    String chatOpenAi(@RequestParam String question) {
+    String chatOpenAi(String question) {
         return openAichatClient
                 .prompt(question)
                 .call()
@@ -42,7 +41,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/mistral-ai-options")
-    String chatWithMistralAiOptions(@RequestParam String question) {
+    String chatWithMistralAiOptions(String question) {
         return mistralAichatClient
                 .prompt(question)
                 .options(MistralAiChatOptions.builder()
@@ -54,7 +53,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/openai-options")
-    String chatWithOpenAiOptions(@RequestParam String question) {
+    String chatWithOpenAiOptions(String question) {
         return openAichatClient
                 .prompt(question)
                 .options(OpenAiChatOptions.builder()

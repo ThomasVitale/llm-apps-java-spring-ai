@@ -6,7 +6,6 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
@@ -24,12 +23,12 @@ class ChatModelController {
     }
 
     @GetMapping("/chat")
-    String chat(@RequestParam String question) {
+    String chat(String question) {
         return chatModel.call(question);
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam String question) {
+    String chatWithGenericOptions(String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
                         .withModel("llama3.2:1b")
                         .withTemperature(0.9)
@@ -38,7 +37,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam String question) {
+    String chatWithProviderOptions(String question) {
         return chatModel.call(new Prompt(question, OllamaOptions.builder()
                         .withRepeatPenalty(1.5)
                         .build()))
@@ -46,7 +45,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/huggingface")
-    String chatWithHuggingFace(@RequestParam String question) {
+    String chatWithHuggingFace(String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
                         .withModel("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
                         .build()))
@@ -54,7 +53,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/stream")
-    Flux<String> chatStream(@RequestParam String question) {
+    Flux<String> chatStream(String question) {
         return chatModel.stream(question);
     }
 

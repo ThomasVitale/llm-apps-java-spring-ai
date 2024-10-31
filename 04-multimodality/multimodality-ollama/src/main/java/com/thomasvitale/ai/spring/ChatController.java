@@ -1,7 +1,10 @@
 package com.thomasvitale.ai.spring;
 
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -10,15 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class ChatController {
 
-    private final ChatService chatService;
+    private final ChatClient chatClient;
 
-    ChatController(ChatService chatService) {
-        this.chatService = chatService;
+    @Value("classpath:tabby-cat.png")
+    private Resource image;
+
+    public ChatController(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
     }
 
     @GetMapping("/chat/image/file")
-    String chatFromImageFile(@RequestParam(defaultValue = "What do you see in this picture? Give a short answer") String question) {
-        return chatService.chatFromImageFile(question);
+    String chatFromImageFile(String question) {
+        return chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(question)
+                        .media(MimeTypeUtils.IMAGE_PNG, image)
+                )
+                .call()
+                .content();
     }
 
 }
