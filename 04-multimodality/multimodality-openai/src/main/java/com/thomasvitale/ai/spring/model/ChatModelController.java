@@ -31,7 +31,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/image/file")
-    String chatFromImageFile(String question) {
+    String chatImageFile(String question) {
         var userMessage = new UserMessage(question, new Media(MimeTypeUtils.IMAGE_PNG, image));
         var prompt = new Prompt(userMessage);
         var chatResponse = chatModel.call(prompt);
@@ -39,7 +39,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/image/url")
-    String chatFromImageUrl(String question) throws MalformedURLException {
+    String chatImageUrl(String question) throws MalformedURLException {
         var imageUrl = "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png";
         var url = URI.create(imageUrl).toURL();
 

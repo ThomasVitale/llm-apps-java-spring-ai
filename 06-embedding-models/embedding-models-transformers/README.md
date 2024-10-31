@@ -6,28 +6,28 @@ Vector transformation (embeddings) with LLMs via ONNX Sentence Transformers.
 
 Spring AI provides an `EmbeddingModel` abstraction for integrating with LLMs via several providers, including ONNX Sentence Transformers.
 
-When using the _Spring AI Transformers Spring Boot Starter_, an `EmbeddingModel` object is autoconfigured for you to use ONNX Sentence Transformers.
+When using the _Spring AI Transformers Spring Boot Starter_, an `EmbeddingModel` object is autoconfigured for you to ONNX Sentence Transformers.
 
 ```java
-@RestController
-class EmbeddingController {
-    private final EmbeddingModel embeddingModel;
-
-    EmbeddingController(EmbeddingModel embeddingModel) {
-        this.embeddingModel = embeddingModel;
-    }
-
-    @GetMapping("/embed")
-    String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
-        var embeddings = embeddingModel.embed(message);
-        return "Size of the embedding vector: " + embeddings.size();
-    }
+@Bean
+CommandLineRunner embed(EmbeddingModel embeddingModel) {
+    return _ -> {
+        var embeddings = embeddingModel.embed("And Gandalf yelled: 'You shall not pass!'");
+        System.out.println("Size of the embedding vector: " + embeddings.length);
+    };
 }
 ```
 
+## ONNX Sentence Transformers
+
+The application relies on the ONNX Sentence Transformers for providing LLMs.
+ONNX provides an in-process runtime to run model inference directly in Java.
+Spring AI will take care of pulling the needed models when the application starts,
+if they are not available yet on your machine.
+
 ## Running the application
 
-Run the Spring Boot application.
+Run the application.
 
 ```shell
 ./gradlew bootRun
@@ -35,15 +35,17 @@ Run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use the _all-MiniLM-L6-v2_ model from HuggingFace to generate a vector representation (embeddings) of a default text.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use an embedding model to generate embeddings for your query.
 
 ```shell
-http :8080/embed
+http :8080/embed query=="The capital of Italy is Rome"
 ```
 
-Try passing your custom prompt and check the result.
+The next request is configured with generic portable options.
 
 ```shell
-http :8080/embed message=="The capital of Italy is Rome"
+http :8080/embed/generic-options query=="The capital of Italy is Rome" -b
 ```

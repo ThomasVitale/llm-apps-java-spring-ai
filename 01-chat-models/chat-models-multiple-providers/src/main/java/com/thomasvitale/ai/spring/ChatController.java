@@ -41,7 +41,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/mistral-ai-options")
-    String chatWithMistralAiOptions(String question) {
+    String chatMistralAiOptions(String question) {
         return mistralAichatClient
                 .prompt(question)
                 .options(MistralAiChatOptions.builder()
@@ -53,7 +53,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/openai-options")
-    String chatWithOpenAiOptions(String question) {
+    String chatOpenAiOptions(String question) {
         return openAichatClient
                 .prompt(question)
                 .options(OpenAiChatOptions.builder()

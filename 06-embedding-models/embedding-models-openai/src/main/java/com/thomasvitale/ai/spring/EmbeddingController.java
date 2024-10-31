@@ -1,10 +1,11 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.embedding.EmbeddingOptionsBuilder;
 import org.springframework.ai.embedding.EmbeddingRequest;
 import org.springframework.ai.openai.OpenAiEmbeddingOptions;
+import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,16 +20,24 @@ class EmbeddingController {
     }
 
     @GetMapping("/embed")
-    String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
-        var embeddings = embeddingModel.embed(message);
+    String embed(String query) {
+        var embeddings = embeddingModel.embed(query);
         return "Size of the embedding vector: " + embeddings.length;
     }
 
-    @GetMapping("/embed/openai-options")
-    String embedWithOpenAiOptions(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
-        var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(message), OpenAiEmbeddingOptions.builder()
-                        .withModel("text-embedding-3-small")
-                        .withUser("jon.snow")
+    @GetMapping("/embed/generic-options")
+    String embedGenericOptions(String query) {
+        var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), EmbeddingOptionsBuilder.builder()
+                        .withModel(OpenAiApi.EmbeddingModel.TEXT_EMBEDDING_3_SMALL.getValue())
+                        .build()))
+                .getResult().getOutput();
+        return "Size of the embedding vector: " + embeddings.length;
+    }
+
+    @GetMapping("/embed/provider-options")
+    String embedProviderOptions(String query) {
+        var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), OpenAiEmbeddingOptions.builder()
+                        .withEncodingFormat("float")
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;

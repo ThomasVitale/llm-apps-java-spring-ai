@@ -28,7 +28,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(String question) {
+    String chatGenericOptions(String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
                         .withModel("llama3.2:1b")
                         .withTemperature(0.9)
@@ -37,7 +37,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(String question) {
+    String chatProviderOptions(String question) {
         return chatModel.call(new Prompt(question, OllamaOptions.builder()
                         .withRepeatPenalty(1.5)
                         .build()))
@@ -45,7 +45,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/huggingface")
-    String chatWithHuggingFace(String question) {
+    String chatHuggingFace(String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
                         .withModel("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
                         .build()))

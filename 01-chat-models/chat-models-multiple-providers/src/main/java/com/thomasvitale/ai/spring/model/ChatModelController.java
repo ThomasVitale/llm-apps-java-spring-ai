@@ -37,7 +37,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/mistral-ai-options")
-    String chatWithMistralAiOptions(String question) {
+    String chatMistralAiOptions(String question) {
         return mistralAiChatModel.call(new Prompt(question, MistralAiChatOptions.builder()
                         .withModel(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getValue())
                         .withTemperature(1.0)
@@ -46,7 +46,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/openai-options")
-    String chatWithOpenAiOptions(String question) {
+    String chatOpenAiOptions(String question) {
         return openAiChatModel.call(new Prompt(question, OpenAiChatOptions.builder()
                         .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
                         .withTemperature(1.0)

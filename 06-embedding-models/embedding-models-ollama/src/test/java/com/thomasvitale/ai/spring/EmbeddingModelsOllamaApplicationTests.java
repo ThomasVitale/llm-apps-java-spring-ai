@@ -19,11 +19,14 @@ class EmbeddingModelsOllamaApplicationTests {
     WebTestClient webTestClient;
 
     @ParameterizedTest
-    @ValueSource(strings = {"/embed", "/embed/generic-options"})
+    @ValueSource(strings = {"/embed", "/embed/generic-options", "/embed/provider-options"})
     void chat(String path) {
         webTestClient
                 .get()
-                .uri(path)
+                .uri(uriBuilder -> uriBuilder
+                        .path(path)
+                        .queryParam("query", "Rivendell")
+                        .build())
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class).value(result -> {

@@ -9,40 +9,33 @@ Spring AI provides an `EmbeddingModel` abstraction for integrating with LLMs via
 When using the _Spring AI Ollama Spring Boot Starter_, an `EmbeddingModel` object is autoconfigured for you to use Ollama.
 
 ```java
-@RestController
-class EmbeddingController {
-    private final EmbeddingModel embeddingModel;
-
-    EmbeddingController(EmbeddingModel embeddingModel) {
-        this.embeddingModel = embeddingModel;
-    }
-
-    @GetMapping("/embed")
-    String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
-        var embeddings = embeddingModel.embed(message);
-        return "Size of the embedding vector: " + embeddings.size();
-    }
+@Bean
+CommandLineRunner embed(EmbeddingModel embeddingModel) {
+    return _ -> {
+        var embeddings = embeddingModel.embed("And Gandalf yelled: 'You shall not pass!'");
+        System.out.println("Size of the embedding vector: " + embeddings.length);
+    };
 }
 ```
 
+## Ollama
+
+The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop,
+or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
+If you choose the first option, make sure you have [Ollama](https://ollama.ai) installed and running on your laptop.
+Either way, Spring AI will take care of pulling the needed Ollama models when the application starts,
+if they are not available yet on your machine.
+
 ## Running the application
 
-The application relies on Ollama for providing LLMs. You can either run Ollama locally on your laptop, or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
-Either way, Spring AI will take care of pulling the needed Ollama models if not already available in your instance.
-
-### Ollama as a native application
-
-First, make sure you have [Ollama](https://ollama.ai) installed on your laptop.
-
-Then, run the Spring Boot application.
+If you're using the native Ollama application, run the application as follows.
 
 ```shell
 ./gradlew bootRun
 ```
 
-### Ollama as a dev service with Testcontainers
-
-The application relies on the native Testcontainers support in Spring Boot to spin up an Ollama service at startup time.
+If you want to rely on the native Testcontainers support in Spring Boot to spin up an Ollama service at startup time,
+run the application as follows.
 
 ```shell
 ./gradlew bootTestRun
@@ -50,21 +43,23 @@ The application relies on the native Testcontainers support in Spring Boot to sp
 
 ## Calling the application
 
-You can now call the application that will use Ollama to generate a vector representation (embeddings) of a default text.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use an embedding model to generate embeddings for your query.
 
 ```shell
-http :8080/embed
+http :8080/embed query=="The capital of Italy is Rome"
 ```
 
-Try passing your custom prompt and check the result.
+The next request is configured with generic portable options.
 
 ```shell
-http :8080/embed message=="The capital of Italy is Rome"
+http :8080/embed/generic-options query=="The capital of Italy is Rome" -b
 ```
 
-The next request is configured with custom options.
+The next request is configured with the provider's specific options.
 
 ```shell
-http :8080/embed/generic-options message=="The capital of Italy is Rome"
+http :8080/embed/provider-options query=="The capital of Italy is Rome" -b
 ```

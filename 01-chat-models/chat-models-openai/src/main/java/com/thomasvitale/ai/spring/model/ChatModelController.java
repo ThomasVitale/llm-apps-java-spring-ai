@@ -29,7 +29,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(String question) {
+    String chatGenericOptions(String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
                         .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
                         .withTemperature(0.9)
@@ -38,7 +38,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(String question) {
+    String chatProviderOptions(String question) {
         return chatModel.call(new Prompt(question, OpenAiChatOptions.builder()
                         .withLogprobs(true)
                         .build()))

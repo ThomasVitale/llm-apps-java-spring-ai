@@ -28,7 +28,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(String question) {
+    String chatGenericOptions(String question) {
         return chatClient
                 .prompt(question)
                 .options(ChatOptionsBuilder.builder()
@@ -40,7 +40,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(String question) {
+    String chatProviderOptions(String question) {
         return chatClient
                 .prompt(question)
                 .options(OllamaOptions.builder()
@@ -51,7 +51,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/huggingface")
-    String chatWithHuggingFace(String question) {
+    String chatHuggingFace(String question) {
         return chatClient
                 .prompt(question)
                 .options(ChatOptionsBuilder.builder()

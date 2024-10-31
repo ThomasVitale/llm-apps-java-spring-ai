@@ -23,7 +23,7 @@ class ChatController {
     }
 
     @GetMapping("/chat/image/file")
-    String chatFromImageFile(String question) {
+    String chatImageFile(String question) {
         return chatClient.prompt()
                 .user(userSpec -> userSpec
                         .text(question)

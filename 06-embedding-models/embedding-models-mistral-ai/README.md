@@ -9,34 +9,37 @@ Spring AI provides an `EmbeddingModel` abstraction for integrating with LLMs via
 When using the _Spring AI Mistral AI Spring Boot Starter_, an `EmbeddingModel` object is autoconfigured for you to use Mistral AI.
 
 ```java
-@RestController
-class EmbeddingController {
-    private final EmbeddingModel embeddingModel;
-
-    EmbeddingController(EmbeddingModel embeddingModel) {
-        this.embeddingModel = embeddingModel;
-    }
-
-    @GetMapping("/embed")
-    String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
-        var embeddings = embeddingModel.embed(message);
-        return "Size of the embedding vector: " + embeddings.size();
-    }
+@Bean
+CommandLineRunner embed(EmbeddingModel embeddingModel) {
+    return _ -> {
+        var embeddings = embeddingModel.embed("And Gandalf yelled: 'You shall not pass!'");
+        System.out.println("Size of the embedding vector: " + embeddings.length);
+    };
 }
+```
+
+## Mistral AI
+
+The application relies on the Mistral AI API for providing LLMs.
+
+### Create a Mistral AI account
+
+Visit [https://console.mistral.ai](console.mistral.ai) and sign up for a new account.
+You can choose the "Experiment" plan, which gives you access to the Mistral APIs for free.
+
+### Configure API Key
+
+In the Mistral AI console, navigate to _API Keys_ and generate a new API key.
+Copy and securely store your API key on your machine as an environment variable.
+The application will use it to access the Mistral AI API.
+
+```shell
+export MISTRALAI_API_KEY=<YOUR-API-KEY>
 ```
 
 ## Running the application
 
-The application relies on the Mistral AI API for providing LLMs.
-
-First, make sure you have a [Mistral AI account](https://console.mistral.ai).
-Then, define an environment variable with the Mistral AI API Key associated to your Mistral AI account as the value.
-
-```shell
-export SPRING_AI_MISTRALAI_API_KEY=<INSERT KEY HERE>
-```
-
-Finally, run the Spring Boot application.
+Run the application.
 
 ```shell
 ./gradlew bootRun
@@ -44,21 +47,23 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use Mistral AI and _mistral-embed_ to generate a vector representation (embeddings) of a default text.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use an embedding model to generate embeddings for your query.
 
 ```shell
-http :8080/embed
+http :8080/embed query=="The capital of Italy is Rome"
 ```
 
-Try passing your custom prompt and check the result.
+The next request is configured with generic portable options.
 
 ```shell
-http :8080/embed message=="The capital of Italy is Rome"
+http :8080/embed/generic-options query=="The capital of Italy is Rome" -b
 ```
 
-The next request is configured with Mistral AI-specific customizations.
+The next request is configured with the provider's specific options.
 
 ```shell
-http :8080/embed/mistral-ai-options message=="The capital of Italy is Rome"
+http :8080/embed/provider-options query=="The capital of Italy is Rome" -b
 ```

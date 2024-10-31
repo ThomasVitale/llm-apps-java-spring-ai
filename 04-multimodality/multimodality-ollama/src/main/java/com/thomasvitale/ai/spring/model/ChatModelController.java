@@ -28,7 +28,7 @@ class ChatModelController {
     }
 
     @GetMapping("/chat/image/file")
-    String chatFromImageFile(String question) {
+    String chatImageFile(String question) {
         var userMessage = new UserMessage(question, new Media(MimeTypeUtils.IMAGE_PNG, image));
         var prompt = new Prompt(userMessage);
         var chatResponse = chatModel.call(prompt);

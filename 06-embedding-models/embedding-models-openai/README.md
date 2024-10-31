@@ -9,36 +9,36 @@ Spring AI provides an `EmbeddingModel` abstraction for integrating with LLMs via
 When using the _Spring AI OpenAI Spring Boot Starter_, an `EmbeddingModel` object is autoconfigured for you to use OpenAI.
 
 ```java
-@RestController
-class EmbeddingController {
-    private final EmbeddingModel embeddingModel;
-
-    EmbeddingController(EmbeddingModel embeddingModel) {
-        this.embeddingModel = embeddingModel;
-    }
-
-    @GetMapping("/embed")
-    String embed(@RequestParam(defaultValue = "And Gandalf yelled: 'You shall not pass!'") String message) {
-        var embeddings = embeddingModel.embed(message);
-        return "Size of the embedding vector: " + embeddings.size();
-    }
+@Bean
+CommandLineRunner embed(EmbeddingModel embeddingModel) {
+    return _ -> {
+        var embeddings = embeddingModel.embed("And Gandalf yelled: 'You shall not pass!'");
+        System.out.println("Size of the embedding vector: " + embeddings.length);
+    };
 }
+```
+
+## OpenAI
+
+The application relies on the OpenAI API for providing LLMs.
+
+### Create an OpenAI account
+
+Visit [https://platform.openai.com](platform.openai.com) and sign up for a new account.
+
+### Configure API Key
+
+In the OpenAI console, navigate to _Dashboard > API Keys_ and generate a new API key.
+Copy and securely store your API key on your machine as an environment variable.
+The application will use it to access the OpenAI API.
+
+```shell
+export OPENAI_API_KEY=<YOUR-API-KEY>
 ```
 
 ## Running the application
 
-The application relies on an OpenAI API for providing LLMs.
-
-### When using OpenAI
-
-First, make sure you have an OpenAI account.
-Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
-
-```shell
-export SPRING_AI_OPENAI_API_KEY=<INSERT KEY HERE>
-```
-
-Finally, run the Spring Boot application.
+Run the application.
 
 ```shell
 ./gradlew bootRun
@@ -46,21 +46,23 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI and _text-embedding-ada-002_ to generate a vector representation (embeddings) of a default text.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use an embedding model to generate embeddings for your query.
 
 ```shell
-http :8080/embed
+http :8080/embed query=="The capital of Italy is Rome"
 ```
 
-Try passing your custom prompt and check the result.
+The next request is configured with generic portable options.
 
 ```shell
-http :8080/embed message=="The capital of Italy is Rome"
+http :8080/embed/generic-options query=="The capital of Italy is Rome" -b
 ```
 
-The next request is configured with OpenAI-specific customizations.
+The next request is configured with the provider's specific options.
 
 ```shell
-http :8080/embed/openai-options message=="The capital of Italy is Rome"
+http :8080/embed/provider-options query=="The capital of Italy is Rome" -b
 ```
