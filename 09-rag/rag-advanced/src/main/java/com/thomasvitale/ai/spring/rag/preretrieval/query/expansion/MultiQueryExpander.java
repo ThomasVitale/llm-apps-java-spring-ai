@@ -17,10 +17,10 @@ import java.util.List;
  * <p>Example usage:
  * <pre>{@code
  * MultiQueryExpander expander = MultiQueryExpander.builder()
- *    .withChatClientBuilder(chatClientBuilder)
- *    .withPromptTemplate(promptTemplate)
- *    .withIncludeOriginal(true)
- *    .withNumberOfQueries(3)
+ *    .chatClientBuilder(chatClientBuilder)
+ *    .promptTemplate(promptTemplate)
+ *    .includeOriginal(true)
+ *    .numberOfQueries(3)
  *    .build();
  * List<Query> queries = expander.expand(new Query("What's the meaning of life?"));
  * }</pre>

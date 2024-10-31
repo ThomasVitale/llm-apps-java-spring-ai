@@ -1,7 +1,7 @@
 package com.thomasvitale.ai.spring.rag.orchestration.routing;
 
 import com.thomasvitale.ai.spring.rag.Query;
-import com.thomasvitale.ai.spring.rag.retrieval.source.DocumentRetriever;
+import org.springframework.ai.rag.retrieval.source.DocumentRetriever;
 
 import java.util.List;
 import java.util.function.Function;

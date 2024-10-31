@@ -1,8 +1,8 @@
 package com.thomasvitale.ai.spring.advisor;
 
 import com.thomasvitale.ai.spring.rag.Query;
-import com.thomasvitale.ai.spring.rag.augmentation.ContentPromptAugmentor;
-import com.thomasvitale.ai.spring.rag.augmentation.PromptAugmentor;
+import com.thomasvitale.ai.spring.rag.augmentation.ContextualQueryAugmentor;
+import com.thomasvitale.ai.spring.rag.augmentation.QueryAugmentor;
 import com.thomasvitale.ai.spring.rag.orchestration.routing.AllRetrieversQueryRouter;
 import com.thomasvitale.ai.spring.rag.orchestration.routing.QueryRouter;
 import com.thomasvitale.ai.spring.rag.preretrieval.query.expansion.IdentityQueryExpander;
@@ -11,7 +11,6 @@ import com.thomasvitale.ai.spring.rag.preretrieval.query.transformation.Identity
 import com.thomasvitale.ai.spring.rag.preretrieval.query.transformation.QueryTransformer;
 import com.thomasvitale.ai.spring.rag.retrieval.combination.DocumentCombiner;
 import com.thomasvitale.ai.spring.rag.retrieval.combination.MergeDocumentCombiner;
-import com.thomasvitale.ai.spring.rag.retrieval.source.DocumentRetriever;
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.client.advisor.api.AdvisedRequest;
 import org.springframework.ai.chat.client.advisor.api.AdvisedResponse;
@@ -19,10 +18,10 @@ import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisor;
 import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisorChain;
 import org.springframework.ai.chat.client.advisor.api.StreamAroundAdvisor;
 import org.springframework.ai.chat.client.advisor.api.StreamAroundAdvisorChain;
-import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.rag.retrieval.source.DocumentRetriever;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -69,18 +68,18 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
 
     private final DocumentCombiner documentCombiner;
 
-    private final PromptAugmentor promptAugmentor;
+    private final QueryAugmentor queryAugmentor;
 
     private final Boolean protectFromBlocking;
 
     private final int order;
 
-    public RetrievalAugmentationAdvisor(List<QueryTransformer> queryTransformers, @Nullable QueryExpander queryExpander, QueryRouter queryRouter, @Nullable DocumentCombiner documentCombiner, @Nullable PromptAugmentor promptAugmentor, @Nullable Boolean protectFromBlocking, @Nullable Integer order) {
+    public RetrievalAugmentationAdvisor(List<QueryTransformer> queryTransformers, @Nullable QueryExpander queryExpander, QueryRouter queryRouter, @Nullable DocumentCombiner documentCombiner, @Nullable QueryAugmentor queryAugmentor, @Nullable Boolean protectFromBlocking, @Nullable Integer order) {
         this.queryTransformers = queryTransformers.isEmpty() ? List.of(new IdentityQueryTransformer()) : queryTransformers;
         this.queryExpander = queryExpander != null ? queryExpander : new IdentityQueryExpander();
         this.queryRouter = queryRouter;
         this.documentCombiner = documentCombiner != null ? documentCombiner : new MergeDocumentCombiner();
-        this.promptAugmentor = promptAugmentor != null ? promptAugmentor : ContentPromptAugmentor.builder().build();
+        this.queryAugmentor = queryAugmentor != null ? queryAugmentor : ContextualQueryAugmentor.builder().build();
         this.protectFromBlocking = protectFromBlocking != null ? protectFromBlocking : false;
         this.order = order != null ? order : 0;
     }
@@ -150,12 +149,12 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
         List<Document> documents = documentCombiner.combine(documentsForQuery);
         context.put(DOCUMENT_CONTEXT, documents);
 
-        // 6. Augment user prompt with the document contextual data.
-        UserMessage augmentedUserMessage = promptAugmentor.augment(originalQuery, documents);
+        // 6. Augment user query with the document contextual data.
+        Query augmentedQuery = queryAugmentor.augment(originalQuery, documents);
 
         // 7. Update advised request with augmented prompt.
         return AdvisedRequest.from(request)
-                .withUserText(augmentedUserMessage.getContent())
+                .withUserText(augmentedQuery.text())
                 .withAdviseContext(context)
                 .build();
     }
@@ -193,7 +192,7 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
         private QueryExpander queryExpander;
         private QueryRouter queryRouter;
         private DocumentCombiner documentCombiner;
-        private PromptAugmentor promptAugmentor;
+        private QueryAugmentor queryAugmentor;
         private Boolean protectFromBlocking;
         private Integer order;
 
@@ -233,8 +232,8 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
             return this;
         }
 
-        public Builder promptAugmentor(PromptAugmentor promptAugmentor) {
-            this.promptAugmentor = promptAugmentor;
+        public Builder promptAugmentor(QueryAugmentor queryAugmentor) {
+            this.queryAugmentor = queryAugmentor;
             return this;
         }
 
@@ -249,7 +248,7 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
         }
 
         public RetrievalAugmentationAdvisor build() {
-            return new RetrievalAugmentationAdvisor(queryTransformers, queryExpander, queryRouter, documentCombiner, promptAugmentor, protectFromBlocking, order);
+            return new RetrievalAugmentationAdvisor(queryTransformers, queryExpander, queryRouter, documentCombiner, queryAugmentor, protectFromBlocking, order);
         }
     }
 

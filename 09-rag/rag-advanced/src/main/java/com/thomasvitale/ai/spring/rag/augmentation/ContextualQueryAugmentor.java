@@ -1,67 +1,80 @@
 package com.thomasvitale.ai.spring.rag.augmentation;
 
-import com.thomasvitale.ai.spring.rag.Query;
-import com.thomasvitale.ai.spring.util.PromptAssert;
-import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.document.Document;
-import org.springframework.ai.model.Content;
-import org.springframework.lang.Nullable;
-import org.springframework.util.Assert;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.thomasvitale.ai.spring.util.PromptAssert;
+import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.document.Document;
+import org.springframework.ai.model.Content;
+import org.springframework.ai.rag.Query;
+import org.springframework.lang.Nullable;
+import org.springframework.util.Assert;
+
 /**
- * Augments the user prompt with the full content of each document.
+ * Augments the user query with contextual data.
+ *
+ * <p>
+ * Example usage: <pre>{@code
+ * QueryAugmentor augmentor = ContextualQueryAugmentor.builder()
+ *    .promptTemplate(promptTemplate)
+ *    .emptyContextPromptTemplate(emptyContextPromptTemplate)
+ *    .allowEmptyContext(allowEmptyContext)
+ *    .build();
+ * Query augmentedQuery = augmentor.augment(query, documents);
+ * }</pre>
  */
-public class ContentPromptAugmentor implements PromptAugmentor {
+public class ContextualQueryAugmentor implements QueryAugmentor {
 
     private static final PromptTemplate DEFAULT_PROMPT_TEMPLATE = new PromptTemplate("""
-            {query}
+			Context information is below.
 
-            Context information is below. Use this information to answer the user query.
+			---------------------
+			{context}
+			---------------------
 
-            ---------------------
-            {context}
-            ---------------------
-   
-            Given the context and provided history information and not prior knowledge,
-            reply to the user query. If the answer is not in the context, inform
-            the user that you can't answer the query.
-            """);
+			Given the context information and no prior knowledge, answer the query.
+
+			Follow these rules:
+
+			1. If the answer is not in the context, just say that you don't know.
+			2. Avoid statements like "Based on the context..." or "The provided information...".
+
+			Query: {query}
+
+			Answer:
+			""");
 
     private static final PromptTemplate DEFAULT_EMPTY_CONTEXT_PROMPT_TEMPLATE = new PromptTemplate("""
-            The user asked the following question:
-            
-            {query}
-            
-            Politely inform the user that you can't answer the query
-            because it's outside the knowledge base available to you.
-            You are not allowed to answer any question outside that knowledge base context.
-            """);
+			The user query is outside your knowledge base.
+			Politely inform the user that you can't answer it.
+			""");
 
     private static final boolean DEFAULT_ALLOW_EMPTY_CONTEXT = true;
 
     private final PromptTemplate promptTemplate;
+
     private final PromptTemplate emptyContextPromptTemplate;
+
     private final boolean allowEmptyContext;
 
-    public ContentPromptAugmentor(@Nullable PromptTemplate promptTemplate, @Nullable PromptTemplate emptyContextPromptTemplate, @Nullable Boolean allowEmptyContext) {
+    public ContextualQueryAugmentor(@Nullable PromptTemplate promptTemplate,
+                                    @Nullable PromptTemplate emptyContextPromptTemplate, @Nullable Boolean allowEmptyContext) {
         this.promptTemplate = promptTemplate != null ? promptTemplate : DEFAULT_PROMPT_TEMPLATE;
-        this.emptyContextPromptTemplate = emptyContextPromptTemplate != null ? emptyContextPromptTemplate : DEFAULT_EMPTY_CONTEXT_PROMPT_TEMPLATE;
+        this.emptyContextPromptTemplate = emptyContextPromptTemplate != null ? emptyContextPromptTemplate
+                : DEFAULT_EMPTY_CONTEXT_PROMPT_TEMPLATE;
         this.allowEmptyContext = allowEmptyContext != null ? allowEmptyContext : DEFAULT_ALLOW_EMPTY_CONTEXT;
         PromptAssert.templateHasRequiredPlaceholders(this.promptTemplate, "query", "context");
     }
 
     @Override
-    public UserMessage augment(Query query, List<Document> documents) {
+    public Query augment(Query query, List<Document> documents) {
         Assert.notNull(query, "query cannot be null");
         Assert.notNull(documents, "documents cannot be null");
 
         if (documents.isEmpty()) {
-            return buildMessageWhenEmptyContext(query);
+            return augmentQueryWhenEmptyContext(query);
         }
 
         // 1. Join documents.
@@ -70,24 +83,17 @@ public class ContentPromptAugmentor implements PromptAugmentor {
                 .collect(Collectors.joining(System.lineSeparator()));
 
         // 2. Define prompt parameters.
-        Map<String, Object> promptParameters = Map.of(
-                "query", query.text(),
-                "context", documentContext);
+        Map<String, Object> promptParameters = Map.of("query", query.text(), "context", documentContext);
 
         // 3. Augment user prompt with document context.
-        return (UserMessage) promptTemplate.createMessage(promptParameters);
+        return new Query(this.promptTemplate.render(promptParameters));
     }
 
-    private UserMessage buildMessageWhenEmptyContext(Query query) {
-        if (allowEmptyContext) {
-            return new UserMessage(query.text());
+    private Query augmentQueryWhenEmptyContext(Query query) {
+        if (this.allowEmptyContext) {
+            return query;
         }
-
-        // 1. Define prompt parameters.
-        Map<String, Object> promptParameters = Map.of("query", query.text());
-
-        // 2. Augment user prompt with empty context.
-        return (UserMessage) emptyContextPromptTemplate.createMessage(promptParameters);
+        return new Query(this.emptyContextPromptTemplate.render());
     }
 
     public static Builder builder() {
@@ -95,8 +101,11 @@ public class ContentPromptAugmentor implements PromptAugmentor {
     }
 
     public static class Builder {
+
         private PromptTemplate promptTemplate;
+
         private PromptTemplate emptyContextPromptTemplate;
+
         private Boolean allowEmptyContext;
 
         public Builder promptTemplate(PromptTemplate promptTemplate) {
@@ -114,9 +123,11 @@ public class ContentPromptAugmentor implements PromptAugmentor {
             return this;
         }
 
-        public ContentPromptAugmentor build() {
-            return new ContentPromptAugmentor(promptTemplate, emptyContextPromptTemplate, allowEmptyContext);
+        public ContextualQueryAugmentor build() {
+            return new ContextualQueryAugmentor(this.promptTemplate, this.emptyContextPromptTemplate,
+                    this.allowEmptyContext);
         }
+
     }
 
 }

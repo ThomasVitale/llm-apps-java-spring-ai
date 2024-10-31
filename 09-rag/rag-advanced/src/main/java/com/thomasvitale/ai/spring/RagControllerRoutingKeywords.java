@@ -1,10 +1,10 @@
 package com.thomasvitale.ai.spring;
 
 import com.thomasvitale.ai.spring.advisor.RetrievalAugmentationAdvisor;
-import com.thomasvitale.ai.spring.rag.retrieval.source.DocumentRetriever;
-import com.thomasvitale.ai.spring.rag.retrieval.source.VectorStoreDocumentRetriever;
 import com.thomasvitale.ai.spring.rag.orchestration.routing.QueryRouter;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.rag.retrieval.source.DocumentRetriever;
+import org.springframework.ai.rag.retrieval.source.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder;
 import org.springframework.web.bind.annotation.PostMapping;

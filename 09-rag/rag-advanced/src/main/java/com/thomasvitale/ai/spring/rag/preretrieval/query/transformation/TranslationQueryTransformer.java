@@ -11,6 +11,16 @@ import org.springframework.util.Assert;
 
 /**
  * A transformer that translates the user query to a target language.
+ *
+ * <p>Example usage:
+ * <pre>{@code
+ * QueryTransformer transformer = TranslationQueryTransformer.builder()
+ *    .chatClientBuilder(chatClientBuilder)
+ *    .promptTemplate(promptTemplate)
+ *    .targetLanguage("english")
+ *    .build();
+ * Query transformedQuery = transformer.transform(new Query("Hvad er Danmarks hovedstad?"));
+ * }</pre>
  */
 public class TranslationQueryTransformer implements QueryTransformer {
 

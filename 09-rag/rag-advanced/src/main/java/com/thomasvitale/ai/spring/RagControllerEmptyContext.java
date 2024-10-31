@@ -1,9 +1,9 @@
 package com.thomasvitale.ai.spring;
 
 import com.thomasvitale.ai.spring.advisor.RetrievalAugmentationAdvisor;
-import com.thomasvitale.ai.spring.rag.augmentation.ContentPromptAugmentor;
-import com.thomasvitale.ai.spring.rag.retrieval.source.VectorStoreDocumentRetriever;
+import com.thomasvitale.ai.spring.rag.augmentation.ContextualQueryAugmentor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.rag.retrieval.source.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,14 +20,14 @@ public class RagControllerEmptyContext {
                 .similarityThreshold(0.50)
                 .build();
 
-        var promptAugmentor = ContentPromptAugmentor.builder()
+        var queryAugmentor = ContextualQueryAugmentor.builder()
                 .allowEmptyContext(false)
                 .build();
 
         this.chatClient = chatClientBuilder
                 .defaultAdvisors(RetrievalAugmentationAdvisor.builder()
                         .documentRetriever(documentRetriever)
-                        .promptAugmentor(promptAugmentor)
+                        .promptAugmentor(queryAugmentor)
                         .build())
                 .build();
     }
