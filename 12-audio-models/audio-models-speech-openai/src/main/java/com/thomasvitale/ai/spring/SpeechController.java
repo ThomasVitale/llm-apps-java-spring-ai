@@ -5,7 +5,6 @@ import org.springframework.ai.openai.api.OpenAiAudioApi;
 import org.springframework.ai.openai.audio.speech.SpeechModel;
 import org.springframework.ai.openai.audio.speech.SpeechPrompt;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,12 +17,12 @@ class SpeechController {
     }
 
     @GetMapping("/speech")
-    byte[] speech(@RequestParam(defaultValue = "They're taking the Hobbits to Isengard! To Isengard! To Isengard") String message) {
+    byte[] speech(String message) {
         return speechModel.call(new SpeechPrompt(message)).getResult().getOutput();
     }
 
-    @GetMapping("/speech/openai-options")
-    byte[] speechWithOpenAiOptions(@RequestParam(defaultValue = "They're taking the Hobbits to Isengard! To Isengard! To Isengard") String message) {
+    @GetMapping("/speech/provider-options")
+    byte[] speechProviderOptions(String message) {
         var speechResponse = speechModel.call(new SpeechPrompt(message, OpenAiAudioSpeechOptions.builder()
                 .withModel("tts-1")
                 .withVoice(OpenAiAudioApi.SpeechRequest.Voice.ALLOY)

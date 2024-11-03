@@ -9,35 +9,36 @@ Spring AI provides an `SpeechModel` abstraction for integrating with LLMs via se
 When using the _Spring AI OpenAI Spring Boot Starter_, an `SpeechModel` object is autoconfigured for you to use OpenAI.
 
 ```java
-@RestController
-class SpeechController {
-    private final SpeechModel speechModel;
-
-    SpeechController(SpeechModel speechModel) {
-        this.speechModel = speechModel;
-    }
-
-    @GetMapping("/speech")
-    byte[] speech(@RequestParam(defaultValue = "They're taking the Hobbits to Isengard! To Isengard! To Isengard") String message) {
-        return speechModel.call(new SpeechPrompt(message)).getResult().getOutput();
-    }
+@Bean
+CommandLineRunner chat(SpeechModel speechModel) {
+    return _ -> {
+        var response = speechModel.call(new SpeechPrompt(message)).getResult().getOutput();
+        System.out.println(response);
+    };
 }
+```
+
+## OpenAI
+
+The application relies on the OpenAI API for providing LLMs.
+
+### Create an OpenAI account
+
+Visit [https://platform.openai.com](platform.openai.com) and sign up for a new account.
+
+### Configure API Key
+
+In the OpenAI console, navigate to _Dashboard > API Keys_ and generate a new API key.
+Copy and securely store your API key on your machine as an environment variable.
+The application will use it to access the OpenAI API.
+
+```shell
+export OPENAI_API_KEY=<YOUR-API-KEY>
 ```
 
 ## Running the application
 
-The application relies on an OpenAI API for providing LLMs.
-
-### When using OpenAI
-
-First, make sure you have an [OpenAI account](https://platform.openai.com/signup).
-Then, define an environment variable with the OpenAI API Key associated to your OpenAI account as the value.
-
-```shell
-export SPRING_AI_OPENAI_API_KEY=<INSERT KEY HERE>
-```
-
-Finally, run the Spring Boot application.
+Run the application.
 
 ```shell
 ./gradlew bootRun
@@ -45,21 +46,17 @@ Finally, run the Spring Boot application.
 
 ## Calling the application
 
-You can now call the application that will use OpenAI and _tts-1_ to generate an image based on a default prompt.
-This example uses [httpie](https://httpie.io) to send HTTP requests.
+> [!NOTE]
+> These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
+
+Call the application that will use an audio model to generate speech.
 
 ```shell
-http :8080/speech --download --output speech1.mp3
+http :8080/speech message=="They're taking the Hobbits to Isengard, to Isengard, to Isengard" --download --output speech1.mp3
 ```
 
-Try passing your custom prompt and check the result.
+The next request is configured with provider-specific customizations.
 
 ```shell
-http :8080/speech message=="Yellow Submarine" --download --output speech2.mp3
-```
-
-The next request is configured with Open AI-specific customizations.
-
-```shell
-http :8080/speech/openai-options message=="Here comes the sun" --download --output speech3.mp3
+http :8080/speech/provider-options message=="Here comes the sun. Du du du du." --download --output speech2.mp3
 ```

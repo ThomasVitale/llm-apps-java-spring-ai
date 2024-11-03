@@ -4,29 +4,24 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.reader.TextReader;
-import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class IngestionPipeline {
+class IngestionPipeline {
 
     private static final Logger logger = LoggerFactory.getLogger(IngestionPipeline.class);
+
     private final VectorStore vectorStore;
 
-    public IngestionPipeline(VectorStore vectorStore) {
+    IngestionPipeline(VectorStore vectorStore) {
         this.vectorStore = vectorStore;
     }
 
     @PostConstruct
-    public void run() {
+    void run() {
         var instrumentNotes = List.of(
                 new InstrumentNote("The haunting sound of the cello evokes a deep sense of melancholy and introspection."),
                 new InstrumentNote("The lively strumming of the acoustic guitar brings forth feelings of joy and carefree summer days."),

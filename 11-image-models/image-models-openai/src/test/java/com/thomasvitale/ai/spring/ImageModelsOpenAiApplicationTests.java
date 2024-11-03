@@ -1,7 +1,8 @@
 package com.thomasvitale.ai.spring;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,17 +14,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "60s")
-@EnabledIfEnvironmentVariable(named = "SPRING_AI_OPENAI_API_KEY", matches = ".*")
+@EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
 class ImageModelsOpenAiApplicationTests {
 
     @Autowired
     WebTestClient webTestClient;
 
-    @Test
-    void image() {
+    @ParameterizedTest
+    @ValueSource(strings = {"/image", "/image/provider-options"})
+    void image(String path) {
         webTestClient
                 .get()
-                .uri("/image")
+                .uri(uriBuilder -> uriBuilder
+                        .path(path)
+                        .queryParam("message", "Here comes the sun")
+                        .build())
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class).value(result -> {
