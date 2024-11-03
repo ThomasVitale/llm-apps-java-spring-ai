@@ -19,7 +19,12 @@ repositories {
     maven { url 'https://repo.spring.io/snapshot' }
 }
 
+ext {
+    set('otelInstrumentationVersion', "2.9.0-alpha")
+}
+
 dependencies {
+    implementation platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:${otelInstrumentationVersion}")
     implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -31,6 +36,7 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
     implementation 'io.micrometer:micrometer-registry-otlp'
     implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5'
+    implementation 'io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0'
 
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
 
@@ -38,6 +44,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
     testImplementation 'org.springframework:spring-webflux'
+    testImplementation 'org.testcontainers:grafana'
     testImplementation 'org.testcontainers:ollama'
     testImplementation 'org.testcontainers:postgresql'
 }

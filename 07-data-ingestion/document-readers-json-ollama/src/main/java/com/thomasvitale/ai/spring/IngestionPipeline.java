@@ -16,26 +16,27 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class DocumentEtlPipeline {
+class IngestionPipeline {
 
-    private static final Logger logger = LoggerFactory.getLogger(DocumentEtlPipeline.class);
+    private static final Logger logger = LoggerFactory.getLogger(IngestionPipeline.class);
+
     private final VectorStore vectorStore;
 
     @Value("classpath:documents/bikes-1.json")
-    Resource jsonFile1;
+    private Resource jsonFile1;
 
     @Value("classpath:documents/bikes-2.json")
-    Resource jsonFile2;
+    private Resource jsonFile2;
 
     @Value("classpath:documents/bikes-3.json")
-    Resource jsonFile3;
+    private Resource jsonFile3;
 
-    public DocumentEtlPipeline(VectorStore vectorStore) {
+    IngestionPipeline(VectorStore vectorStore) {
         this.vectorStore = vectorStore;
     }
 
     @PostConstruct
-    public void run() {
+    void run() {
         List<Document> documents = new ArrayList<>();
 
         logger.info("Loading JSON as Documents");

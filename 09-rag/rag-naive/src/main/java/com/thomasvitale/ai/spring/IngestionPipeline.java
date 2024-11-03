@@ -16,9 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class IngestionPipeline {
+class IngestionPipeline {
 
     private static final Logger logger = LoggerFactory.getLogger(IngestionPipeline.class);
+
     private final VectorStore vectorStore;
 
     @Value("classpath:documents/story1.md")
@@ -27,12 +28,12 @@ public class IngestionPipeline {
     @Value("classpath:documents/story2.txt")
     Resource textFile2;
 
-    public IngestionPipeline(VectorStore vectorStore) {
+    IngestionPipeline(VectorStore vectorStore) {
         this.vectorStore = vectorStore;
     }
 
     @PostConstruct
-    public void run() {
+    void run() {
         List<Document> documents = new ArrayList<>();
 
         logger.info("Loading .md files as Documents");

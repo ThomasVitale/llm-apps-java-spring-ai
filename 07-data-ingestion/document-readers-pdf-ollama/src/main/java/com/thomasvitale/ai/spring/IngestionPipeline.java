@@ -17,9 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DocumentEtlPipeline {
+class IngestionPipeline {
 
-    private static final Logger logger = LoggerFactory.getLogger(DocumentEtlPipeline.class);
+    private static final Logger logger = LoggerFactory.getLogger(IngestionPipeline.class);
+
     private final VectorStore vectorStore;
 
     @Value("classpath:documents/story1.pdf")
@@ -28,12 +29,12 @@ public class DocumentEtlPipeline {
     @Value("classpath:documents/story2.pdf")
     Resource pdfFile2;
 
-    public DocumentEtlPipeline(VectorStore vectorStore) {
+    IngestionPipeline(VectorStore vectorStore) {
         this.vectorStore = vectorStore;
     }
 
     @PostConstruct
-    public void run() {
+    void run() {
         List<Document> documents = new ArrayList<>();
 
         logger.info("Loading PDF files as Documents");

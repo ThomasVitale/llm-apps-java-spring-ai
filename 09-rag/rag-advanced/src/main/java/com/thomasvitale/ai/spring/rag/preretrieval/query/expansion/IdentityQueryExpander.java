@@ -1,6 +1,6 @@
 package com.thomasvitale.ai.spring.rag.preretrieval.query.expansion;
 
-import com.thomasvitale.ai.spring.rag.Query;
+import org.springframework.ai.rag.Query;
 import org.springframework.util.Assert;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.thomasvitale.ai.spring.rag.preretrieval.query.transformation;
 
-import com.thomasvitale.ai.spring.rag.Query;
+import org.springframework.ai.rag.Query;
 
 import java.util.function.Function;
 

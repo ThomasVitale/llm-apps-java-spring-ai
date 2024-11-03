@@ -1,10 +1,10 @@
 package com.thomasvitale.ai.spring.rag.preretrieval.query.expansion;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
-import com.thomasvitale.ai.spring.rag.Query;
 import com.thomasvitale.ai.spring.util.PromptAssert;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.rag.Query;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;

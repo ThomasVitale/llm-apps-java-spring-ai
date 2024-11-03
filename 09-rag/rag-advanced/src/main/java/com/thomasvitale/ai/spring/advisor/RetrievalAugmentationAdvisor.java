@@ -1,8 +1,5 @@
 package com.thomasvitale.ai.spring.advisor;
 
-import com.thomasvitale.ai.spring.rag.Query;
-import com.thomasvitale.ai.spring.rag.augmentation.ContextualQueryAugmentor;
-import com.thomasvitale.ai.spring.rag.augmentation.QueryAugmentor;
 import com.thomasvitale.ai.spring.rag.orchestration.routing.AllRetrieversQueryRouter;
 import com.thomasvitale.ai.spring.rag.orchestration.routing.QueryRouter;
 import com.thomasvitale.ai.spring.rag.preretrieval.query.expansion.IdentityQueryExpander;
@@ -21,6 +18,9 @@ import org.springframework.ai.chat.client.advisor.api.StreamAroundAdvisorChain;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.rag.Query;
+import org.springframework.ai.rag.augmentation.ContextualQueryAugmentor;
+import org.springframework.ai.rag.augmentation.QueryAugmentor;
 import org.springframework.ai.rag.retrieval.source.DocumentRetriever;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;

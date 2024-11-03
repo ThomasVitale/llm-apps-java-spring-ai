@@ -39,5 +39,7 @@ management:
     sampling:
       probability: 1.0
   otlp:
+    logging:
+      endpoint: "http://localhost:4318/v1/logs"
     tracing:
-      endpoint: http://localhost:4318/v1/traces
+      endpoint: "http://localhost:4318/v1/traces"

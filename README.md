@@ -75,6 +75,7 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 | Project                                                                                                                                                              | Description                                                                            |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
 | [document-readers-json-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-data-ingestion/document-readers-json-ollama)                     | Reading and vectorizing JSON documents with LLMs via Ollama.                           |
+| [document-readers-markdown-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-data-ingestion/document-readers-markdown-ollama)                 | Reading and vectorizing Markdown documents with LLMs via Ollama.                       |
 | [document-readers-pdf-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-data-ingestion/document-readers-text-ollama)                      | Reading and vectorizing PDF documents with LLMs via Ollama.                            |
 | [document-readers-text-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-data-ingestion/document-readers-text-ollama)                     | Reading and vectorizing text documents with LLMs via Ollama.                           |
 | [document-readers-tika-ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/07-data-ingestion/document-readers-tika-ollama)                     | Reading and vectorizing documents with LLMs and Tika via Ollama.                       |
@@ -87,9 +88,10 @@ _Coming soon_
 
 ### 9. Retrieval Augmented Generation (RAG)
 
-| Project                                                                                         | Description                                                                           |
-|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| [rag-naive](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-rag/rag-naive) | Basic question answering with documents (RAG) using LLMs via Ollama and PGVector.     |
+| Project                                                                                            | Description                                                                          |
+|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| [rag-naive](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-rag/rag-naive)    | Basic question answering with documents (RAG) using LLMs via Ollama and PGVector.    |
+| [rag-advanced](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/09-rag/rag-advanced) | Advanced question answering with documents (RAG) using LLMs via Ollama and PGVector. |
 
 ### 10. Memory
 

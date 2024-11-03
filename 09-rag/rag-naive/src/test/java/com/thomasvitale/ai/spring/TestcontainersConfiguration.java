@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.ollama.OllamaContainer;
-import org.testcontainers.utility.DockerImageName;
 
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
@@ -16,7 +15,7 @@ class TestcontainersConfiguration {
     @RestartScope
     @ServiceConnection
     PostgreSQLContainer<?> pgvectorContainer() {
-        return new PostgreSQLContainer<>(DockerImageName.parse("pgvector/pgvector:pg17"));
+        return new PostgreSQLContainer<>("pgvector/pgvector:pg17");
     }
 
     @Bean

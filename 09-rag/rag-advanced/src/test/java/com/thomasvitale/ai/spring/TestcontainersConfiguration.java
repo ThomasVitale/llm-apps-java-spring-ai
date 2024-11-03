@@ -5,12 +5,9 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.Scope;
-import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.containers.wait.strategy.Wait;
+import org.testcontainers.grafana.LgtmStackContainer;
 import org.testcontainers.ollama.OllamaContainer;
-import org.testcontainers.utility.DockerImageName;
 
 import java.time.Duration;
 
@@ -21,18 +18,14 @@ class TestcontainersConfiguration {
     @RestartScope
     @ServiceConnection
     PostgreSQLContainer<?> pgvectorContainer() {
-        return new PostgreSQLContainer<>(DockerImageName.parse("pgvector/pgvector:pg17"));
+        return new PostgreSQLContainer<>("pgvector/pgvector:pg17");
     }
 
     @Bean
     @RestartScope
-    @Scope("singleton")
-    @ServiceConnection("otel/opentelemetry-collector-contrib")
-    GenericContainer<?> lgtmContainer() {
-        return new GenericContainer<>("docker.io/grafana/otel-lgtm:0.7.6")
-                .withExposedPorts(3000, 4317, 4318)
-                .withEnv("OTEL_METRIC_EXPORT_INTERVAL", "500")
-                .waitingFor(Wait.forLogMessage(".*The OpenTelemetry collector and the Grafana LGTM stack are up and running.*\\s", 1))
+    @ServiceConnection
+    LgtmStackContainer lgtmContainer() {
+        return new LgtmStackContainer("grafana/otel-lgtm:0.7.6")
                 .withStartupTimeout(Duration.ofMinutes(2))
                 .withReuse(true);
     }

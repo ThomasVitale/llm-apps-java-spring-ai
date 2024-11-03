@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.TextReader;
-import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -16,9 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DocumentEtlPipeline {
+class IngestionPipeline {
 
-    private static final Logger logger = LoggerFactory.getLogger(DocumentEtlPipeline.class);
+    private static final Logger logger = LoggerFactory.getLogger(IngestionPipeline.class);
+
     private final VectorStore vectorStore;
 
     @Value("classpath:documents/story1.md")
@@ -27,12 +27,12 @@ public class DocumentEtlPipeline {
     @Value("classpath:documents/story2.txt")
     Resource textFile2;
 
-    public DocumentEtlPipeline(VectorStore vectorStore) {
+    IngestionPipeline(VectorStore vectorStore) {
         this.vectorStore = vectorStore;
     }
 
     @PostConstruct
-    public void run() {
+    void run() {
         List<Document> documents = new ArrayList<>();
 
         logger.info("Loading .md files as Documents");
@@ -47,12 +47,8 @@ public class DocumentEtlPipeline {
         textReader2.setCharset(Charset.defaultCharset());
         documents.addAll(textReader2.get());
 
-        logger.info("Split Documents to better fit the LLM context window");
-        var textSplitter = new TokenTextSplitter();
-        var transformedDocuments = textSplitter.apply(documents);
-
         logger.info("Creating and storing Embeddings from Documents");
-        vectorStore.add(transformedDocuments);
+        vectorStore.add(documents);
     }
 
 }

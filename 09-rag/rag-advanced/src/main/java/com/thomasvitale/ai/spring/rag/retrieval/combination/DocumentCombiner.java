@@ -1,7 +1,7 @@
 package com.thomasvitale.ai.spring.rag.retrieval.combination;
 
-import com.thomasvitale.ai.spring.rag.Query;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.rag.Query;
 
 import java.util.List;
 import java.util.Map;
