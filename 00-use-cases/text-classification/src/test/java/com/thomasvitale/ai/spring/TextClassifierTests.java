@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TextClassifierTests {
 
     @Autowired
-    TextClassifier textClassifier;
+    ClassificationController textClassifier;
 
     Map<ClassificationType, List<String>> classificationExamples = Map.of(
             ClassificationType.BUSINESS, List.of(
