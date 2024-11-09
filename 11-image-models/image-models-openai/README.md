@@ -25,7 +25,7 @@ The application relies on the OpenAI API for providing LLMs.
 
 ### Create an OpenAI account
 
-Visit [https://platform.openai.com](platform.openai.com) and sign up for a new account.
+Visit [platform.openai.com](https://platform.openai.com) and sign up for a new account.
 
 ### Configure API Key
 

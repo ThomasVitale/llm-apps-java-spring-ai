@@ -12,7 +12,7 @@ The application relies on the OpenAI API for providing LLMs.
 
 ### Create an OpenAI account
 
-Visit [https://platform.openai.com](platform.openai.com) and sign up for a new account.
+Visit [platform.openai.com](https://platform.openai.com) and sign up for a new account.
 
 ### Configure API Key
 
@@ -30,7 +30,7 @@ The application relies on the Mistral AI API for providing LLMs.
 
 ### Create a Mistral AI account
 
-Visit [https://console.mistral.ai](console.mistral.ai) and sign up for a new account.
+Visit [console.mistral.ai](https://console.mistral.ai) and sign up for a new account.
 You can choose the "Experiment" plan, which gives you access to the Mistral APIs for free.
 
 ### Configure API Key
