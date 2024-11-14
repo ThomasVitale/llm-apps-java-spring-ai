@@ -1,18 +1,14 @@
-package com.thomasvitale.ai.spring.rag.preretrieval.query.expansion;
+package com.thomasvitale.ai.spring.rag.analysis.query.expansion;
 
 import org.springframework.ai.rag.Query;
-import org.springframework.util.Assert;
+import org.springframework.ai.rag.analysis.query.expansion.QueryExpander;
 
 import java.util.List;
 
-/**
- * An expander that keeps the query as is.
- */
 public class IdentityQueryExpander implements QueryExpander {
 
     @Override
     public List<Query> expand(Query query) {
-        Assert.notNull(query, "query cannot be null");
         return List.of(query);
     }
 

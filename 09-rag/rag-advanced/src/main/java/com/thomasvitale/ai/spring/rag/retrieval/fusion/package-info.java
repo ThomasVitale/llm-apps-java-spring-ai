@@ -16,7 +16,7 @@
 
 @NonNullApi
 @NonNullFields
-package com.thomasvitale.ai.spring.rag.retrieval.combination;
+package com.thomasvitale.ai.spring.rag.retrieval.fusion;
 
 import org.springframework.lang.NonNullApi;
 import org.springframework.lang.NonNullFields;

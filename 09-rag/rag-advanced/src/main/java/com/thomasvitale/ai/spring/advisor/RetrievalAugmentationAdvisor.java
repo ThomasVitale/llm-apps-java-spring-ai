@@ -1,13 +1,10 @@
 package com.thomasvitale.ai.spring.advisor;
 
+import com.thomasvitale.ai.spring.rag.analysis.query.expansion.IdentityQueryExpander;
 import com.thomasvitale.ai.spring.rag.orchestration.routing.AllRetrieversQueryRouter;
 import com.thomasvitale.ai.spring.rag.orchestration.routing.QueryRouter;
-import com.thomasvitale.ai.spring.rag.preretrieval.query.expansion.IdentityQueryExpander;
-import com.thomasvitale.ai.spring.rag.preretrieval.query.expansion.QueryExpander;
-import com.thomasvitale.ai.spring.rag.preretrieval.query.transformation.IdentityQueryTransformer;
-import com.thomasvitale.ai.spring.rag.preretrieval.query.transformation.QueryTransformer;
-import com.thomasvitale.ai.spring.rag.retrieval.combination.DocumentCombiner;
-import com.thomasvitale.ai.spring.rag.retrieval.combination.MergeDocumentCombiner;
+import com.thomasvitale.ai.spring.rag.retrieval.fusion.DocumentFuser;
+import com.thomasvitale.ai.spring.rag.retrieval.fusion.MergeDocumentFuser;
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.client.advisor.api.AdvisedRequest;
 import org.springframework.ai.chat.client.advisor.api.AdvisedResponse;
@@ -19,9 +16,11 @@ import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.rag.Query;
+import org.springframework.ai.rag.analysis.query.expansion.QueryExpander;
+import org.springframework.ai.rag.analysis.query.transformation.QueryTransformer;
 import org.springframework.ai.rag.augmentation.ContextualQueryAugmentor;
 import org.springframework.ai.rag.augmentation.QueryAugmentor;
-import org.springframework.ai.rag.retrieval.source.DocumentRetriever;
+import org.springframework.ai.rag.retrieval.search.DocumentRetriever;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -66,7 +65,7 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
 
     private final QueryRouter queryRouter;
 
-    private final DocumentCombiner documentCombiner;
+    private final DocumentFuser documentFuser;
 
     private final QueryAugmentor queryAugmentor;
 
@@ -74,11 +73,11 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
 
     private final int order;
 
-    public RetrievalAugmentationAdvisor(List<QueryTransformer> queryTransformers, @Nullable QueryExpander queryExpander, QueryRouter queryRouter, @Nullable DocumentCombiner documentCombiner, @Nullable QueryAugmentor queryAugmentor, @Nullable Boolean protectFromBlocking, @Nullable Integer order) {
-        this.queryTransformers = queryTransformers.isEmpty() ? List.of(new IdentityQueryTransformer()) : queryTransformers;
+    public RetrievalAugmentationAdvisor(List<QueryTransformer> queryTransformers, @Nullable QueryExpander queryExpander, QueryRouter queryRouter, @Nullable DocumentFuser documentFuser, @Nullable QueryAugmentor queryAugmentor, @Nullable Boolean protectFromBlocking, @Nullable Integer order) {
+        this.queryTransformers = queryTransformers.isEmpty() ? List.of() : queryTransformers;
         this.queryExpander = queryExpander != null ? queryExpander : new IdentityQueryExpander();
         this.queryRouter = queryRouter;
-        this.documentCombiner = documentCombiner != null ? documentCombiner : new MergeDocumentCombiner();
+        this.documentFuser = documentFuser != null ? documentFuser : new MergeDocumentFuser();
         this.queryAugmentor = queryAugmentor != null ? queryAugmentor : ContextualQueryAugmentor.builder().build();
         this.protectFromBlocking = protectFromBlocking != null ? protectFromBlocking : false;
         this.order = order != null ? order : 0;
@@ -141,12 +140,12 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         entry -> entry.getValue().stream()
-                                .map(retriever -> retriever.retrieve(entry.getKey().text()))
+                                .map(retriever -> retriever.retrieve(entry.getKey()))
                                 .toList()
                 ));
 
         // 5. Combine documents retrieved across multiple queries and retrievers.
-        List<Document> documents = documentCombiner.combine(documentsForQuery);
+        List<Document> documents = documentFuser.fuse(documentsForQuery);
         context.put(DOCUMENT_CONTEXT, documents);
 
         // 6. Augment user query with the document contextual data.
@@ -191,7 +190,7 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
         private List<QueryTransformer> queryTransformers = new ArrayList<>();
         private QueryExpander queryExpander;
         private QueryRouter queryRouter;
-        private DocumentCombiner documentCombiner;
+        private DocumentFuser documentFuser;
         private QueryAugmentor queryAugmentor;
         private Boolean protectFromBlocking;
         private Integer order;
@@ -227,8 +226,8 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
             return this;
         }
 
-        public Builder documentCombiner(DocumentCombiner documentCombiner) {
-            this.documentCombiner = documentCombiner;
+        public Builder documentCombiner(DocumentFuser documentFuser) {
+            this.documentFuser = documentFuser;
             return this;
         }
 
@@ -248,7 +247,7 @@ public class RetrievalAugmentationAdvisor implements CallAroundAdvisor, StreamAr
         }
 
         public RetrievalAugmentationAdvisor build() {
-            return new RetrievalAugmentationAdvisor(queryTransformers, queryExpander, queryRouter, documentCombiner, queryAugmentor, protectFromBlocking, order);
+            return new RetrievalAugmentationAdvisor(queryTransformers, queryExpander, queryRouter, documentFuser, queryAugmentor, protectFromBlocking, order);
         }
     }
 

@@ -2,7 +2,7 @@ package com.thomasvitale.ai.spring;
 
 import com.thomasvitale.ai.spring.advisor.RetrievalAugmentationAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.rag.retrieval.source.VectorStoreDocumentRetriever;
+import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

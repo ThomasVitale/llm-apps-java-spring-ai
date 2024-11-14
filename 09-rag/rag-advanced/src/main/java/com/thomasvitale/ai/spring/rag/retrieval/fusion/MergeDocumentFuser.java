@@ -1,4 +1,4 @@
-package com.thomasvitale.ai.spring.rag.retrieval.combination;
+package com.thomasvitale.ai.spring.rag.retrieval.fusion;
 
 import org.springframework.ai.document.Document;
 import org.springframework.ai.rag.Query;
@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 /**
  * A combiner that merges together all documents retrieved for all queries.
  */
-public class MergeDocumentCombiner implements DocumentCombiner {
+public class MergeDocumentFuser implements DocumentFuser {
 
     @Override
-    public List<Document> combine(Map<Query, List<List<Document>>> documentsForQuery) {
+    public List<Document> fuse(Map<Query, List<List<Document>>> documentsForQuery) {
         return new ArrayList<>(documentsForQuery.values().stream()
                 .flatMap(List::stream)
                 .flatMap(List::stream)
