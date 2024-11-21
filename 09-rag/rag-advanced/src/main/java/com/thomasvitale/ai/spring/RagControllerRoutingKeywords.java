@@ -1,8 +1,8 @@
 package com.thomasvitale.ai.spring;
 
-import com.thomasvitale.ai.spring.advisor.RetrievalAugmentationAdvisor;
-import com.thomasvitale.ai.spring.rag.orchestration.routing.QueryRouter;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.RetrievalAugmentationAdvisor;
+import org.springframework.ai.rag.orchestration.routing.QueryRouter;
 import org.springframework.ai.rag.retrieval.search.DocumentRetriever;
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
