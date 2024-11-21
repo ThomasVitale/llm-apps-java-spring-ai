@@ -6,6 +6,7 @@ import org.springframework.ai.rag.preretrieval.query.expansion.MultiQueryExpande
 import org.springframework.ai.rag.preretrieval.query.transformation.TranslationQueryTransformer;
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ public class RagControllerOptimization {
 
     private final ChatClient chatClient;
 
-    public RagControllerOptimization(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
+    public RagControllerOptimization(ChatClient.Builder chatClientBuilder, TaskExecutor taskExecutor, VectorStore vectorStore) {
         var documentRetriever = VectorStoreDocumentRetriever.builder()
                 .vectorStore(vectorStore)
                 .similarityThreshold(0.50)
@@ -35,6 +36,7 @@ public class RagControllerOptimization {
                         .documentRetriever(documentRetriever)
                         .queryTransformers(queryTransformer)
                         .queryExpander(queryExpander)
+                        .taskExecutor(taskExecutor)
                         .build())
                 .build();
     }

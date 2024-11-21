@@ -7,6 +7,7 @@ import org.springframework.ai.rag.retrieval.search.DocumentRetriever;
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class RagControllerRoutingKeywords {
 
     private final ChatClient chatClient;
 
-    public RagControllerRoutingKeywords(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
+    public RagControllerRoutingKeywords(ChatClient.Builder chatClientBuilder, TaskExecutor taskExecutor, VectorStore vectorStore) {
         var northPoleDocumentRetriever = VectorStoreDocumentRetriever.builder()
                 .vectorStore(vectorStore)
                 .similarityThreshold(0.50)
@@ -52,6 +53,7 @@ public class RagControllerRoutingKeywords {
         this.chatClient = chatClientBuilder
                 .defaultAdvisors(RetrievalAugmentationAdvisor.builder()
                         .queryRouter(queryRouter)
+                        .taskExecutor(taskExecutor)
                         .build())
                 .build();
     }

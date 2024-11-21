@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 class ChatController {
 
     private final ChatClient chatClient;
+    private final RetrievalAugmentationAdvisor ragAdvisor;
 
     ChatController(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
-        this.chatClient = chatClientBuilder
-                .defaultAdvisors(RetrievalAugmentationAdvisor.builder()
-                        .documentRetriever(VectorStoreDocumentRetriever.builder()
-                                .vectorStore(vectorStore)
-                                .build())
+        this.chatClient = chatClientBuilder.build();
+        this.ragAdvisor = RetrievalAugmentationAdvisor.builder()
+                .documentRetriever(VectorStoreDocumentRetriever.builder()
+                        .vectorStore(vectorStore)
                         .build())
                 .build();
     }
@@ -26,6 +26,7 @@ class ChatController {
     @PostMapping("/chat/doc")
     String chatWithDocument(@RequestBody String question) {
         return chatClient.prompt()
+                .advisors(ragAdvisor)
                 .user(question)
                 .call()
                 .content();

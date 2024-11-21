@@ -15,3 +15,10 @@ spring:
         initialize-schema: true
         dimensions: 768
         index-type: hnsw
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.ai.rag: debug
