@@ -9,19 +9,19 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 
 ## 💡 Use Cases
 
-* 🤖 **[Chatbot](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/chatbot)**  
+* 🤖 **[Chatbot](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/chatbot)**
   Chatbot using LLMs via Ollama.
 
-* ❓ **[Question Answering](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/question-answering)**  
+* ❓ **[Question Answering](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/question-answering)**
   Question answering with documents (RAG) using LLMs via Ollama and PGVector.
 
-* 🔍 **[Semantic Search](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/semantic-search)**  
+* 🔍 **[Semantic Search](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/semantic-search)**
   Semantic search using LLMs via Ollama and PGVector.
 
 * 📊 **[Structured Data Extraction](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/structured-data-extraction)**  
   Structured data extraction using LLMs via Ollama.
 
-* 🏷️ **[Text Classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/text-classification)**  
+* 🏷️ **[Text Classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/text-classification)**
   Text classification using LLMs via Ollama.
 
 ## 🧠 Models
