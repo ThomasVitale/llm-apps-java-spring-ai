@@ -1,4 +1,4 @@
-# 🍃 LLM and AI-Infused Applications with Java & Spring AI
+# LLM and AI-Infused Applications with Java & Spring AI
 
 Samples showing how to build Java applications powered by Generative AI and Large Language Models (LLMs) using [Spring AI](https://docs.spring.io/spring-ai/reference/).
 
