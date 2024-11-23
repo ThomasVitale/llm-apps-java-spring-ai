@@ -1,6 +1,6 @@
-# Embedding Models: Ollama
+# Embedding Models: Mistral AI
 
-Vector transformation (embeddings) with LLMs via Ollama.
+Vector transformation (embeddings) with LLMs via Mistral AI.
 
 ## Description
 
