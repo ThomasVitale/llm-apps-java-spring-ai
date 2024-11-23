@@ -28,4 +28,4 @@ jobs:
           cache: gradle
 
       - name: Compile and test
-        run: ./gradlew clean build --no-daemon
+        run: ./gradlew clean assemble --no-daemon
