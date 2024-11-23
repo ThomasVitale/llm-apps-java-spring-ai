@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: observability-models-openai
+  ai:
+    chat:
+      observations:
+        include-completion: true
+        include-prompt: true
+    image:
+      observations:
+        include-prompt: true
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.7
+      embedding:
+        options:
+          model: text-embedding-3-small
+      image:
+        options:
+          model: dall-e-3
+  http:
+    client:
+      read-timeout: 60s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      service.name: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    logging:
+      endpoint: "http://localhost:4318/v1/logs"
+    tracing:
+      endpoint: "http://localhost:4318/v1/traces"
