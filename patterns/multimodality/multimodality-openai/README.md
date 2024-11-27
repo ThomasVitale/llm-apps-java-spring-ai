@@ -33,6 +33,8 @@ Run the application.
 > [!NOTE]
 > These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
 
+### Image
+
 Call the application that will use a chat model to answer your question.
 
 ```shell
@@ -49,4 +51,12 @@ The image can also be fetched from a URL.
 
 ```shell
 http :8080/chat/image/url question=="What's in the picture? Answer in one sentence" -b
+```
+
+### Audio
+
+Call the application that will use a chat model to answer your question.
+
+```shell
+http :8080/chat/audio/file question=="What is this recording about? Give a short answer" -b
 ```
