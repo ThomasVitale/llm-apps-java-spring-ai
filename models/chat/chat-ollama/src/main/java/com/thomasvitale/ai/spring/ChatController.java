@@ -1,7 +1,7 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,9 +31,9 @@ class ChatController {
     String chatGenericOptions(String question) {
         return chatClient
                 .prompt(question)
-                .options(ChatOptionsBuilder.builder()
-                        .withModel("llama3.2:1b")
-                        .withTemperature(0.9)
+                .options(ChatOptions.builder()
+                        .model("llama3.2:1b")
+                        .temperature(0.9)
                         .build())
                 .call()
                 .content();
@@ -54,8 +54,8 @@ class ChatController {
     String chatHuggingFace(String question) {
         return chatClient
                 .prompt(question)
-                .options(ChatOptionsBuilder.builder()
-                        .withModel("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
+                .options(ChatOptions.builder()
+                        .model("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
                         .build())
                 .call()
                 .content();

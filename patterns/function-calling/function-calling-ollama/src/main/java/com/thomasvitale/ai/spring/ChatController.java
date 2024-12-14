@@ -42,10 +42,10 @@ class ChatController {
                 )
                 .functions(
                         FunctionCallback.builder()
-                                .description("Get the list of books written by the given author available in the library")
-                                .responseConverter(Object::toString)
                                 .function("BooksByAuthor", bookService::getBooksByAuthor)
+                                .description("Get the list of books written by the given author available in the library")
                                 .inputType(BookService.Author.class)
+                                .responseConverter(Object::toString)
                                 .build()
                 )
                 .call()

@@ -16,7 +16,7 @@ class ChatbotController {
     private final ChatClient chatClient;
 
     ChatbotController(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory) {
-        this.chatClient = chatClientBuilder
+        this.chatClient = chatClientBuilder.clone()
                 .defaultAdvisors(new MessageChatMemoryAdvisor(chatMemory))
                 .build();
     }

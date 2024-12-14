@@ -2,9 +2,7 @@ package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,16 +33,13 @@ class ChatController {
                 .prompt(new Prompt(question))
                 .call()
                 .chatResponse();
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     @PostMapping("/chat/full")
     ChatResponse chatFullResponse(@RequestBody String question) {
         return chatClient
                 .prompt(question)
-                .options(ChatOptionsBuilder.builder()
-                        .withModel(OpenAiApi.ChatModel.O1_PREVIEW.getValue())
-                        .build())
                 .call()
                 .chatResponse();
     }

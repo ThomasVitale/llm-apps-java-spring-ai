@@ -1,7 +1,7 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +12,9 @@ class StructuredDataExtractionController {
     private final ChatClient chatClient;
 
     StructuredDataExtractionController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder
-                .defaultOptions(ChatOptionsBuilder.builder()
-                        .withTemperature(0.0)
+        this.chatClient = chatClientBuilder.clone()
+                .defaultOptions(ChatOptions.builder()
+                        .temperature(0.0)
                         .build())
                 .build();
     }

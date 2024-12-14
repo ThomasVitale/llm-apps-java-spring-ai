@@ -42,7 +42,7 @@ class ChatModelController {
                         .withModel(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getValue())
                         .withTemperature(1.0)
                         .build()))
-                .getResult().getOutput().getContent();
+                .getResult().getOutput().getText();
     }
 
     @GetMapping("/chat/openai-options")
@@ -51,7 +51,7 @@ class ChatModelController {
                         .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
                         .withTemperature(1.0)
                         .build()))
-                .getResult().getOutput().getContent();
+                .getResult().getOutput().getText();
     }
 
 }

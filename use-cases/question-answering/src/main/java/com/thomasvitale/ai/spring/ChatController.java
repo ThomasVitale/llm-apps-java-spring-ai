@@ -15,7 +15,7 @@ class ChatController {
     private final RetrievalAugmentationAdvisor retrievalAugmentationAdvisor;
 
     ChatController(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
-        this.chatClient = chatClientBuilder.build();
+        this.chatClient = chatClientBuilder.clone().build();
         this.retrievalAugmentationAdvisor = RetrievalAugmentationAdvisor.builder()
                 .documentRetriever(VectorStoreDocumentRetriever.builder()
                         .vectorStore(vectorStore)

@@ -1,7 +1,7 @@
 package com.thomasvitale.ai.spring.model;
 
 import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
@@ -30,11 +30,11 @@ class ChatModelController {
 
     @GetMapping("/chat/generic-options")
     String chatGenericOptions(String question) {
-        return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
-                        .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
-                        .withTemperature(0.9)
+        return chatModel.call(new Prompt(question, ChatOptions.builder()
+                        .model(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
+                        .temperature(0.9)
                         .build()))
-                .getResult().getOutput().getContent();
+                .getResult().getOutput().getText();
     }
 
     @GetMapping("/chat/provider-options")
@@ -42,7 +42,7 @@ class ChatModelController {
         return chatModel.call(new Prompt(question, OpenAiChatOptions.builder()
                         .withLogprobs(true)
                         .build()))
-                .getResult().getOutput().getContent();
+                .getResult().getOutput().getText();
     }
 
     @GetMapping("/chat/stream")

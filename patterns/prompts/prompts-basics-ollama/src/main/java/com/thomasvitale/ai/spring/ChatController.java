@@ -33,7 +33,7 @@ class ChatController {
                 .prompt(new Prompt(question))
                 .call()
                 .chatResponse();
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     @PostMapping("/chat/full")

@@ -1,7 +1,7 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
 import org.springframework.ai.mistralai.api.MistralAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +32,9 @@ class ChatController {
     String chatGenericOptions(String question) {
         return chatClient
                 .prompt(question)
-                .options(ChatOptionsBuilder.builder()
-                        .withModel(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getName())
-                        .withTemperature(0.9)
+                .options(ChatOptions.builder()
+                        .model(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getName())
+                        .temperature(0.9)
                         .build())
                 .call()
                 .content();

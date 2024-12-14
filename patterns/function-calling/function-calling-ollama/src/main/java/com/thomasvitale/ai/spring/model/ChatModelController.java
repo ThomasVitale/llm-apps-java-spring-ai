@@ -4,8 +4,7 @@ import com.thomasvitale.ai.spring.BookService;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.model.function.FunctionCallback;
-import org.springframework.ai.model.function.FunctionCallbackWrapper;
-import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.ai.model.function.FunctionCallingOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,12 +34,12 @@ class ChatModelController {
                 What books written by {author} are available in the library?
                 """);
         Map<String,Object> model = Map.of("author", authorName);
-        var prompt = userPromptTemplate.create(model, OllamaOptions.builder()
+        var prompt = userPromptTemplate.create(model, FunctionCallingOptions.builder()
                 .withFunctions(Set.of("booksByAuthor"))
                 .build());
 
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     @GetMapping("/chat/function/explicit")
@@ -49,19 +48,19 @@ class ChatModelController {
                 What books written by {author} are available in the library?
                 """);
         Map<String,Object> model = Map.of("author", authorName);
-        var prompt = userPromptTemplate.create(model, OllamaOptions.builder()
+        var prompt = userPromptTemplate.create(model, FunctionCallingOptions.builder()
                 .withFunctionCallbacks(List.of(
                         FunctionCallback.builder()
-                                .description("Get the list of books written by the given author available in the library")
-                                .responseConverter(Object::toString)
                                 .function("BooksByAuthor", bookService::getBooksByAuthor)
+                                .description("Get the list of books written by the given author available in the library")
                                 .inputType(BookService.Author.class)
+                                .responseConverter(Object::toString)
                                 .build()
                 ))
                 .build());
 
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
 }

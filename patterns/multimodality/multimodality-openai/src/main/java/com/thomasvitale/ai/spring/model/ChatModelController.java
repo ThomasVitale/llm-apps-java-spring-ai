@@ -40,7 +40,7 @@ class ChatModelController {
         var userMessage = new UserMessage(question, new Media(MimeTypeUtils.IMAGE_PNG, image));
         var prompt = new Prompt(userMessage);
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     @GetMapping("/chat/image/url")
@@ -51,7 +51,7 @@ class ChatModelController {
         var userMessage = new UserMessage(question, new Media(MimeTypeUtils.IMAGE_PNG, url));
         var prompt = new Prompt(userMessage);
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     @GetMapping("/chat/audio/file")
@@ -61,7 +61,7 @@ class ChatModelController {
                 .withModel(OpenAiApi.ChatModel.GPT_4_O_AUDIO_PREVIEW.getValue())
                 .build());
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
 }

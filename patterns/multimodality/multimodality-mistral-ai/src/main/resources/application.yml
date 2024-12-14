@@ -1,0 +1,8 @@
+spring:
+  ai:
+    mistralai:
+      api-key: ${MISTRALAI_API_KEY}
+      chat:
+        options:
+          model: pixtral-large-latest
+          temperature: 0.7

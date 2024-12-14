@@ -21,7 +21,7 @@ class SearchController {
     List<Document> searchSimilarDocuments(@RequestBody String query) {
         var documents = vectorStore.similaritySearch(query);
         return documents.stream()
-                .map(document -> new Document(document.getId(), document.getContent(), document.getMedia(), document.getMetadata()))
+                .map(document -> document.mutate().build())
                 .toList();
     }
 

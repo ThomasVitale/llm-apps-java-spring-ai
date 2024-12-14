@@ -21,7 +21,7 @@ class SemanticSearchController {
     List<InstrumentNote> semanticSearch(@RequestBody String query) {
         return vectorStore.similaritySearch(SearchRequest.query(query).withTopK(3))
                 .stream()
-                .map(document -> new InstrumentNote(document.getContent()))
+                .map(document -> new InstrumentNote(document.getText()))
                 .toList();
     }
 

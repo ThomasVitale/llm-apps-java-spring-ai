@@ -5,7 +5,7 @@ import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +19,8 @@ class ClassificationController {
 
     ClassificationController(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder
-                .defaultOptions(ChatOptionsBuilder.builder()
-                        .withTemperature(0.0)
+                .defaultOptions(ChatOptions.builder()
+                        .temperature(0.0)
                         .build())
                 .build();
     }

@@ -49,7 +49,7 @@ class ChatModelController {
                 .build());
 
         var chatResponse = chatModel.call(prompt);
-        return outputConverter.convert(chatResponse.getResult().getOutput().getContent());
+        return outputConverter.convert(chatResponse.getResult().getOutput().getText());
     }
 
     @PostMapping("/chat/map")
@@ -64,7 +64,7 @@ class ChatModelController {
         var prompt = userPromptTemplate.create(model);
 
         var chatResponse = chatModel.call(prompt);
-        return outputConverter.convert(chatResponse.getResult().getOutput().getContent());
+        return outputConverter.convert(chatResponse.getResult().getOutput().getText());
     }
 
     @PostMapping("/chat/list")
@@ -81,7 +81,7 @@ class ChatModelController {
         var prompt = userPromptTemplate.create(model);
 
         var chatResponse = chatModel.call(prompt);
-        return outputConverter.convert(chatResponse.getResult().getOutput().getContent());
+        return outputConverter.convert(chatResponse.getResult().getOutput().getText());
     }
 
     @PostMapping("/chat/json")
@@ -97,7 +97,7 @@ class ChatModelController {
                 .build());
 
         var chatResponse = chatModel.call(prompt);
-        return outputConverter.convert(chatResponse.getResult().getOutput().getContent());
+        return outputConverter.convert(chatResponse.getResult().getOutput().getText());
     }
 
 }

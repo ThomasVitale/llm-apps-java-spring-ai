@@ -46,7 +46,7 @@ class ChatModelController {
         var prompt = userPromptTemplate.create(model);
 
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     @PostMapping("/chat/system")
@@ -61,7 +61,7 @@ class ChatModelController {
         var prompt = new Prompt(List.of(systemMessage, userMessage));
 
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     @PostMapping("/chat/external")
@@ -74,7 +74,7 @@ class ChatModelController {
         var prompt = new Prompt(List.of(systemMessage, userMessage));
 
         var chatResponse = chatModel.call(prompt);
-        return chatResponse.getResult().getOutput().getContent();
+        return chatResponse.getResult().getOutput().getText();
     }
 
     private String randomGreeting() {

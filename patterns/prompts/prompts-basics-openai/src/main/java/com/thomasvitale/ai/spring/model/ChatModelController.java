@@ -28,7 +28,7 @@ class ChatModelController {
 
     @PostMapping("/chat/prompt")
     String chatPrompt(@RequestBody String question) {
-        return chatModel.call(new Prompt(question)).getResult().getOutput().getContent();
+        return chatModel.call(new Prompt(question)).getResult().getOutput().getText();
     }
 
     @PostMapping("/chat/full")

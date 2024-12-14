@@ -44,6 +44,7 @@ include 'patterns:prompts:prompts-templates-openai'
 include 'patterns:structured-output:structured-output-ollama'
 include 'patterns:structured-output:structured-output-openai'
 
+include 'patterns:multimodality:multimodality-mistral-ai'
 include 'patterns:multimodality:multimodality-ollama'
 include 'patterns:multimodality:multimodality-openai'
 
