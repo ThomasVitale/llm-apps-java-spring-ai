@@ -1,10 +1,12 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.core.convert.support.DefaultConversionService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +39,7 @@ class ChatController {
                         .param("instrument", question.instrument())
                 )
                 .options(OllamaOptions.builder()
-                        .withFormat("json")
+                        .format("json")
                         .build())
                 .call()
                 .entity(ArtistInfo.class);
@@ -67,6 +69,25 @@ class ChatController {
                 )
                 .call()
                 .entity(new ListOutputConverter(new DefaultConversionService()));
+    }
+
+    @GetMapping("/chat/json")
+    CountryInfo chatJsonOutput(String country) {
+        var outputConverter = new BeanOutputConverter<>(CountryInfo.class);
+        var userPromptTemplate = """
+                Tell me about {country}.
+                """;
+
+        return chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(userPromptTemplate)
+                        .param("country", country)
+                )
+                .options(OllamaOptions.builder()
+                        .format(outputConverter.getJsonSchemaMap())
+                        .build())
+                .call()
+                .entity(outputConverter);
     }
 
 }

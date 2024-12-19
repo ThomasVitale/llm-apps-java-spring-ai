@@ -43,3 +43,9 @@ http POST :8080/chat/map -b
 ```shell
 http :8080/chat/list genre="rock" instrument="piano" -b
 ```
+
+Ollama has also a native structured output feature, used in the following request.
+
+```shell
+http :8080/chat/json country=="Denmark" -b
+```
