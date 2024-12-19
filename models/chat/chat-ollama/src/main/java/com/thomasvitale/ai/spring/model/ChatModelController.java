@@ -39,7 +39,7 @@ class ChatModelController {
     @GetMapping("/chat/provider-options")
     String chatProviderOptions(String question) {
         return chatModel.call(new Prompt(question, OllamaOptions.builder()
-                        .withRepeatPenalty(1.5)
+                        .repeatPenalty(1.5)
                         .build()))
                 .getResult().getOutput().getText();
     }
