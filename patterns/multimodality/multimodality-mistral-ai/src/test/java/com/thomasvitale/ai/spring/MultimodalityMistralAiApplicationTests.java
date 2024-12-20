@@ -11,7 +11,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Disabled("Not implemented")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "60s")
 @EnabledIfEnvironmentVariable(named = "MISTRALAI_API_KEY", matches = ".*")
