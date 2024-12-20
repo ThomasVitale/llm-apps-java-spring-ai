@@ -58,7 +58,7 @@ class ChatModelController {
     String chatAudioFile(String question) {
         var userMessage = new UserMessage(question, new Media(MimeTypeUtils.parseMimeType("audio/mp3"), audio));
         var prompt = new Prompt(userMessage, OpenAiChatOptions.builder()
-                .withModel(OpenAiApi.ChatModel.GPT_4_O_AUDIO_PREVIEW.getValue())
+                .model(OpenAiApi.ChatModel.GPT_4_O_AUDIO_PREVIEW.getValue())
                 .build());
         var chatResponse = chatModel.call(prompt);
         return chatResponse.getResult().getOutput().getText();

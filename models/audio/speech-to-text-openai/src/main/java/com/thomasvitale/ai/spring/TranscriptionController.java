@@ -26,10 +26,10 @@ class TranscriptionController {
     @GetMapping("/transcription/provider-options")
     String speechProviderOptions(@Value("classpath:speech2.mp3") Resource audioFile) {
         var transcriptionResponse = transcriptionModel.call(new AudioTranscriptionPrompt(audioFile, OpenAiAudioTranscriptionOptions.builder()
-                .withLanguage("en")
-                .withPrompt("Ask not this, but ask that")
-                .withTemperature(0f)
-                .withResponseFormat(OpenAiAudioApi.TranscriptResponseFormat.VTT)
+                .language("en")
+                .prompt("Ask not this, but ask that")
+                .temperature(0f)
+                .responseFormat(OpenAiAudioApi.TranscriptResponseFormat.VTT)
                 .build()));
         return transcriptionResponse.getResult().getOutput();
     }

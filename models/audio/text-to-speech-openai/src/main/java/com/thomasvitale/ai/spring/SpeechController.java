@@ -24,10 +24,10 @@ class SpeechController {
     @GetMapping("/speech/provider-options")
     byte[] speechProviderOptions(String message) {
         var speechResponse = speechModel.call(new SpeechPrompt(message, OpenAiAudioSpeechOptions.builder()
-                .withModel("tts-1")
-                .withVoice(OpenAiAudioApi.SpeechRequest.Voice.ALLOY)
-                .withResponseFormat(OpenAiAudioApi.SpeechRequest.AudioResponseFormat.MP3)
-                .withSpeed(1.0f)
+                .model("tts-1")
+                .voice(OpenAiAudioApi.SpeechRequest.Voice.ALLOY)
+                .responseFormat(OpenAiAudioApi.SpeechRequest.AudioResponseFormat.MP3)
+                .speed(1.0f)
                 .build()));
         return speechResponse.getResult().getOutput();
     }

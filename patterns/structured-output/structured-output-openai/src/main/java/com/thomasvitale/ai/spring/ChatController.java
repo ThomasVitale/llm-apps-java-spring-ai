@@ -38,7 +38,7 @@ class ChatController {
                         .param("instrument", question.instrument())
                 )
                 .options(OpenAiChatOptions.builder()
-                        .withResponseFormat(new ResponseFormat(ResponseFormat.Type.JSON_OBJECT, null))
+                        .responseFormat(new ResponseFormat(ResponseFormat.Type.JSON_OBJECT, null))
                         .build())
                 .call()
                 .entity(ArtistInfo.class);

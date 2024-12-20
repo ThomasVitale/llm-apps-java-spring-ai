@@ -37,7 +37,7 @@ class EmbeddingController {
     @GetMapping("/embed/provider-options")
     String embedProviderOptions(String query) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), OpenAiEmbeddingOptions.builder()
-                        .withEncodingFormat("float")
+                        .encodingFormat("float")
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;

@@ -21,8 +21,8 @@ class ImageController {
     @GetMapping("/image")
     String image(String message) {
         var imageResponse = imageModel.call(new ImagePrompt(message, ImageOptionsBuilder.builder()
-                .withHeight(256)
-                .withWidth(256)
+                .height(256)
+                .width(256)
                 .build()));
         return imageResponse.getResult().getOutput().getUrl();
     }

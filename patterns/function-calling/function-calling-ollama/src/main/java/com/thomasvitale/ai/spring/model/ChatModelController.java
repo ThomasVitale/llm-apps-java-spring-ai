@@ -35,7 +35,7 @@ class ChatModelController {
                 """);
         Map<String,Object> model = Map.of("author", authorName);
         var prompt = userPromptTemplate.create(model, FunctionCallingOptions.builder()
-                .withFunctions(Set.of("booksByAuthor"))
+                .functions(Set.of("booksByAuthor"))
                 .build());
 
         var chatResponse = chatModel.call(prompt);
@@ -49,7 +49,7 @@ class ChatModelController {
                 """);
         Map<String,Object> model = Map.of("author", authorName);
         var prompt = userPromptTemplate.create(model, FunctionCallingOptions.builder()
-                .withFunctionCallbacks(List.of(
+                .functionCallbacks(List.of(
                         FunctionCallback.builder()
                                 .function("BooksByAuthor", bookService::getBooksByAuthor)
                                 .description("Get the list of books written by the given author available in the library")

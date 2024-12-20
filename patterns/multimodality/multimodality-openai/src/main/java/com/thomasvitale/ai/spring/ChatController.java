@@ -63,7 +63,7 @@ class ChatController {
                         .media(MimeTypeUtils.parseMimeType("audio/mp3"), audio)
                 )
                 .options(OpenAiChatOptions.builder()
-                        .withModel(OpenAiApi.ChatModel.GPT_4_O_AUDIO_PREVIEW.getValue())
+                        .model(OpenAiApi.ChatModel.GPT_4_O_AUDIO_PREVIEW.getValue())
                         .build())
                 .call()
                 .content();

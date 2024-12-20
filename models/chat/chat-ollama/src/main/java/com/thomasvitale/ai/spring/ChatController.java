@@ -44,7 +44,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(OllamaOptions.builder()
-                        .withRepeatPenalty(1.5)
+                        .repeatPenalty(1.5)
                         .build())
                 .call()
                 .content();

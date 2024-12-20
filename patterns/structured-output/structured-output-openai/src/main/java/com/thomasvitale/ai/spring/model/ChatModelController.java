@@ -45,7 +45,7 @@ class ChatModelController {
                 "genre", question.genre(),
                 "format", outputConverter.getFormat());
         var prompt = userPromptTemplate.create(model, OpenAiChatOptions.builder()
-                .withResponseFormat(new ResponseFormat(ResponseFormat.Type.JSON_OBJECT, null))
+                .responseFormat(new ResponseFormat(ResponseFormat.Type.JSON_OBJECT, null))
                 .build());
 
         var chatResponse = chatModel.call(prompt);
@@ -92,8 +92,8 @@ class ChatModelController {
                 """);
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre());
         var prompt = userPromptTemplate.create(model, OpenAiChatOptions.builder()
-                .withModel(OpenAiApi.ChatModel.GPT_4_O.getValue())
-                .withResponseFormat(new ResponseFormat(ResponseFormat.Type.JSON_SCHEMA, outputConverter.getJsonSchema()))
+                .model(OpenAiApi.ChatModel.GPT_4_O.getValue())
+                .responseFormat(new ResponseFormat(ResponseFormat.Type.JSON_SCHEMA, outputConverter.getJsonSchema()))
                 .build());
 
         var chatResponse = chatModel.call(prompt);

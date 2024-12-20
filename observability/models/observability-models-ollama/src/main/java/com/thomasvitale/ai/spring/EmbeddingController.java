@@ -44,7 +44,7 @@ class EmbeddingController {
     String embedProviderOptions(String query) {
         logger.info("Embedding query with provider options: {}", query);
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), OllamaOptions.builder()
-                        .withLowVRAM(true)
+                        .lowVRAM(true)
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;

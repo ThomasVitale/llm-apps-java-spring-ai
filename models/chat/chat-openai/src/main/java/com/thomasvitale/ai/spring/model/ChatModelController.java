@@ -40,7 +40,7 @@ class ChatModelController {
     @GetMapping("/chat/provider-options")
     String chatProviderOptions(String question) {
         return chatModel.call(new Prompt(question, OpenAiChatOptions.builder()
-                        .withLogprobs(true)
+                        .logprobs(true)
                         .build()))
                 .getResult().getOutput().getText();
     }

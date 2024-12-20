@@ -49,7 +49,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(MistralAiChatOptions.builder()
-                        .withSafePrompt(true)
+                        .safePrompt(true)
                         .build())
                 .call()
                 .content();

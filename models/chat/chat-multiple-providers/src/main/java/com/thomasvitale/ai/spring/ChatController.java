@@ -45,8 +45,8 @@ class ChatController {
         return mistralAichatClient
                 .prompt(question)
                 .options(MistralAiChatOptions.builder()
-                        .withModel(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getValue())
-                        .withTemperature(1.0)
+                        .model(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getValue())
+                        .temperature(1.0)
                         .build())
                 .call()
                 .content();
@@ -57,8 +57,8 @@ class ChatController {
         return openAichatClient
                 .prompt(question)
                 .options(OpenAiChatOptions.builder()
-                        .withModel(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
-                        .withTemperature(1.0)
+                        .model(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
+                        .temperature(1.0)
                         .build())
                 .call()
                 .content();

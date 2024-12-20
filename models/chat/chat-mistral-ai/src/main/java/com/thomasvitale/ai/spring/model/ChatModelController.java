@@ -40,7 +40,7 @@ class ChatModelController {
     @GetMapping("/chat/provider-options")
     String chatProviderOptions(String question) {
         return chatModel.call(new Prompt(question, MistralAiChatOptions.builder()
-                        .withSafePrompt(true)
+                        .safePrompt(true)
                         .build()))
                 .getResult().getOutput().getText();
     }
