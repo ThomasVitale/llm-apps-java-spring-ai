@@ -19,7 +19,7 @@ class SemanticSearchController {
 
     @PostMapping("/semantic-search")
     List<InstrumentNote> semanticSearch(@RequestBody String query) {
-        return vectorStore.similaritySearch(SearchRequest.query(query).withTopK(3))
+        return vectorStore.similaritySearch(SearchRequest.builder().query(query).topK(3).build())
                 .stream()
                 .map(document -> new InstrumentNote(document.getText()))
                 .toList();

@@ -49,7 +49,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(OpenAiChatOptions.builder()
-                        .withLogprobs(true)
+                        .logprobs(true)
                         .build())
                 .call()
                 .content();

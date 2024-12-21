@@ -26,8 +26,8 @@ class ImageController {
     String image(String message) {
         logger.info("Generating image: {}", message);
         var imageResponse = imageModel.call(new ImagePrompt(message, ImageOptionsBuilder.builder()
-                .withHeight(1024)
-                .withWidth(1024)
+                .height(1024)
+                .width(1024)
                 .build()));
         return imageResponse.getResult().getOutput().getUrl();
     }
