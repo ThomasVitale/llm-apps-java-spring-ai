@@ -2,6 +2,8 @@ package com.thomasvitale.ai.spring;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender;
+import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -18,6 +20,11 @@ public class RagAdvanced {
     @Bean
     ApplicationListener<ApplicationReadyEvent> logbackOtelAppenderInitializer(OpenTelemetry openTelemetry) {
         return _ -> OpenTelemetryAppender.install(openTelemetry);
+    }
+
+    @Bean
+    ChatMemory chatMemory() {
+        return new InMemoryChatMemory();
     }
 
 }

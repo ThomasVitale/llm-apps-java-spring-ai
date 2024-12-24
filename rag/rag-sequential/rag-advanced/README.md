@@ -44,6 +44,42 @@ You can also explore metrics in "Explore > Metrics" and logs in "Explore > Logs"
 
 Call the application that will use a chat model to answer your questions.
 
+### Query Transformation: Compression
+
+Without compression:
+
+```shell
+http --raw "Who are the characters going on an adventure in the North Pole?" :8080/rag/memory/007 -b --pretty none
+```
+
+```shell
+http --raw "What places do they visit?" :8080/rag/memory/007 -b --pretty none
+```
+
+With compression:
+
+```shell
+http --raw "Who are the characters going on an adventure in the North Pole?" :8080/rag/compression/007 -b --pretty none
+```
+
+```shell
+http --raw "What places do they visit?" :8080/rag/compression/007 -b --pretty none
+```
+
+### Query Transformation: Rewrite
+
+Without rewrite:
+
+```shell
+http --raw "Where are the main characters going on an adventure?" :8080/rag/basic -b --pretty none
+```
+
+With rewrite:
+
+```shell
+http --raw "Where are the main characters going on an adventure?" :8080/rag/rewrite -b --pretty none
+```
+
 ### Query Transformation: Translation
 
 Without translation:
