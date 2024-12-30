@@ -1,0 +1,11 @@
+spring:
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+        embedding:
+          include: false
+      chat:
+        options:
+          model: llama3.2
+          temperature: 0.7

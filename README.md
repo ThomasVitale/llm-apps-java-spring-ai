@@ -164,6 +164,12 @@ Vector Store Observability for different vector stores:
 
 * **[PGVector](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/observability-vector-stores-pgvector)**
 
+## ⚙️ Model Context Protocol
+
+Integrations with MCP Servers for providing contexts to LLMs.
+
+* **[Brave Search API](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/model-context-protocol/mcp-brave)**
+
 ## 📋 Evaluation
 
 _Coming soon_
