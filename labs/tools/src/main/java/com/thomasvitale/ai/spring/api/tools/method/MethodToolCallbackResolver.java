@@ -5,10 +5,10 @@ import com.thomasvitale.ai.spring.api.tools.ToolCallbackResolver;
 import org.springframework.ai.model.function.FunctionCallback;
 import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.util.StringUtils;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.stream.Stream;
 
 public class MethodToolCallbackResolver implements ToolCallbackResolver {
 
@@ -21,29 +21,24 @@ public class MethodToolCallbackResolver implements ToolCallbackResolver {
 
     @Override
     public FunctionCallback[] getToolCallbacks() {
-        List<FunctionCallback> callbacks = new ArrayList<>();
-        
-        // Get all methods from the target object
-        Method[] methods = ReflectionUtils.getAllDeclaredMethods(target.getClass());
-        
-        for (Method method : methods) {
-            Tool toolAnnotation = method.getAnnotation(Tool.class);
+        return Stream.of(ReflectionUtils.getDeclaredMethods(target.getClass()))
+                .filter(method -> method.isAnnotationPresent(Tool.class))
+                .map(method -> FunctionCallback.builder()
+                        .method(method.getName(), method.getParameterTypes())
+                        .name(getToolName(method.getAnnotation(Tool.class), method.getName()))
+                        .description(getToolDescription(method.getAnnotation(Tool.class), method.getName()))
+                        .schemaType(method.getAnnotation(Tool.class).schemaType())
+                        .targetObject(target)
+                        .build())
+                .toArray(FunctionCallback[]::new);
+    }
 
-            // Ignore methods without the @Tool annotation.
-            if (toolAnnotation == null) {
-                continue;
-            }
+    private static String getToolName(Tool tool, String methodName) {
+        return StringUtils.hasText(tool.name()) ? tool.name() : methodName;
+    }
 
-            // Create FunctionCallback for methods with the @Tool annotation.
-            FunctionCallback callback = FunctionCallback.builder()
-                .method(method.getName(), method.getParameterTypes())
-                .description(toolAnnotation.value())
-                .targetObject(target)
-                .build();
-            callbacks.add(callback);
-        }
-        
-        return callbacks.toArray(new FunctionCallback[0]);
+    private static String getToolDescription(Tool tool, String methodName) {
+        return StringUtils.hasText(tool.value()) ? tool.value() : methodName;
     }
 
     public static class Builder {

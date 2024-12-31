@@ -53,7 +53,15 @@ run the application as follows.
 Call the application that will use a @Tool-annotated method to retrieve the context to answer your question.
 
 ```shell
-http :8080/chat/method authorName=="J.R.R. Tolkien" -b
+http :8080/chat/method/void -b
+```
+
+```shell
+http :8080/chat/method/single authorName=="J.R.R. Tolkien" -b
+```
+
+```shell
+http :8080/chat/method/list authorName1=="J.R.R. Tolkien" authorName2=="Philip Pullman" -b
 ```
 
 Call the application that will use an MCP Server to retrieve the context to answer your question.
