@@ -1,6 +1,6 @@
 # Labs: Tools
 
-Integrating with Tools, including @Tools-annotated methods and MCP Servers.
+Integrating with Tools, including `@Tools`-annotated methods and MCP Servers.
 
 ## Brave
 
@@ -50,7 +50,7 @@ run the application as follows.
 > [!NOTE]
 > These examples use the [httpie](https://httpie.io) CLI to send HTTP requests.
 
-Call the application that will use a @Tool-annotated method to retrieve the context to answer your question.
+Call the application that will use a `@Tool`-annotated method to retrieve the context to answer your question.
 
 ```shell
 http :8080/chat/method/void -b
