@@ -1,4 +1,4 @@
-# Model Context Protocol: Brave
+# Tools: Brave + Model Context Protocol
 
 Integrating with the Brave Search API via the Model Context Protocol.
 
