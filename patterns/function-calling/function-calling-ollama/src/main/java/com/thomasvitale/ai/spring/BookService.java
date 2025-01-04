@@ -25,6 +25,14 @@ public class BookService {
                 .toList();
     }
 
+    public List<Author> getAuthorsByBook(List<Book> booksToSearch) {
+        return books.values().stream()
+                .filter(book -> booksToSearch.stream()
+                        .anyMatch(b -> b.title().equals(book.title())))
+                .map(book -> new Author(book.author()))
+                .toList();
+    }
+
     public record Book(String title, String author) {}
     public record Author(String name) {}
 
