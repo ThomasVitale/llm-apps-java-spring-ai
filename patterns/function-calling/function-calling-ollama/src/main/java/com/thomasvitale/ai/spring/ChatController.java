@@ -139,4 +139,22 @@ class ChatController {
                 .content();
     }
 
+    @GetMapping("/chat/method/non-public")
+    String chatMethodNonPublic(String authorName) {
+        var userPromptTemplate = "What books written by {author} are available in the library?";
+        return chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(userPromptTemplate)
+                        .param("author", authorName)
+                )
+                .functions(FunctionCallback.builder()
+                        .method("findBooksByAuthor", String.class)
+                        .description("Get the list of books written by the given author available in the library")
+                        .targetObject(tools)
+                        .build()
+                )
+                .call()
+                .content();
+    }
+
 }

@@ -35,4 +35,9 @@ public class Tools {
         return bookService.getAuthorsByBook(books.stream().map(b -> new BookService.Book(b, "")).toList());
     }
 
+    List<BookService.Book> findBooksByAuthor(String author) {
+        logger.info("Getting books by author: {}", author);
+        return bookService.getBooksByAuthor(new BookService.Author(author));
+    }
+
 }
