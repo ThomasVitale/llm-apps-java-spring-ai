@@ -48,9 +48,9 @@ include 'patterns:multimodality:multimodality-mistral-ai'
 include 'patterns:multimodality:multimodality-ollama'
 include 'patterns:multimodality:multimodality-openai'
 
-include 'patterns:function-calling:function-calling-mistral-ai'
-include 'patterns:function-calling:function-calling-ollama'
-include 'patterns:function-calling:function-calling-openai'
+include 'patterns:tool-calling:tool-calling-mistral-ai'
+include 'patterns:tool-calling:tool-calling-ollama'
+include 'patterns:tool-calling:tool-calling-openai'
 
 include 'rag:rag-branching'
 include 'rag:rag-sequential:rag-advanced'
