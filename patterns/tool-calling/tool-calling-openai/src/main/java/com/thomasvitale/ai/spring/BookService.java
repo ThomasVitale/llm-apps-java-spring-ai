@@ -1,5 +1,6 @@
 package com.thomasvitale.ai.spring;
 
+import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@RegisterReflectionForBinding(classes = BookService.Book.class)
 public class BookService {
 
     private static final Map<Integer,Book> books = new ConcurrentHashMap<>();
