@@ -4,9 +4,8 @@ import com.thomasvitale.ai.spring.BookService;
 import com.thomasvitale.ai.spring.Functions;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.model.function.FunctionCallback;
 import org.springframework.ai.model.tool.ToolCallingChatOptions;
-import org.springframework.ai.tool.ToolCallback;
+import org.springframework.ai.tool.function.FunctionToolCallback;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,8 +49,7 @@ class ChatModelController {
         Map<String,Object> model = Map.of("author", authorName);
         var prompt = userPromptTemplate.create(model, ToolCallingChatOptions.builder()
                 .toolCallbacks(
-                        (ToolCallback) FunctionCallback.builder()
-                                .function("BooksByAuthor", bookService::getBooksByAuthor)
+                        FunctionToolCallback.builder("booksByAuthor", bookService::getBooksByAuthor)
                                 .description("Get the list of books written by the given author available in the library")
                                 .inputType(BookService.Author.class)
                                 .build()

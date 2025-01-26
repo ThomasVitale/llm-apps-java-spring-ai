@@ -3,7 +3,7 @@ package com.thomasvitale.ai.spring;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.model.function.FunctionCallback;
+import org.springframework.ai.tool.function.FunctionToolCallback;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -92,8 +92,7 @@ class ChatController {
     String chatFunctionVoidInputCallback() {
         return chatClient.prompt()
                 .user("Welcome the users to the library")
-                .toolCallbacks(FunctionCallback.builder()
-                        .function("sayWelcome", (input) -> {
+                .toolCallbacks(FunctionToolCallback.builder("sayWelcome", (input) -> {
                             logger.info("CALLBACK - Welcoming users to the library");
                         })
                         .description("Welcome users to the library")
@@ -124,8 +123,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("user", user)
                 )
-                .toolCallbacks(FunctionCallback.builder()
-                        .function("welcomeUser", (input) -> {
+                .toolCallbacks(FunctionToolCallback.builder("welcomeUser", (input) -> {
                             logger.info("CALLBACK - Welcoming {} to the library", ((Functions.User) input).name());
                         })
                         .description("Welcome a specific user to the library")
@@ -160,8 +158,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("author", authorName)
                 )
-                .toolCallbacks(FunctionCallback.builder()
-                        .function("availableBooksByAuthor", function)
+                .toolCallbacks(FunctionToolCallback.builder("availableBooksByAuthor", function)
                         .description("Get the list of books written by the given author available in the library")
                         .inputType(BookService.Author.class)
                         .build())
@@ -196,8 +193,7 @@ class ChatController {
                         .param("bookTitle1", bookTitle1)
                         .param("bookTitle2", bookTitle2)
                 )
-                .toolCallbacks(FunctionCallback.builder()
-                        .function("authorsByAvailableBooks", function)
+                .toolCallbacks(FunctionToolCallback.builder("authorsByAvailableBooks", function)
                         .description("Get the list of authors who wrote the given books available in the library")
                         .inputType(BookService.Books.class)
                         .build())
