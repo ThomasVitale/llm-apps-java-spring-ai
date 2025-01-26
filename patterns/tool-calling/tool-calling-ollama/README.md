@@ -1,6 +1,6 @@
-# Tools / Function Calling: Ollama
+# Tool Calling: Ollama
 
-Tools / Function calling via Ollama.
+Tool calling via Ollama.
 
 ## Ollama
 

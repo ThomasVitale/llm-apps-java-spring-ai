@@ -4,7 +4,7 @@ import com.thomasvitale.ai.spring.McpFunctionCallbackResolver;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.mcp.client.McpSyncClient;
-import org.springframework.ai.model.function.FunctionCallingOptions;
+import org.springframework.ai.model.tool.ToolCallingChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +26,7 @@ class ChatModelController {
 
     @GetMapping("/chat/mcp")
     String chat(String question) {
-        var prompt = new Prompt(question, FunctionCallingOptions.builder()
+        var prompt = new Prompt(question, ToolCallingChatOptions.builder()
                 .functionCallbacks(McpFunctionCallbackResolver.resolve(mcpClient))
                 .build());
 

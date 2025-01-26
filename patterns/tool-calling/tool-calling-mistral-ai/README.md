@@ -1,6 +1,6 @@
-# Tools / Function Calling: Mistral AI
+# Tool Calling: Mistral AI
 
-Tools / Function calling via Mistral AI.
+Tool calling via Mistral AI.
 
 ## Mistral AI
 

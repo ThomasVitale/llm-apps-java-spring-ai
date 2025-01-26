@@ -26,7 +26,7 @@ public class McpBraveApplication {
                 .addEnvVar("BRAVE_API_KEY", System.getenv("BRAVE_API_KEY"))
                 .build();
 
-        var mcpClient = McpClient.using(new StdioClientTransport(serverParameters)).sync();
+        var mcpClient = McpClient.sync(new StdioClientTransport(serverParameters)).build();
 
         var initializeResult = mcpClient.initialize();
         logger.info("MCP Initialized: {}", initializeResult);

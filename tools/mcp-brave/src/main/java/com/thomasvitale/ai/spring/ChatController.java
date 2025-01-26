@@ -2,7 +2,6 @@ package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.mcp.client.McpSyncClient;
-import org.springframework.ai.mcp.spring.McpFunctionCallback;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

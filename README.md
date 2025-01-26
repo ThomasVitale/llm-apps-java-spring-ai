@@ -98,13 +98,13 @@ Including various media in prompts with LLMs:
 * **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/multimodality/multimodality-ollama)**
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/multimodality/multimodality-openai)**
 
-### ⚙️ Function Calling/Tools
+### ⚙️ Tool Calling
 
-Function calling with LLMs via different model providers:
+Tool calling with LLMs via different model providers:
 
-* **[Mistral AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/function-calling/function-calling-mistral-ai)**
-* **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/function-calling/function-calling-ollama)**
-* **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/function-calling/function-calling-openai)**
+* **[Mistral AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/tool-calling/tool-calling-mistral-ai)**
+* **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/tool-calling/tool-calling-ollama)**
+* **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/tool-calling/tool-calling-openai)**
 
 ### 🧠 Memory
 

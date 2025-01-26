@@ -3,6 +3,8 @@ package com.thomasvitale.ai.spring;
 import org.springframework.ai.mcp.client.McpSyncClient;
 import org.springframework.ai.mcp.spring.McpFunctionCallback;
 import org.springframework.ai.model.function.FunctionCallback;
+import org.springframework.ai.tool.ToolCallback;
+import org.springframework.ai.tool.ToolCallbacks;
 import org.springframework.util.Assert;
 
 import java.util.Arrays;

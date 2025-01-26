@@ -1,6 +1,6 @@
-# Tools / Function Calling: OpenAI
+# Tool Calling: OpenAI
 
-Tools / Function calling via OpenAI.
+Tool calling via OpenAI.
 
 ## OpenAI
 
