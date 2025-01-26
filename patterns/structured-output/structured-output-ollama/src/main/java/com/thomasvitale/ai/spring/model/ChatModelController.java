@@ -81,7 +81,7 @@ class ChatModelController {
         var prompt = userPromptTemplate.create(model);
 
         var chatResponse = chatModel.call(prompt);
-        return outputConverter.convert(chatResponse.getResult().getOutput().getContent());
+        return outputConverter.convert(chatResponse.getResult().getOutput().getText());
     }
 
     @GetMapping("/chat/json")

@@ -35,7 +35,7 @@ class ChatModelController {
         var prompt = new Prompt(userMessage);
         var chatResponse = chatModel.call(prompt);
         var assistantMessage = chatResponse.getResult().getOutput();
-        return assistantMessage.getContent();
+        return assistantMessage.getText();
     }
 
     @PostMapping("/chat/multiple")
@@ -49,7 +49,7 @@ class ChatModelController {
         var prompt = new Prompt(List.of(systemMessage, userMessage));
         var chatResponse = chatModel.call(prompt);
         var assistantMessage = chatResponse.getResult().getOutput();
-        return assistantMessage.getContent();
+        return assistantMessage.getText();
     }
 
     @PostMapping("/chat/external")
@@ -59,7 +59,7 @@ class ChatModelController {
         var prompt = new Prompt(List.of(systemMessage, userMessage));
         var chatResponse = chatModel.call(prompt);
         var assistantMessage = chatResponse.getResult().getOutput();
-        return assistantMessage.getContent();
+        return assistantMessage.getText();
     }
 
 }
