@@ -168,7 +168,7 @@ Vector Store Observability for different vector stores:
 
 Integrations with MCP Servers for providing contexts to LLMs.
 
-* **[Brave Search API](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/model-context-protocol/mcp-brave)**
+* **[Brave Search API](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/mcp/mcp-clients/mcp-brave)**
 
 ## 📋 Evaluation
 
