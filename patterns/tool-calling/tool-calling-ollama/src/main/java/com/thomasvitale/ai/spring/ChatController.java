@@ -92,7 +92,7 @@ class ChatController {
     String chatFunctionVoidInputCallback() {
         return chatClient.prompt()
                 .user("Welcome the users to the library")
-                .toolCallbacks(FunctionToolCallback.builder("sayWelcome", (input) -> {
+                .tools(FunctionToolCallback.builder("sayWelcome", (input) -> {
                             logger.info("CALLBACK - Welcoming users to the library");
                         })
                         .description("Welcome users to the library")
@@ -123,7 +123,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("user", user)
                 )
-                .toolCallbacks(FunctionToolCallback.builder("welcomeUser", (input) -> {
+                .tools(FunctionToolCallback.builder("welcomeUser", (input) -> {
                             logger.info("CALLBACK - Welcoming {} to the library", ((Functions.User) input).name());
                         })
                         .description("Welcome a specific user to the library")
@@ -158,7 +158,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("author", authorName)
                 )
-                .toolCallbacks(FunctionToolCallback.builder("availableBooksByAuthor", function)
+                .tools(FunctionToolCallback.builder("availableBooksByAuthor", function)
                         .description("Get the list of books written by the given author available in the library")
                         .inputType(BookService.Author.class)
                         .build())
@@ -193,7 +193,7 @@ class ChatController {
                         .param("bookTitle1", bookTitle1)
                         .param("bookTitle2", bookTitle2)
                 )
-                .toolCallbacks(FunctionToolCallback.builder("authorsByAvailableBooks", function)
+                .tools(FunctionToolCallback.builder("authorsByAvailableBooks", function)
                         .description("Get the list of authors who wrote the given books available in the library")
                         .inputType(BookService.Books.class)
                         .build())
