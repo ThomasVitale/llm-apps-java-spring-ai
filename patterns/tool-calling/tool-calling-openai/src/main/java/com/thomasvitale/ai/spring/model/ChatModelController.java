@@ -34,7 +34,7 @@ class ChatModelController {
                 """);
         Map<String,Object> model = Map.of("author", authorName);
         var prompt = userPromptTemplate.create(model, ToolCallingChatOptions.builder()
-                .tools(Functions.BOOKS_BY_AUTHOR)
+                .toolNames(Functions.BOOKS_BY_AUTHOR)
                 .build());
 
         var chatResponse = chatModel.call(prompt);
