@@ -16,7 +16,6 @@ java {
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' }
     maven { url 'https://repo.spring.io/snapshot' }
 }
 
@@ -26,7 +25,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.springframework.ai:spring-ai-ollama-spring-boot-starter"
 
-    implementation "org.springframework.experimental:spring-ai-mcp:${springAiMcpVersion}"
+    implementation "org.springframework.ai:spring-ai-mcp-client-spring-boot-starter"
 
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
 

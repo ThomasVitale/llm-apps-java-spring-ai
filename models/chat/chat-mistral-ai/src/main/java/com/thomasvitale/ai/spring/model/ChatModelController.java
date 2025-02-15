@@ -31,7 +31,7 @@ class ChatModelController {
     @GetMapping("/chat/generic-options")
     String chatGenericOptions(String question) {
         return chatModel.call(new Prompt(question, ChatOptions.builder()
-                        .model(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getName())
+                        .model(MistralAiApi.ChatModel.SMALL.getName())
                         .temperature(0.9)
                         .build()))
                 .getResult().getOutput().getText();

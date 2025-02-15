@@ -36,7 +36,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(ChatOptions.builder()
-                        .model(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getName())
+                        .model(MistralAiApi.ChatModel.SMALL.getName())
                         .temperature(0.9)
                         .build())
                 .call()
@@ -73,7 +73,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("author", authorName)
                 )
-                .functions("booksByAuthor", "bestsellerBookByAuthor")
+                .tools("booksByAuthor", "bestsellerBookByAuthor")
                 .call()
                 .content();
     }

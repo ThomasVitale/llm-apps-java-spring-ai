@@ -45,7 +45,7 @@ class ChatController {
         return mistralAichatClient
                 .prompt(question)
                 .options(MistralAiChatOptions.builder()
-                        .model(MistralAiApi.ChatModel.OPEN_MIXTRAL_7B.getValue())
+                        .model(MistralAiApi.ChatModel.SMALL.getValue())
                         .temperature(1.0)
                         .build())
                 .call()

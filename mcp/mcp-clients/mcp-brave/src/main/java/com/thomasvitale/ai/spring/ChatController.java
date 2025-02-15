@@ -1,9 +1,12 @@
 package com.thomasvitale.ai.spring;
 
+import io.modelcontextprotocol.client.McpSyncClient;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.mcp.client.McpSyncClient;
+import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Chat examples using the high-level ChatClient API.
@@ -12,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 class ChatController {
 
     private final ChatClient chatClient;
-    private final McpSyncClient mcpClient;
+    private final List<McpSyncClient> mcpClients;
 
-    ChatController(ChatClient.Builder chatClientBuilder, McpSyncClient mcpClient) {
+    ChatController(ChatClient.Builder chatClientBuilder, List<McpSyncClient> mcpClients) {
         this.chatClient = chatClientBuilder.build();
-        this.mcpClient = mcpClient;
+        this.mcpClients = mcpClients;
     }
 
     @GetMapping("/chat/mcp")
     String chat(String question) {
         return chatClient.prompt()
                 .user(question)
-                .functions(McpFunctionCallbackResolver.resolve(mcpClient))
+                .tools(new SyncMcpToolCallbackProvider(mcpClients).getToolCallbacks())
                 .call()
                 .content();
     }
