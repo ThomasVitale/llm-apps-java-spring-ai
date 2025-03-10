@@ -16,7 +16,6 @@ java {
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
@@ -34,7 +33,7 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom "io.arconia:arconia-bom:${arconiaVersion}"
-        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+        mavenBom "org.springframework.ai:spring-ai-bom:1.0.0-M6"
     }
 }
 
