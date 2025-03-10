@@ -26,18 +26,20 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
 
-    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
-    implementation 'io.micrometer:micrometer-registry-otlp'
     implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5'
-    implementation 'io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0'
 
-    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
+
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-opentelemetry-lgtm'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    testImplementation 'org.testcontainers:grafana'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.arconia:arconia-bom:${arconiaVersion}"
+    }
 }
 
 tasks.named('test') {

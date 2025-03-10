@@ -23,12 +23,13 @@ export MISTRALAI_API_KEY=<YOUR-API-KEY>
 
 ## Running the application
 
-The application relies on the native Testcontainers support in Spring Boot to spin up a Grafana LGTM observability platform.
 Run the application as follows:
 
 ```shell
-./gradlew bootTestRun
+./gradlew bootRun
 ```
+
+Under the hood, the Arconia framework will automatically spin up a Grafana LGTM observability platform using Testcontainers.
 
 ## Observability Platform
 
