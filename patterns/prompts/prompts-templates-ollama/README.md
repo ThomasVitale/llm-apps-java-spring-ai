@@ -12,17 +12,16 @@ if they are not available yet on your machine.
 
 ## Running the application
 
-If you're using the native Ollama application, run the application as follows.
+If you're using the native Ollama application, run the application as follows:
 
 ```shell
 ./gradlew bootRun
 ```
 
-If you want to rely on the native Testcontainers support in Spring Boot to spin up an Ollama service at startup time,
-run the application as follows.
+If instead you want to rely on the Ollama Dev Service via Testcontainers, run the application as follows.
 
 ```shell
-./gradlew bootTestRun
+./gradlew bootRun -Darconia.dev.services.ollama.enabled=true
 ```
 
 ## Calling the application

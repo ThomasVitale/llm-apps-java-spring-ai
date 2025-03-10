@@ -12,20 +12,18 @@ if they are not available yet on your machine.
 
 ## Running the application
 
-The application relies on the native Testcontainers support in Spring Boot to spin up
-a PostgreSQL database with the pgvector extension for embeddings.
-
-If you're using the native Ollama application, run the application as follows.
+If you're using the native Ollama application, run the application as follows:
 
 ```shell
-./gradlew bootTestRun
+./gradlew bootRun
 ```
 
-If you want to rely on the native Testcontainers support in Spring Boot to spin up an Ollama service at startup time,
-run the application as follows.
+Under the hood, the Arconia framework will automatically spin up a PostgreSQL database using Testcontainers.
+
+If instead you want to rely on the Ollama Dev Service via Testcontainers, run the application as follows.
 
 ```shell
-./gradlew bootTestRun -Dspring.profiles.active=ollama-image
+./gradlew bootRun -Darconia.dev.services.ollama.enabled=true
 ```
 
 ## Calling the application

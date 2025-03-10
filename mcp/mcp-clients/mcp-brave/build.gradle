@@ -20,19 +20,22 @@ repositories {
 }
 
 dependencies {
-    implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
-
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.springframework.ai:spring-ai-ollama-spring-boot-starter"
 
     implementation "org.springframework.ai:spring-ai-mcp-client-spring-boot-starter"
 
-    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
-    testImplementation 'org.testcontainers:ollama'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.arconia:arconia-bom:${arconiaVersion}"
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+    }
 }
 
 tasks.named('test') {

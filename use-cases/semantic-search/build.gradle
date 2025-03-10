@@ -19,21 +19,23 @@ repositories {
 }
 
 dependencies {
-    implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
-
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
     implementation 'org.springframework.ai:spring-ai-pgvector-store-spring-boot-starter'
 
-    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-postgresql'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
     testImplementation 'org.springframework:spring-webflux'
-    testImplementation 'org.testcontainers:ollama'
-    testImplementation 'org.testcontainers:postgresql'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.arconia:arconia-bom:${arconiaVersion}"
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+    }
 }
 
 tasks.named('test') {

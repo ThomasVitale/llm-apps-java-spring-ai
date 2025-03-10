@@ -39,14 +39,11 @@ management:
     web:
       exposure:
         include: "*"
-  metrics:
-    tags:
-      service.name: ${spring.application.name}
   tracing:
     sampling:
       probability: 1.0
-  otlp:
-    logging:
-      endpoint: "http://localhost:4318/v1/logs"
-    tracing:
-      endpoint: "http://localhost:4318/v1/traces"
+
+arconia:
+  otel:
+    metrics:
+      interval: 5s

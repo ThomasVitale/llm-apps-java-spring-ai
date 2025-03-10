@@ -43,6 +43,9 @@ The application logs will show you the URL where you can access the Grafana obse
 
 By default, logs, metrics, and traces are exported via OTLP using the HTTP/Protobuf format.
 
+In Grafana, you can query the traces from the "Explore" page, selecting the "Tempo" data source.
+You can also explore metrics in "Explore > Metrics" and logs in "Explore > Logs".
+
 ## Calling the application
 
 > [!NOTE]
