@@ -24,7 +24,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-pgvector-store-spring-boot-starter'
     implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
 
-    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5'
+    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.1.0'
 
     implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
