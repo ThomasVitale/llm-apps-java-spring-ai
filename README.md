@@ -9,24 +9,24 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 
 ## 💡 Use Cases
 
-* 🤖 **[Chatbot](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/chatbot)**
+* **[Chatbot](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/chatbot)**
   Chatbot using LLMs via Ollama.
 
-* ❓ **[Question Answering](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/question-answering)**
+* **[Question Answering](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/question-answering)**
   Question answering with documents (RAG) using LLMs via Ollama and PGVector.
 
-* 🔍 **[Semantic Search](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/semantic-search)**
+* **[Semantic Search](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/semantic-search)**
   Semantic search using LLMs via Ollama and PGVector.
 
-* 📊 **[Structured Data Extraction](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/structured-data-extraction)**  
+* **[Structured Data Extraction](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/structured-data-extraction)**  
   Structured data extraction using LLMs via Ollama.
 
-* 🏷️ **[Text Classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/text-classification)**
+* **[Text Classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/text-classification)**
   Text classification using LLMs via Ollama.
 
 ## 🧠 Models
 
-### 💬 Chat Models
+### Chat Models
 
 Chat completion with LLMs via different model providers:
 
@@ -35,7 +35,7 @@ Chat completion with LLMs via different model providers:
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/chat/chat-openai)**
 * **[Multiple Providers](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/chat/chat-multiple-providers)**
 
-### 🔤 Embedding Models
+### Embedding Models
 
 Vector transformation (embeddings) with LLMs via different model providers:
 
@@ -44,13 +44,13 @@ Vector transformation (embeddings) with LLMs via different model providers:
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/embedding/embedding-openai)**
 * **[ONNX Transformers](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/embedding/embedding-transformers)**
 
-### 🎨 Image Models
+### Image Models
 
 Image generation with LLMs via different model providers:
 
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/image/image-openai)**
 
-### 🎵 Audio Models
+### Audio Models
 
 Speech generation with LLMs via different model providers:
 
@@ -60,13 +60,13 @@ Speech transcription with LLMs via different model providers:
 
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/audio/text-to-speech-openai)**
 
-### 🛡️ Moderation Models
+### Moderation Models
 
 _Coming soon_
 
 ## 📐 Patterns
 
-### 📝 Prompts, Messages, and Templates
+### Prompts, Messages, and Templates
 
 Prompting using simple text:
 
@@ -83,14 +83,14 @@ Prompting using templates:
 * **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/prompts/prompts-templates-ollama)**
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/prompts/prompts-templates-openai)**
 
-### 📊 Structured Output
+### Structured Output
 
 Converting LLM output to structured JSON and Java objects:
 
 * **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/structured-output/structured-output-ollama)**
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/structured-output/structured-output-openai)**
 
-### 🎯 Multimodality
+### Multimodality
 
 Including various media in prompts with LLMs:
 
@@ -98,7 +98,7 @@ Including various media in prompts with LLMs:
 * **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/multimodality/multimodality-ollama)**
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/multimodality/multimodality-openai)**
 
-### ⚙️ Tool Calling
+### Tool Calling
 
 Tool calling with LLMs via different model providers:
 
@@ -106,13 +106,13 @@ Tool calling with LLMs via different model providers:
 * **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/tool-calling/tool-calling-ollama)**
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/tool-calling/tool-calling-openai)**
 
-### 🧠 Memory
+### Memory
 
 _Coming soon_
 
 ## 📥 Data Ingestion
 
-### 📚 Document Readers
+### Document Readers
 
 Reading and vectorizing documents with LLMs via Ollama:
 
@@ -122,7 +122,7 @@ Reading and vectorizing documents with LLMs via Ollama:
 * **[Text](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/data-ingestion/document-readers/document-readers-text-ollama)**
 * **[Tika](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/data-ingestion/document-readers/document-readers-tika-ollama)**
 
-### 🔄 Document Transformers
+### Document Transformers
 
 Document transformation with LLMs via Ollama:
 
@@ -139,18 +139,18 @@ _Coming soon_
 
 Question answering with documents using different RAG flows (with Ollama and PGVector):
 
-### ➡️ Sequential RAG
+### Sequential RAG
 
 * **[Naive](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/rag/rag-sequential/rag-naive)**
 * **[Advanced](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/rag/rag-sequential/rag-advanced)**
 
-### 🌳 Branching RAG
+### Branching RAG
 
 * **[Branching](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/rag/rag-branching)**
 
 ## 📊 Observability
 
-### 🧠 LLM Observability
+### LLM Observability
 
 LLM Observability for different model providers:
 
@@ -158,7 +158,7 @@ LLM Observability for different model providers:
 * **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/observability-models-ollama)**
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/observability-models-openai)**
 
-### 🔢 Vector Store Observability
+### Vector Store Observability
 
 Vector Store Observability for different vector stores:
 
@@ -182,27 +182,27 @@ _Coming soon_
 
 * [Spring AI Reference Documentation](https://docs.spring.io/spring-ai/reference/index.html)
 
-### 🎤 Conferences
+### Conferences
 
 * [Introducing Spring AI by Christian Tzolov and Mark Pollack (Spring I/O 2024)](https://www.youtube.com/watch?v=umKbaXsiCOY)
 * [Spring AI Is All You Need by Christian Tzolov (GOTO Amsterdam 2024)](https://www.youtube.com/watch?v=vuhMti8B5H0)
 * [Concerto for Java and AI - Building Production-Ready LLM Applications by Thomas Vitale (GOTO Copenhagen 2024)](https://www.youtube.com/watch?v=la4kc57F6jU)
 
-### 🎥 Videos
+### Videos
 
 * [Building Intelligent Applications With Spring AI by Dan Vega (JetBrains Live Stream)](https://www.youtube.com/watch?v=x6KmUyPWy2Q)
 * [Spring AI Series by Dan Vega](https://www.youtube.com/playlist?list=PLZV0a2jwt22uoDm3LNDFvN6i2cAVU_HTH)
 * [Spring AI Series by Craig Walls](https://www.youtube.com/playlist?list=PLH5OU4wXVJc9aECkMUVPCi8g3pzs8pZ3E)
 * [Spring AI Series by Josh Long](https://www.youtube.com/playlist?list=PLgGXSWYM2FpMXvYb681axdH5JSLEPPyrz)
 
-### 🎮 Demos
+### Demos
 
 * [Airline Customer Support (Marcus Hellberg)](https://github.com/marcushellberg/java-ai-playground/tree/spring-ai)
 * [Composer Assistant (Thomas Vitale)](https://github.com/ThomasVitale/concerto-for-java-and-ai)
 * [Document Assistant (Marcus Hellberg)](https://github.com/marcushellberg/docs-assistant)
 * [Flight Booking (Christian Tzolov)](https://github.com/tzolov/playground-flight-booking)
 
-### 📚 Workshops
+### Workshops
 
 * [Spring AI - Zero to Hero (Adib Saikali, Christian Tzolov)](https://github.com/asaikali/spring-ai-zero-to-hero/tree/main)
 * [AI Applications with Java and Spring AI (Thomas Vitale)](https://github.com/ThomasVitale/java-ai-workshop)
