@@ -22,23 +22,26 @@ export OPENAI_API_KEY=<YOUR-API-KEY>
 
 ## Running the application
 
-The application relies on Testcontainers to provision automatically
-a Grafana LGTM observability stack and a PGVector database.
-
-Run the application as follows.
+Run the application as follows:
 
 ```shell
-./gradlew bootTestRun
+./gradlew bootRun
 ```
+
+Under the hood, the Arconia framework will automatically spin up a PGVector database and a Grafana LGTM observability platform using Testcontainers.
 
 ## Observability Platform
 
-Grafana is listening to port 3000. Check the application logs or your container runtime to find the port to which
-is exposed to your localhost and access Grafana from http://localhost:<port>. The credentials are `admin`/`admin`.
+The application logs will show you the URL where you can access the Grafana observability platform and information about logs, metrics, and traces being exported to the platform.
 
-The application is automatically configured to export logs, metrics, and traces to the Grafana LGTM platform via OpenTelemetry.
-In Grafana, you can query the traces from the "Explore" page, selecting the "Tempo" data source.
-You can also explore metrics in "Explore > Metrics" and logs in "Explore > Logs".
+```logs
+...o.t.grafana.LgtmStackContainer           : Access to the Grafana dashboard: http://localhost:38125
+...s.l.e.o.OtlpLoggingExporterConfiguration : Configuring OpenTelemetry HTTP/Protobuf log exporter with endpoint: http://localhost:39117/v1/logs
+...s.m.e.o.OtlpMetricsExporterConfiguration : Configuring OpenTelemetry HTTP/Protobuf metric exporter with endpoint: http://localhost:39117/v1/metrics
+...s.t.e.o.OtlpTracingExporterConfiguration : Configuring OpenTelemetry HTTP/Protobuf span exporter with endpoint: http://localhost:39117/v1/traces
+```
+
+By default, logs, metrics, and traces are exported via OTLP using the HTTP/Protobuf format.
 
 ## Calling the application
 

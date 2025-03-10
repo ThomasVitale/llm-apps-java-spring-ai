@@ -19,14 +19,8 @@ repositories {
 }
 
 dependencies {
-    implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
-    implementation platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:${otelInstrumentationVersion}")
-
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
-
-    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5'
 
     implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
@@ -39,6 +33,7 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom "io.arconia:arconia-bom:${arconiaVersion}"
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
     }
 }
 
