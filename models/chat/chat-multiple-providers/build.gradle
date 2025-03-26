@@ -23,8 +23,8 @@ dependencies {
     implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
-    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+    implementation 'org.springframework.ai:spring-ai-starter-model-mistral-ai'
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
 

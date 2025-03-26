@@ -1,8 +1,3 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-    }
-}
 rootProject.name = 'llm-apps-java-spring-ai'
 
 include 'data-ingestion:document-readers:document-readers-json-ollama'

@@ -22,7 +22,7 @@ dependencies {
     implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.ai:spring-ai-transformers-spring-boot-starter'
+    implementation 'org.springframework.ai:spring-ai-starter-model-transformers'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 

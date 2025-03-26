@@ -16,13 +16,18 @@ java {
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/snapshot' }
+    maven {
+        name = 'Central Portal Snapshots'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
+    }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation "org.springframework.ai:spring-ai-ollama-spring-boot-starter"
+    implementation "org.springframework.ai:spring-ai-starter-model-ollama"
 
-    implementation "org.springframework.ai:spring-ai-mcp-client-spring-boot-starter"
+    implementation "org.springframework.ai:spring-ai-starter-mcp-client"
 
     testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
 
@@ -33,7 +38,7 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom "io.arconia:arconia-bom:${arconiaVersion}"
-        mavenBom "org.springframework.ai:spring-ai-bom:1.0.0-M6"
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
     }
 }
 
