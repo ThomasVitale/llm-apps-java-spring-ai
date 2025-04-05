@@ -1,10 +1,10 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.transformer.KeywordMetadataEnricher;
+import org.springframework.ai.chat.transformer.SummaryMetadataEnricher;
 import org.springframework.ai.document.DefaultContentFormatter;
 import org.springframework.ai.embedding.EmbeddingModel;
-import org.springframework.ai.transformer.KeywordMetadataEnricher;
-import org.springframework.ai.transformer.SummaryMetadataEnricher;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.boot.SpringApplication;

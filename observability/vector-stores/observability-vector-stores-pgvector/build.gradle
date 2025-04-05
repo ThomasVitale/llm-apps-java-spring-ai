@@ -23,6 +23,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
     implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
+    implementation 'org.springframework.ai:spring-ai-rag'
 
     implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.1.0'
 

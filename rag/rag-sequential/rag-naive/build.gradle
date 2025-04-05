@@ -23,6 +23,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
     implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
+    implementation 'org.springframework.ai:spring-ai-rag'
 
     testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
     testAndDevelopmentOnly 'io.arconia:arconia-dev-service-postgresql'
