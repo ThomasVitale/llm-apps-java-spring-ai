@@ -36,25 +36,25 @@ Each endpoint is backed by a progressively better prompt to increase the quality
 Class Names:
 
 ```shell
-http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/class-names
+http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/class-names -b --pretty none
 ```
 
 Class Descriptions:
 
 ```shell
-http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/class-descriptions
+http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/class-descriptions -b --pretty none
 ```
 
 Few Shots Prompt:
 
 ```shell
-http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/few-shots-prompt
+http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/few-shots-prompt -b --pretty none
 ```
 
 Few Shots History:
 
 ```shell
-http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/few-shots-history
+http --raw "Basketball fans can now watch the game on the brand-new NBA app for Apple Vision Pro." :8080/classify/few-shots-history -b --pretty none
 ```
 
 Structured Output:

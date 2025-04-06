@@ -89,5 +89,5 @@ http --stream :8080/chat/stream question=="Why is a raven like a writing desk? A
 Ollama lets you run models directly from Hugging Face. Let's try that out.
 
 ```shell
-http :8080/chat/huggingface question=="Why is a raven like a writing desk? Give a short answer." -b
+http :8080/chat/huggingface question=="What is the capital of Italy?" -b
 ```

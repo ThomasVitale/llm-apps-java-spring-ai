@@ -2,33 +2,29 @@
 
 Vector Store Observability for PGVector.
 
-## OpenAI
+## Ollama
 
-The application consumes models from the [OpenAI](https://openai.com) platform.
-
-### Create an account
-
-Visit [platform.openai.com](https://platform.openai.com) and sign up for a new account.
-
-### Configure API Key
-
-In the OpenAI console, navigate to _Dashboard > API Keys_ and generate a new API key.
-Copy and securely store your API key on your machine as an environment variable.
-The application will use it to access the OpenAI API.
-
-```shell
-export OPENAI_API_KEY=<YOUR-API-KEY>
-```
+The application consumes models from an [Ollama](https://ollama.ai) inference server. You can either run Ollama locally on your laptop,
+or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
+If you choose the first option, make sure you have Ollama installed and running on your laptop.
+Either way, Spring AI will take care of pulling the needed Ollama models when the application starts,
+if they are not available yet on your machine.
 
 ## Running the application
 
-Run the application as follows:
+If you're using the native Ollama application, run the application as follows:
 
 ```shell
 ./gradlew bootRun
 ```
 
-Under the hood, the Arconia framework will automatically spin up a PGVector database and a Grafana LGTM observability platform using Testcontainers.
+Under the hood, the Arconia framework will automatically spin up a Grafana LGTM observability platform using Testcontainers.
+
+If instead you want to rely on the Ollama Dev Service via Testcontainers, run the application as follows.
+
+```shell
+./gradlew bootRun -Darconia.dev.services.ollama.enabled=true
+```
 
 ## Observability Platform
 
@@ -54,9 +50,9 @@ You can also explore metrics in "Explore > Metrics" and logs in "Explore > Logs"
 Call the application that will use a chat model to answer your questions.
 
 ```shell
-http --raw "What is Iorek's biggest dream?" :8080/chat/doc
+http --raw "What is Iorek's biggest dream?" :8080/chat/doc -b --pretty none
 ```
 
 ```shell
-http --raw "Who is Lucio?" :8080/chat/doc
+http --raw "Who is Lucio?" :8080/chat/doc -b --pretty none
 ```

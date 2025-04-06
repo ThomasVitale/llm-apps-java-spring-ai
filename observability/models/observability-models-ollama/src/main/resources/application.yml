@@ -11,7 +11,7 @@ spring:
         pull-model-strategy: when_missing
       chat:
         options:
-          model: qwen2.5:3b
+          model: granite3.2:2b
           temperature: 0.7
       embedding:
         options:
@@ -22,6 +22,8 @@ management:
     web:
       exposure:
         include: "*"
-  tracing:
-    sampling:
-      probability: 1.0
+
+arconia:
+  otel:
+    metrics:
+      interval: 5s

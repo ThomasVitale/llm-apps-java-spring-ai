@@ -25,7 +25,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-tika-document-reader'
     implementation 'org.springframework.ai:spring-ai-vector-store'
 
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-ollama'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

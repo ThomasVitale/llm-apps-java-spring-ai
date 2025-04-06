@@ -32,7 +32,7 @@ If instead you want to rely on the Ollama Dev Service via Testcontainers, run th
 Call the application that will use a chat model to answer your question.
 
 ```shell
-http :8080/chat/image/file question=="What do you see in this picture? Give a short answer" -b
+http :8080/chat/image/file question=="What do you see in this picture?" -b
 ```
 
 Try passing your custom prompt and check the result.

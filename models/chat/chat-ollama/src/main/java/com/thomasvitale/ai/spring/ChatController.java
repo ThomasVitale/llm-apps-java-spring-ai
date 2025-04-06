@@ -32,7 +32,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(ChatOptions.builder()
-                        .model("llama3.2:1b")
+                        .model("granite3.2:2b")
                         .temperature(0.9)
                         .build())
                 .call()
@@ -55,7 +55,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(ChatOptions.builder()
-                        .model("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
+                        .model("hf.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF")
                         .build())
                 .call()
                 .content();

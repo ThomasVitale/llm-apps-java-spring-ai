@@ -11,7 +11,7 @@ spring:
         pull-model-strategy: when_missing
       chat:
         options:
-          model: qwen2.5
+          model: granite3.2:2b
           num-ctx: 4096
       embedding:
         options:
@@ -39,11 +39,12 @@ management:
     web:
       exposure:
         include: "*"
-  tracing:
-    sampling:
-      probability: 1.0
 
 arconia:
+  dev:
+    services:
+      postgresql:
+        image-name: pgvector/pgvector:pg17
   otel:
     metrics:
       interval: 5s

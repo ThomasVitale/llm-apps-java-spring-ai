@@ -97,17 +97,19 @@ class ClassificationController {
     }
 
     @PostMapping("/classify/structured-output")
-    ClassificationType classifyStructured(@RequestBody String text) {
+    Classification classifyStructured(@RequestBody String text) {
         return chatClient
                 .prompt()
                 .messages(getPromptWithFewShotsHistory())
                 .user(text)
                 .call()
-                .entity(ClassificationType.class);
+                .entity(Classification.class);
     }
 
+    record Classification(ClassificationType type) {}
+
     @PostMapping("/classify")
-    ClassificationType classify(@RequestBody String text) {
+    Classification classify(@RequestBody String text) {
         return classifyStructured(text);
     }
 

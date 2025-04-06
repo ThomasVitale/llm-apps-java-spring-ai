@@ -5,7 +5,7 @@ spring:
         pull-model-strategy: when_missing
       chat:
         options:
-          model: qwen2.5
+          model: granite3.2:2b
           num-ctx: 4096
       embedding:
         options:
@@ -22,3 +22,9 @@ spring:
 logging:
   level:
     org.springframework.ai.rag: debug
+
+arconia:
+  dev:
+    services:
+      postgresql:
+        image-name: pgvector/pgvector:pg17

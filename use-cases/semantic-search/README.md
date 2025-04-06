@@ -34,5 +34,5 @@ If instead you want to rely on the Ollama Dev Service via Testcontainers, run th
 Call the application that will perform semantic searches.
 
 ```shell
-http --raw "happiness" :8080/semantic-search
+http --raw "happiness" :8080/semantic-search -b
 ```

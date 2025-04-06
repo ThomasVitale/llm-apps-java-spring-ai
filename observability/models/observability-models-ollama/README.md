@@ -73,10 +73,10 @@ The next request returns the model's answer as a stream.
 http --stream :8080/chat/stream question=="Why is a raven like a writing desk? Answer in 3 paragraphs." -b
 ```
 
-Finally, try a request which uses function calling.
+Finally, try a request which uses tools.
 
 ```shell
-http :8080/chat/functions authorName=="Philip Pullman" -b
+http :8080/chat/tools authorName=="Philip Pullman" -b
 ```
 
 ### Embedding

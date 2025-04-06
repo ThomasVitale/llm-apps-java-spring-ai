@@ -16,8 +16,11 @@ class ChatController {
 
     private final ChatClient chatClient;
 
-    ChatController(ChatClient.Builder chatClientBuilder) {
+    private final Tools tools;
+
+    ChatController(ChatClient.Builder chatClientBuilder, Tools tools) {
         this.chatClient = chatClientBuilder.clone().build();
+        this.tools = tools;
     }
 
     @GetMapping("/chat")
@@ -63,7 +66,7 @@ class ChatController {
                 .content();
     }
 
-    @GetMapping("/chat/functions")
+    @GetMapping("/chat/tools")
     String chatFunctions(String authorName) {
         logger.info("Chatting with functions: {}", authorName);
         var userPromptTemplate = "What books written by {author} are available in the library?";
@@ -72,7 +75,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("author", authorName)
                 )
-                .tools("booksByAuthor", "bestsellerBookByAuthor")
+                .tools(tools)
                 .call()
                 .content();
     }

@@ -9,21 +9,22 @@ spring:
       observations:
         include-completion: true
         include-prompt: true
-    openai:
-      api-key: ${OPENAI_API_KEY}
+    ollama:
+      init:
+        pull-model-strategy: when_missing
       chat:
         options:
-          model: gpt-4o-mini
+          model: granite3.2:2b
           temperature: 0.7
       embedding:
         options:
-          model: text-embedding-3-small
+          model: nomic-embed-text
     vectorstore:
       observations:
         include-query-response: true
       pgvector:
         initialize-schema: true
-        dimensions: 1536
+        dimensions: 768
         index-type: hnsw
 
 management:
@@ -31,12 +32,12 @@ management:
     web:
       exposure:
         include: "*"
-  tracing:
-    sampling:
-      probability: 1.0
 
 arconia:
   dev:
     services:
       postgresql:
         image-name: pgvector/pgvector:pg17
+  otel:
+    metrics:
+      interval: 5s

@@ -29,9 +29,9 @@ dependencies {
 
     implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-opentelemetry-lgtm'
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-postgresql'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-ollama'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-opentelemetry-lgtm'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-postgresql'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework:spring-webflux'

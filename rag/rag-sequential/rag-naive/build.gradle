@@ -25,8 +25,8 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
     implementation 'org.springframework.ai:spring-ai-rag'
 
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-postgresql'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-ollama'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-postgresql'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

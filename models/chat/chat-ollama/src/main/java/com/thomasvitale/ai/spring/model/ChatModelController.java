@@ -30,7 +30,7 @@ class ChatModelController {
     @GetMapping("/chat/generic-options")
     String chatGenericOptions(String question) {
         return chatModel.call(new Prompt(question, ChatOptions.builder()
-                        .model("llama3.2:1b")
+                        .model("granite3.2:2b")
                         .temperature(0.9)
                         .build()))
                 .getResult().getOutput().getText();
@@ -47,7 +47,7 @@ class ChatModelController {
     @GetMapping("/chat/huggingface")
     String chatHuggingFace(String question) {
         return chatModel.call(new Prompt(question, ChatOptions.builder()
-                        .model("hf.co/SanctumAI/Llama-3.2-1B-Instruct-GGUF")
+                        .model("hf.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF")
                         .build()))
                 .getResult().getOutput().getText();
     }

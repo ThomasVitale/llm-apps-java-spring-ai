@@ -23,8 +23,8 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
 
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-postgresql'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-ollama'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-postgresql'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework:spring-webflux'

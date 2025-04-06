@@ -3,8 +3,9 @@ spring:
     ollama:
       init:
         pull-model-strategy: when_missing
-        chat:
-          include: false
+      chat:
+        options:
+          model: granite3.2:2b
       embedding:
         options:
           model: nomic-embed-text

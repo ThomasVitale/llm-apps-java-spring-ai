@@ -22,7 +22,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
 
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-ollama'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework:spring-webflux'

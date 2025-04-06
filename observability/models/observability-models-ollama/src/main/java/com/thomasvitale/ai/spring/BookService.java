@@ -19,14 +19,14 @@ public class BookService {
         books.put(5, new Book("The Silmarillion", "J.R.R. Tolkien"));
     }
 
-    List<Book> getBooksByAuthor(Author author) {
+    List<Book> getBooksByAuthor(String author) {
         return books.values().stream()
-                .filter(book -> author.name().equals(book.author()))
+                .filter(book -> author.equalsIgnoreCase(book.author()))
                 .toList();
     }
 
-    Book getBestsellerByAuthor(Author author) {
-        return switch (author.name()) {
+    Book getBestsellerByAuthor(String author) {
+        return switch (author) {
             case "J.R.R. Tolkien" -> books.get(4);
             case "C.S. Lewis" -> books.get(2);
             case "Philip Pullman" -> books.get(1);
@@ -35,6 +35,5 @@ public class BookService {
     }
 
     public record Book(String title, String author) {}
-    public record Author(String name) {}
 
 }

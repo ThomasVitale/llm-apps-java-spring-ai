@@ -34,9 +34,9 @@ If instead you want to rely on the Ollama Dev Service via Testcontainers, run th
 Call the application that will use a chat model to answer your questions.
 
 ```shell
-http --raw "What is Iorek's biggest dream?" :8080/chat/doc
+http --raw "What is Iorek's biggest dream?" :8080/chat/doc -b --pretty none
 ```
 
 ```shell
-http --raw "Who is Lucio?" :8080/chat/doc
+http --raw "Who is Lucio?" :8080/chat/doc -b --pretty none
 ```

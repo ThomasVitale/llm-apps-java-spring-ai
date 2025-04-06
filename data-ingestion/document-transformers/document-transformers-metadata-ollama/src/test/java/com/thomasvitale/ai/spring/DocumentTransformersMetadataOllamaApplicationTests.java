@@ -1,12 +1,11 @@
 package com.thomasvitale.ai.spring;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
+import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
-@Disabled
+@TestPropertySource(properties = "arconia.dev.services.ollama.enabled=true")
 class DocumentTransformersMetadataOllamaApplicationTests {
 
     @Test

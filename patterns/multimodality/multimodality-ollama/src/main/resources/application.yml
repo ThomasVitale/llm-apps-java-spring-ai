@@ -7,5 +7,5 @@ spring:
           include: false
       chat:
         options:
-          model: llava-phi3
+          model: granite3.2-vision:2b
           temperature: 0.7

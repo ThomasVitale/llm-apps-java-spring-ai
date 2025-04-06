@@ -5,7 +5,7 @@ spring:
         pull-model-strategy: when_missing
       chat:
         options:
-          model: llama3.2
+          model: granite3.2:2b
           num-ctx: 4096
       embedding:
         options:
@@ -15,3 +15,9 @@ spring:
         initialize-schema: true
         dimensions: 768
         index-type: hnsw
+
+arconia:
+  dev:
+    services:
+      postgresql:
+        image-name: pgvector/pgvector:pg17
