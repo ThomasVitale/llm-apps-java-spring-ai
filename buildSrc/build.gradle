@@ -7,7 +7,7 @@ repositories {
 }
 
 ext {
-    set("springBootVersion", '3.4.4')
+    set("springBootVersion", '3.4.5')
     set("dependencyManagementVersion", '1.1.7')
     set("graalvmVersion", '0.10.6')
 }
