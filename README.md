@@ -108,7 +108,11 @@ Tool calling with LLMs via different model providers:
 
 ### Memory
 
-_Coming soon_
+Using chat memory to preserve context in conversations with LLMs:
+
+* **[Basic Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-basics)**
+* **[JDBC Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-jdbc)**
+* **[Vector Store Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-vector-store)**
 
 ## 📥 Data Ingestion
 

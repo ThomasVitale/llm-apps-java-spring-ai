@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chatbot {
+public class MemoryBasicsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Chatbot.class, args);
+        SpringApplication.run(MemoryBasicsApplication.class, args);
     }
 
 }

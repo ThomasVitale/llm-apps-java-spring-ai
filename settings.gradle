@@ -32,6 +32,10 @@ include 'observability:models:observability-models-ollama'
 include 'observability:models:observability-models-openai'
 include 'observability:vector-stores:observability-vector-stores-pgvector'
 
+include 'patterns:memory:memory-basics'
+include 'patterns:memory:memory-jdbc'
+include 'patterns:memory:memory-vector-store'
+
 include 'patterns:prompts:prompts-basics-ollama'
 include 'patterns:prompts:prompts-basics-openai'
 include 'patterns:prompts:prompts-messages-ollama'

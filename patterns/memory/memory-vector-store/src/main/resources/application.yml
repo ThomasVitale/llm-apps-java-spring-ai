@@ -1,0 +1,12 @@
+spring:
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+      chat:
+        options:
+          model: granite3.2:2b
+          temperature: 0.7
+      embedding:
+        options:
+          model: nomic-embed-text
