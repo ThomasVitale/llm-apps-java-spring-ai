@@ -73,7 +73,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("author", authorName)
                 )
-                .tools("booksByAuthor", "bestsellerBookByAuthor")
+                .toolNames("booksByAuthor", "bestsellerBookByAuthor")
                 .call()
                 .content();
     }

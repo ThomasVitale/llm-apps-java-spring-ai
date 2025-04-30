@@ -83,7 +83,7 @@ class ChatController {
     String chatFunctionVoidInput() {
         return chatClient.prompt()
                 .user("Welcome the users to the library")
-                .tools(Functions.WELCOME)
+                .toolNames(Functions.WELCOME)
                 .call()
                 .content();
     }
@@ -92,7 +92,7 @@ class ChatController {
     String chatFunctionVoidInputCallback() {
         return chatClient.prompt()
                 .user("Welcome the users to the library")
-                .tools(FunctionToolCallback.builder("sayWelcome", (input) -> {
+                .toolCallbacks(FunctionToolCallback.builder("sayWelcome", (input) -> {
                             logger.info("CALLBACK - Welcoming users to the library");
                         })
                         .description("Welcome users to the library")
@@ -110,7 +110,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("user", user)
                 )
-                .tools(Functions.WELCOME_USER)
+                .toolNames(Functions.WELCOME_USER)
                 .call()
                 .content();
     }
@@ -123,7 +123,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("user", user)
                 )
-                .tools(FunctionToolCallback.builder("welcomeUser", (input) -> {
+                .toolCallbacks(FunctionToolCallback.builder("welcomeUser", (input) -> {
                             logger.info("CALLBACK - Welcoming {} to the library", ((Functions.User) input).name());
                         })
                         .description("Welcome a specific user to the library")
@@ -141,7 +141,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("author", authorName)
                 )
-                .tools(Functions.BOOKS_BY_AUTHOR)
+                .toolNames(Functions.BOOKS_BY_AUTHOR)
                 .call()
                 .content();
     }
@@ -158,7 +158,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("author", authorName)
                 )
-                .tools(FunctionToolCallback.builder("availableBooksByAuthor", function)
+                .toolCallbacks(FunctionToolCallback.builder("availableBooksByAuthor", function)
                         .description("Get the list of books written by the given author available in the library")
                         .inputType(BookService.Author.class)
                         .build())
@@ -175,7 +175,7 @@ class ChatController {
                         .param("bookTitle1", bookTitle1)
                         .param("bookTitle2", bookTitle2)
                 )
-                .tools(Functions.AUTHORS_BY_BOOKS)
+                .toolNames(Functions.AUTHORS_BY_BOOKS)
                 .call()
                 .content();
     }
@@ -193,7 +193,7 @@ class ChatController {
                         .param("bookTitle1", bookTitle1)
                         .param("bookTitle2", bookTitle2)
                 )
-                .tools(FunctionToolCallback.builder("authorsByAvailableBooks", function)
+                .toolCallbacks(FunctionToolCallback.builder("authorsByAvailableBooks", function)
                         .description("Get the list of authors who wrote the given books available in the library")
                         .inputType(BookService.Books.class)
                         .build())
