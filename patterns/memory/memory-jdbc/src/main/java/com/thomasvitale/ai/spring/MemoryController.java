@@ -14,11 +14,11 @@ import static org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvis
  * Chat examples using the high-level ChatClient API.
  */
 @RestController
-class MemoryControllerAdvisorVectorStore {
+class MemoryController {
 
     private final ChatClient chatClient;
 
-    MemoryControllerAdvisorVectorStore(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory) {
+    MemoryController(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory) {
         this.chatClient = chatClientBuilder.clone()
                 .defaultAdvisors(new MessageChatMemoryAdvisor(chatMemory))
                 .build();

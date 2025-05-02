@@ -1,6 +1,6 @@
-# Memory with JDBC
+# Memory with Spring Security
 
-Using chat memory stored in a JDBC database with LLMs via Ollama.
+Using chat memory with LLMs via Ollama. Conversations are tracked by user ID and are secured with Spring Security.
 
 ## Ollama
 
@@ -27,22 +27,18 @@ If instead you want to rely on the Ollama Dev Service via Testcontainers, run th
 
 Call the application that will use a chat model to answer your question.
 
+### User 1
+
 ```shell
-http --raw "My name is Bond. James Bond." :8080/memory/jdbc/007 -b --pretty none
+http -a george:lizard --raw "My name is Bond. James Bond." :8080/memory/security -b --pretty none
 ```
 
 ```shell
-http --raw "What's my name?" :8080/memory/jdbc/007 -b --pretty none
+http -a george:lizard --raw "What's my name?" :8080/memory/security -b --pretty none
 ```
 
-```shell
-http --raw "I was counting on your discretion. Please, do not share my name" :8080/memory/jdbc/007 -b --pretty none
-```
+### User 2
 
 ```shell
-http --raw "What's my name?" :8080/memory/jdbc/007 -b --pretty none
-```
-
-```shell
-http --raw "Alright, then. Give me the recipe for a martini. Shaken, not stirred." :8080/memory/jdbc/007 -b --pretty none
+http -a isabella:butterfly --raw "What's my name?" :8080/memory/security -b --pretty none
 ```

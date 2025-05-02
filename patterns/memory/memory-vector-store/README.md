@@ -1,4 +1,4 @@
-# Memory Vector Store
+# Memory with Vector Store
 
 Using chat memory stored in a vector store with LLMs via Ollama.
 

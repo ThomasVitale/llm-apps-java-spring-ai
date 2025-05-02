@@ -34,6 +34,7 @@ include 'observability:vector-stores:observability-vector-stores-pgvector'
 
 include 'patterns:memory:memory-basics'
 include 'patterns:memory:memory-jdbc'
+include 'patterns:memory:memory-spring-security'
 include 'patterns:memory:memory-vector-store'
 
 include 'patterns:prompts:prompts-basics-ollama'

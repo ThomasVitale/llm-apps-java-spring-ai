@@ -112,6 +112,7 @@ Using chat memory to preserve context in conversations with LLMs:
 
 * **[Basic Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-basics)**
 * **[JDBC Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-jdbc)**
+* **[Spring Security Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-spring-security)**
 * **[Vector Store Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-vector-store)**
 
 ## 📥 Data Ingestion
