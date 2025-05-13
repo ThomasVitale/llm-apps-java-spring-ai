@@ -36,12 +36,12 @@ class ImageController {
     String imageProviderOptions(String message) {
         logger.info("Generating image with provider options: {}", message);
         var imageResponse = imageModel.call(new ImagePrompt(message, OpenAiImageOptions.builder()
-                .withQuality("standard")
-                .withN(1)
-                .withHeight(1024)
-                .withWidth(1024)
-                .withModel(OpenAiImageApi.ImageModel.DALL_E_3.getValue())
-                .withResponseFormat("url")
+                .quality("standard")
+                .N(1)
+                .height(1024)
+                .width(1024)
+                .model(OpenAiImageApi.ImageModel.DALL_E_3.getValue())
+                .responseFormat("url")
                 .build()));
         return imageResponse.getResult().getOutput().getUrl();
     }

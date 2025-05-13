@@ -1,7 +1,6 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
@@ -36,7 +35,7 @@ class RagControllerMemory {
         return chatClient.prompt()
                 .advisors(chatMemoryAdvisor, retrievalAugmentationAdvisor)
                 .advisors(advisors -> advisors.param(
-                        AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY, conversationId))
+                        ChatMemory.CONVERSATION_ID, conversationId))
                 .user(question)
                 .call()
                 .content();

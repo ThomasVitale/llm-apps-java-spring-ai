@@ -43,11 +43,10 @@ class ChatController {
     @GetMapping("/chat/image/url")
     String chatImageUrl(String question) throws MalformedURLException {
         var imageUrl = "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png";
-        var url = URI.create(imageUrl).toURL();
         return chatClient.prompt()
                 .user(userSpec -> userSpec
                         .text(question)
-                        .media(new Media(MimeTypeUtils.IMAGE_PNG, url))
+                        .media(new Media(MimeTypeUtils.IMAGE_PNG, URI.create(imageUrl)))
                 )
                 .call()
                 .content();

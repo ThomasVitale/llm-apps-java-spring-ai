@@ -5,10 +5,10 @@ spring:
     chat:
       client:
         observations:
-          include-input: true
+          log-prompt: true
       observations:
-        include-completion: true
-        include-prompt: true
+        log-completion: true
+        log-prompt: true
     ollama:
       init:
         pull-model-strategy: when_missing
@@ -21,7 +21,7 @@ spring:
           model: nomic-embed-text
     vectorstore:
       observations:
-        include-query-response: true
+        log-query-response: true
       pgvector:
         initialize-schema: true
         dimensions: 768

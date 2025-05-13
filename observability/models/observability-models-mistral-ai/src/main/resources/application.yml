@@ -4,8 +4,8 @@ spring:
   ai:
     chat:
       observations:
-        include-completion: true
-        include-prompt: true
+        log-completion: true
+        log-prompt: true
     mistralai:
       api-key: ${MISTRALAI_API_KEY}
       chat:

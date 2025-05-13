@@ -4,11 +4,11 @@ spring:
   ai:
     chat:
       observations:
-        include-completion: true
-        include-prompt: true
+        log-completion: true
+        log-prompt: true
     image:
       observations:
-        include-prompt: true
+        log-prompt: true
     openai:
       api-key: ${OPENAI_API_KEY}
       chat:

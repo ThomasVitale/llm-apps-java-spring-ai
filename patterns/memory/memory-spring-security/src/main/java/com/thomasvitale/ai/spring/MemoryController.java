@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY;
+import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 
 /**
  * Chat examples using the high-level ChatClient API.
@@ -21,7 +21,7 @@ class MemoryController {
 
     MemoryController(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory) {
         this.chatClient = chatClientBuilder.clone()
-                .defaultAdvisors(new MessageChatMemoryAdvisor(chatMemory))
+                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
                 .build();
     }
 
@@ -30,7 +30,7 @@ class MemoryController {
         String conversationId = user.getUsername();
         return chatClient.prompt()
                 .user(question)
-                .advisors(a -> a.param(CHAT_MEMORY_CONVERSATION_ID_KEY, conversationId))
+                .advisors(a -> a.param(CONVERSATION_ID, conversationId))
                 .call()
                 .content();
     }
