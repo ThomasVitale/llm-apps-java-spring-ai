@@ -6,6 +6,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.tool.function.FunctionToolCallback;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 import java.util.function.Function;
@@ -34,6 +35,15 @@ class ChatController {
                 .user("Welcome the user to the library")
                 .tools(tools)
                 .call()
+                .content();
+    }
+
+    @GetMapping("/chat/method/no-args-stream")
+    Flux<String> chatMethodNoArgsStream() {
+        return chatClient.prompt()
+                .user("Welcome the user to the library")
+                .tools(tools)
+                .stream()
                 .content();
     }
 

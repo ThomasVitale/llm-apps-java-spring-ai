@@ -40,6 +40,10 @@ http :8080/chat/method/no-args -b
 ```
 
 ```shell
+http :8080/chat/method/no-args-stream -b
+```
+
+```shell
 http :8080/chat/method/void user=="Jessica" -b
 ```
 
