@@ -31,7 +31,7 @@ dependencies {
     implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
     testAndDevelopmentOnly 'io.arconia:arconia-dev-services-ollama'
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-opentelemetry-lgtm'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-lgtm'
     testAndDevelopmentOnly 'io.arconia:arconia-dev-services-postgresql'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

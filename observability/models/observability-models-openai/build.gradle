@@ -26,7 +26,7 @@ dependencies {
 
     implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
-    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-opentelemetry-lgtm'
+    testAndDevelopmentOnly 'io.arconia:arconia-dev-services-lgtm'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
