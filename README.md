@@ -115,6 +115,13 @@ Using chat memory to preserve context in conversations with LLMs:
 * **[Spring Security Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-spring-security)**
 * **[Vector Store Chat Memory](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/patterns/memory/memory-vector-store)**
 
+### Guardrails
+
+Guardrails for input and output with LLMs via different model providers:
+
+* **[Input Guardrails](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/guardrails/guardrails-input)**
+* **[Output Guardrails](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/guardrails/guardrails-output)**
+
 ## 📥 Data Ingestion
 
 ### Document Readers

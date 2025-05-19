@@ -32,6 +32,9 @@ include 'observability:models:observability-models-ollama'
 include 'observability:models:observability-models-openai'
 include 'observability:vector-stores:observability-vector-stores-pgvector'
 
+include 'patterns:guardrails:guardrails-input'
+include 'patterns:guardrails:guardrails-output'
+
 include 'patterns:memory:memory-basics'
 include 'patterns:memory:memory-jdbc'
 include 'patterns:memory:memory-spring-security'
