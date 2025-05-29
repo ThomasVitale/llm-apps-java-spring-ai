@@ -20,12 +20,12 @@ class RagControllerMemory {
 
     RagControllerMemory(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory, VectorStore vectorStore) {
         this.chatClient = chatClientBuilder.build();
-        this.chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory)
-                .build();
+        this.chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
         this.retrievalAugmentationAdvisor = RetrievalAugmentationAdvisor.builder()
                 .documentRetriever(VectorStoreDocumentRetriever.builder()
-                        .similarityThreshold(0.50)
                         .vectorStore(vectorStore)
+                        .similarityThreshold(0.50)
+                        .topK(3)
                         .build())
                 .build();
     }

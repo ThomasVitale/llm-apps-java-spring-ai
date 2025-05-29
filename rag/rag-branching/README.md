@@ -52,11 +52,11 @@ Call the application that will use a chat model to answer your questions.
 ### Query Expansion: Multi-Query
 
 ```shell
-http --raw "Who is Lucio?" :8080/rag/multi-query -b --pretty none
+http --raw "Who is Lucio?" :8080/rag/query/multi-query -b --pretty none
 ```
 
 ### Query Optimization: Transformation + Expansion
 
 ```shell
-http --raw "Hvad er Ioreks største drøm?" :8080/rag/optimization -b --pretty none
+http --raw "Hvad er Ioreks største drøm?" :8080/rag/query/optimization -b --pretty none
 ```

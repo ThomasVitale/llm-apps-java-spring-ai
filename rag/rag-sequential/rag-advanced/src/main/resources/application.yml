@@ -45,6 +45,3 @@ arconia:
     services:
       postgresql:
         image-name: pgvector/pgvector:pg17
-  otel:
-    metrics:
-      interval: 5s

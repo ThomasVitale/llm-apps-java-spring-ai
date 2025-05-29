@@ -160,6 +160,10 @@ Question answering with documents using different RAG flows (with Ollama and PGV
 
 * **[Branching](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/rag/rag-branching)**
 
+### Conditional RAG
+
+* **[Conditional](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/rag/rag-conditional)**
+
 ## 📊 Observability
 
 ### LLM Observability

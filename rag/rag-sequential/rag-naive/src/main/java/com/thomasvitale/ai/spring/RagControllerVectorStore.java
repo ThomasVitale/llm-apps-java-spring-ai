@@ -9,22 +9,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class RagControllerBasic {
+class RagControllerVectorStore {
 
     private final ChatClient chatClient;
     private final RetrievalAugmentationAdvisor retrievalAugmentationAdvisor;
 
-    RagControllerBasic(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
+    RagControllerVectorStore(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
         this.chatClient = chatClientBuilder.build();
         this.retrievalAugmentationAdvisor = RetrievalAugmentationAdvisor.builder()
                 .documentRetriever(VectorStoreDocumentRetriever.builder()
+                        .topK(3)
                         .similarityThreshold(0.50)
                         .vectorStore(vectorStore)
                         .build())
                 .build();
     }
 
-    @PostMapping("/rag/basic")
+    @PostMapping("/rag/vector-store")
     String chatWithDocument(@RequestBody String question) {
         return chatClient.prompt()
                 .advisors(retrievalAugmentationAdvisor)

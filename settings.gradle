@@ -59,6 +59,7 @@ include 'patterns:tool-calling:tool-calling-ollama'
 include 'patterns:tool-calling:tool-calling-openai'
 
 include 'rag:rag-branching'
+include 'rag:rag-conditional'
 include 'rag:rag-sequential:rag-advanced'
 include 'rag:rag-sequential:rag-naive'
 

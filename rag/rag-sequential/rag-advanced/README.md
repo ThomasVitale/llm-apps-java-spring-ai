@@ -64,11 +64,11 @@ http --raw "What places do they visit?" :8080/rag/memory/007 -b --pretty none
 With compression:
 
 ```shell
-http --raw "Who are the characters going on an adventure in the North Pole?" :8080/rag/compression/007 -b --pretty none
+http --raw "Who are the characters going on an adventure in the North Pole?" :8080/rag/query/compression/007 -b --pretty none
 ```
 
 ```shell
-http --raw "What places do they visit?" :8080/rag/compression/007 -b --pretty none
+http --raw "What places do they visit?" :8080/rag/query/compression/007 -b --pretty none
 ```
 
 ### Query Transformation: Rewrite
@@ -76,13 +76,13 @@ http --raw "What places do they visit?" :8080/rag/compression/007 -b --pretty no
 Without rewrite:
 
 ```shell
-http --raw "Where are the main characters going on an adventure?" :8080/rag/basic -b --pretty none
+http --raw "Where are the main characters going on an adventure?" :8080/rag/vector-store -b --pretty none
 ```
 
 With rewrite:
 
 ```shell
-http --raw "Where are the main characters going on an adventure?" :8080/rag/rewrite -b --pretty none
+http --raw "Where are the main characters going on an adventure?" :8080/rag/query/rewrite -b --pretty none
 ```
 
 ### Query Transformation: Translation
@@ -90,11 +90,25 @@ http --raw "Where are the main characters going on an adventure?" :8080/rag/rewr
 Without translation:
 
 ```shell
-http --raw "Hvad er Ioreks største drøm?" :8080/rag/basic -b --pretty none
+http --raw "Hvad er Ioreks største drøm?" :8080/rag/vector-store -b --pretty none
 ```
 
 With translation:
 
 ```shell
-http --raw "Hvad er Ioreks største drøm?" :8080/rag/translation -b --pretty none
+http --raw "Hvad er Ioreks største drøm?" :8080/rag/query/translation -b --pretty none
+```
+
+### Document Post-Processing: Compression
+
+Without compression:
+
+```shell
+http --raw "Who is Lucio?" :8080/rag/vector-store -b --pretty none
+```
+
+With compression:
+
+```shell
+http --raw "Who is Lucio?" :8080/rag/docs/compression -b --pretty none
 ```

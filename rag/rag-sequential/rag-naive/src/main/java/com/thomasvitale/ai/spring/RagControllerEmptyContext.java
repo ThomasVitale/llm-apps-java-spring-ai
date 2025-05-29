@@ -21,6 +21,7 @@ public class RagControllerEmptyContext {
         var documentRetriever = VectorStoreDocumentRetriever.builder()
                 .vectorStore(vectorStore)
                 .similarityThreshold(0.50)
+                .topK(3)
                 .build();
 
         var queryAugmenter = ContextualQueryAugmenter.builder()

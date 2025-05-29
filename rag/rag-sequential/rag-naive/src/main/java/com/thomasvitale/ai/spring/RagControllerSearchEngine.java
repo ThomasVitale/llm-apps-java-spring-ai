@@ -1,44 +1,36 @@
 package com.thomasvitale.ai.spring;
 
+import com.thomasvitale.ai.spring.components.SearchEngineDocumentRetriever;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
-import org.springframework.ai.rag.preretrieval.query.transformation.RewriteQueryTransformer;
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClient;
 
 @RestController
-public class RagControllerRewrite {
+class RagControllerSearchEngine {
 
     private final ChatClient chatClient;
     private final RetrievalAugmentationAdvisor retrievalAugmentationAdvisor;
 
-    public RagControllerRewrite(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
+    RagControllerSearchEngine(ChatClient.Builder chatClientBuilder, RestClient.Builder restClientBuilder) {
         this.chatClient = chatClientBuilder.build();
-
-        var documentRetriever = VectorStoreDocumentRetriever.builder()
-                .vectorStore(vectorStore)
-                .similarityThreshold(0.50)
-                .build();
-
-        var queryTransformer = RewriteQueryTransformer.builder()
-                .chatClientBuilder(chatClientBuilder.build().mutate())
-                .targetSearchSystem("vector store")
-                .build();
-
         this.retrievalAugmentationAdvisor = RetrievalAugmentationAdvisor.builder()
-                .documentRetriever(documentRetriever)
-                .queryTransformers(queryTransformer)
+                .documentRetriever(SearchEngineDocumentRetriever.builder()
+                        .restClientBuilder(restClientBuilder)
+                        .maxResults(10)
+                        .build())
                 .build();
     }
 
-    @PostMapping("/rag/rewrite")
-    String rag(@RequestBody String input) {
+    @PostMapping("/rag/search-engine")
+    String chatWithDocument(@RequestBody String question) {
         return chatClient.prompt()
                 .advisors(retrievalAugmentationAdvisor)
-                .user(input)
+                .user(question)
                 .call()
                 .content();
     }
