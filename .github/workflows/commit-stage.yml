@@ -23,7 +23,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
         with:
-          java-version: 23
+          java-version: 24
           distribution: temurin
           cache: gradle
 

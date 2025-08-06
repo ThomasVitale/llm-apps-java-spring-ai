@@ -26,4 +26,5 @@ management:
 arconia:
   otel:
     metrics:
-      interval: 5s
+      exporter:
+        interval: 5s
