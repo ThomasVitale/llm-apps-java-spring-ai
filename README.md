@@ -170,15 +170,15 @@ Question answering with documents using different RAG flows (with Ollama and PGV
 
 LLM Observability for different model providers:
 
-* **[Mistral AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/observability-models-mistral-ai)**
-* **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/observability-models-ollama)**
-* **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/observability-models-openai)**
+* **[Mistral AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/models/observability-models-mistral-ai)**
+* **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/models/observability-models-ollama)**
+* **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/models/observability-models-openai)**
 
 ### Vector Store Observability
 
 Vector Store Observability for different vector stores:
 
-* **[PGVector](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/observability-vector-stores-pgvector)**
+* **[PGVector](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/observability/vector-stores/observability-vector-stores-pgvector)**
 
 ## ⚙️ Model Context Protocol
 
