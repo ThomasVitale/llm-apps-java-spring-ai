@@ -7,5 +7,5 @@ spring:
           include: false
       chat:
         options:
-          model: granite3.2:2b
-          temperature: 0.7
+          model: granite3.3:2b
+          temperature: 0.0

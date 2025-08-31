@@ -7,7 +7,7 @@ spring:
           include: false
       embedding:
         options:
-          model: nomic-embed-text
+          model: granite-embedding:278m
     vectorstore:
       pgvector:
         initialize-schema: true

@@ -14,11 +14,11 @@ spring:
         pull-model-strategy: when_missing
       chat:
         options:
-          model: granite3.2:2b
+          model: granite3.3:2b
           temperature: 0.7
       embedding:
         options:
-          model: nomic-embed-text
+          model: granite-embedding:278m
     vectorstore:
       observations:
         log-query-response: true

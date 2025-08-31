@@ -5,11 +5,11 @@ spring:
         pull-model-strategy: when_missing
       chat:
         options:
-          model: granite3.2:2b
+          model: granite3.3:2b
           num-ctx: 4096
       embedding:
         options:
-          model: nomic-embed-text
+          model: granite-embedding:278m
     vectorstore:
       pgvector:
         initialize-schema: true
