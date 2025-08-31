@@ -1,0 +1,13 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "nixpkgs#graalvm-ce": {
+      "last_modified": "2025-08-30T06:43:38Z",
+      "resolved": "github:NixOS/nixpkgs/a918bb3594dd243c2f8534b3be01b3cb4ed35fd1?lastModified=1756536218&narHash=sha256-ynQxPVN2FIPheUgTFhv01gYLbaiSOS7NgWJPm9LF9D0%3D#graalvm-ce"
+    },
+    "nixpkgs#httpie": {
+      "last_modified": "2025-08-30T06:43:38Z",
+      "resolved": "github:NixOS/nixpkgs/a918bb3594dd243c2f8534b3be01b3cb4ed35fd1?lastModified=1756536218&narHash=sha256-ynQxPVN2FIPheUgTFhv01gYLbaiSOS7NgWJPm9LF9D0%3D#httpie"
+    }
+  }
+}
