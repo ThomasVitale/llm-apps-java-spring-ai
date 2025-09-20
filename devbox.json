@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
   "packages": [
-    "nixpkgs#graalvm-ce",
-    "nixpkgs#httpie"
+    "github:NixOS/nixpkgs/nixpkgs-unstable#httpie",
+    "github:NixOS/nixpkgs/nixpkgs-unstable#graalvm-ce"
   ],
   "shell": {
     "init_hook": [

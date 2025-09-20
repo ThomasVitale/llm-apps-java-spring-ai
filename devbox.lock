@@ -1,13 +1,17 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "nixpkgs#graalvm-ce": {
-      "last_modified": "2025-08-30T06:43:38Z",
-      "resolved": "github:NixOS/nixpkgs/a918bb3594dd243c2f8534b3be01b3cb4ed35fd1?lastModified=1756536218&narHash=sha256-ynQxPVN2FIPheUgTFhv01gYLbaiSOS7NgWJPm9LF9D0%3D#graalvm-ce"
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-09-19T06:08:23Z",
+      "resolved": "github:NixOS/nixpkgs/12bd230118a1901a4a5d393f9f56b6ad7e571d01?lastModified=1758262103"
     },
-    "nixpkgs#httpie": {
-      "last_modified": "2025-08-30T06:43:38Z",
-      "resolved": "github:NixOS/nixpkgs/a918bb3594dd243c2f8534b3be01b3cb4ed35fd1?lastModified=1756536218&narHash=sha256-ynQxPVN2FIPheUgTFhv01gYLbaiSOS7NgWJPm9LF9D0%3D#httpie"
+    "github:NixOS/nixpkgs/nixpkgs-unstable#graalvm-ce": {
+      "last_modified": "2025-09-19T06:08:23Z",
+      "resolved": "github:NixOS/nixpkgs/12bd230118a1901a4a5d393f9f56b6ad7e571d01?lastModified=1758262103#graalvm-ce"
+    },
+    "github:NixOS/nixpkgs/nixpkgs-unstable#httpie": {
+      "last_modified": "2025-09-19T06:08:23Z",
+      "resolved": "github:NixOS/nixpkgs/12bd230118a1901a4a5d393f9f56b6ad7e571d01?lastModified=1758262103#httpie"
     }
   }
 }
