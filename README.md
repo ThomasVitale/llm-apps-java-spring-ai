@@ -4,7 +4,7 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 
 ## 🛠️ Pre-Requisites
 
-* Java 24
+* Java 25
 * Podman/Docker
 
 ## 💡 Use Cases
