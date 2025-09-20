@@ -84,6 +84,12 @@ Finally, try a request which uses function calling.
 http :8080/chat/functions authorName=="Philip Pullman" -b
 ```
 
+And tools.
+
+```shell
+http :8080/chat/tools authorName=="Philip Pullman" -b
+```
+
 ### Embedding
 
 Call the application that will use an embedding model to generate embeddings for your query.
@@ -102,4 +108,10 @@ The next request is configured with the provider's specific options.
 
 ```shell
 http :8080/embed/provider-options query=="The capital of Italy is Rome" -b
+```
+
+Let's try now generating embeddings for multiple queries.
+
+```shell
+http :8080/embed/multiple-queries query1=="The capital of Italy is Rome" query2=="The capital of Denmark is Copenhagen" -b
 ```

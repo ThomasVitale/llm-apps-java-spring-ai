@@ -50,4 +50,14 @@ class EmbeddingController {
         return "Size of the embedding vector: " + embeddings.length;
     }
 
+    @GetMapping("/embed/multiple-queries")
+    String embedProviderOptions(String query1, String query2) {
+        logger.info("Multiple embeddings: {}, {}", query1, query2);
+        var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query1, query2), MistralAiEmbeddingOptions.builder()
+                        .withEncodingFormat("float")
+                        .build()))
+                .getResults();
+        return "Size of the embedding vector 1: " + embeddings.get(0).getOutput().length + ", Size of the embedding vector 2: " + embeddings.get(1).getOutput().length;
+    }
+
 }

@@ -16,9 +16,11 @@ class ChatController {
     private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 
     private final ChatClient chatClient;
+    private final Tools tools;
 
-    ChatController(ChatClient.Builder chatClientBuilder) {
+    ChatController(ChatClient.Builder chatClientBuilder, Tools tools) {
         this.chatClient = chatClientBuilder.clone().build();
+        this.tools = tools;
     }
 
     @GetMapping("/chat")
@@ -74,6 +76,20 @@ class ChatController {
                         .param("author", authorName)
                 )
                 .toolNames("booksByAuthor", "bestsellerBookByAuthor")
+                .call()
+                .content();
+    }
+
+    @GetMapping("/chat/tools")
+    String chatTools(String authorName) {
+        logger.info("Chatting with tools: {}", authorName);
+        var userPromptTemplate = "What books written by {author} are available in the library?";
+        return chatClient.prompt()
+                .user(userSpec -> userSpec
+                        .text(userPromptTemplate)
+                        .param("author", authorName)
+                )
+                .tools(tools)
                 .call()
                 .content();
     }
