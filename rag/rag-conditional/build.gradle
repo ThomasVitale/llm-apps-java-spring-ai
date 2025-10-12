@@ -25,7 +25,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
     implementation 'org.springframework.ai:spring-ai-rag'
 
-    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.1.0'
+    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.2.0'
 
     implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
