@@ -1,17 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
   "packages": [
-    "github:NixOS/nixpkgs/nixpkgs-unstable#httpie",
-    "github:NixOS/nixpkgs/nixpkgs-unstable#graalvm-ce"
-  ],
-  "shell": {
-    "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
-    ],
-    "scripts": {
-      "test": [
-        "echo \"Error: no test specified\" && exit 1"
-      ]
-    }
-  }
+    "httpie@latest",
+    "graalvmPackages.graalvm-ce@25.0.0"
+  ]
 }
