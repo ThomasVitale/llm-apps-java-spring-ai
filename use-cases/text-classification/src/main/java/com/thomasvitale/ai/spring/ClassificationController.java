@@ -125,19 +125,19 @@ class ClassificationController {
                     """),
 
                 new UserMessage("Apple Vision Pro and the New UEFA Euro App Deliver an Innovative Entertainment Experience."),
-                new AssistantMessage("TECHNOLOGY"),
+                AssistantMessage.builder().content("TECHNOLOGY").build(),
                 new UserMessage("Wall Street, Trading Volumes Reach All-Time Highs Amid Market Optimism."),
-                new AssistantMessage("BUSINESS"),
+                AssistantMessage.builder().content("BUSINESS").build(),
                 new UserMessage("Sony PlayStation 6 Launch, Next-Gen Gaming Experience Redefines Console Performance."),
-                new AssistantMessage("TECHNOLOGY"),
+                AssistantMessage.builder().content("TECHNOLOGY").build(),
                 new UserMessage("Water Polo Star Secures Landmark Contract with Major League Team."),
-                new AssistantMessage("SPORT"),
+                AssistantMessage.builder().content("SPORT").build(),
                 new UserMessage("Culinary Travel, Best Destinations for Food Lovers This Year!"),
-                new AssistantMessage("OTHER"),
+                AssistantMessage.builder().content("OTHER").build(),
                 new UserMessage("UEFA Euro 2024, Memorable Matches and Record-Breaking Goals Define Tournament Highlights."),
-                new AssistantMessage("SPORT"),
+                AssistantMessage.builder().content("SPORT").build(),
                 new UserMessage("Rock Band Resurgence, Legendary Groups Return to the Stage with Iconic Performances."),
-                new AssistantMessage("OTHER")
+                AssistantMessage.builder().content("OTHER").build()
         );
     }
 

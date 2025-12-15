@@ -47,7 +47,7 @@ public class SensitiveDataInputGuardrailAdvisor implements CallAdvisor {
             String response = "Computer says no!";
             return ChatClientResponse.builder()
                     .chatResponse(ChatResponse.builder()
-                            .generations(List.of(new Generation(new AssistantMessage(response))))
+                            .generations(List.of(new Generation(AssistantMessage.builder().content(response).build())))
                             .build())
                     .context(chatClientRequest.context())
                     .build();
