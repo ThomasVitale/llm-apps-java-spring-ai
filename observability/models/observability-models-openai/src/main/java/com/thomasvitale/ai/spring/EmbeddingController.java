@@ -34,7 +34,7 @@ class EmbeddingController {
     String embedGenericOptions(String query) {
         logger.info("Embedding with generic options: {}", query);
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), EmbeddingOptions.builder()
-                        .withModel(OpenAiApi.EmbeddingModel.TEXT_EMBEDDING_3_SMALL.getValue())
+                        .model(OpenAiApi.EmbeddingModel.TEXT_EMBEDDING_3_SMALL.getValue())
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;

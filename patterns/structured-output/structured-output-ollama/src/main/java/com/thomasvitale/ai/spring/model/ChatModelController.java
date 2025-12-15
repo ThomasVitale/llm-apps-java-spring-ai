@@ -8,8 +8,8 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
 import org.springframework.ai.ollama.api.OllamaModel;
-import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +44,7 @@ class ChatModelController {
                 "instrument", question.instrument(),
                 "genre", question.genre(),
                 "format", outputConverter.getFormat());
-        var prompt = userPromptTemplate.create(model, OllamaOptions.builder()
+        var prompt = userPromptTemplate.create(model, OllamaChatOptions.builder()
                 .format("json")
                 .build());
 
@@ -91,7 +91,7 @@ class ChatModelController {
                 Tell me about {country}.
                 """);
         Map<String,Object> model = Map.of("country", country);
-        var prompt = userPromptTemplate.create(model, OllamaOptions.builder()
+        var prompt = userPromptTemplate.create(model, OllamaChatOptions.builder()
                 .model(OllamaModel.LLAMA3_2.getName())
                 .format(outputConverter.getJsonSchemaMap())
                 .build());

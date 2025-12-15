@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptions;
-import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -50,7 +50,7 @@ class ChatController {
         logger.info("Chatting with provider options: {}", question);
         return chatClient
                 .prompt(question)
-                .options(OllamaOptions.builder()
+                .options(OllamaChatOptions.builder()
                         .repeatPenalty(1.5)
                         .build())
                 .call()

@@ -4,7 +4,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
-import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +38,7 @@ class ChatController {
                         .param("genre", question.genre())
                         .param("instrument", question.instrument())
                 )
-                .options(OllamaOptions.builder()
+                .options(OllamaChatOptions.builder()
                         .format("json")
                         .build())
                 .call()
@@ -83,7 +83,7 @@ class ChatController {
                         .text(userPromptTemplate)
                         .param("country", country)
                 )
-                .options(OllamaOptions.builder()
+                .options(OllamaChatOptions.builder()
                         .format(outputConverter.getJsonSchemaMap())
                         .build())
                 .call()

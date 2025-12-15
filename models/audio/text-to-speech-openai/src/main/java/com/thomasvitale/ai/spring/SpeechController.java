@@ -28,7 +28,7 @@ class SpeechController {
                 .model("tts-1")
                 .voice(OpenAiAudioApi.SpeechRequest.Voice.ALLOY)
                 .responseFormat(OpenAiAudioApi.SpeechRequest.AudioResponseFormat.MP3)
-                .speed(1.0f)
+                .speed(1.0)
                 .build()));
         return speechResponse.getResult().getOutput();
     }

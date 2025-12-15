@@ -28,7 +28,7 @@ class EmbeddingController {
     @GetMapping("/embed/generic-options")
     String embedGenericOptions(String query) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), EmbeddingOptions.builder()
-                        .withModel(MistralAiApi.EmbeddingModel.EMBED.getValue())
+                        .model(MistralAiApi.EmbeddingModel.EMBED.getValue())
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;

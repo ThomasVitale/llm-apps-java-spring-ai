@@ -3,8 +3,8 @@ package com.thomasvitale.ai.spring;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.embedding.EmbeddingOptions;
 import org.springframework.ai.embedding.EmbeddingRequest;
+import org.springframework.ai.ollama.api.OllamaEmbeddingOptions;
 import org.springframework.ai.ollama.api.OllamaModel;
-import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +28,7 @@ class EmbeddingController {
     @GetMapping("/embed/generic-options")
     String embedGenericOptions(String query) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), EmbeddingOptions.builder()
-                        .withModel(OllamaModel.NOMIC_EMBED_TEXT.getName())
+                        .model(OllamaModel.NOMIC_EMBED_TEXT.getName())
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;
@@ -36,7 +36,7 @@ class EmbeddingController {
 
     @GetMapping("/embed/provider-options")
     String embedProviderOptions(String query) {
-        var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), OllamaOptions.builder()
+        var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), OllamaEmbeddingOptions.builder()
                         .lowVRAM(true)
                         .build()))
                 .getResult().getOutput();

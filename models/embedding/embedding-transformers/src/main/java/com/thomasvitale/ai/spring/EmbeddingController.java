@@ -26,7 +26,7 @@ class EmbeddingController {
     @GetMapping("/embed/generic-options")
     String embedGenericOptions(String query) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), EmbeddingOptions.builder()
-                        .withDimensions(384)
+                        .dimensions(384)
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;
