@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up GraalVM
-        uses: graalvm/setup-graalvm@eec48106e0bf45f2976c2ff0c3e22395cced8243 # v1.4.2
+        uses: graalvm/setup-graalvm@790e28947b79a9c09c3391c0f18bf8d0f102ed69 # v1.4.4
         with:
           java-version: '25'
           distribution: 'graalvm-community'
