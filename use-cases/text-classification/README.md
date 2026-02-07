@@ -4,25 +4,21 @@ Text classification with LLMs via Ollama.
 
 ## Ollama
 
-The application consumes models from an [Ollama](https://ollama.ai) inference server. You can either run Ollama locally on your laptop,
-or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
-If you choose the first option, make sure you have Ollama installed and running on your laptop.
-Either way, Spring AI will take care of pulling the needed Ollama models when the application starts,
-if they are not available yet on your machine.
+The application consumes models from an [Ollama](https://ollama.ai) inference server. You can either run Ollama locally on your laptop, or let Arconia provide a Dev Service that will run Ollama as a container automatically.
+
+Either way, Spring AI will take care of pulling the needed Ollama models when the application starts, if they are not available yet on your machine.
 
 ## Running the application
 
-If you're using the native Ollama application, run the application as follows:
+Run the application as follows:
 
 ```shell
 ./gradlew bootRun
 ```
 
-If instead you want to rely on the Ollama Dev Service via Testcontainers, run the application as follows.
+Under the hood, in case no native Ollama connection is detected on your machine, the Arconia framework will automatically spin up an [Ollama](https://arconia.io/docs/arconia/latest/dev-services/ollama/) inference service using Testcontainers (see [Arconia Dev Services](https://arconia.io/docs/arconia/latest/dev-services/) for more information).
 
-```shell
-./gradlew bootRun -Darconia.dev.services.ollama.enabled=true
-```
+The application will be accessible at http://localhost:8080.
 
 ## Calling the application
 

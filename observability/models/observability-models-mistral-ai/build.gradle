@@ -20,14 +20,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.ai:spring-ai-starter-model-mistral-ai'
 
     implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
     testAndDevelopmentOnly 'io.arconia:arconia-dev-services-lgtm'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.springframework.boot:spring-boot-starter-actuator-test"
+    testImplementation "org.springframework.boot:spring-boot-starter-webmvc-test"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

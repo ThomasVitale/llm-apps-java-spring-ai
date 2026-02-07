@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class DocumentReadersMarkdownOllamaApplication {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(DocumentReadersMarkdownOllamaApplication.class, args);
     }
 

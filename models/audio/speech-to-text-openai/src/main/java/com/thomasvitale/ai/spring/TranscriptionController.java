@@ -1,7 +1,7 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
-import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
+import org.springframework.ai.audio.transcription.TranscriptionModel;
 import org.springframework.ai.openai.OpenAiAudioTranscriptionOptions;
 import org.springframework.ai.openai.api.OpenAiAudioApi;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class TranscriptionController {
 
-    private final OpenAiAudioTranscriptionModel transcriptionModel;
+    private final TranscriptionModel transcriptionModel;
 
-    TranscriptionController(OpenAiAudioTranscriptionModel transcriptionModel) {
+    TranscriptionController(TranscriptionModel transcriptionModel) {
         this.transcriptionModel = transcriptionModel;
     }
 

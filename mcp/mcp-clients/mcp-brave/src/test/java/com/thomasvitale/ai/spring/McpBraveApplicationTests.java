@@ -4,22 +4,22 @@ import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWebTestClient(timeout = "180s")
-@EnabledIfEnvironmentVariable(named = "BRAVE_API_KEY", matches = ".*")
+@AutoConfigureRestTestClient
+@EnabledIfEnvironmentVariable(named = "BRAVE_SEARCH_API_KEY", matches = ".*")
 class McpBraveApplicationTests {
 
     @Autowired
-    WebTestClient webTestClient;
+    RestTestClient restTestClient;
 
     @ParameterizedTest
     @ValueSource(strings = {"/chat/mcp"})
     void chat(String path) {
-        webTestClient
+        restTestClient
                 .get()
                 .uri(uriBuilder -> uriBuilder
                         .path(path)

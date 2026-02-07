@@ -22,9 +22,3 @@ spring:
 logging:
   level:
     org.springframework.ai.rag: debug
-
-arconia:
-  dev:
-    services:
-      postgresql:
-        image-name: pgvector/pgvector:pg17

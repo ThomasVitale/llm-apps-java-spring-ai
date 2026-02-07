@@ -4,11 +4,9 @@ Ask questions about documents with LLMs via Ollama and PGVector.
 
 ## Ollama
 
-The application consumes models from an [Ollama](https://ollama.ai) inference server. You can either run Ollama locally on your laptop,
-or rely on the Testcontainers support in Spring Boot to spin up an Ollama service automatically.
-If you choose the first option, make sure you have Ollama installed and running on your laptop.
-Either way, Spring AI will take care of pulling the needed Ollama models when the application starts,
-if they are not available yet on your machine.
+The application consumes models from an [Ollama](https://ollama.ai) inference server. You can either run Ollama locally on your laptop, or let Arconia provide a Dev Service that will run Ollama as a container automatically.
+
+Either way, Spring AI will take care of pulling the needed Ollama models when the application starts, if they are not available yet on your machine.
 
 ### Tavily (Optional)
 
@@ -28,26 +26,22 @@ export TAVILY_SEARCH_API_KEY=<YOUR-API-KEY>
 
 ## Running the application
 
-If you're using the native Ollama application, run the application as follows:
+Run the application as follows:
 
 ```shell
 ./gradlew bootRun
 ```
 
-Under the hood, the Arconia framework will automatically spin up a PostgreSQL database and a Grafana LGTM observability platform using Testcontainers.
+Under the hood, in case no native Ollama connection is detected on your machine, the Arconia framework will automatically spin up an [Ollama](https://arconia.io/docs/arconia/latest/dev-services/ollama/) inference service using Testcontainers. It will also automatically provision a [PostgreSQL](https://arconia.io/docs/arconia/latest/dev-services/postgresql/) database and a [Grafana LGTM](https://arconia.io/docs/arconia/latest/dev-services/lgtm/) observability platform. See [Arconia Dev Services](https://arconia.io/docs/arconia/latest/dev-services/) for more information.
 
-If instead you want to rely on the Ollama Dev Service via Testcontainers, run the application as follows.
-
-```shell
-./gradlew bootRun -Darconia.dev.services.ollama.enabled=true
-```
+The application will be accessible at http://localhost:8080.
 
 ## Observability Platform
 
-The application logs will show you the URL where you can access the Grafana observability platform.
+The application logs will show you the URL where you can access the Grafana observability platform and start exploring your application’s telemetry data.
 
 ```logs
-...o.t.grafana.LgtmStackContainer: Access to the Grafana dashboard: http://localhost:38125
+...o.t.grafana.LgtmStackContainer: Access to the Grafana dashboard: http://localhost:<port>
 ```
 
 By default, logs, metrics, and traces are exported via OTLP using the HTTP/Protobuf format.

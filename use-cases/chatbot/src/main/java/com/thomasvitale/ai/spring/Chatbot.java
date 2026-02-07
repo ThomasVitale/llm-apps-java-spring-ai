@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Chatbot {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(Chatbot.class, args);
     }
 

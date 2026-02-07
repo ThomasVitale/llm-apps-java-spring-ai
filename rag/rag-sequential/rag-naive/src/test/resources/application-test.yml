@@ -1,5 +1,0 @@
-arconia:
-  dev:
-    services:
-      ollama:
-        enabled: true

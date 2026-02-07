@@ -19,15 +19,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
 
     testAndDevelopmentOnly 'io.arconia:arconia-dev-services-ollama'
     testAndDevelopmentOnly 'io.arconia:arconia-dev-services-postgresql'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework:spring-webflux'
+    testImplementation "org.springframework.boot:spring-boot-starter-webmvc-test"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

@@ -21,9 +21,6 @@ spring:
       image:
         options:
           model: dall-e-3
-  http:
-    client:
-      read-timeout: 60s
 
 management:
   endpoints:

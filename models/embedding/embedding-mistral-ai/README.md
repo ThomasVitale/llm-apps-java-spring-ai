@@ -34,7 +34,7 @@ Copy and securely store your API key on your machine as an environment variable.
 The application will use it to access the Mistral AI API.
 
 ```shell
-export MISTRALAI_API_KEY=<YOUR-API-KEY>
+export MISTRAL_AI_API_KEY=<YOUR-API-KEY>
 ```
 
 ## Running the application

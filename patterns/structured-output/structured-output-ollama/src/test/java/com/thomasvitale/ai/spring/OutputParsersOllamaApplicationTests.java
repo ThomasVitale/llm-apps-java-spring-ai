@@ -3,10 +3,10 @@ package com.thomasvitale.ai.spring;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 import java.util.List;
 import java.util.Map;
@@ -14,19 +14,19 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWebTestClient(timeout = "120s")
+@AutoConfigureRestTestClient
 class OutputParsersOllamaApplicationTests {
 
     @Autowired
-    WebTestClient webTestClient;
+    RestTestClient restTestClient;
 
     @ParameterizedTest
     @ValueSource(strings = {"/chat/bean", "/model/chat/bean"})
     void bean(String path) {
-        webTestClient
+        restTestClient
                 .post()
                 .uri(path)
-                .bodyValue(new MusicQuestion("rock", "piano"))
+                .body(new MusicQuestion("rock", "piano"))
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(ArtistInfo.class).value(result -> {
@@ -39,7 +39,7 @@ class OutputParsersOllamaApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"/chat/map", "/model/chat/map"})
     void map(String path) {
-        webTestClient
+        restTestClient
                 .post()
                 .uri(path)
                 .exchange()
@@ -52,10 +52,10 @@ class OutputParsersOllamaApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"/chat/list", "/model/chat/list"})
     void list(String path) {
-        webTestClient
+        restTestClient
                 .post()
                 .uri(path)
-                .bodyValue(new MusicQuestion("rock", "piano"))
+                .body(new MusicQuestion("rock", "piano"))
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(new ParameterizedTypeReference<List<String>>() {}).value(result -> {

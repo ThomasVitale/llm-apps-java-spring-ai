@@ -34,10 +34,6 @@ management:
         include: "*"
 
 arconia:
-  dev:
-    services:
-      postgresql:
-        image-name: pgvector/pgvector:pg17
   otel:
     metrics:
       exporter:

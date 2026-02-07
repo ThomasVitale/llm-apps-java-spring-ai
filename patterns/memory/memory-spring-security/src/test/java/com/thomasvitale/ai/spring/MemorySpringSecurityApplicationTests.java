@@ -3,52 +3,51 @@ package com.thomasvitale.ai.spring;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.web.reactive.function.client.ExchangeFilterFunctions.basicAuthentication;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWebTestClient(timeout = "60s")
+@AutoConfigureRestTestClient
 class MemorySpringSecurityApplicationTests {
 
     @Autowired
-    WebTestClient webTestClient;
+    RestTestClient restTestClient;
 
     @ParameterizedTest
     @ValueSource(strings = {"/memory/security"})
     void chat(String path) {
-        var webTestClient1 = webTestClient.mutate()
-                .filter(basicAuthentication("george", "lizard"))
+        var restTestClient1 = restTestClient.mutate()
+                .defaultHeaders(headers -> headers.setBasicAuth("george", "lizard"))
                 .build();
 
-        webTestClient1
+        restTestClient1
                 .post()
                 .uri(path)
-                .bodyValue("My name is Bond. James Bond.")
+                .body("My name is Bond. James Bond.")
                 .exchange()
                 .expectStatus().isOk();
 
-        webTestClient1
+        restTestClient1
                 .post()
                 .uri(path)
-                .bodyValue("What's my name?")
+                .body("What's my name?")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class).value(result -> {
                     assertThat(result).containsIgnoringCase("Bond");
                 });
 
-        var webTestClient2 = webTestClient.mutate()
-                .filter(basicAuthentication("isabella", "butterfly"))
+        var restTestClient2 = restTestClient.mutate()
+                .defaultHeaders(headers -> headers.setBasicAuth("isabella", "butterfly"))
                 .build();
 
-        webTestClient2
+        restTestClient2
                 .post()
                 .uri(path)
-                .bodyValue("What's my name?")
+                .body("What's my name?")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class).value(result -> {

@@ -19,9 +19,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
+    implementation "org.springframework.boot:spring-boot-starter-restclient"
     implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
     implementation 'org.springframework.ai:spring-ai-rag'
 
@@ -33,8 +34,8 @@ dependencies {
     testAndDevelopmentOnly 'io.arconia:arconia-dev-services-lgtm'
     testAndDevelopmentOnly 'io.arconia:arconia-dev-services-postgresql'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework:spring-webflux'
+    testImplementation "org.springframework.boot:spring-boot-starter-webmvc-test"
+    testImplementation "org.springframework.boot:spring-boot-starter-restclient-test"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

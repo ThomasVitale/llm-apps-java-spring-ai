@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @SpringBootApplication
 public class MemorySpringSecurityApplication {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(MemorySpringSecurityApplication.class, args);
     }
 

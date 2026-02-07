@@ -22,12 +22,12 @@ repositories {
 dependencies {
     implementation platform("org.springframework.ai:spring-ai-bom:${springAiVersion}")
 
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation "org.springframework.ai:spring-ai-starter-model-openai"
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.springframework.boot:spring-boot-starter-webmvc-test"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

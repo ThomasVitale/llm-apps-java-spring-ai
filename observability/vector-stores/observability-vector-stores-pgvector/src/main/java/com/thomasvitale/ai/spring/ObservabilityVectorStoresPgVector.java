@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ObservabilityVectorStoresPgVector {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(ObservabilityVectorStoresPgVector.class, args);
     }
 

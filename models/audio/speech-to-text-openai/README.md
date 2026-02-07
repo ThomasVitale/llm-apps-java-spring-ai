@@ -6,11 +6,11 @@ Speech transcription with LLMs via OpenAI.
 
 Spring AI provides a `TranscriptionModel` abstraction for integrating with LLMs via several providers, including OpenAI.
 
-When using the _Spring AI OpenAI Spring Boot Starter_, an `OpenAiAudioTranscriptionModel` object is autoconfigured for you to use OpenAI.
+When using the _Spring AI OpenAI Spring Boot Starter_, a `TranscriptionModel` object is autoconfigured for you to use OpenAI.
 
 ```java
 @Bean
-CommandLineRunner chat(OpenAiAudioTranscriptionModel transcriptionModel) {
+CommandLineRunner chat(TranscriptionModel transcriptionModel) {
     return _ -> {
         var response = transcriptionModel.call(new AudioTranscriptionPrompt(audioFile)).getResult().getOutput();
         System.out.println(response);

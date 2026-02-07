@@ -23,9 +23,6 @@ spring:
         initialize-schema: true
         dimensions: 768
         index-type: hnsw
-  http:
-    client:
-      read-timeout: 60s
   threads:
     virtual:
       enabled: true
@@ -39,9 +36,3 @@ management:
     web:
       exposure:
         include: "*"
-
-arconia:
-  dev:
-    services:
-      postgresql:
-        image-name: pgvector/pgvector:pg17

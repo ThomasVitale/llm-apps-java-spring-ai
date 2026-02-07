@@ -16,7 +16,7 @@ import java.util.List;
 @SpringBootApplication
 public class DocumentTransformersMetadataOllamaApplication {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(DocumentTransformersMetadataOllamaApplication.class, args);
     }
 

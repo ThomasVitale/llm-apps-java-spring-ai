@@ -4,24 +4,24 @@ import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWebTestClient(timeout = "60s")
+@AutoConfigureRestTestClient
 @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".*")
 class EmbeddingOpenAiApplicationTests {
 
     @Autowired
-    WebTestClient webTestClient;
+    RestTestClient restTestClient;
 
     @ParameterizedTest
     @ValueSource(strings = {"/embed", "/embed/generic-options", "/embed/provider-options"})
     void chat(String path) {
-        webTestClient
+        restTestClient
                 .get()
                 .uri(uriBuilder -> uriBuilder
                         .path(path)

@@ -202,7 +202,8 @@ _Coming soon_
 
 * [Introducing Spring AI by Christian Tzolov and Mark Pollack (Spring I/O 2024)](https://www.youtube.com/watch?v=umKbaXsiCOY)
 * [Spring AI Is All You Need by Christian Tzolov (GOTO Amsterdam 2024)](https://www.youtube.com/watch?v=vuhMti8B5H0)
-* [Concerto for Java and AI - Building Production-Ready LLM Applications by Thomas Vitale (GOTO Copenhagen 2024)](https://www.youtube.com/watch?v=la4kc57F6jU)
+* [Concerto for Java and AI - Building Production-Ready LLM Applications by Thomas Vitale (Devoxx UK 2025)](https://www.youtube.com/watch?v=CVsYMIpuFIU)
+* [Modular RAG Architectures with Java and Spring AI by Thomas Vitale (Spring I/O 2025)](https://www.youtube.com/watch?v=yQQEnXRMvUA)
 
 ### Videos
 

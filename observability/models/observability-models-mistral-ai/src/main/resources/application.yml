@@ -7,7 +7,7 @@ spring:
         log-completion: true
         log-prompt: true
     mistralai:
-      api-key: ${MISTRALAI_API_KEY}
+      api-key: ${MISTRAL_AI_API_KEY}
       chat:
         options:
           model: mistral-small-latest

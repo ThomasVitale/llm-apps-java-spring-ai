@@ -1,7 +1,7 @@
 spring:
   ai:
     mistralai:
-      api-key: ${MISTRALAI_API_KEY}
+      api-key: ${MISTRAL_AI_API_KEY}
       embedding:
         options:
           model: mistral-embed

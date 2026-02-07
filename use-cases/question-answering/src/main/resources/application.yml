@@ -15,9 +15,3 @@ spring:
         initialize-schema: true
         dimensions: 768
         index-type: hnsw
-
-arconia:
-  dev:
-    services:
-      postgresql:
-        image-name: pgvector/pgvector:pg17
