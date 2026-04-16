@@ -7,6 +7,18 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 * Java 25
 * Podman/Docker
 
+## 🚀 Quickstart Matrix
+
+| Use case | Requires model runtime | Extra dependency | Best entry point |
+|---|---|---|---|
+| Chatbot | Ollama | None beyond the default runtime | [`use-cases/chatbot`](use-cases/chatbot/README.md) |
+| Question Answering | Ollama | PostgreSQL / PGVector | [`use-cases/question-answering`](use-cases/question-answering/README.md) |
+| Semantic Search | Ollama | PostgreSQL / PGVector | [`use-cases/semantic-search`](use-cases/semantic-search/README.md) |
+| Structured Data Extraction | Ollama | None beyond the default runtime | [`use-cases/structured-data-extraction`](use-cases/structured-data-extraction/README.md) |
+| Text Classification | Ollama | None beyond the default runtime | [`use-cases/text-classification`](use-cases/text-classification/README.md) |
+
+If you want the shortest first run, start with `chatbot`. If you want to explore retrieval use cases, `question-answering` and `semantic-search` are the main PGVector-backed entries.
+
 ## 💡 Use Cases
 
 * **[Chatbot](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/chatbot)**
@@ -223,3 +235,31 @@ _Coming soon_
 
 * [Spring AI - Zero to Hero (Adib Saikali, Christian Tzolov)](https://github.com/asaikali/spring-ai-zero-to-hero/tree/main)
 * [AI Applications with Java and Spring AI (Thomas Vitale)](https://github.com/ThomasVitale/java-ai-workshop)
+
+## Baseline Maintenance
+
+### Environment
+
+- Put runtime credentials in environment variables.
+- Use `.env.example` as the configuration template.
+
+### CI
+
+- `baseline-ci.yml` provides a unified pipeline with `lint + build + test + secret scan`.
+
+### Repo Hygiene
+
+- Keep generated files (`dist/`, `build/`, `__pycache__/`, `.idea/`, `.DS_Store`) out of version control.
+
+## Audit Baseline Notes
+
+### Requirements
+
+- Environment requirements are defined by this module and parent project documentation.
+- Configure credentials via environment variables before startup.
+- Use `.env.example` (or equivalent sample config) for local setup.
+
+### Run
+
+- Install dependencies for this module before execution.
+- Use the standard project command to build and run (for example Maven, Gradle, npm, or Python entrypoint scripts in this repository).
