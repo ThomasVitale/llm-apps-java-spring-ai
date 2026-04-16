@@ -24,6 +24,18 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 * **[Text Classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/text-classification)**
   Text classification using LLMs via Ollama.
 
+### Runtime prerequisites at a glance
+
+| Sample | Needs Ollama | Needs PostgreSQL / PGVector | Needs Podman / Docker |
+|---|---|---|---|
+| Chatbot | Yes | No | Recommended for Arconia Dev Services |
+| Question Answering | Yes | Yes | Recommended for Arconia Dev Services |
+| Semantic Search | Yes | Yes | Recommended for Arconia Dev Services |
+| Structured Data Extraction | Yes | No | Recommended for Arconia Dev Services |
+| Text Classification | Yes | No | Recommended for Arconia Dev Services |
+
+For the PGVector-backed samples, the PostgreSQL service can be provided automatically through Arconia Dev Services when local container support is available.
+
 ## 🧠 Models
 
 ### Chat Models
@@ -223,3 +235,31 @@ _Coming soon_
 
 * [Spring AI - Zero to Hero (Adib Saikali, Christian Tzolov)](https://github.com/asaikali/spring-ai-zero-to-hero/tree/main)
 * [AI Applications with Java and Spring AI (Thomas Vitale)](https://github.com/ThomasVitale/java-ai-workshop)
+
+## Baseline Maintenance
+
+### Environment
+
+- Put runtime credentials in environment variables.
+- Use `.env.example` as the configuration template.
+
+### CI
+
+- `baseline-ci.yml` provides a unified pipeline with `lint + build + test + secret scan`.
+
+### Repo Hygiene
+
+- Keep generated files (`dist/`, `build/`, `__pycache__/`, `.idea/`, `.DS_Store`) out of version control.
+
+## Audit Baseline Notes
+
+### Requirements
+
+- Environment requirements are defined by this module and parent project documentation.
+- Configure credentials via environment variables before startup.
+- Use `.env.example` (or equivalent sample config) for local setup.
+
+### Run
+
+- Install dependencies for this module before execution.
+- Use the standard project command to build and run (for example Maven, Gradle, npm, or Python entrypoint scripts in this repository).
