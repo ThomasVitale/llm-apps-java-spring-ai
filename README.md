@@ -24,6 +24,16 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 * **[Text Classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/text-classification)**
   Text classification using LLMs via Ollama.
 
+### Common startup errors
+
+| Symptom | Likely cause | What to check |
+|---|---|---|
+| `Connection refused` while contacting Ollama | No local Ollama daemon and no container runtime available for Arconia Dev Services | Start Ollama locally, or make sure Podman / Docker is running before `./gradlew bootRun` |
+| The first request takes a long time or the app appears stuck | Ollama is still downloading the requested model | Keep the application running until the model pull finishes, or pre-pull the model with `ollama pull` |
+| PGVector-backed samples fail with database or extension errors | The PostgreSQL Dev Service did not start correctly | Confirm that Podman / Docker can launch containers and that the machine has enough memory for PostgreSQL + Ollama |
+| Port `8080` is already in use | Another sample or local service is still running | Stop the previous process, or override the port with `./gradlew bootRun --args='--server.port=8081'` |
+| Requests return incomplete answers right after startup | The dependent services are still warming up | Wait for the logs to show that Ollama and PostgreSQL are ready, then retry the request |
+
 ## 🧠 Models
 
 ### Chat Models
@@ -251,4 +261,3 @@ _Coming soon_
 
 - Install dependencies for this module before execution.
 - Use the standard project command to build and run (for example Maven, Gradle, npm, or Python entrypoint scripts in this repository).
-
