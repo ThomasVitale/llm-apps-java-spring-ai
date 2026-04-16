@@ -24,6 +24,18 @@ Samples showing how to build Java applications powered by Generative AI and Larg
 * **[Text Classification](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/use-cases/text-classification)**
   Text classification using LLMs via Ollama.
 
+### Runtime prerequisites at a glance
+
+| Sample | Needs Ollama | Needs PostgreSQL / PGVector | Needs Podman / Docker |
+|---|---|---|---|
+| Chatbot | Yes | No | Recommended for Arconia Dev Services |
+| Question Answering | Yes | Yes | Recommended for Arconia Dev Services |
+| Semantic Search | Yes | Yes | Recommended for Arconia Dev Services |
+| Structured Data Extraction | Yes | No | Recommended for Arconia Dev Services |
+| Text Classification | Yes | No | Recommended for Arconia Dev Services |
+
+For the PGVector-backed samples, the PostgreSQL service can be provided automatically through Arconia Dev Services when local container support is available.
+
 ## 🧠 Models
 
 ### Chat Models
@@ -251,4 +263,3 @@ _Coming soon_
 
 - Install dependencies for this module before execution.
 - Use the standard project command to build and run (for example Maven, Gradle, npm, or Python entrypoint scripts in this repository).
-
