@@ -1,9 +1,9 @@
 package com.thomasvitale.ai.spring;
 
+import com.openai.models.audio.AudioResponseFormat;
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
 import org.springframework.ai.audio.transcription.TranscriptionModel;
 import org.springframework.ai.openai.OpenAiAudioTranscriptionOptions;
-import org.springframework.ai.openai.api.OpenAiAudioApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,7 @@ class TranscriptionController {
                 .language("en")
                 .prompt("Ask not this, but ask that")
                 .temperature(0f)
-                .responseFormat(OpenAiAudioApi.TranscriptResponseFormat.VTT)
+                .responseFormat(AudioResponseFormat.VTT)
                 .build()));
         return transcriptionResponse.getResult().getOutput();
     }

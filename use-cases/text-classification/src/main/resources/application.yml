@@ -6,5 +6,4 @@ spring:
         embedding:
           include: false
       chat:
-        options:
           model: granite3.3:2b

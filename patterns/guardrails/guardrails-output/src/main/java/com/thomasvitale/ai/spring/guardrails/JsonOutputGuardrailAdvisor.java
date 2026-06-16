@@ -1,6 +1,5 @@
 package com.thomasvitale.ai.spring.guardrails;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.jspecify.annotations.Nullable;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClientRequest;
@@ -14,6 +13,7 @@ import org.springframework.ai.util.json.JsonParser;
 import org.springframework.ai.util.json.schema.JsonSchemaGenerator;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
+import tools.jackson.core.JacksonException;
 
 import java.lang.reflect.Type;
 
@@ -43,8 +43,8 @@ public class JsonOutputGuardrailAdvisor implements CallAdvisor {
         }
 
         try {
-            JsonParser.getObjectMapper().readValue(result, JsonParser.getObjectMapper().constructType(type));
-        } catch (JsonProcessingException exception) {
+            JsonParser.getJsonMapper().readValue(result, JsonParser.getJsonMapper().constructType(type));
+        } catch (JacksonException exception) {
             ChatResponse resultAfterReprompt = chatClient.prompt()
                     .system("""
                         Produce a valid JSON object from the input, which is wrongly formatted.

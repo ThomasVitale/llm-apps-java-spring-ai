@@ -4,7 +4,6 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
-import org.springframework.ai.mistralai.api.MistralAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +30,7 @@ class ChatModelController {
     @GetMapping("/chat/generic-options")
     String chatGenericOptions(String question) {
         return chatModel.call(new Prompt(question, ChatOptions.builder()
-                        .model(MistralAiApi.ChatModel.SMALL.getName())
+                        .model(org.springframework.ai.mistralai.api.MistralAiApi.ChatModel.MISTRAL_SMALL.getName())
                         .temperature(0.9)
                         .build()))
                 .getResult().getOutput().getText();

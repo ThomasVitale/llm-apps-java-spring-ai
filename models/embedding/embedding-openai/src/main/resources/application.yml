@@ -3,5 +3,4 @@ spring:
     openai:
       api-key: ${OPENAI_API_KEY}
       embedding:
-        options:
           model: text-embedding-ada-002

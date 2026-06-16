@@ -1,9 +1,9 @@
 package com.thomasvitale.ai.spring;
 
+import com.openai.models.ChatModel;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.content.Media;
 import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.util.MimeTypeUtils;
@@ -62,8 +62,7 @@ class ChatController {
                         .media(MimeTypeUtils.parseMimeType("audio/mp3"), audio)
                 )
                 .options(OpenAiChatOptions.builder()
-                        .model(OpenAiApi.ChatModel.GPT_4_O_AUDIO_PREVIEW.getValue())
-                        .build())
+                        .model(ChatModel.GPT_4O_AUDIO_PREVIEW.asString()))
                 .call()
                 .content();
     }

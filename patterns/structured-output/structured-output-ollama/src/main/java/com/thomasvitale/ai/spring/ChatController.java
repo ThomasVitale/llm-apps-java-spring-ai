@@ -39,8 +39,7 @@ class ChatController {
                         .param("instrument", question.instrument())
                 )
                 .options(OllamaChatOptions.builder()
-                        .format("json")
-                        .build())
+                        .format("json"))
                 .call()
                 .entity(ArtistInfo.class);
     }
@@ -84,8 +83,7 @@ class ChatController {
                         .param("country", country)
                 )
                 .options(OllamaChatOptions.builder()
-                        .format(outputConverter.getJsonSchemaMap())
-                        .build())
+                        .format(outputConverter.getJsonSchemaMap()))
                 .call()
                 .entity(outputConverter);
     }

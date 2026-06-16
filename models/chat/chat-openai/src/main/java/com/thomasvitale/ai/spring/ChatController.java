@@ -1,9 +1,9 @@
 package com.thomasvitale.ai.spring;
 
+import com.openai.models.ChatModel;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -33,9 +33,8 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(ChatOptions.builder()
-                        .model(OpenAiApi.ChatModel.GPT_4_O_MINI.getValue())
-                        .temperature(0.9)
-                        .build())
+                        .model(ChatModel.GPT_4O_MINI.asString())
+                        .temperature(0.9))
                 .call()
                 .content();
     }
@@ -45,8 +44,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(OpenAiChatOptions.builder()
-                        .logprobs(true)
-                        .build())
+                        .logprobs(true))
                 .call()
                 .content();
     }

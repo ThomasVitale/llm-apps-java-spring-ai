@@ -1,11 +1,9 @@
 package com.thomasvitale.ai.spring;
 
 import org.springframework.ai.image.ImageModel;
-import org.springframework.ai.image.ImageOptions;
 import org.springframework.ai.image.ImageOptionsBuilder;
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.ai.openai.OpenAiImageOptions;
-import org.springframework.ai.openai.api.OpenAiImageApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,10 +29,10 @@ class ImageController {
     String imageProviderOptions(String message) {
         var imageResponse = imageModel.call(new ImagePrompt(message, OpenAiImageOptions.builder()
                 .quality("standard")
-                .N(1)
+                .n(1)
                 .height(1024)
                 .width(1024)
-                .model(OpenAiImageApi.ImageModel.DALL_E_3.getValue())
+                .model(com.openai.models.images.ImageModel.GPT_IMAGE_1_MINI.asString())
                 .responseFormat("url")
                 .build()));
         return imageResponse.getResult().getOutput().getUrl();

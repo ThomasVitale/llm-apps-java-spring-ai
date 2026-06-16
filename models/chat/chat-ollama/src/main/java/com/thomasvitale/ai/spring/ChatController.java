@@ -33,8 +33,7 @@ class ChatController {
                 .prompt(question)
                 .options(ChatOptions.builder()
                         .model("granite3.2:2b")
-                        .temperature(0.9)
-                        .build())
+                        .temperature(0.9))
                 .call()
                 .content();
     }
@@ -44,8 +43,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(OllamaChatOptions.builder()
-                        .repeatPenalty(1.5)
-                        .build())
+                        .repeatPenalty(1.5))
                 .call()
                 .content();
     }
@@ -55,8 +53,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(ChatOptions.builder()
-                        .model("hf.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF")
-                        .build())
+                        .model("hf.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF"))
                 .call()
                 .content();
     }

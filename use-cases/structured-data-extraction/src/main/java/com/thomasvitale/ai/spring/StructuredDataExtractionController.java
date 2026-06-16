@@ -14,8 +14,7 @@ class StructuredDataExtractionController {
     StructuredDataExtractionController(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder.clone()
                 .defaultOptions(ChatOptions.builder()
-                        .temperature(0.0)
-                        .build())
+                        .temperature(0.0))
                 .build();
     }
 

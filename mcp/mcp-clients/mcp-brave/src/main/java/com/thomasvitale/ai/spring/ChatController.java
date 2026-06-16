@@ -26,7 +26,7 @@ class ChatController {
     String chat(String question) {
         return chatClient.prompt()
                 .user(question)
-                .toolCallbacks(SyncMcpToolCallbackProvider.builder()
+                .tools(SyncMcpToolCallbackProvider.builder()
                         .mcpClients(mcpClients)
                         .build()
                         .getToolCallbacks())

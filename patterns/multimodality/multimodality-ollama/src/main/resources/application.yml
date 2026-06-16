@@ -6,6 +6,5 @@ spring:
         embedding:
           include: false
       chat:
-        options:
           model: granite3.2-vision:2b
           temperature: 0.7

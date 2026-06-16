@@ -8,9 +8,8 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
+import org.springframework.ai.openai.OpenAiChatModel.ResponseFormat;
 import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
-import org.springframework.ai.openai.api.ResponseFormat;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,7 +44,7 @@ class ChatModelController {
                 "genre", question.genre(),
                 "format", outputConverter.getFormat());
         var prompt = userPromptTemplate.create(model, OpenAiChatOptions.builder()
-                .responseFormat(new ResponseFormat(ResponseFormat.Type.JSON_OBJECT, null))
+                .responseFormat(ResponseFormat.builder().type(ResponseFormat.Type.JSON_OBJECT).jsonSchema(null).build())
                 .build());
 
         var chatResponse = chatModel.call(prompt);
@@ -92,8 +91,8 @@ class ChatModelController {
                 """);
         Map<String,Object> model = Map.of("instrument", question.instrument(), "genre", question.genre());
         var prompt = userPromptTemplate.create(model, OpenAiChatOptions.builder()
-                .model(OpenAiApi.ChatModel.GPT_4_O.getValue())
-                .responseFormat(new ResponseFormat(ResponseFormat.Type.JSON_SCHEMA, outputConverter.getJsonSchema()))
+                .model(com.openai.models.ChatModel.GPT_4O.asString())
+                .responseFormat(ResponseFormat.builder().type(ResponseFormat.Type.JSON_SCHEMA).jsonSchema(outputConverter.getJsonSchema()).build())
                 .build());
 
         var chatResponse = chatModel.call(prompt);

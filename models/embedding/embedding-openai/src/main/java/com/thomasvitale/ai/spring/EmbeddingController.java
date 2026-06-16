@@ -4,7 +4,6 @@ import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.embedding.EmbeddingOptions;
 import org.springframework.ai.embedding.EmbeddingRequest;
 import org.springframework.ai.openai.OpenAiEmbeddingOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +27,7 @@ class EmbeddingController {
     @GetMapping("/embed/generic-options")
     String embedGenericOptions(String query) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), EmbeddingOptions.builder()
-                        .model(OpenAiApi.EmbeddingModel.TEXT_EMBEDDING_3_SMALL.getValue())
+                        .model(com.openai.models.embeddings.EmbeddingModel.TEXT_EMBEDDING_3_SMALL.asString())
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;
@@ -37,7 +36,7 @@ class EmbeddingController {
     @GetMapping("/embed/provider-options")
     String embedProviderOptions(String query) {
         var embeddings = embeddingModel.call(new EmbeddingRequest(List.of(query), OpenAiEmbeddingOptions.builder()
-                        .encodingFormat("float")
+                        .encodingFormat(OpenAiEmbeddingOptions.EncodingFormat.FLOAT)
                         .build()))
                 .getResult().getOutput();
         return "Size of the embedding vector: " + embeddings.length;

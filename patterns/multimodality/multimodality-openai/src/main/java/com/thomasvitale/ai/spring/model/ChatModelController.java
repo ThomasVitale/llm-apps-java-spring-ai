@@ -5,7 +5,6 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.content.Media;
 import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.util.MimeTypeUtils;
@@ -57,7 +56,7 @@ class ChatModelController {
     String chatAudioFile(String question) {
         var userMessage = UserMessage.builder().text(question).media(new Media(MimeTypeUtils.parseMimeType("audio/mp3"), audio)).build();
         var prompt = new Prompt(userMessage, OpenAiChatOptions.builder()
-                .model(OpenAiApi.ChatModel.GPT_4_O_AUDIO_PREVIEW.getValue())
+                .model(com.openai.models.ChatModel.GPT_4O_AUDIO_PREVIEW.asString())
                 .build());
         var chatResponse = chatModel.call(prompt);
         return chatResponse.getResult().getOutput().getText();

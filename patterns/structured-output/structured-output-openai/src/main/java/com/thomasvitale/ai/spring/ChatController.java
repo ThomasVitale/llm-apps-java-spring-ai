@@ -3,8 +3,8 @@ package com.thomasvitale.ai.spring;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.ai.converter.MapOutputConverter;
+import org.springframework.ai.openai.OpenAiChatModel.ResponseFormat;
 import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.ResponseFormat;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,8 +38,7 @@ class ChatController {
                         .param("instrument", question.instrument())
                 )
                 .options(OpenAiChatOptions.builder()
-                        .responseFormat(new ResponseFormat(ResponseFormat.Type.JSON_OBJECT, null))
-                        .build())
+                        .responseFormat(ResponseFormat.builder().type(ResponseFormat.Type.JSON_OBJECT).jsonSchema(null).build()))
                 .call()
                 .entity(ArtistInfo.class);
     }

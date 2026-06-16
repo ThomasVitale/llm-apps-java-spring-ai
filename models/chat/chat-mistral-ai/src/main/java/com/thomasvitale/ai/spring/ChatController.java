@@ -3,7 +3,7 @@ package com.thomasvitale.ai.spring;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
-import org.springframework.ai.mistralai.api.MistralAiApi;
+import org.springframework.ai.mistralai.api.MistralAiApi.ChatModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -33,9 +33,8 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(ChatOptions.builder()
-                        .model(MistralAiApi.ChatModel.SMALL.getName())
-                        .temperature(0.9)
-                        .build())
+                        .model(ChatModel.MISTRAL_SMALL.getName())
+                        .temperature(0.9))
                 .call()
                 .content();
     }
@@ -45,8 +44,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(MistralAiChatOptions.builder()
-                        .safePrompt(true)
-                        .build())
+                        .safePrompt(true))
                 .call()
                 .content();
     }

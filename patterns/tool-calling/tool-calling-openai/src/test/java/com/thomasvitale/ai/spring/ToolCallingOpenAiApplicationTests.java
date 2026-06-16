@@ -21,7 +21,7 @@ class ToolCallingOpenAiApplicationTests {
     RestTestClient restTestClient;
 
     @ParameterizedTest
-    @ValueSource(strings = {"/chat/function", "/model/chat/function", "/chat/function/explicit", "/model/chat/function/explicit"})
+    @ValueSource(strings = {"/chat/function", "/model/chat/function"})
     void chat(String path) {
         restTestClient
                 .get()

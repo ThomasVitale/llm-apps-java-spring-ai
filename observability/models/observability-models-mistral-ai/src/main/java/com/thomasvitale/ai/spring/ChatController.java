@@ -39,8 +39,7 @@ class ChatController {
                 .prompt(question)
                 .options(ChatOptions.builder()
                         .model(MistralAiApi.ChatModel.MISTRAL_SMALL.getName())
-                        .temperature(0.9)
-                        .build())
+                        .temperature(0.9))
                 .call()
                 .content();
     }
@@ -51,8 +50,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(MistralAiChatOptions.builder()
-                        .safePrompt(true)
-                        .build())
+                        .safePrompt(true))
                 .call()
                 .content();
     }
@@ -63,20 +61,6 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .stream()
-                .content();
-    }
-
-    @GetMapping("/chat/functions")
-    String chatFunctions(String authorName) {
-        logger.info("Chatting with functions: {}", authorName);
-        var userPromptTemplate = "What books written by {author} are available in the library?";
-        return chatClient.prompt()
-                .user(userSpec -> userSpec
-                        .text(userPromptTemplate)
-                        .param("author", authorName)
-                )
-                .toolNames("booksByAuthor", "bestsellerBookByAuthor")
-                .call()
                 .content();
     }
 

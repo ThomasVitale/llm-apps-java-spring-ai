@@ -4,5 +4,4 @@ spring:
       api-key: ${OPENAI_API_KEY}
       audio:
         speech:
-          options:
             model: tts-1

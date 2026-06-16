@@ -67,15 +67,7 @@ http :8080/chat/function/void-input -b
 ```
 
 ```shell
-http :8080/chat/function/void-input/callback -b
-```
-
-```shell
 http :8080/chat/function/void-output user=="Jessica" -b
-```
-
-```shell
-http :8080/chat/function/void-output/callback user=="Jessica" -b
 ```
 
 ```shell
@@ -83,13 +75,5 @@ http :8080/chat/function/single authorName=="J.R.R. Tolkien" -b
 ```
 
 ```shell
-http :8080/chat/function/single/callback authorName=="J.R.R. Tolkien" -b
-```
-
-```shell
 http :8080/chat/function/list bookTitle1=="Narnia" bookTitle2=="The Hobbit" -b
-```
-
-```shell
-http :8080/chat/function/list/callback bookTitle1=="Narnia" bookTitle2=="The Hobbit" -b
 ```

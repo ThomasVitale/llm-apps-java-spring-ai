@@ -39,8 +39,7 @@ class ChatController {
                 .prompt(question)
                 .options(ChatOptions.builder()
                         .model("llama3.2:1b")
-                        .temperature(0.9)
-                        .build())
+                        .temperature(0.9))
                 .call()
                 .content();
     }
@@ -51,8 +50,7 @@ class ChatController {
         return chatClient
                 .prompt(question)
                 .options(OllamaChatOptions.builder()
-                        .repeatPenalty(1.5)
-                        .build())
+                        .repeatPenalty(1.5))
                 .call()
                 .content();
     }
