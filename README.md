@@ -35,6 +35,12 @@ Chat completion with LLMs via different model providers:
 * **[OpenAI](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/chat/chat-openai)**
 * **[Multiple Providers](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/chat/chat-multiple-providers)**
 
+### Decision Models
+
+Typed probabilistic decisions with decision models via different model providers:
+
+* **[Ollama](https://github.com/ThomasVitale/llm-apps-java-spring-ai/tree/main/models/decision/decision-ollama)**
+
 ### Embedding Models
 
 Vector transformation (embeddings) with LLMs via different model providers:

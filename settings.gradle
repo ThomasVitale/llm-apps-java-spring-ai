@@ -17,6 +17,8 @@ include 'models:chat:chat-multiple-providers'
 include 'models:chat:chat-ollama'
 include 'models:chat:chat-openai'
 
+include 'models:decision:decision-ollama'
+
 include 'models:embedding:embedding-mistral-ai'
 include 'models:embedding:embedding-ollama'
 include 'models:embedding:embedding-openai'

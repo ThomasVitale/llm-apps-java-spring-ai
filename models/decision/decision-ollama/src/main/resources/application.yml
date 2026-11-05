@@ -1,0 +1,11 @@
+spring:
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+        chat:
+          include: false
+        embedding:
+          include: false
+      decision:
+        model: d1-omni:600m

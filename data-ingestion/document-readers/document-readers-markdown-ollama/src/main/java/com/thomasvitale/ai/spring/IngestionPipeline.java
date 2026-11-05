@@ -47,7 +47,7 @@ class IngestionPipeline {
         documents.addAll(markdownReader2.get());
 
         logger.info("Creating and storing Embeddings from Documents");
-        vectorStore.add(new TokenTextSplitter().split(documents));
+        vectorStore.add(TokenTextSplitter.builder().build().split(documents));
     }
 
 }
