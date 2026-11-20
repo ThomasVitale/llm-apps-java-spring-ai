@@ -49,7 +49,7 @@ class IngestionPipeline {
         documents.addAll(textReader2.get());
 
         logger.info("Split Documents to better fit the LLM context window");
-        var textSplitter = new TokenTextSplitter();
+        var textSplitter = TokenTextSplitter.builder().build();
         var transformedDocuments = textSplitter.apply(documents);
 
         logger.info("Creating and storing Embeddings from Documents");
